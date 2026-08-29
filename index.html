@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIX para todos — Portfólio de IHC</title>
+  <meta name="description" content="Portfólio acadêmico de Introdução à Interação Humano-Computador sobre as dificuldades de idosos ao realizar transferências via PIX.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. HEADER / MENU
+       ============================================================ -->
+  <header class="header" id="topo">
+    <div class="container header__inner">
+
+      <a class="logo" href="#topo">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+
+        <!-- Botão de modo claro / escuro -->
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+      <nav class="nav" id="menu" aria-label="Navegação principal">
+        <ul class="nav__lista">
+          <li><a href="#topo">Início</a></li>
+          <li><a href="#projeto">O Projeto</a></li>
+          <li><a href="#processo">Processo</a></li>
+          <li><a href="#equipe">Equipe</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ============================================================
+         2. HERO / CAPA
+         ============================================================ -->
+    <section class="hero">
+      <div class="container hero__inner">
+
+        <!-- Cabeçalho institucional (estilo folha de rosto acadêmica) -->
+        <p class="hero__instituicao">
+          Universidade Federal Fluminense · Instituto de Computação
+        </p>
+        <p class="hero__disciplina">
+          Introdução à Interação Humano-Computador · 2026.2
+        </p>
+
+        <hr class="hero__regua">
+
+        <h1 class="hero__titulo">PIX para todos</h1>
+
+        <p class="hero__subtitulo">
+          Investigando as dificuldades de idosos não familiarizados com tecnologia
+          ao realizar transferências via PIX.
+        </p>
+
+        <p class="hero__descricao">
+          Um projeto de Interação Humano-Computador sobre acessibilidade,
+          usabilidade e inclusão digital.
+        </p>
+
+        <div class="hero__acoes">
+          <a class="botao" href="#projeto">Conheça o projeto</a>
+          <a class="botao botao--secundario" href="#processo">Ver o processo</a>
+        </div>
+
+        <!-- Ficha do trabalho -->
+        <dl class="ficha">
+          <div class="ficha__item">
+            <dt>Curso</dt>
+            <dd>Sistemas de Informação</dd>
+          </div>
+          <div class="ficha__item">
+            <dt>Período</dt>
+            <dd>2026.2</dd>
+          </div>
+          <div class="ficha__item">
+            <dt>Docente</dt>
+            <dd class="placeholder placeholder--inline">[A preencher]</dd>
+          </div>
+          <div class="ficha__item">
+            <dt>Etapas</dt>
+            <dd>10 do processo</dd>
+          </div>
+        </dl>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. O PROJETO
+         ============================================================ -->
+    <section class="secao" id="projeto">
+      <div class="container">
+
+        <header class="secao__cabecalho">
+          <p class="secao__rotulo">01</p>
+          <h2 class="secao__titulo">O Projeto</h2>
+          <p class="secao__intro">
+            Este projeto busca compreender as dificuldades enfrentadas por pessoas idosas
+            que possuem pouca familiaridade com tecnologias digitais ao realizar
+            transferências bancárias utilizando o PIX.
+          </p>
+        </header>
+
+        <div class="grade grade--2">
+
+          <!-- CONTEXTUALIZAÇÃO -->
+          <article class="card">
+            <svg class="card__icone" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M3 12h18"></path>
+              <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"></path>
+            </svg>
+            <h3 class="card__titulo">Contextualização</h3>
+            <p class="placeholder">
+              [A PREENCHER] Descrever o cenário do PIX no Brasil, sua adoção em massa
+              e o contexto de uso das pessoas idosas.
+            </p>
+          </article>
+
+          <!-- PROBLEMA -->
+          <article class="card">
+            <svg class="card__icone" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M9.3 9.2a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.4-2.7 4"></path>
+              <path d="M12 17.2h.01"></path>
+            </svg>
+            <h3 class="card__titulo">Problema</h3>
+            <p class="placeholder">
+              [A PREENCHER] Definição clara do problema de interação identificado
+              pelo grupo.
+            </p>
+          </article>
+
+          <!-- PÚBLICO-ALVO -->
+          <article class="card">
+            <svg class="card__icone" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="9" cy="8" r="3.2"></circle>
+              <path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path>
+              <path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path>
+              <path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path>
+            </svg>
+            <h3 class="card__titulo">Público-alvo</h3>
+            <p class="placeholder">
+              [A PREENCHER] Caracterização das pessoas idosas com baixa familiaridade
+              digital que serão o foco da pesquisa.
+            </p>
+          </article>
+
+          <!-- OBJETIVO -->
+          <article class="card">
+            <svg class="card__icone" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5"></circle>
+              <circle cx="12" cy="12" r="4.5"></circle>
+              <circle cx="12" cy="12" r="1"></circle>
+            </svg>
+            <h3 class="card__titulo">Objetivo</h3>
+            <p class="placeholder">
+              [A PREENCHER] O que o grupo pretende alcançar ao final do projeto.
+            </p>
+          </article>
+
+        </div>
+
+        <!-- FUNDAMENTOS (conceitos vistos em aula) -->
+        <div class="painel">
+          <h3 class="painel__titulo">Fundamentos que orientam a análise</h3>
+          <p class="painel__texto">
+            A qualidade da interação é um julgamento multidimensional. Este projeto
+            observa o uso do PIX a partir de quatro pilares estudados na disciplina:
+          </p>
+          <ul class="pilares">
+            <li><strong>Usabilidade</strong> — execução da tarefa sem frustração.</li>
+            <li><strong>Experiência do Usuário (UX)</strong> — emoções e percepções ao longo do uso.</li>
+            <li><strong>Acessibilidade</strong> — remoção de barreiras para todos os perfis.</li>
+            <li><strong>Comunicabilidade</strong> — clareza da lógica e da intenção do design.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. NOSSO PROCESSO
+         Para preencher uma etapa: troque o texto dentro de
+         <p class="placeholder"> e mude a classe do status para
+         "etapa__status etapa__status--feito".
+         ============================================================ -->
+    <section class="secao secao--alt" id="processo">
+      <div class="container">
+
+        <header class="secao__cabecalho">
+          <p class="secao__rotulo">02</p>
+          <h2 class="secao__titulo">Nosso Processo</h2>
+          <p class="secao__intro">
+            As etapas do projeto, publicadas conforme forem sendo concluídas.
+          </p>
+        </header>
+
+        <ol class="timeline">
+
+          <li class="etapa">
+            <div class="etapa__numero">01</div>
+            <div class="etapa__corpo">
+              <div class="etapa__topo">
+                <h3 class="etapa__titulo">Definição do problema</h3>
+                <span class="etapa__status">Em breve</span>
+              </div>
+              <p class="placeholder">[A PREENCHER] Conteúdo desta etapa.</p>
+            </div>
+          </li>
+
+          <li class="etapa">
+            <div class="etapa__numero">02</div>
+            <div class="etapa__corpo">
+              <div class="etapa__topo">
+                <h3 class="etapa__titulo">Desk Research</h3>
+                <span class="etapa__status">Em breve</span>
+              </div>
+              <p class="placeholder">[A PREENCHER] Pesquisa inicial em fontes secundárias e referências consultadas.</p>
+            </div>
+          </li>
+
+          <li class="etapa">
+            <div class="etapa__numero">03</div>
+            <div class="etapa__corpo">
+              <div class="etapa__topo">
+                <h3 class="etapa__titulo">Matriz CSD</h3>
+                <span class="etapa__status">Em breve</span>
+              </div>
+              <p class="placeholder">[A PREENCHER] Certezas, Suposições e Dúvidas levantadas pelo grupo.</p>
+            </div>
+          </li>
+
+          <li class="etapa">
+            <div class="etapa__numero">04</div>
+            <div class="etapa__corpo">
+              <div class="etapa__topo">
+                <h3 class="etapa__titulo">How Might We</h3>
+                <span class="etapa__status">Em breve</span>
+              </div>
+              <p class="placeholder">[A PREENCHER] Pergunta norteadora do projeto no formato "Como poderíamos...".</p>
+            </div>
+          </li>
+
+          <li class="etapa">
+            <div class="etapa__numero">05</div>
+            <div class="etapa__corpo">
+              <div class="etapa__topo">
+                <h3 class="etapa__titulo">Pesquisa com usuários</h3>
+                <span class="etapa__status">Em breve</span>
+              </div>
+              <p class="placeholder">[A PREENCHER] Método, roteiro e participantes da pesquisa.</p>
+            </div>
+          </li>
+
+          <li class="etapa">
+            <div class="etapa__numero">06</div>
+            <div class="etapa__corpo">
+              <div class="etapa__topo">
+                <h3 class="etapa__titulo">Análise dos resultados</h3>
+                <span class="etapa__status">Em breve</span>
+              </div>
+              <p class="placeholder">[A PREENCHER] Achados e padrões identificados.</p>
+            </div>
+          </li>
+
+          <li class="etapa">
+            <div class="etapa__numero">07</div>
+            <div class="etapa__corpo">
+              <div class="etapa__topo">
+                <h3 class="etapa__titulo">Ideação</h3>
+                <span class="etapa__status">Em breve</span>
+              </div>
+              <p class="placeholder">[A PREENCHER] Ideias geradas a partir dos achados.</p>
+            </div>
+          </li>
+
+          <li class="etapa">
+            <div class="etapa__numero">08</div>
+            <div class="etapa__corpo">
+              <div class="etapa__topo">
+                <h3 class="etapa__titulo">Solução / Protótipo</h3>
+                <span class="etapa__status">Em breve</span>
+              </div>
+              <p class="placeholder">[A PREENCHER] Proposta desenvolvida pelo grupo.</p>
+            </div>
+          </li>
+
+          <li class="etapa">
+            <div class="etapa__numero">09</div>
+            <div class="etapa__corpo">
+              <div class="etapa__topo">
+                <h3 class="etapa__titulo">Avaliação</h3>
+                <span class="etapa__status">Em breve</span>
+              </div>
+              <p class="placeholder">[A PREENCHER] Como a solução foi avaliada com usuários.</p>
+            </div>
+          </li>
+
+          <li class="etapa">
+            <div class="etapa__numero">10</div>
+            <div class="etapa__corpo">
+              <div class="etapa__topo">
+                <h3 class="etapa__titulo">Conclusões</h3>
+                <span class="etapa__status">Em breve</span>
+              </div>
+              <p class="placeholder">[A PREENCHER] Aprendizados e considerações finais.</p>
+            </div>
+          </li>
+
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. EQUIPE
+         ============================================================ -->
+    <section class="secao" id="equipe">
+      <div class="container">
+
+        <header class="secao__cabecalho">
+          <p class="secao__rotulo">03</p>
+          <h2 class="secao__titulo">Equipe</h2>
+          <p class="secao__intro">
+            Estudantes responsáveis pelo desenvolvimento deste portfólio.
+          </p>
+        </header>
+
+        <div class="grade grade--3">
+
+          <article class="pessoa">
+            <div class="pessoa__avatar" aria-hidden="true">1</div>
+            <h3 class="pessoa__nome">Integrante 1</h3>
+            <p class="pessoa__funcao placeholder">[Função a definir]</p>
+          </article>
+
+          <article class="pessoa">
+            <div class="pessoa__avatar" aria-hidden="true">2</div>
+            <h3 class="pessoa__nome">Integrante 2</h3>
+            <p class="pessoa__funcao placeholder">[Função a definir]</p>
+          </article>
+
+          <article class="pessoa">
+            <div class="pessoa__avatar" aria-hidden="true">3</div>
+            <h3 class="pessoa__nome">Integrante 3</h3>
+            <p class="pessoa__funcao placeholder">[Função a definir]</p>
+          </article>
+
+          <article class="pessoa">
+            <div class="pessoa__avatar" aria-hidden="true">4</div>
+            <h3 class="pessoa__nome">Integrante 4</h3>
+            <p class="pessoa__funcao placeholder">[Função a definir]</p>
+          </article>
+
+          <article class="pessoa">
+            <div class="pessoa__avatar" aria-hidden="true">5</div>
+            <h3 class="pessoa__nome">Integrante 5</h3>
+            <p class="pessoa__funcao placeholder">[Função a definir]</p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       6. FOOTER
+       ============================================================ -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense · Sistemas de Informação · 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,543 @@
+/* ============================================================
+   PIX para todos — Portfólio de IHC
+   Estilos do site. Organizado em blocos comentados.
+   ============================================================ */
+
+/* --- 1. Tema claro (padrão) --------------------------------
+   Para mudar as cores do site, altere apenas estas variáveis.
+   ----------------------------------------------------------- */
+:root {
+  --acento:        #2563a8;  /* azul principal (botões, links)   */
+  --acento-hover:  #17406e;
+  --acento-forte:  #17406e;  /* títulos                          */
+  --acento-suave:  #e8f0fa;  /* fundos de destaque               */
+  --acento-texto:  #ffffff;  /* texto sobre o azul               */
+
+  --verde:         #2e8b7a;
+  --verde-suave:   #e4f2ef;
+  --verde-borda:   #cfe6e0;
+  --verde-texto:   #1f5f53;
+
+  --fundo:         #f7f9fc;
+  --fundo-alt:     #eef3f9;
+  --superficie:    #ffffff;  /* fundo dos cards                  */
+  --texto:         #1b2733;
+  --texto-suave:   #55636f;
+  --borda:         #dde5ee;
+
+  --header-fundo:  rgba(255, 255, 255, .92);
+  --hero-topo:     #e8f0fa;  /* topo do degradê da capa          */
+  --rodape-fundo:  #17406e;
+  --rodape-texto:  #dce7f4;
+
+  --sombra:  0 2px 10px rgba(23, 64, 110, .06);
+  --raio:    18px;
+  --largura: 1080px;
+  --fonte:   'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- 2. Tema escuro ---------------------------------------- */
+:root[data-tema="escuro"] {
+  --acento:        #4a90d9;
+  --acento-hover:  #6aa8e8;
+  --acento-forte:  #cfe2f8;
+  --acento-suave:  #1c2a3d;
+  --acento-texto:  #0f1720;
+
+  --verde:         #52b8a0;
+  --verde-suave:   #16292c;
+  --verde-borda:   #2a4a46;
+  --verde-texto:   #8fd6c4;
+
+  --fundo:         #0f1720;
+  --fundo-alt:     #131d28;
+  --superficie:    #182430;
+  --texto:         #e7eef6;
+  --texto-suave:   #a4b3c4;
+  --borda:         #27343f;
+
+  --header-fundo:  rgba(15, 23, 32, .92);
+  --hero-topo:     #16273c;
+  --rodape-fundo:  #0a1119;
+  --rodape-texto:  #b9c8d8;
+
+  --sombra:  0 2px 10px rgba(0, 0, 0, .3);
+}
+
+/* --- 3. Base ----------------------------------------------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+body {
+  font-family: var(--fonte);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--texto);
+  background: var(--fundo);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+a { color: var(--acento); }
+
+/* Todos os ícones do site são SVG desenhados com traço, sem emojis */
+svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+:focus-visible {
+  outline: 3px solid var(--acento);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  background: var(--acento);
+  color: var(--acento-texto);
+  padding: 12px 20px;
+  border-radius: 10px;
+  z-index: 100;
+}
+.skip-link:focus { left: 16px; }
+
+/* --- 4. Header --------------------------------------------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--header-fundo);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--borda);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 72px;
+}
+
+.header__acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  order: 3;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--acento-forte);
+  text-decoration: none;
+}
+.logo__mark { width: 24px; height: 24px; color: var(--verde); }
+
+.nav__lista {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+}
+.nav__lista a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--texto-suave);
+  text-decoration: none;
+}
+.nav__lista a:hover { background: var(--acento-suave); color: var(--acento-forte); }
+.nav__lista a.ativo { background: var(--acento-suave); color: var(--acento-forte); font-weight: 600; }
+
+/* Botão de tema */
+.tema-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  font: inherit;
+  font-size: .95rem;
+  font-weight: 500;
+  color: var(--texto-suave);
+  background: transparent;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.tema-toggle:hover { background: var(--acento-suave); color: var(--acento-forte); }
+.tema-toggle__icone { display: flex; }
+.tema-toggle__icone svg { width: 18px; height: 18px; }
+
+/* Menu sanduíche (só no celular) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px;
+  background: none;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--texto);
+  border-radius: 2px;
+}
+
+/* --- 5. Hero / capa ----------------------------------------- */
+.hero {
+  background: linear-gradient(180deg, var(--hero-topo) 0%, var(--fundo) 100%);
+  padding: 88px 0 80px;
+  text-align: center;
+  border-bottom: 1px solid var(--borda);
+}
+
+.hero__inner { max-width: 780px; margin: 0 auto; }
+
+.hero__instituicao {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+  letter-spacing: .02em;
+}
+
+.hero__disciplina {
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-top: 6px;
+}
+
+.hero__regua {
+  width: 64px;
+  height: 3px;
+  margin: 28px auto;
+  border: 0;
+  border-radius: 2px;
+  background: var(--acento);
+}
+
+.hero__titulo {
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--acento-forte);
+  margin-bottom: 20px;
+}
+
+.hero__subtitulo {
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+  color: var(--texto);
+  margin-bottom: 14px;
+}
+
+.hero__descricao {
+  font-size: 1.05rem;
+  color: var(--texto-suave);
+  margin-bottom: 36px;
+}
+
+.hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.botao {
+  display: inline-block;
+  padding: 16px 34px;
+  background: var(--acento);
+  color: var(--acento-texto);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: var(--sombra);
+  transition: background-color .2s ease;
+}
+.botao:hover { background: var(--acento-hover); }
+
+.botao--secundario {
+  background: transparent;
+  color: var(--acento);
+  border: 1px solid var(--borda);
+  box-shadow: none;
+}
+.botao--secundario:hover { background: var(--acento-suave); color: var(--acento-forte); }
+
+/* Ficha do trabalho (capa) */
+.ficha {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 4px 24px;
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid var(--borda);
+  text-align: left;
+}
+
+.ficha__item { padding: 8px 0; }
+
+.ficha dt {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: 2px;
+}
+
+.ficha dd {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+/* --- 6. Seções ---------------------------------------------- */
+.secao { padding: 88px 0; }
+.secao--alt { background: var(--fundo-alt); }
+
+.secao__cabecalho {
+  max-width: 700px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.secao__rotulo {
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--verde);
+  margin-bottom: 8px;
+}
+
+.secao__titulo {
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  color: var(--acento-forte);
+  letter-spacing: -.01em;
+  margin-bottom: 16px;
+}
+
+.secao__intro { color: var(--texto-suave); font-size: 1.1rem; }
+
+/* --- 7. Grades e cards -------------------------------------- */
+.grade { display: grid; gap: 24px; }
+.grade--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.grade--3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+.card {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 32px;
+  box-shadow: var(--sombra);
+}
+
+.card__icone {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 14px;
+  color: var(--acento);
+}
+
+.card__titulo {
+  font-size: 1.3rem;
+  color: var(--acento-forte);
+  margin-bottom: 10px;
+}
+
+/* Texto provisório — sempre visualmente identificado */
+.placeholder {
+  color: var(--texto-suave);
+  font-size: 1rem;
+  border-left: 3px solid var(--borda);
+  padding-left: 14px;
+}
+.placeholder--inline { border: 0; padding: 0; font-weight: 500; }
+
+/* --- 8. Painel de fundamentos ------------------------------- */
+.painel {
+  margin-top: 32px;
+  padding: 32px;
+  background: var(--verde-suave);
+  border: 1px solid var(--verde-borda);
+  border-radius: var(--raio);
+}
+
+.painel__titulo { font-size: 1.25rem; color: var(--verde-texto); margin-bottom: 10px; }
+.painel__texto { color: var(--texto-suave); font-size: 1rem; margin-bottom: 16px; }
+
+.pilares { list-style: none; display: grid; gap: 10px; }
+.pilares li { font-size: 1rem; padding-left: 24px; position: relative; }
+.pilares li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  color: var(--verde);
+  font-weight: 700;
+}
+
+/* --- 9. Linha do tempo (processo) --------------------------- */
+.timeline { list-style: none; display: grid; gap: 20px; }
+
+.etapa {
+  display: flex;
+  gap: 24px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 28px;
+  box-shadow: var(--sombra);
+}
+
+.etapa__numero {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  background: var(--acento-suave);
+  color: var(--acento);
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.etapa__corpo { flex: 1; min-width: 0; }
+
+.etapa__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.etapa__titulo { font-size: 1.25rem; color: var(--acento-forte); }
+
+.etapa__status {
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 600;
+  background: var(--fundo-alt);
+  color: var(--texto-suave);
+  border: 1px solid var(--borda);
+}
+/* Troque a classe para esta quando a etapa estiver pronta */
+.etapa__status--feito {
+  background: var(--verde-suave);
+  color: var(--verde-texto);
+  border-color: var(--verde-borda);
+}
+
+/* --- 10. Equipe --------------------------------------------- */
+.pessoa {
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: var(--sombra);
+}
+
+.pessoa__avatar {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--acento-suave);
+  color: var(--acento);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.pessoa__nome { font-size: 1.15rem; color: var(--acento-forte); margin-bottom: 6px; }
+
+.pessoa__funcao { font-size: .95rem; border: 0; padding: 0; }
+
+/* --- 11. Rodapé --------------------------------------------- */
+.rodape {
+  background: var(--rodape-fundo);
+  color: var(--rodape-texto);
+  padding: 56px 0;
+  text-align: center;
+}
+
+.rodape__titulo { font-weight: 600; color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
+.rodape__tema { max-width: 620px; margin: 0 auto 16px; font-size: 1rem; opacity: .9; }
+.rodape__creditos { font-size: .9rem; opacity: .7; }
+
+/* --- 12. Responsivo ----------------------------------------- */
+@media (max-width: 860px) {
+  .tema-toggle__texto { display: none; }
+  .tema-toggle { padding: 11px 13px; }
+}
+
+@media (max-width: 760px) {
+  body { font-size: 17px; }
+
+  .menu-toggle { display: flex; }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--superficie);
+    border-bottom: 1px solid var(--borda);
+    padding: 12px 24px 20px;
+  }
+  .nav.aberto { display: block; }
+  .nav__lista { flex-direction: column; gap: 4px; }
+  .nav__lista a { padding: 14px; font-size: 1.05rem; }
+
+  .hero { padding: 56px 0 52px; }
+  .secao { padding: 64px 0; }
+
+  .hero__acoes { flex-direction: column; }
+  .botao { width: 100%; text-align: center; }
+
+  .ficha { margin-top: 40px; grid-template-columns: repeat(2, 1fr); }
+
+  .card, .etapa, .painel { padding: 24px; }
+
+  .etapa { flex-direction: column; gap: 16px; }
+  .etapa__numero { width: 48px; height: 48px; font-size: 1rem; }
+}
+
+/* --- 13. Impressão ------------------------------------------ */
+@media print {
+  .header, .hero__acoes, .skip-link { display: none; }
+  body { background: #fff; color: #000; }
+}
