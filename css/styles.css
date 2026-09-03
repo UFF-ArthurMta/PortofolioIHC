@@ -553,6 +553,22 @@ svg {
 
 .referencias__lista li { font-size: .95rem; color: var(--texto-suave); }
 
+.referencias__lista a {
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--borda);
+}
+.referencias__lista a:hover { text-decoration-color: var(--acento); }
+
+/* Nome do veículo/publicação, depois do link */
+.referencias__fonte {
+  display: block;
+  font-size: .85rem;
+  color: var(--texto-suave);
+  opacity: .8;
+}
+
 /* --- 13. Equipe --------------------------------------------- */
 .pessoa {
   background: var(--superficie);
