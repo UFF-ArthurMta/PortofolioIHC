@@ -458,7 +458,102 @@ svg {
   border-color: var(--verde-borda);
 }
 
-/* --- 10. Equipe --------------------------------------------- */
+/* Texto de apoio dentro de uma etapa */
+.etapa__texto {
+  color: var(--texto-suave);
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* --- 10. Matriz CSD ----------------------------------------- */
+.csd {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.csd__coluna {
+  border-top: 3px solid var(--csd-cor);
+  padding-top: 14px;
+}
+
+.csd__coluna--certeza   { --csd-cor: #2e8b7a; --csd-fundo: rgba(46, 139, 122, .08); }
+.csd__coluna--suposicao { --csd-cor: #d9a325; --csd-fundo: rgba(217, 163, 37, .08); }
+.csd__coluna--duvida    { --csd-cor: #c0392b; --csd-fundo: rgba(192, 57, 43, .08); }
+
+:root[data-tema="escuro"] .csd__coluna--certeza   { --csd-cor: #52b8a0; }
+:root[data-tema="escuro"] .csd__coluna--suposicao { --csd-cor: #e3b449; }
+:root[data-tema="escuro"] .csd__coluna--duvida    { --csd-cor: #e2685a; }
+
+.csd__titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: var(--texto);
+  margin-bottom: 14px;
+}
+
+.csd__contagem {
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: var(--fundo-alt);
+  border: 1px solid var(--borda);
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+.csd__lista { list-style: none; display: grid; gap: 10px; }
+
+.csd__lista li {
+  background: var(--csd-fundo);
+  border-left: 3px solid var(--csd-cor);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: .95rem;
+  line-height: 1.55;
+}
+
+/* --- 11. How Might We --------------------------------------- */
+.hmw {
+  margin: 0;
+  padding: 26px 30px;
+  background: var(--acento-suave);
+  border-left: 4px solid var(--acento);
+  border-radius: 12px;
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--acento-forte);
+}
+
+/* --- 12. Lista de referências -------------------------------- */
+.referencias {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--borda);
+}
+
+.referencias__titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: var(--texto);
+  margin-bottom: 12px;
+}
+
+.referencias__lista {
+  padding-left: 20px;
+  margin-bottom: 16px;
+  display: grid;
+  gap: 6px;
+}
+
+.referencias__lista li { font-size: .95rem; color: var(--texto-suave); }
+
+/* --- 13. Equipe --------------------------------------------- */
 .pessoa {
   background: var(--superficie);
   border: 1px solid var(--borda);
@@ -485,7 +580,7 @@ svg {
 
 .pessoa__funcao { font-size: .95rem; border: 0; padding: 0; }
 
-/* --- 11. Rodapé --------------------------------------------- */
+/* --- 14. Rodapé --------------------------------------------- */
 .rodape {
   background: var(--rodape-fundo);
   color: var(--rodape-texto);
@@ -497,7 +592,7 @@ svg {
 .rodape__tema { max-width: 620px; margin: 0 auto 16px; font-size: 1rem; opacity: .9; }
 .rodape__creditos { font-size: .9rem; opacity: .7; }
 
-/* --- 12. Responsivo ----------------------------------------- */
+/* --- 15. Responsivo ----------------------------------------- */
 @media (max-width: 860px) {
   .tema-toggle__texto { display: none; }
   .tema-toggle { padding: 11px 13px; }
@@ -536,7 +631,7 @@ svg {
   .etapa__numero { width: 48px; height: 48px; font-size: 1rem; }
 }
 
-/* --- 13. Impressão ------------------------------------------ */
+/* --- 16. Impressão ------------------------------------------ */
 @media print {
   .header, .hero__acoes, .skip-link { display: none; }
   body { background: #fff; color: #000; }
