@@ -76,13 +76,14 @@ menu funciona sozinho a partir daí.
 |---|-------|--------|
 | 01 | Definição do problema e How Might We | Concluído |
 | 02 | Matriz CSD | Concluído |
-| 03 | Desk Research | Em breve |
-| 04 | Pesquisa com usuários | Em breve |
-| 05 | Análise dos resultados | Em breve |
-| 06 | Ideação | Em breve |
-| 07 | Solução / Protótipo | Em breve |
-| 08 | Avaliação | Em breve |
-| 09 | Conclusões | Em breve |
+| 03 | Mapa de Empatia | Concluído |
+| 04 | Desk Research | Em breve |
+| 05 | Pesquisa com usuários | Em breve |
+| 06 | Análise dos resultados | Em breve |
+| 07 | Ideação | Em breve |
+| 08 | Solução / Protótipo | Em breve |
+| 09 | Avaliação | Em breve |
+| 10 | Conclusões | Em breve |
 
 ## Publicação
 

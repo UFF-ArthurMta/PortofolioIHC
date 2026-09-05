@@ -350,6 +350,11 @@ svg {
 .grade--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 .grade--3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 
+/* Quatro colunas onde couber; cai para 2 e depois 1 nas telas menores */
+.grade--4 { grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); }
+.grade--4 .card { padding: 26px 22px; }
+.grade--4 .card p { font-size: .97rem; }
+
 .card {
   background: var(--superficie);
   border: 1px solid var(--borda);
@@ -493,7 +498,73 @@ svg {
   line-height: 1.55;
 }
 
-/* --- 10. How Might We --------------------------------------- */
+/* --- 10. Mapa de Empatia ------------------------------------ */
+/* Quadrantes 2x2; viram uma coluna só nas telas estreitas */
+.mapa {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+  gap: 18px;
+}
+
+.mapa__quadrante {
+  background: var(--quad-fundo);
+  border: 1px solid var(--quad-borda);
+  border-radius: 14px;
+  padding: 22px;
+}
+
+/* Uma cor por quadrante (tema claro) */
+.mapa__quadrante--fala  { --quad-fundo: #eef4fd; --quad-borda: #d3e2f7; --quad-cor: #2563a8; --nota: #dbe9fb; }
+.mapa__quadrante--pensa { --quad-fundo: #f2effc; --quad-borda: #ded6f5; --quad-cor: #6247b9; --nota: #e6defa; }
+.mapa__quadrante--faz   { --quad-fundo: #ecf6f2; --quad-borda: #cfe6dc; --quad-cor: #2e8b7a; --nota: #d8ede5; }
+.mapa__quadrante--sente { --quad-fundo: #fdf4e7; --quad-borda: #f2e0c2; --quad-cor: #b57614; --nota: #fbe9cd; }
+
+/* Tema escuro */
+:root[data-tema="escuro"] .mapa__quadrante--fala  { --quad-fundo: #142234; --quad-borda: #24384f; --quad-cor: #78b0e8; --nota: #1c3049; }
+:root[data-tema="escuro"] .mapa__quadrante--pensa { --quad-fundo: #1d1a2e; --quad-borda: #322c4a; --quad-cor: #a596e8; --nota: #272240; }
+:root[data-tema="escuro"] .mapa__quadrante--faz   { --quad-fundo: #12241f; --quad-borda: #22423a; --quad-cor: #6cc7ae; --nota: #19312a; }
+:root[data-tema="escuro"] .mapa__quadrante--sente { --quad-fundo: #2a2113; --quad-borda: #453722; --quad-cor: #e0b45f; --nota: #382c19; }
+
+.mapa__titulo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 1.15rem;
+  color: var(--quad-cor);
+  margin-bottom: 6px;
+}
+.mapa__titulo svg { width: 21px; height: 21px; flex-shrink: 0; }
+
+.mapa__pergunta {
+  font-size: .88rem;
+  line-height: 1.5;
+  color: var(--texto-suave);
+  margin-bottom: 16px;
+}
+
+/* Post-its */
+.postits {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.postit {
+  background: var(--nota);
+  border: 1px solid var(--quad-borda);
+  border-radius: 4px;
+  padding: 11px 13px;
+  max-width: 190px;
+  font-size: .87rem;
+  line-height: 1.4;
+  color: var(--texto);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .07);
+}
+.postit:nth-child(odd)  { transform: rotate(-.7deg); }
+.postit:nth-child(even) { transform: rotate(.7deg); }
+
+/* --- 11. How Might We --------------------------------------- */
 .hmw {
   margin: 0;
   padding: 26px 30px;
@@ -506,7 +577,7 @@ svg {
   color: var(--acento-forte);
 }
 
-/* --- 11. Lista de referências -------------------------------- */
+/* --- 12. Lista de referências -------------------------------- */
 .referencias {
   margin-top: 28px;
   padding-top: 22px;
@@ -547,7 +618,7 @@ svg {
   opacity: .8;
 }
 
-/* --- 12. Equipe --------------------------------------------- */
+/* --- 13. Equipe --------------------------------------------- */
 .pessoa {
   background: var(--superficie);
   border: 1px solid var(--borda);
@@ -574,7 +645,7 @@ svg {
 
 .pessoa__funcao { font-size: .95rem; border: 0; padding: 0; }
 
-/* --- 13. Rodapé --------------------------------------------- */
+/* --- 14. Rodapé --------------------------------------------- */
 .rodape {
   background: var(--rodape-fundo);
   color: var(--rodape-texto);
@@ -586,7 +657,7 @@ svg {
 .rodape__tema { max-width: 620px; margin: 0 auto 16px; font-size: 1rem; opacity: .9; }
 .rodape__creditos { font-size: .9rem; opacity: .7; }
 
-/* --- 14. Responsivo ----------------------------------------- */
+/* --- 15. Responsivo ----------------------------------------- */
 @media (max-width: 860px) {
   .tema-toggle__texto { display: none; }
   .tema-toggle { padding: 11px 13px; }
@@ -625,7 +696,7 @@ svg {
   .etapa__numero { width: 48px; height: 48px; font-size: 1rem; }
 }
 
-/* --- 15. Impressão ------------------------------------------ */
+/* --- 16. Impressão ------------------------------------------ */
 @media print {
   .header, .hero__acoes, .skip-link { display: none; }
   body { background: #fff; color: #000; }
