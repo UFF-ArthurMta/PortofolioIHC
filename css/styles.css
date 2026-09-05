@@ -423,7 +423,40 @@ svg {
   margin-bottom: 10px;
 }
 
-.etapa__titulo { font-size: 1.25rem; color: var(--acento-forte); }
+/* O titulo empurra o status e o botao para a direita */
+.etapa__titulo {
+  font-size: 1.25rem;
+  color: var(--acento-forte);
+  margin-right: auto;
+}
+
+/* Botao de abrir/fechar a etapa */
+.etapa__toggle {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--borda);
+  border-radius: 50%;
+  color: var(--texto-suave);
+  cursor: pointer;
+}
+.etapa__toggle:hover { background: var(--acento-suave); color: var(--acento-forte); }
+
+.etapa__toggle svg {
+  width: 19px;
+  height: 19px;
+  transition: transform .2s ease;
+}
+.etapa--aberta .etapa__toggle svg { transform: rotate(180deg); }
+
+.etapa__conteudo { margin-top: 14px; }
+
+/* Sem JavaScript o conteudo continua visivel */
+.etapa__conteudo[hidden] { display: none; }
 
 .etapa__status {
   padding: 4px 14px;
@@ -698,6 +731,9 @@ svg {
 
 /* --- 16. Impressão ------------------------------------------ */
 @media print {
-  .header, .hero__acoes, .skip-link { display: none; }
+  .header, .hero__acoes, .skip-link, .etapa__toggle { display: none; }
   body { background: #fff; color: #000; }
+
+  /* Ao imprimir, todas as etapas saem abertas */
+  .etapa__conteudo[hidden] { display: block !important; }
 }

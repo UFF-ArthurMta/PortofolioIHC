@@ -62,7 +62,50 @@
     });
   }
 
-  /* --- 3. Destaque do link da seção visível ---------------- */
+  /* --- 3. Abrir e fechar as etapas do processo -------------
+     O botão é criado aqui, e não no HTML: assim basta adicionar
+     um novo <li class="etapa"> que ele ja vem com o botao.
+     Etapas concluidas comecam abertas; as "Em breve", fechadas.
+     -------------------------------------------------------- */
+  var CHEVRON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg>';
+
+  document.querySelectorAll('.etapa').forEach(function (etapa, i) {
+    var corpo = etapa.querySelector('.etapa__corpo');
+    var topo = etapa.querySelector('.etapa__topo');
+    if (!corpo || !topo) return;
+
+    // Junta tudo o que vem depois do titulo em um bloco recolhivel
+    var conteudo = document.createElement('div');
+    conteudo.className = 'etapa__conteudo';
+    conteudo.id = 'etapa-conteudo-' + (i + 1);
+    while (topo.nextSibling) conteudo.appendChild(topo.nextSibling);
+    if (!conteudo.children.length) return;
+    corpo.appendChild(conteudo);
+
+    var titulo = topo.querySelector('.etapa__titulo');
+    var nome = titulo ? titulo.textContent.trim() : 'etapa';
+    var concluida = !!topo.querySelector('.etapa__status--feito');
+
+    var botao = document.createElement('button');
+    botao.className = 'etapa__toggle';
+    botao.innerHTML = CHEVRON;
+    botao.setAttribute('aria-controls', conteudo.id);
+    topo.appendChild(botao);
+
+    function aplicar(aberto) {
+      conteudo.hidden = !aberto;
+      etapa.classList.toggle('etapa--aberta', aberto);
+      botao.setAttribute('aria-expanded', String(aberto));
+      botao.setAttribute('aria-label', (aberto ? 'Fechar' : 'Abrir') + ' a etapa ' + nome);
+    }
+
+    aplicar(concluida);
+    botao.addEventListener('click', function () {
+      aplicar(conteudo.hidden);
+    });
+  });
+
+  /* --- 4. Destaque do link da seção visível ---------------- */
   var links = document.querySelectorAll('.nav__lista a');
   var secoes = [];
 
