@@ -381,29 +381,7 @@ svg {
 }
 .placeholder--inline { border: 0; padding: 0; font-weight: 500; }
 
-/* --- 8. Painel de fundamentos ------------------------------- */
-.painel {
-  margin-top: 32px;
-  padding: 32px;
-  background: var(--verde-suave);
-  border: 1px solid var(--verde-borda);
-  border-radius: var(--raio);
-}
-
-.painel__titulo { font-size: 1.25rem; color: var(--verde-texto); margin-bottom: 10px; }
-.painel__texto { color: var(--texto-suave); font-size: 1rem; margin-bottom: 16px; }
-
-.pilares { list-style: none; display: grid; gap: 10px; }
-.pilares li { font-size: 1rem; padding-left: 24px; position: relative; }
-.pilares li::before {
-  content: "•";
-  position: absolute;
-  left: 4px;
-  color: var(--verde);
-  font-weight: 700;
-}
-
-/* --- 9. Linha do tempo (processo) --------------------------- */
+/* --- 8. Linha do tempo (processo) --------------------------- */
 .timeline { list-style: none; display: grid; gap: 20px; }
 
 .etapa {
@@ -465,7 +443,7 @@ svg {
   margin-bottom: 20px;
 }
 
-/* --- 10. Matriz CSD ----------------------------------------- */
+/* --- 9. Matriz CSD ----------------------------------------- */
 .csd {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -515,7 +493,7 @@ svg {
   line-height: 1.55;
 }
 
-/* --- 11. How Might We --------------------------------------- */
+/* --- 10. How Might We --------------------------------------- */
 .hmw {
   margin: 0;
   padding: 26px 30px;
@@ -528,7 +506,7 @@ svg {
   color: var(--acento-forte);
 }
 
-/* --- 12. Lista de referências -------------------------------- */
+/* --- 11. Lista de referências -------------------------------- */
 .referencias {
   margin-top: 28px;
   padding-top: 22px;
@@ -569,7 +547,7 @@ svg {
   opacity: .8;
 }
 
-/* --- 13. Equipe --------------------------------------------- */
+/* --- 12. Equipe --------------------------------------------- */
 .pessoa {
   background: var(--superficie);
   border: 1px solid var(--borda);
@@ -596,7 +574,7 @@ svg {
 
 .pessoa__funcao { font-size: .95rem; border: 0; padding: 0; }
 
-/* --- 14. Rodapé --------------------------------------------- */
+/* --- 13. Rodapé --------------------------------------------- */
 .rodape {
   background: var(--rodape-fundo);
   color: var(--rodape-texto);
@@ -608,7 +586,7 @@ svg {
 .rodape__tema { max-width: 620px; margin: 0 auto 16px; font-size: 1rem; opacity: .9; }
 .rodape__creditos { font-size: .9rem; opacity: .7; }
 
-/* --- 15. Responsivo ----------------------------------------- */
+/* --- 14. Responsivo ----------------------------------------- */
 @media (max-width: 860px) {
   .tema-toggle__texto { display: none; }
   .tema-toggle { padding: 11px 13px; }
@@ -641,13 +619,13 @@ svg {
 
   .ficha { margin-top: 40px; grid-template-columns: repeat(2, 1fr); }
 
-  .card, .etapa, .painel { padding: 24px; }
+  .card, .etapa { padding: 24px; }
 
   .etapa { flex-direction: column; gap: 16px; }
   .etapa__numero { width: 48px; height: 48px; font-size: 1rem; }
 }
 
-/* --- 16. Impressão ------------------------------------------ */
+/* --- 15. Impressão ------------------------------------------ */
 @media print {
   .header, .hero__acoes, .skip-link { display: none; }
   body { background: #fff; color: #000; }
