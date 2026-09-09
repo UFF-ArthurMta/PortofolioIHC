@@ -671,10 +671,16 @@ svg {
   background: var(--acento-suave);
   color: var(--acento);
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  letter-spacing: .04em;
 }
 
-.pessoa__nome { font-size: 1.15rem; color: var(--acento-forte); margin-bottom: 6px; }
+.pessoa__nome {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: var(--acento-forte);
+  margin-bottom: 8px;
+}
 
 .pessoa__funcao { font-size: .95rem; border: 0; padding: 0; }
 
