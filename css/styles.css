@@ -597,7 +597,104 @@ svg {
 .postit:nth-child(odd)  { transform: rotate(-.7deg); }
 .postit:nth-child(even) { transform: rotate(.7deg); }
 
-/* --- 11. How Might We --------------------------------------- */
+/* --- 11. Análise Competitiva -------------------------------- */
+.analise__grupo {
+  font-size: 1.1rem;
+  color: var(--acento-forte);
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borda);
+}
+
+.analise__descricao {
+  font-size: .95rem;
+  color: var(--texto-suave);
+  margin: 4px 0 18px;
+}
+
+.concorrentes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(330px, 100%), 1fr));
+  gap: 16px;
+}
+
+.concorrente {
+  background: var(--fundo-alt);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.concorrente__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.concorrente__nome { font-size: 1.05rem; color: var(--texto); }
+
+.concorrente__tag {
+  padding: 3px 11px;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+}
+.concorrente__tag--direto     { color: #2563a8; }
+.concorrente__tag--indireto   { color: #b57614; }
+.concorrente__tag--inspirador { color: #6247b9; }
+
+:root[data-tema="escuro"] .concorrente__tag--direto     { color: #78b0e8; }
+:root[data-tema="escuro"] .concorrente__tag--indireto   { color: #e0b45f; }
+:root[data-tema="escuro"] .concorrente__tag--inspirador { color: #a596e8; }
+
+/* Justificativa da escolha do concorrente */
+.concorrente__motivo {
+  font-size: .9rem;
+  font-style: italic;
+  color: var(--texto-suave);
+  margin-bottom: 16px;
+}
+
+.concorrente__bloco {
+  border-left: 3px solid var(--bloco-cor);
+  padding: 2px 0 2px 13px;
+  margin-bottom: 14px;
+}
+.concorrente__bloco:last-child { margin-bottom: 0; }
+
+.concorrente__bloco p { font-size: .9rem; line-height: 1.55; }
+
+.concorrente__bloco--positivo { --bloco-cor: #2e8b7a; }
+.concorrente__bloco--negativo { --bloco-cor: #c0392b; }
+
+/* A ideia para o design e o que mais interessa: fica destacada */
+.concorrente__bloco--ideia {
+  --bloco-cor: var(--acento);
+  background: var(--acento-suave);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+}
+
+:root[data-tema="escuro"] .concorrente__bloco--positivo { --bloco-cor: #52b8a0; }
+:root[data-tema="escuro"] .concorrente__bloco--negativo { --bloco-cor: #e2685a; }
+
+.concorrente__rotulo {
+  display: block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--bloco-cor);
+  margin-bottom: 4px;
+}
+
+/* --- 12. How Might We --------------------------------------- */
 .hmw {
   margin: 0;
   padding: 26px 30px;
@@ -610,7 +707,7 @@ svg {
   color: var(--acento-forte);
 }
 
-/* --- 12. Lista de referências -------------------------------- */
+/* --- 13. Lista de referências -------------------------------- */
 .referencias {
   margin-top: 28px;
   padding-top: 22px;
@@ -651,7 +748,7 @@ svg {
   opacity: .8;
 }
 
-/* --- 13. Equipe --------------------------------------------- */
+/* --- 14. Equipe --------------------------------------------- */
 .pessoa {
   background: var(--superficie);
   border: 1px solid var(--borda);
@@ -681,7 +778,7 @@ svg {
   color: var(--acento-forte);
 }
 
-/* --- 14. Rodapé --------------------------------------------- */
+/* --- 15. Rodapé --------------------------------------------- */
 .rodape {
   background: var(--rodape-fundo);
   color: var(--rodape-texto);
@@ -693,7 +790,7 @@ svg {
 .rodape__tema { max-width: 620px; margin: 0 auto 16px; font-size: 1rem; opacity: .9; }
 .rodape__creditos { font-size: .9rem; opacity: .7; }
 
-/* --- 15. Responsivo ----------------------------------------- */
+/* --- 16. Responsivo ----------------------------------------- */
 @media (max-width: 860px) {
   .tema-toggle__texto { display: none; }
   .tema-toggle { padding: 11px 13px; }
@@ -732,7 +829,7 @@ svg {
   .etapa__numero { width: 48px; height: 48px; font-size: 1rem; }
 }
 
-/* --- 16. Impressão ------------------------------------------ */
+/* --- 17. Impressão ------------------------------------------ */
 @media print {
   .header, .hero__acoes, .skip-link, .etapa__toggle { display: none; }
   body { background: #fff; color: #000; }
