@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=7">
+  <link rel="stylesheet" href="css/styles.css?v=8">
 
   <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
   <script>
@@ -235,11 +235,8 @@
               </div>
 
               <p class="etapa__texto">
-                O grupo delimitou o problema a ser investigado: pessoas idosas com pouca
-                familiaridade tecnológica enfrentam dificuldade para realizar transferências
-                via PIX de forma independente. A partir dessa definição, o problema foi
-                reescrito como pergunta norteadora, no formato How Might We — a primeira
-                versão do HMW, que pode ser ajustada conforme as próximas pesquisas.
+                Escolhemos o problema do projeto e reescrevemos ele como pergunta,
+                no formato How Might We.
               </p>
 
               <blockquote class="hmw">
@@ -259,9 +256,8 @@
               </div>
 
               <p class="etapa__texto">
-                A partir do desk research, o grupo organizou os achados em uma Matriz CSD:
-                o que já sabemos (Certezas), o que precisamos confirmar (Suposições)
-                e o que ainda não sabemos (Dúvidas).
+                Separamos o que já sabemos, o que achamos e o que ainda precisamos
+                descobrir. Cada certeza mostra a referência de onde ela saiu.
               </p>
 
               <div class="csd">
@@ -270,14 +266,38 @@
                 <div class="csd__coluna csd__coluna--certeza">
                   <h4 class="csd__titulo">Certezas <span class="csd__contagem">8</span></h4>
                   <ul class="csd__lista">
-                    <li>Visão e declínio da coordenação motora atrapalham a usar o aplicativo do banco.</li>
-                    <li>Medo real: golpes e erros humanos.</li>
-                    <li>No primeiro uso do app do banco, um tour explicativo, explicando os principais pontos que o usuário pode ter pouca familiaridade, ajuda nos demais acessos.</li>
-                    <li>Memória de curto prazo mais frágil dificulta lembrar senhas, PINs e sequências de passos.</li>
-                    <li>Experiências anteriores ruins (golpe, erro, trava no app e notícias de golpe) geram desconfiança duradoura com o digital.</li>
-                    <li>O uso de termos em inglês (ex.: Pix, Cashback, Feed) confunde quem tem pouca familiaridade com o digital.</li>
-                    <li>O apoio de filhos e netos é apontado como o fator principal para que o público idoso comece a usar apps de banco.</li>
-                    <li>Mesmo dominando os aplicativos, muitos idosos ainda valorizam a relação humana e o atendimento "olho no olho".</li>
+                    <li>
+                      Visão e declínio da coordenação motora atrapalham a usar o aplicativo do banco.
+                      <a class="csd__fonte" href="#ref-csd-1" aria-label="Ver a referência 1: Portal Unit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>Portal Unit</a>
+                    </li>
+                    <li>
+                      Medo real: golpes e erros humanos.
+                      <a class="csd__fonte" href="#ref-csd-5" aria-label="Ver a referência 5: SCBR News"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>SCBR News</a>
+                    </li>
+                    <li>
+                      No primeiro uso do app do banco, um tour explicativo, explicando os principais pontos que o usuário pode ter pouca familiaridade, ajuda nos demais acessos.
+                      <a class="csd__fonte" href="#ref-csd-3" aria-label="Ver a referência 3: Tech Vovó"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>Tech Vovó</a>
+                    </li>
+                    <li>
+                      Memória de curto prazo mais frágil dificulta lembrar senhas, PINs e sequências de passos.
+                      <a class="csd__fonte" href="#ref-csd-4" aria-label="Ver a referência 4: SciELO"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>SciELO</a>
+                    </li>
+                    <li>
+                      Experiências anteriores ruins (golpe, erro, trava no app e notícias de golpe) geram desconfiança duradoura com o digital.
+                      <a class="csd__fonte" href="#ref-csd-5" aria-label="Ver a referência 5: SCBR News"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>SCBR News</a>
+                    </li>
+                    <li>
+                      O uso de termos em inglês (ex.: Pix, Cashback, Feed) confunde quem tem pouca familiaridade com o digital.
+                      <a class="csd__fonte" href="#ref-csd-6" aria-label="Ver a referência 6: Correio Braziliense"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>Correio Braziliense</a>
+                    </li>
+                    <li>
+                      O apoio de filhos e netos é apontado como o fator principal para que o público idoso comece a usar apps de banco.
+                      <a class="csd__fonte" href="#ref-csd-2" aria-label="Ver a referência 2: Serasa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>Serasa</a>
+                    </li>
+                    <li>
+                      Mesmo dominando os aplicativos, muitos idosos ainda valorizam a relação humana e o atendimento "olho no olho".
+                      <a class="csd__fonte" href="#ref-csd-7" aria-label="Ver a referência 7: Gazeta do Povo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>Gazeta do Povo</a>
+                    </li>
                   </ul>
                 </div>
 
@@ -329,37 +349,37 @@
               <div class="referencias">
                 <h4 class="referencias__titulo">Referências das certezas <span class="csd__contagem">7</span></h4>
                 <ol class="referencias__lista">
-                  <li>
+                  <li id="ref-csd-1">
                     <a href="https://portal.unit.br/blog/noticias/idosos-conectados-uso-de-smartphones-cresce-mas-exige-atencao-a-saude-fisica/" target="_blank" rel="noopener">
                       Idosos conectados: uso de smartphones cresce, mas exige atenção à saúde física</a>
                     <span class="referencias__fonte">Portal Unit</span>
                   </li>
-                  <li>
+                  <li id="ref-csd-2">
                     <a href="https://www.serasa.com.br/imprensa/idosos-acessam-aplicativos-bancarios/" target="_blank" rel="noopener">
                       8 em cada 10 idosos já acessam aplicativos bancários</a>
                     <span class="referencias__fonte">Serasa</span>
                   </li>
-                  <li>
+                  <li id="ref-csd-3">
                     <a href="https://techvovo.com.br/como-ensinar-o-idoso-a-mexer-no-celular-manual-com-14-dicas/" target="_blank" rel="noopener">
                       Como ensinar o idoso a mexer no celular: manual com 14 dicas</a>
                     <span class="referencias__fonte">Tech Vovó</span>
                   </li>
-                  <li>
+                  <li id="ref-csd-4">
                     <a href="https://www.scielo.br/j/ptp/a/6j4h5WYXKPV3SdPNWtwH8nx/?format=html&amp;lang=pt" target="_blank" rel="noopener">
                       Avaliação da Autoeficácia e da Memória em Idosos: Uma Análise Exploratória</a>
                     <span class="referencias__fonte">SciELO — Psicologia: Teoria e Pesquisa</span>
                   </li>
-                  <li>
+                  <li id="ref-csd-5">
                     <a href="https://scbrnews.com.br/idosos-enfrentam-desafios-com-aplicativos-bancarios-e-golpes-digitais-alarmantes/" target="_blank" rel="noopener">
                       Idosos enfrentam desafios com aplicativos bancários e golpes digitais alarmantes</a>
                     <span class="referencias__fonte">SCBR News</span>
                   </li>
-                  <li>
+                  <li id="ref-csd-6">
                     <a href="https://www.correiobraziliense.com.br/euestudante/trabalho-e-formacao/2024/01/6787779-anglicismo-por-que-vocabulario-em-ingles-esta-sendo-evitado-por-multinacionais.html" target="_blank" rel="noopener">
                       Anglicismo: por que vocabulário em inglês está sendo evitado por multinacionais</a>
                     <span class="referencias__fonte">Correio Braziliense</span>
                   </li>
-                  <li>
+                  <li id="ref-csd-7">
                     <a href="https://www.gazetadopovo.com.br/economia/como-os-idosos-brasileiros-estao-se-adaptando-aos-bancos-digitais/" target="_blank" rel="noopener">
                       Como os idosos brasileiros estão se adaptando aos bancos digitais</a>
                     <span class="referencias__fonte">Gazeta do Povo</span>
@@ -378,10 +398,8 @@
               </div>
 
               <p class="etapa__texto">
-                Para entender o ponto de vista das pessoas, o grupo aplicou quatro
-                perguntas abertas e organizou as respostas nos quadrantes do Mapa de
-                Empatia. Cada post-it abaixo é uma resposta registrada, na forma como
-                foi dita.
+                Fizemos quatro perguntas abertas e colocamos cada resposta no quadrante
+                correspondente. Os post-its estão do jeito que foram respondidos.
               </p>
 
               <div class="mapa">
@@ -509,24 +527,17 @@
               </div>
 
               <p class="etapa__texto">
-                Analisamos soluções que permitem realizar ou auxiliam na realização de
-                transações financeiras digitais. O objetivo não é apenas comparar
-                funcionalidades, mas identificar boas práticas, problemas de usabilidade
-                e ideias que possam contribuir para o design futuro da nossa solução.
-              </p>
-
-              <p class="etapa__texto">
-                Foram considerados principalmente os seguintes aspectos de IHC: clareza da
-                interface, quantidade de etapas, linguagem utilizada, prevenção de erros,
-                feedback após ações, acessibilidade, segurança percebida, facilidade para
-                pedir ajuda e autonomia do usuário.
+                Olhamos como outras soluções resolvem esse mesmo problema, para tirar
+                ideias para o nosso design. Observamos clareza da interface, quantidade
+                de etapas, linguagem, prevenção de erros, feedback, acessibilidade,
+                segurança percebida, facilidade para pedir ajuda e autonomia do usuário.
               </p>
 
               <!-- COMPETIDORES DIRETOS -->
               <h4 class="analise__grupo">Competidores diretos</h4>
               <p class="analise__descricao">
-                Soluções que oferecem exatamente o mesmo serviço: bancos cujo aplicativo é
-                o caminho principal para fazer um PIX, uma transferência ou pagar uma conta.
+                Bancos em que o aplicativo é o caminho principal para fazer um PIX ou
+                pagar uma conta.
               </p>
 
               <div class="concorrentes">
@@ -706,8 +717,8 @@
               <!-- CONCORRENTES INDIRETOS -->
               <h4 class="analise__grupo">Concorrentes indiretos</h4>
               <p class="analise__descricao">
-                Alternativas que resolvem a mesma necessidade do usuário sem passar pelo
-                aplicativo do banco.
+                Outras formas de resolver a mesma necessidade sem passar pelo aplicativo
+                do banco.
               </p>
 
               <div class="concorrentes">
@@ -782,8 +793,8 @@
               <!-- INSPIRADORES -->
               <h4 class="analise__grupo">Inspiradores</h4>
               <p class="analise__descricao">
-                Esses produtos não são concorrentes bancários, mas resolvem problemas de
-                interação semelhantes e podem fornecer ideias importantes.
+                Não são concorrentes bancários, mas resolvem problemas de interação
+                parecidos com o nosso.
               </p>
 
               <div class="concorrentes">
@@ -894,17 +905,6 @@
             <div class="etapa__numero">05</div>
             <div class="etapa__corpo">
               <div class="etapa__topo">
-                <h3 class="etapa__titulo">Desk Research</h3>
-                <span class="etapa__status">Em breve</span>
-              </div>
-              <p class="placeholder">[A PREENCHER] Aprofundamento da pesquisa em fontes secundárias, a partir das dúvidas levantadas na Matriz CSD.</p>
-            </div>
-          </li>
-
-          <li class="etapa">
-            <div class="etapa__numero">06</div>
-            <div class="etapa__corpo">
-              <div class="etapa__topo">
                 <h3 class="etapa__titulo">Pesquisa com usuários</h3>
                 <span class="etapa__status">Em breve</span>
               </div>
@@ -913,7 +913,7 @@
           </li>
 
           <li class="etapa">
-            <div class="etapa__numero">07</div>
+            <div class="etapa__numero">06</div>
             <div class="etapa__corpo">
               <div class="etapa__topo">
                 <h3 class="etapa__titulo">Análise dos resultados</h3>
@@ -924,7 +924,7 @@
           </li>
 
           <li class="etapa">
-            <div class="etapa__numero">08</div>
+            <div class="etapa__numero">07</div>
             <div class="etapa__corpo">
               <div class="etapa__topo">
                 <h3 class="etapa__titulo">Ideação</h3>
@@ -935,7 +935,7 @@
           </li>
 
           <li class="etapa">
-            <div class="etapa__numero">09</div>
+            <div class="etapa__numero">08</div>
             <div class="etapa__corpo">
               <div class="etapa__topo">
                 <h3 class="etapa__titulo">Solução / Protótipo</h3>
@@ -946,7 +946,7 @@
           </li>
 
           <li class="etapa">
-            <div class="etapa__numero">10</div>
+            <div class="etapa__numero">09</div>
             <div class="etapa__corpo">
               <div class="etapa__topo">
                 <h3 class="etapa__titulo">Avaliação</h3>
@@ -957,7 +957,7 @@
           </li>
 
           <li class="etapa">
-            <div class="etapa__numero">11</div>
+            <div class="etapa__numero">10</div>
             <div class="etapa__corpo">
               <div class="etapa__topo">
                 <h3 class="etapa__titulo">Conclusões</h3>
@@ -1029,6 +1029,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=7"></script>
+  <script src="js/main.js?v=8"></script>
 </body>
 </html>

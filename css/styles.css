@@ -531,6 +531,30 @@ svg {
   line-height: 1.55;
 }
 
+/* Etiqueta que liga cada certeza a uma das referencias da etapa */
+.csd__fonte {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-top: 10px;
+  padding: 4px 11px 4px 9px;
+  border: 1px solid var(--csd-cor);
+  border-radius: 999px;
+  background: var(--superficie);
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+  text-decoration: none;
+}
+
+.csd__fonte svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.csd__fonte:hover {
+  color: var(--acento);
+  border-color: var(--acento);
+}
+
 /* --- 10. Mapa de Empatia ------------------------------------ */
 /* Quadrantes 2x2; viram uma coluna só nas telas estreitas */
 .mapa {
@@ -730,7 +754,11 @@ svg {
   gap: 6px;
 }
 
-.referencias__lista li { font-size: .95rem; color: var(--texto-suave); }
+.referencias__lista li {
+  font-size: .95rem;
+  color: var(--texto-suave);
+  scroll-margin-top: 90px; /* o link da certeza nao para atras do menu fixo */
+}
 
 .referencias__lista a {
   font-weight: 500;
