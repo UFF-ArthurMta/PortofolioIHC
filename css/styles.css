@@ -474,6 +474,26 @@ svg {
   border-color: var(--verde-borda);
 }
 
+/* Foto de uma etapa (mapa em cartolina, prototipo, quadro etc.) */
+.foto { margin: 24px 0 0; }
+
+.foto img {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+}
+
+.foto figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: .9rem;
+  color: var(--texto-suave);
+}
+
 /* Texto de apoio dentro de uma etapa */
 .etapa__texto {
   color: var(--texto-suave);

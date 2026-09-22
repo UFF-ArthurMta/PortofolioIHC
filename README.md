@@ -54,8 +54,13 @@ por:
 
 ### Adicionar uma imagem a uma etapa
 
+Coloque o arquivo em `img/` e use a classe `foto`:
+
 ```html
-<img src="img/matriz-csd.png" alt="Matriz CSD do projeto" style="max-width:100%;border-radius:12px;margin-top:16px;">
+<figure class="foto">
+  <img src="img/mapa-empatia.jpg" alt="Descreva a imagem aqui" loading="lazy">
+  <figcaption>Legenda da imagem.</figcaption>
+</figure>
 ```
 
 ### Ligar uma certeza da Matriz CSD a uma referência
