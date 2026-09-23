@@ -114,7 +114,7 @@ menu funciona sozinho a partir daí.
 | 03 | Mapa de Empatia | Concluído |
 | 04 | Análise Competitiva | Concluído |
 | 05 | Pesquisa com usuários | Em andamento |
-| 06 | Análise dos resultados | Em breve |
+| 06 | Análise dos resultados | Em andamento |
 | 07 | Ideação | Em breve |
 | 08 | Solução / Protótipo | Em breve |
 | 09 | Avaliação | Em breve |
