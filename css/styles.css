@@ -883,7 +883,56 @@ svg {
 .rodape__tema { max-width: 620px; margin: 0 auto 16px; font-size: 1rem; opacity: .9; }
 .rodape__creditos { font-size: .9rem; opacity: .7; }
 
-/* --- 16. Responsivo ----------------------------------------- */
+/* --- 16. Tabela de respostas -------------------------------- */
+.tabela-wrap {
+  max-height: 70vh;
+  overflow: auto;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--superficie);
+}
+
+.tabela { border-collapse: collapse; font-size: .9rem; }
+
+.tabela th,
+.tabela td {
+  min-width: 210px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--borda);
+  border-right: 1px solid var(--borda);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+/* Cabecalho preso no topo enquanto a tabela rola */
+.tabela thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--fundo-alt);
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+/* Coluna de quem respondeu presa na esquerda */
+.tabela tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 80px;
+  background: var(--superficie);
+  font-weight: 600;
+  color: var(--acento-forte);
+}
+
+.tabela thead th:first-child { left: 0; z-index: 3; min-width: 80px; }
+
+.tabela td { color: var(--texto-suave); }
+.tabela__vazio { opacity: .5; }
+
+/* --- 17. Responsivo ----------------------------------------- */
 @media (max-width: 860px) {
   .tema-toggle__texto { display: none; }
   .tema-toggle { padding: 11px 13px; }
@@ -922,7 +971,7 @@ svg {
   .etapa__numero { width: 48px; height: 48px; font-size: 1rem; }
 }
 
-/* --- 17. Impressão ------------------------------------------ */
+/* --- 18. Impressão ------------------------------------------ */
 @media print {
   .header, .hero__acoes, .skip-link, .etapa__toggle { display: none; }
   body { background: #fff; color: #000; }

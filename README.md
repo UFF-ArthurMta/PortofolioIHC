@@ -13,6 +13,7 @@ Basta abrir o arquivo `index.html` no navegador. Não há dependências, build o
 
 ```
 index.html      → todo o conteúdo do site (seções comentadas)
+respostas.html  → tabela com as respostas do questionário
 css/styles.css  → estilos, organizado em blocos numerados
 js/main.js      → tema claro/escuro, menu do celular e link ativo
 img/            → imagens (fotos dos quadros, protótipos, telas)

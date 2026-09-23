@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Respostas do questionário — PIX para todos</title>
+  <meta name="description" content="Respostas do questionário aplicado na pesquisa com usuários do projeto PIX para todos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=14">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="secao">
+      <div class="container">
+
+        <header class="secao__cabecalho">
+          <p class="secao__rotulo">Etapa 06</p>
+          <h1 class="secao__titulo">Respostas do questionário</h1>
+          <p class="secao__intro">
+            As 27 respostas como saíram do formulário, sem nenhuma alteração. O
+            questionário não pedia nome nem dado de contato, então cada participante
+            aparece como P01, P02 e assim por diante.
+          </p>
+        </header>
+
+        <p class="etapa__texto">
+          Nas afirmações de 11 a 19 a resposta vai de 1 (discordo totalmente) a
+          5 (concordo totalmente). O traço indica pergunta sem resposta.
+        </p>
+
+        <div class="tabela-wrap">
+          <table class="tabela">
+            <thead>
+              <tr>
+                <th scope="col">Quem</th>
+          <th scope="col">1. Qual é a sua faixa etária?</th>
+          <th scope="col">2. Com que frequência você usa um celular?</th>
+          <th scope="col">3. Como você avalia sua familiaridade com o uso de celular?</th>
+          <th scope="col">4. Quando precisa aprender uma função nova no celular, o que costuma fazer primeiro?</th>
+          <th scope="col">5. Você utiliza aplicativo bancário no celular?</th>
+          <th scope="col">6. Quais destas operações você já realizou pelo celular? (marque todas que se aplicam)</th>
+          <th scope="col">7. Com que frequência você faz Pix pelo celular?</th>
+          <th scope="col">8. Com que frequência você paga contas ou boletos pelo celular?</th>
+          <th scope="col">9. Quando precisa realizar uma transação financeira, qual opção você prefere?</th>
+          <th scope="col">10. Quando você evita fazer uma transação pelo aplicativo do banco, qual costuma ser o principal motivo?</th>
+          <th scope="col">11. Consigo encontrar com facilidade a função que quero usar.</th>
+          <th scope="col">12. Entendo os termos e instruções apresentados pelo aplicativo.</th>
+          <th scope="col">13. Sinto segurança antes de confirmar um Pix, pagamento ou transferência.</th>
+          <th scope="col">14. Consigo perceber claramente quando uma operação foi concluída com sucesso.</th>
+          <th scope="col">15. Muitos botões, menus ou informações na tela me confundem.</th>
+          <th scope="col">16. Alertas de segurança do aplicativo ajudam a decidir se uma transação parece segura.</th>
+          <th scope="col">17. Textos e botões maiores facilitariam o uso do aplicativo.</th>
+          <th scope="col">18. Eu usaria um modo simplificado que mostrasse apenas as funções principais.</th>
+          <th scope="col">19. Uma tela final destacando nome do destinatário, banco e valor aumentaria minha segurança antes de confirmar.</th>
+          <th scope="col">21. Quando surge uma dúvida durante uma transação no celular, de quem você prefere receber ajuda?</th>
+          <th scope="col">22. Você utilizaria um recurso de voz para dizer ao aplicativo o que deseja fazer, desde que os dados fossem mostrados para conferência antes da confirmação?</th>
+          <th scope="col">23. Qual forma de confirmação de identidade faz você se sentir mais seguro(a)?</th>
+          <th scope="col">24. Com que frequência você pede ajuda de outra pessoa para fazer Pix, pagamentos ou transferências?</th>
+          <th scope="col">25. Se o aplicativo fosse mais simples e explicasse melhor cada etapa, você se sentiria mais confortável para realizar transações sem ajuda?</th>
+          <th scope="col">26. Quais recursos mais ajudariam você a usar um aplicativo bancário com mais autonomia? (marque até três opções)</th>
+              </tr>
+            </thead>
+            <tbody>
+        <tr>
+          <th scope="row">P01</th>
+          <td>80 anos ou mais</td>
+          <td>Algumas vezes por semana</td>
+          <td>2</td>
+          <td>Tento aprender sozinho(a), Peço ajuda a um amigo/conhecido, Procuro tutorial ou vídeo</td>
+          <td>Sim, frequentemente</td>
+          <td>Fazer Pix, Fazer transferência, Consultar ou pagar cartão</td>
+          <td>Algumas vezes por mês</td>
+          <td>Cerca de uma vez por mês</td>
+          <td>Aplicativo do banco no celular, Agência bancária, Atendimento pelo WhatsApp do banco</td>
+          <td>Medo de errar, Não sei onde encontrar a função, Letras ou botões difíceis de visualizar</td>
+          <td>1 - Discordo totalmente</td>
+          <td>3</td>
+          <td>2</td>
+          <td>2</td>
+          <td>3</td>
+          <td>2</td>
+          <td>2</td>
+          <td>1 - Discordo totalmente</td>
+          <td>2</td>
+          <td>Do próprio aplicativo, com explicações na tela, Assistente por voz dentro do aplicativo, Atendente oficial do banco por telefone ou chat</td>
+          <td>Sim</td>
+          <td>Senha numérica, Biometria facial, Código enviado ao celular</td>
+          <td>Raramente</td>
+          <td>Talvez</td>
+          <td>Modo simplificado com poucas funções, Textos e botões maiores, Ajuda por voz, Confirmação mais clara antes de enviar dinheiro</td>
+        </tr>
+        <tr>
+          <th scope="row">P02</th>
+          <td>70 a 74 anos</td>
+          <td>Todos os dias</td>
+          <td>3</td>
+          <td>Peço ajuda a um familiar</td>
+          <td>Sim, frequentemente</td>
+          <td>Consultar saldo ou extrato, Fazer transferência, Acessar comprovantes</td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td>Nunca pago pelo celular</td>
+          <td>Aplicativo do banco no celular</td>
+          <td>Medo de golpe ou fraude</td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td>Familiar ou pessoa de confiança</td>
+          <td>Talvez</td>
+          <td>Senha numérica</td>
+          <td>Às vezes</td>
+          <td>Com certeza sim</td>
+          <td>Alertas contra golpes, Textos e botões maiores, Confirmação mais clara antes de enviar dinheiro</td>
+        </tr>
+        <tr>
+          <th scope="row">P03</th>
+          <td>70 a 74 anos</td>
+          <td>Todos os dias</td>
+          <td>3</td>
+          <td>Tento aprender sozinho(a)</td>
+          <td>Sim, às vezes</td>
+          <td>Consultar saldo ou extrato, Acessar comprovantes</td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td>Nunca pago pelo celular</td>
+          <td>Caixa eletrônico</td>
+          <td>Termos difíceis de entender</td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td>Do próprio aplicativo, com explicações na tela</td>
+          <td>Talvez</td>
+          <td>Impressão digital</td>
+          <td>Às vezes</td>
+          <td>Provavelmente sim</td>
+          <td>Modo simplificado com poucas funções, Explicações em linguagem simples</td>
+        </tr>
+        <tr>
+          <th scope="row">P04</th>
+          <td>65 a 69 anos</td>
+          <td>Todos os dias</td>
+          <td>3</td>
+          <td>Procuro atendimento da empresa/banco</td>
+          <td>Sim, às vezes</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Fazer transferência</td>
+          <td>Raramente</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Caixa eletrônico</td>
+          <td>Muitos passos ou telas</td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td><span class="tabela__vazio">&mdash;</span></td>
+          <td>Assistente por voz dentro do aplicativo</td>
+          <td>Sim</td>
+          <td>Biometria facial</td>
+          <td>Às vezes</td>
+          <td>Com certeza sim</td>
+          <td>Botão de ajuda visível em todas as telas, Explicações em linguagem simples, Modo simplificado com poucas funções</td>
+        </tr>
+        <tr>
+          <th scope="row">P05</th>
+          <td>65 a 69 anos</td>
+          <td>Todos os dias</td>
+          <td>3</td>
+          <td>Peço ajuda a um familiar</td>
+          <td>Sim, às vezes</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Pagar boleto/conta, Fazer transferência</td>
+          <td>Raramente</td>
+          <td>Raramente</td>
+          <td>Agência bancária</td>
+          <td>Prefiro atendimento presencial</td>
+          <td>2</td>
+          <td>3</td>
+          <td>3</td>
+          <td>4</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Familiar ou pessoa de confiança</td>
+          <td>Não</td>
+          <td>Senha numérica</td>
+          <td>Às vezes</td>
+          <td>Com certeza sim</td>
+          <td>Confirmação mais clara antes de enviar dinheiro, Explicações em linguagem simples, Alertas contra golpes</td>
+        </tr>
+        <tr>
+          <th scope="row">P06</th>
+          <td>65 a 69 anos</td>
+          <td>Todos os dias</td>
+          <td>3</td>
+          <td>Procuro tutorial ou vídeo</td>
+          <td>Sim, frequentemente</td>
+          <td>Consultar saldo ou extrato, Pagar boleto/conta, Acessar comprovantes</td>
+          <td>Não faço Pix</td>
+          <td>Raramente</td>
+          <td>Aplicativo do banco no celular</td>
+          <td>Letras ou botões difíceis de visualizar</td>
+          <td>3</td>
+          <td>3</td>
+          <td>3</td>
+          <td>4</td>
+          <td>1 - Discordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>3</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Do próprio aplicativo, com explicações na tela</td>
+          <td>Talvez</td>
+          <td>Código enviado ao celular</td>
+          <td>Às vezes</td>
+          <td>Não sei responder</td>
+          <td>Textos e botões maiores, Confirmação mais clara antes de enviar dinheiro</td>
+        </tr>
+        <tr>
+          <th scope="row">P07</th>
+          <td>65 a 69 anos</td>
+          <td>Todos os dias</td>
+          <td>4</td>
+          <td>Procuro tutorial ou vídeo</td>
+          <td>Sim, frequentemente</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Pagar boleto/conta, Fazer transferência</td>
+          <td>Algumas vezes por mês</td>
+          <td>Várias vezes por mês</td>
+          <td>Atendimento pelo WhatsApp do banco</td>
+          <td>Não costumo evitar</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>2</td>
+          <td>4</td>
+          <td>3</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Do próprio aplicativo, com explicações na tela</td>
+          <td>Talvez</td>
+          <td>Impressão digital</td>
+          <td>Raramente</td>
+          <td>Provavelmente sim</td>
+          <td>Botão de ajuda visível em todas as telas, Alertas contra golpes, Explicações em linguagem simples</td>
+        </tr>
+        <tr>
+          <th scope="row">P08</th>
+          <td>75 a 79 anos</td>
+          <td>Algumas vezes por semana</td>
+          <td>2</td>
+          <td>Procuro atendimento da empresa/banco</td>
+          <td>Sim, às vezes</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Consultar ou pagar cartão</td>
+          <td>Raramente</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Agência bancária</td>
+          <td>Medo de golpe ou fraude</td>
+          <td>2</td>
+          <td>1 - Discordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>4</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Atendente oficial do banco por telefone ou chat</td>
+          <td>Sim</td>
+          <td>Biometria facial</td>
+          <td>Às vezes</td>
+          <td>Com certeza sim</td>
+          <td>Textos e botões maiores, Ajuda por voz, Confirmação mais clara antes de enviar dinheiro</td>
+        </tr>
+        <tr>
+          <th scope="row">P09</th>
+          <td>70 a 74 anos</td>
+          <td>Todos os dias</td>
+          <td>5</td>
+          <td>Procuro tutorial ou vídeo</td>
+          <td>Sim, frequentemente</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Pagar boleto/conta, Acessar comprovantes</td>
+          <td>Várias vezes por semana</td>
+          <td>Várias vezes por mês</td>
+          <td>Aplicativo do banco no celular</td>
+          <td>Medo de golpe ou fraude</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>4</td>
+          <td>3</td>
+          <td>2</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Do próprio aplicativo, com explicações na tela</td>
+          <td>Talvez</td>
+          <td>Biometria facial</td>
+          <td>Nunca</td>
+          <td>Com certeza sim</td>
+          <td>Alertas contra golpes, Botão de ajuda visível em todas as telas</td>
+        </tr>
+        <tr>
+          <th scope="row">P10</th>
+          <td>75 a 79 anos</td>
+          <td>Todos os dias</td>
+          <td>1</td>
+          <td>Peço ajuda a um familiar</td>
+          <td>Raramente</td>
+          <td>Consultar saldo ou extrato</td>
+          <td>Não faço Pix</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Peço ajuda a um familiar ou conhecido</td>
+          <td>Medo de errar</td>
+          <td>2</td>
+          <td>1 - Discordo totalmente</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Familiar ou pessoa de confiança</td>
+          <td>Talvez</td>
+          <td>Combinação de mais de uma forma</td>
+          <td>Na maioria das vezes</td>
+          <td>Talvez</td>
+          <td>Botão de ajuda visível em todas as telas, Modo simplificado com poucas funções, Textos e botões maiores</td>
+        </tr>
+        <tr>
+          <th scope="row">P11</th>
+          <td>70 a 74 anos</td>
+          <td>Algumas vezes por semana</td>
+          <td>3</td>
+          <td>Tento aprender sozinho(a)</td>
+          <td>Sim, às vezes</td>
+          <td>Consultar saldo ou extrato, Pagar boleto/conta, Fazer transferência, Consultar ou pagar cartão</td>
+          <td>Não faço Pix</td>
+          <td>Várias vezes por mês</td>
+          <td>Agência bancária</td>
+          <td>Medo de errar</td>
+          <td>4</td>
+          <td>3</td>
+          <td>3</td>
+          <td>4</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>2</td>
+          <td>4</td>
+          <td>4</td>
+          <td>Do próprio aplicativo, com explicações na tela</td>
+          <td>Sim</td>
+          <td>Impressão digital</td>
+          <td>Nunca</td>
+          <td>Provavelmente sim</td>
+          <td>Botão de ajuda visível em todas as telas, Alertas contra golpes</td>
+        </tr>
+        <tr>
+          <th scope="row">P12</th>
+          <td>75 a 79 anos</td>
+          <td>Algumas vezes por semana</td>
+          <td>3</td>
+          <td>Peço ajuda a um familiar</td>
+          <td>Sim, frequentemente</td>
+          <td>Consultar saldo ou extrato, Fazer transferência, Consultar ou pagar cartão, Acessar comprovantes</td>
+          <td>Não faço Pix</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Peço ajuda a um familiar ou conhecido</td>
+          <td>Medo de golpe ou fraude</td>
+          <td>3</td>
+          <td>4</td>
+          <td>1 - Discordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Familiar ou pessoa de confiança</td>
+          <td>Talvez</td>
+          <td>Não tenho preferência</td>
+          <td>Às vezes</td>
+          <td>Provavelmente não</td>
+          <td>Textos e botões maiores, Explicações em linguagem simples, Modo simplificado com poucas funções</td>
+        </tr>
+        <tr>
+          <th scope="row">P13</th>
+          <td>70 a 74 anos</td>
+          <td>Todos os dias</td>
+          <td>3</td>
+          <td>Procuro tutorial ou vídeo</td>
+          <td>Sim, frequentemente</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Pagar boleto/conta, Fazer transferência, Acessar comprovantes</td>
+          <td>Cerca de uma vez por semana</td>
+          <td>Cerca de uma vez por mês</td>
+          <td>Caixa eletrônico</td>
+          <td>Medo de golpe ou fraude</td>
+          <td>4</td>
+          <td>3</td>
+          <td>4</td>
+          <td>3</td>
+          <td>1 - Discordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>3</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Atendente oficial do banco por telefone ou chat</td>
+          <td>Não</td>
+          <td>Impressão digital</td>
+          <td>Raramente</td>
+          <td>Com certeza sim</td>
+          <td>Confirmação mais clara antes de enviar dinheiro, Textos e botões maiores</td>
+        </tr>
+        <tr>
+          <th scope="row">P14</th>
+          <td>80 anos ou mais</td>
+          <td>Algumas vezes por semana</td>
+          <td>1</td>
+          <td>Evito usar a função</td>
+          <td>Já utilizei, mas não utilizo atualmente</td>
+          <td>Consultar saldo ou extrato, Pagar boleto/conta</td>
+          <td>Não faço Pix</td>
+          <td>Raramente</td>
+          <td>Peço ajuda a um familiar ou conhecido</td>
+          <td>Não sei onde encontrar a função</td>
+          <td>1 - Discordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>2</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Familiar ou pessoa de confiança</td>
+          <td>Talvez</td>
+          <td>Não tenho preferência</td>
+          <td>Sempre</td>
+          <td>Com certeza sim</td>
+          <td>Confirmação mais clara antes de enviar dinheiro, Textos e botões maiores, Alertas contra golpes</td>
+        </tr>
+        <tr>
+          <th scope="row">P15</th>
+          <td>60 a 64 anos</td>
+          <td>Todos os dias</td>
+          <td>3</td>
+          <td>Peço ajuda a um amigo/conhecido</td>
+          <td>Sim, às vezes</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Pagar boleto/conta, Consultar ou pagar cartão</td>
+          <td>Algumas vezes por mês</td>
+          <td>Cerca de uma vez por mês</td>
+          <td>Agência bancária</td>
+          <td>Não sei onde encontrar a função</td>
+          <td>3</td>
+          <td>4</td>
+          <td>3</td>
+          <td>4</td>
+          <td>2</td>
+          <td>5 - Concordo totalmente</td>
+          <td>3</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Familiar ou pessoa de confiança</td>
+          <td>Sim</td>
+          <td>Código enviado ao celular</td>
+          <td>Raramente</td>
+          <td>Com certeza sim</td>
+          <td>Botão de ajuda visível em todas as telas</td>
+        </tr>
+        <tr>
+          <th scope="row">P16</th>
+          <td>75 a 79 anos</td>
+          <td>Algumas vezes por semana</td>
+          <td>3</td>
+          <td>Procuro tutorial ou vídeo</td>
+          <td>Raramente</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Acessar comprovantes</td>
+          <td>Algumas vezes por mês</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Peço ajuda a um familiar ou conhecido</td>
+          <td>Letras ou botões difíceis de visualizar</td>
+          <td>2</td>
+          <td>3</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Familiar ou pessoa de confiança</td>
+          <td>Sim</td>
+          <td>Senha numérica</td>
+          <td>Na maioria das vezes</td>
+          <td>Com certeza sim</td>
+          <td>Textos e botões maiores, Modo simplificado com poucas funções, Alertas contra golpes</td>
+        </tr>
+        <tr>
+          <th scope="row">P17</th>
+          <td>75 a 79 anos</td>
+          <td>Raramente</td>
+          <td>1</td>
+          <td>Peço ajuda a um familiar</td>
+          <td>Já utilizei, mas não utilizo atualmente</td>
+          <td>Consultar saldo ou extrato</td>
+          <td>Não faço Pix</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Peço ajuda a um familiar ou conhecido</td>
+          <td>Medo de errar</td>
+          <td>1 - Discordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>2</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Familiar ou pessoa de confiança</td>
+          <td>Sim</td>
+          <td>Combinação de mais de uma forma</td>
+          <td>Sempre</td>
+          <td>Com certeza sim</td>
+          <td>Ajuda por voz, Textos e botões maiores, Confirmação mais clara antes de enviar dinheiro</td>
+        </tr>
+        <tr>
+          <th scope="row">P18</th>
+          <td>60 a 64 anos</td>
+          <td>Algumas vezes por semana</td>
+          <td>4</td>
+          <td>Procuro tutorial ou vídeo</td>
+          <td>Sim, às vezes</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Pagar boleto/conta, Fazer transferência, Consultar ou pagar cartão</td>
+          <td>Várias vezes por semana</td>
+          <td>Várias vezes por mês</td>
+          <td>Aplicativo do banco no celular</td>
+          <td>Não costumo evitar</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>2</td>
+          <td>4</td>
+          <td>3</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Prefiro cancelar e tentar depois</td>
+          <td>Não</td>
+          <td>Impressão digital</td>
+          <td>Nunca</td>
+          <td>Talvez</td>
+          <td>Ajuda por voz, Modo simplificado com poucas funções, Confirmação mais clara antes de enviar dinheiro</td>
+        </tr>
+        <tr>
+          <th scope="row">P19</th>
+          <td>75 a 79 anos</td>
+          <td>Todos os dias</td>
+          <td>1</td>
+          <td>Procuro atendimento da empresa/banco</td>
+          <td>Já utilizei, mas não utilizo atualmente</td>
+          <td>Consultar saldo ou extrato</td>
+          <td>Não faço Pix</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Caixa eletrônico</td>
+          <td>Medo de errar</td>
+          <td>1 - Discordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>2</td>
+          <td>2</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Assistente por voz dentro do aplicativo</td>
+          <td>Talvez</td>
+          <td>Impressão digital</td>
+          <td>Na maioria das vezes</td>
+          <td>Com certeza sim</td>
+          <td>Confirmação mais clara antes de enviar dinheiro</td>
+        </tr>
+        <tr>
+          <th scope="row">P20</th>
+          <td>75 a 79 anos</td>
+          <td>Todos os dias</td>
+          <td>2</td>
+          <td>Peço ajuda a um familiar</td>
+          <td>Sim, às vezes</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Acessar comprovantes</td>
+          <td>Algumas vezes por mês</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Peço ajuda a um familiar ou conhecido</td>
+          <td>Medo de golpe ou fraude</td>
+          <td>2</td>
+          <td>3</td>
+          <td>2</td>
+          <td>3</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Do próprio aplicativo, com explicações na tela</td>
+          <td>Talvez</td>
+          <td>Impressão digital</td>
+          <td>Às vezes</td>
+          <td>Talvez</td>
+          <td>Confirmação mais clara antes de enviar dinheiro, Alertas contra golpes</td>
+        </tr>
+        <tr>
+          <th scope="row">P21</th>
+          <td>70 a 74 anos</td>
+          <td>Todos os dias</td>
+          <td>4</td>
+          <td>Tento aprender sozinho(a)</td>
+          <td>Sim, frequentemente</td>
+          <td>Consultar saldo ou extrato, Fazer Pix</td>
+          <td>Algumas vezes por mês</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Aplicativo do banco no celular</td>
+          <td>Não costumo evitar</td>
+          <td>5 - Concordo totalmente</td>
+          <td>4</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>4</td>
+          <td>3</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Do próprio aplicativo, com explicações na tela</td>
+          <td>Talvez</td>
+          <td>Combinação de mais de uma forma</td>
+          <td>Nunca</td>
+          <td>Provavelmente sim</td>
+          <td>Explicações em linguagem simples, Textos e botões maiores</td>
+        </tr>
+        <tr>
+          <th scope="row">P22</th>
+          <td>60 a 64 anos</td>
+          <td>Todos os dias</td>
+          <td>5</td>
+          <td>Tento aprender sozinho(a)</td>
+          <td>Sim, frequentemente</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Pagar boleto/conta, Fazer transferência, Consultar ou pagar cartão, Acessar comprovantes</td>
+          <td>Várias vezes por semana</td>
+          <td>Várias vezes por mês</td>
+          <td>Aplicativo do banco no celular</td>
+          <td>Não costumo evitar</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+          <td>Atendente oficial do banco por telefone ou chat</td>
+          <td>Talvez</td>
+          <td>Combinação de mais de uma forma</td>
+          <td>Nunca</td>
+          <td>Provavelmente sim</td>
+          <td>Confirmação mais clara antes de enviar dinheiro, Alertas contra golpes, Botão de ajuda visível em todas as telas</td>
+        </tr>
+        <tr>
+          <th scope="row">P23</th>
+          <td>75 a 79 anos</td>
+          <td>Algumas vezes por semana</td>
+          <td>1</td>
+          <td>Peço ajuda a um familiar</td>
+          <td>Raramente</td>
+          <td>Consultar saldo ou extrato, Fazer Pix</td>
+          <td>Raramente</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Agência bancária</td>
+          <td>Letras ou botões difíceis de visualizar</td>
+          <td>1 - Discordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>3</td>
+          <td>2</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Do próprio aplicativo, com explicações na tela</td>
+          <td>Sim</td>
+          <td>Combinação de mais de uma forma</td>
+          <td>Na maioria das vezes</td>
+          <td>Com certeza sim</td>
+          <td>Ajuda por voz, Modo simplificado com poucas funções</td>
+        </tr>
+        <tr>
+          <th scope="row">P24</th>
+          <td>70 a 74 anos</td>
+          <td>Todos os dias</td>
+          <td>3</td>
+          <td>Procuro tutorial ou vídeo</td>
+          <td>Sim, às vezes</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Pagar boleto/conta, Fazer transferência</td>
+          <td>Raramente</td>
+          <td>Cerca de uma vez por mês</td>
+          <td>Aplicativo do banco no celular</td>
+          <td>Medo de errar</td>
+          <td>4</td>
+          <td>2</td>
+          <td>3</td>
+          <td>3</td>
+          <td>2</td>
+          <td>4</td>
+          <td>4</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Familiar ou pessoa de confiança</td>
+          <td>Não sei responder</td>
+          <td>Impressão digital</td>
+          <td>Raramente</td>
+          <td>Talvez</td>
+          <td>Confirmação mais clara antes de enviar dinheiro, Explicações em linguagem simples, Alertas contra golpes</td>
+        </tr>
+        <tr>
+          <th scope="row">P25</th>
+          <td>60 a 64 anos</td>
+          <td>Todos os dias</td>
+          <td>4</td>
+          <td>Tento aprender sozinho(a)</td>
+          <td>Sim, frequentemente</td>
+          <td>Consultar saldo ou extrato, Fazer Pix</td>
+          <td>Cerca de uma vez por semana</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Aplicativo do banco no celular</td>
+          <td>Muitos passos ou telas</td>
+          <td>4</td>
+          <td>4</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>1 - Discordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>3</td>
+          <td>2</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Do próprio aplicativo, com explicações na tela</td>
+          <td>Talvez</td>
+          <td>Código enviado ao celular</td>
+          <td>Nunca</td>
+          <td>Provavelmente sim</td>
+          <td>Botão de ajuda visível em todas as telas, Modo simplificado com poucas funções, Textos e botões maiores</td>
+        </tr>
+        <tr>
+          <th scope="row">P26</th>
+          <td>70 a 74 anos</td>
+          <td>Raramente</td>
+          <td>3</td>
+          <td>Peço ajuda a um familiar</td>
+          <td>Sim, às vezes</td>
+          <td>Consultar saldo ou extrato, Fazer Pix</td>
+          <td>Algumas vezes por mês</td>
+          <td>Nunca pago pelo celular</td>
+          <td>Caixa eletrônico</td>
+          <td>Não costumo evitar</td>
+          <td>5 - Concordo totalmente</td>
+          <td>4</td>
+          <td>4</td>
+          <td>5 - Concordo totalmente</td>
+          <td>2</td>
+          <td>5 - Concordo totalmente</td>
+          <td>3</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Assistente por voz dentro do aplicativo</td>
+          <td>Sim</td>
+          <td>Biometria facial</td>
+          <td>Raramente</td>
+          <td>Com certeza sim</td>
+          <td>Confirmação mais clara antes de enviar dinheiro, Explicações em linguagem simples, Alertas contra golpes</td>
+        </tr>
+        <tr>
+          <th scope="row">P27</th>
+          <td>70 a 74 anos</td>
+          <td>Algumas vezes por semana</td>
+          <td>2</td>
+          <td>Procuro tutorial ou vídeo</td>
+          <td>Raramente</td>
+          <td>Consultar saldo ou extrato, Fazer Pix, Pagar boleto/conta, Acessar comprovantes</td>
+          <td>Algumas vezes por mês</td>
+          <td>Cerca de uma vez por mês</td>
+          <td>Atendimento pelo WhatsApp do banco</td>
+          <td>Medo de golpe ou fraude</td>
+          <td>2</td>
+          <td>1 - Discordo totalmente</td>
+          <td>3</td>
+          <td>3</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>5 - Concordo totalmente</td>
+          <td>Familiar ou pessoa de confiança</td>
+          <td>Não sei responder</td>
+          <td>Impressão digital</td>
+          <td>Raramente</td>
+          <td>Com certeza sim</td>
+          <td>Modo simplificado com poucas funções, Botão de ajuda visível em todas as telas, Ajuda por voz</td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <a class="arquivo" href="docs/respostas-questionario.xlsx"
+           download="Resultados_Questionario.xlsx">
+          <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.5v11"></path>
+            <path d="M7.5 10l4.5 4.5 4.5-4.5"></path>
+            <path d="M4.5 19h15"></path>
+          </svg>
+          <span class="arquivo__texto">
+            <strong>Planilha com as respostas</strong>
+            <small>XLSX &middot; 27 respostas &middot; 12 KB</small>
+          </span>
+        </a>
+
+        <a class="arquivo" href="index.html#processo">
+          <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19.5 12h-15"></path>
+            <path d="M10 5.5L3.5 12l6.5 6.5"></path>
+          </svg>
+          <span class="arquivo__texto">
+            <strong>Voltar para o portfólio</strong>
+            <small>Etapas do processo</small>
+          </span>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense &middot; Sistemas de Informação &middot; 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=14"></script>
+</body>
+</html>
