@@ -18,6 +18,10 @@
   --verde-borda:   #cfe6e0;
   --verde-texto:   #1f5f53;
 
+  --ambar-suave:   #fdf3e0;  /* etapa em andamento               */
+  --ambar-borda:   #efdfb6;
+  --ambar-texto:   #8a6413;
+
   --fundo:         #f7f9fc;
   --fundo-alt:     #eef3f9;
   --superficie:    #ffffff;  /* fundo dos cards                  */
@@ -48,6 +52,10 @@
   --verde-suave:   #16292c;
   --verde-borda:   #2a4a46;
   --verde-texto:   #8fd6c4;
+
+  --ambar-suave:   #2b2415;
+  --ambar-borda:   #4a3f22;
+  --ambar-texto:   #e3b449;
 
   --fundo:         #0f1720;
   --fundo-alt:     #131d28;
@@ -318,6 +326,14 @@ svg {
   color: var(--texto);
 }
 
+/* Mesma ficha, mas dentro de uma etapa */
+.ficha--interna {
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 2px 24px;
+  margin-top: 20px;
+  padding-top: 18px;
+}
+
 /* --- 6. Seções ---------------------------------------------- */
 .secao { padding: 88px 0; }
 .secao--alt { background: var(--fundo-alt); }
@@ -473,6 +489,43 @@ svg {
   color: var(--verde-texto);
   border-color: var(--verde-borda);
 }
+
+/* Etapa comecada, mas ainda sem o resultado final */
+.etapa__status--andamento {
+  background: var(--ambar-suave);
+  color: var(--ambar-texto);
+  border-color: var(--ambar-borda);
+}
+
+/* Link para baixar um arquivo da etapa */
+.arquivo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+  padding: 16px 20px;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  background: var(--superficie);
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.arquivo:hover {
+  border-color: var(--acento);
+  box-shadow: var(--sombra);
+}
+
+.arquivo__icone {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  color: var(--acento);
+}
+
+.arquivo__texto { display: grid; gap: 3px; }
+.arquivo__texto strong { font-size: 1rem; font-weight: 600; }
+.arquivo__texto small { font-size: .85rem; color: var(--texto-suave); }
 
 /* Foto de uma etapa (mapa em cartolina, prototipo, quadro etc.) */
 .foto { margin: 24px 0 0; }
@@ -870,6 +923,7 @@ svg {
   .botao { width: 100%; text-align: center; }
 
   .ficha { margin-top: 40px; grid-template-columns: repeat(2, 1fr); }
+  .ficha--interna { margin-top: 20px; grid-template-columns: 1fr; }
 
   .card, .etapa { padding: 24px; }
 

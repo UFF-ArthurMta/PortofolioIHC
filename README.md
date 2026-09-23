@@ -15,7 +15,8 @@ Basta abrir o arquivo `index.html` no navegador. Não há dependências, build o
 index.html      → todo o conteúdo do site (seções comentadas)
 css/styles.css  → estilos, organizado em blocos numerados
 js/main.js      → tema claro/escuro, menu do celular e link ativo
-img/            → coloque aqui imagens (matriz CSD, protótipos, fotos)
+img/            → imagens (fotos dos quadros, protótipos, telas)
+docs/           → arquivos para download (planejamentos, roteiros, relatórios)
 ```
 
 ## Modo claro e escuro
@@ -52,6 +53,15 @@ por:
 <span class="etapa__status etapa__status--feito">Concluído</span>
 ```
 
+Para uma etapa que já começou mas ainda não terminou:
+
+```html
+<span class="etapa__status etapa__status--andamento">Em andamento</span>
+```
+
+Etapas concluídas e em andamento já aparecem abertas; as "Em breve" começam
+fechadas.
+
 ### Adicionar uma imagem a uma etapa
 
 Coloque o arquivo em `img/` e use a classe `foto`:
@@ -61,6 +71,20 @@ Coloque o arquivo em `img/` e use a classe `foto`:
   <img src="img/mapa-empatia.jpg" alt="Descreva a imagem aqui" loading="lazy">
   <figcaption>Legenda da imagem.</figcaption>
 </figure>
+```
+
+### Adicionar um arquivo para download
+
+Coloque o PDF em `docs/` e use a classe `arquivo`:
+
+```html
+<a class="arquivo" href="docs/nome-do-arquivo.pdf" download="Nome_Do_Arquivo.pdf">
+  <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">…</svg>
+  <span class="arquivo__texto">
+    <strong>Título do arquivo</strong>
+    <small>PDF &middot; 5 páginas &middot; 74 KB</small>
+  </span>
+</a>
 ```
 
 ### Ligar uma certeza da Matriz CSD a uma referência
@@ -89,7 +113,7 @@ menu funciona sozinho a partir daí.
 | 02 | Matriz CSD | Concluído |
 | 03 | Mapa de Empatia | Concluído |
 | 04 | Análise Competitiva | Concluído |
-| 05 | Pesquisa com usuários | Em breve |
+| 05 | Pesquisa com usuários | Em andamento |
 | 06 | Análise dos resultados | Em breve |
 | 07 | Ideação | Em breve |
 | 08 | Solução / Protótipo | Em breve |

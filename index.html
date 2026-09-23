@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=9">
+  <link rel="stylesheet" href="css/styles.css?v=10">
 
   <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
   <script>
@@ -913,9 +913,53 @@
             <div class="etapa__corpo">
               <div class="etapa__topo">
                 <h3 class="etapa__titulo">Pesquisa com usuários</h3>
-                <span class="etapa__status">Em breve</span>
+                <span class="etapa__status etapa__status--andamento">Em andamento</span>
               </div>
-              <p class="placeholder">[A PREENCHER] Método, roteiro e participantes da pesquisa.</p>
+
+              <p class="etapa__texto">
+                Antes de entrevistar, montamos o planejamento da pesquisa: a técnica
+                escolhida, quem vamos ouvir, como a conversa vai acontecer e o roteiro
+                completo de perguntas.
+              </p>
+
+              <dl class="ficha ficha--interna">
+                <div class="ficha__item">
+                  <dt>Técnica</dt>
+                  <dd>Entrevista semiestruturada individual</dd>
+                </div>
+                <div class="ficha__item">
+                  <dt>Participantes</dt>
+                  <dd>9 pessoas com 60 anos ou mais, em 3 perfis de familiaridade</dd>
+                </div>
+                <div class="ficha__item">
+                  <dt>Duração</dt>
+                  <dd>De 30 a 45 minutos, de preferência presencial</dd>
+                </div>
+                <div class="ficha__item">
+                  <dt>Roteiro</dt>
+                  <dd>22 perguntas abertas, mais o TCLE</dd>
+                </div>
+              </dl>
+
+              <p class="etapa__texto">
+                Ninguém faz uma transação de verdade na entrevista e não pedimos senha,
+                número de cartão, saldo nem qualquer outro dado bancário.
+              </p>
+
+              <a class="arquivo" href="docs/planejamento-pesquisa-qualitativa.pdf"
+                 download="Grupo_G6_Planejamento_Pesquisa_Qualitativa.pdf">
+                <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3.5v11"></path>
+                  <path d="M7.5 10l4.5 4.5 4.5-4.5"></path>
+                  <path d="M4.5 19h15"></path>
+                </svg>
+                <span class="arquivo__texto">
+                  <strong>Planejamento da pesquisa qualitativa</strong>
+                  <small>PDF &middot; 5 páginas &middot; 74 KB</small>
+                </span>
+              </a>
+
+              <p class="placeholder">[A PREENCHER] Resultado das entrevistas, depois que elas forem feitas.</p>
             </div>
           </li>
 
@@ -1036,6 +1080,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=9"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>
