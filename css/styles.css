@@ -326,14 +326,6 @@ svg {
   color: var(--texto);
 }
 
-/* Mesma ficha, mas dentro de uma etapa */
-.ficha--interna {
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-  gap: 2px 24px;
-  margin-top: 20px;
-  padding-top: 18px;
-}
-
 /* --- 6. Seções ---------------------------------------------- */
 .secao { padding: 88px 0; }
 .secao--alt { background: var(--fundo-alt); }
@@ -923,7 +915,6 @@ svg {
   .botao { width: 100%; text-align: center; }
 
   .ficha { margin-top: 40px; grid-template-columns: repeat(2, 1fr); }
-  .ficha--interna { margin-top: 20px; grid-template-columns: 1fr; }
 
   .card, .etapa { padding: 24px; }
 
