@@ -65,8 +65,8 @@
   /* --- 3. Abrir e fechar as etapas do processo -------------
      O botão é criado aqui, e não no HTML: assim basta adicionar
      um novo <li class="etapa"> que ele ja vem com o botao.
-     Etapas concluidas ou em andamento comecam abertas; as "Em breve",
-     fechadas.
+     Etapas com conteudo comecam abertas; as que so tem o texto
+     provisorio (placeholder) comecam fechadas.
      -------------------------------------------------------- */
   var CHEVRON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg>';
 
@@ -85,7 +85,7 @@
 
     var titulo = topo.querySelector('.etapa__titulo');
     var nome = titulo ? titulo.textContent.trim() : 'etapa';
-    var comConteudo = !!topo.querySelector('.etapa__status--feito, .etapa__status--andamento');
+    var comConteudo = !!conteudo.querySelector(':scope > :not(.placeholder)');
 
     var botao = document.createElement('button');
     botao.className = 'etapa__toggle';

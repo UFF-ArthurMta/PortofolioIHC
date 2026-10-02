@@ -18,10 +18,6 @@
   --verde-borda:   #cfe6e0;
   --verde-texto:   #1f5f53;
 
-  --ambar-suave:   #fdf3e0;  /* etapa em andamento               */
-  --ambar-borda:   #efdfb6;
-  --ambar-texto:   #8a6413;
-
   --fundo:         #f7f9fc;
   --fundo-alt:     #eef3f9;
   --superficie:    #ffffff;  /* fundo dos cards                  */
@@ -52,10 +48,6 @@
   --verde-suave:   #16292c;
   --verde-borda:   #2a4a46;
   --verde-texto:   #8fd6c4;
-
-  --ambar-suave:   #2b2415;
-  --ambar-borda:   #4a3f22;
-  --ambar-texto:   #e3b449;
 
   --fundo:         #0f1720;
   --fundo-alt:     #131d28;
@@ -465,29 +457,6 @@ svg {
 
 /* Sem JavaScript o conteudo continua visivel */
 .etapa__conteudo[hidden] { display: none; }
-
-.etapa__status {
-  padding: 4px 14px;
-  border-radius: 999px;
-  font-size: .85rem;
-  font-weight: 600;
-  background: var(--fundo-alt);
-  color: var(--texto-suave);
-  border: 1px solid var(--borda);
-}
-/* Troque a classe para esta quando a etapa estiver pronta */
-.etapa__status--feito {
-  background: var(--verde-suave);
-  color: var(--verde-texto);
-  border-color: var(--verde-borda);
-}
-
-/* Etapa comecada, mas ainda sem o resultado final */
-.etapa__status--andamento {
-  background: var(--ambar-suave);
-  color: var(--ambar-texto);
-  border-color: var(--ambar-borda);
-}
 
 /* Link para baixar um arquivo da etapa */
 .arquivo {

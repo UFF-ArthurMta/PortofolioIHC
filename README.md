@@ -40,28 +40,11 @@ Todo texto provisório está marcado com `[A PREENCHER]` e a classe `placeholder
 (aparece em cinza, com uma barra à esquerda). Para publicar um conteúdo real,
 substitua o texto e remova a classe `placeholder`.
 
-### Marcar uma etapa como concluída
+### Abrir ou fechar uma etapa por padrão
 
-No `index.html`, dentro da etapa, troque:
-
-```html
-<span class="etapa__status">Em breve</span>
-```
-
-por:
-
-```html
-<span class="etapa__status etapa__status--feito">Concluído</span>
-```
-
-Para uma etapa que já começou mas ainda não terminou:
-
-```html
-<span class="etapa__status etapa__status--andamento">Em andamento</span>
-```
-
-Etapas concluídas e em andamento já aparecem abertas; as "Em breve" começam
-fechadas.
+Etapas com conteúdo já aparecem abertas. As que só têm o texto provisório
+(`<p class="placeholder">`) começam fechadas — basta trocar o placeholder pelo
+conteúdo para a etapa passar a abrir sozinha.
 
 ### Adicionar uma imagem a uma etapa
 
@@ -108,18 +91,18 @@ menu funciona sozinho a partir daí.
 
 ## Etapas do processo
 
-| # | Etapa | Status |
-|---|-------|--------|
-| 01 | Definição do problema e How Might We | Concluído |
-| 02 | Matriz CSD | Concluído |
-| 03 | Mapa de Empatia | Concluído |
-| 04 | Análise Competitiva | Concluído |
-| 05 | Pesquisa com usuários | Em andamento |
-| 06 | Análise dos resultados | Em andamento |
-| 07 | Ideação | Em breve |
-| 08 | Solução / Protótipo | Em breve |
-| 09 | Avaliação | Em breve |
-| 10 | Conclusões | Em breve |
+| # | Etapa |
+|---|-------|
+| 01 | Definição do problema e How Might We |
+| 02 | Matriz CSD |
+| 03 | Mapa de Empatia |
+| 04 | Análise Competitiva |
+| 05 | Pesquisa com usuários |
+| 06 | Análise dos resultados |
+| 07 | Ideação |
+| 08 | Solução / Protótipo |
+| 09 | Avaliação |
+| 10 | Conclusões |
 
 ## Publicação
 
