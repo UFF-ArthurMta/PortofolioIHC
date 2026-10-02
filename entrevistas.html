@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materiais das entrevistas — PIX para todos</title>
+  <meta name="description" content="Vídeos, entrevistas em documento e termos de consentimento da pesquisa com usuários do projeto PIX para todos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=17">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="secao">
+      <div class="container">
+
+        <header class="secao__cabecalho">
+          <p class="secao__rotulo">Etapa 05</p>
+          <h1 class="secao__titulo">Materiais das entrevistas</h1>
+          <p class="secao__intro">
+            Os registros das entrevistas, separados por tipo. Cada participante
+            aparece pelo código usado na síntese (P01, P02...).
+          </p>
+        </header>
+
+        <div class="pagina-estreita">
+
+          <!-- ======================================================
+               Para adicionar um item em qualquer lista, copie:
+
+               <li>
+                 <a class="doc" href="LINK" target="_blank" rel="noopener">
+                   <span class="doc__codigo">P01</span>
+                   <span class="doc__nome">Nome do material</span>
+                   <span class="doc__meta">YouTube</span>
+                 </a>
+               </li>
+
+               e apague o <p class="placeholder"> da seção.
+               ====================================================== -->
+
+          <!-- VÍDEOS -->
+          <section class="materiais" id="videos">
+            <h2 class="analise__grupo">Vídeos</h2>
+            <p class="analise__descricao">Entrevistas gravadas em vídeo.</p>
+            <ul class="lista-docs"></ul>
+            <p class="placeholder">[A PREENCHER] Links dos vídeos das entrevistas.</p>
+          </section>
+
+          <!-- ENTREVISTAS EM DOCUMENTO -->
+          <section class="materiais" id="documentos">
+            <h2 class="analise__grupo">Entrevistas em documento</h2>
+            <p class="analise__descricao">
+              Entrevistas de quem não autorizou a gravação em vídeo, registradas por escrito.
+            </p>
+            <ul class="lista-docs"></ul>
+            <p class="placeholder">[A PREENCHER] Documentos das entrevistas.</p>
+          </section>
+
+          <!-- TERMOS DE CONSENTIMENTO -->
+          <section class="materiais" id="tcle">
+            <h2 class="analise__grupo">Termos de consentimento (TCLE)</h2>
+            <p class="analise__descricao">
+              Termo de Consentimento Livre e Esclarecido apresentado a cada participante
+              antes da entrevista.
+            </p>
+            <ul class="lista-docs"></ul>
+            <p class="placeholder">[A PREENCHER] Termos de consentimento.</p>
+          </section>
+
+          <a class="arquivo" href="index.html#processo">
+            <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19.5 12h-15"></path>
+              <path d="M10 5.5L3.5 12l6.5 6.5"></path>
+            </svg>
+            <span class="arquivo__texto">
+              <strong>Voltar para o portfólio</strong>
+              <small>Etapas do processo</small>
+            </span>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense &middot; Sistemas de Informação &middot; 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=17"></script>
+</body>
+</html>

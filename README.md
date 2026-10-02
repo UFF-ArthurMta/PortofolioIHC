@@ -14,6 +14,7 @@ Basta abrir o arquivo `index.html` no navegador. Não há dependências, build o
 ```
 index.html      → todo o conteúdo do site (seções comentadas)
 respostas.html  → tabela com as respostas do questionário
+entrevistas.html → vídeos, entrevistas em documento e TCLEs
 css/styles.css  → estilos, organizado em blocos numerados
 js/main.js      → tema claro/escuro, menu do celular e link ativo
 img/            → imagens (fotos dos quadros, protótipos, telas)
@@ -70,6 +71,23 @@ Coloque o PDF em `docs/` e use a classe `arquivo`:
   </span>
 </a>
 ```
+
+### Adicionar um material das entrevistas
+
+Em `entrevistas.html` há três listas (Vídeos, Entrevistas em documento e TCLE).
+Para cada item, acrescente dentro do `<ul class="lista-docs">` da seção:
+
+```html
+<li>
+  <a class="doc" href="LINK" target="_blank" rel="noopener">
+    <span class="doc__codigo">P01</span>
+    <span class="doc__nome">Nome do material</span>
+    <span class="doc__meta">YouTube</span>
+  </a>
+</li>
+```
+
+Quando a lista ganhar o primeiro item, apague o `<p class="placeholder">` da seção.
 
 ### Ligar uma certeza da Matriz CSD a uma referência
 

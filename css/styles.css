@@ -911,7 +911,55 @@ svg {
 .tabela td { color: var(--texto-suave); }
 .tabela__vazio { opacity: .5; }
 
-/* --- 17. Responsivo ----------------------------------------- */
+/* --- 17. Materiais das entrevistas -------------------------- */
+.pagina-estreita { max-width: 820px; margin: 0 auto; }
+
+.materiais:first-of-type .analise__grupo {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+/* Lista compacta para muitos arquivos ou links */
+.lista-docs {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 8px;
+}
+.lista-docs:empty { display: none; }
+
+.doc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  padding: 14px 18px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  background: var(--superficie);
+  color: var(--texto);
+  text-decoration: none;
+}
+.doc:hover { border-color: var(--acento); }
+
+/* Código do participante: P01, P02... */
+.doc__codigo {
+  flex-shrink: 0;
+  min-width: 48px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  background: var(--acento-suave);
+  color: var(--acento-forte);
+  font-size: .85rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.doc__nome { font-weight: 600; margin-right: auto; }
+.doc__meta { font-size: .85rem; color: var(--texto-suave); }
+
+/* --- 18. Responsivo ----------------------------------------- */
 @media (max-width: 860px) {
   .tema-toggle__texto { display: none; }
   .tema-toggle { padding: 11px 13px; }
@@ -950,7 +998,7 @@ svg {
   .etapa__numero { width: 48px; height: 48px; font-size: 1rem; }
 }
 
-/* --- 18. Impressão ------------------------------------------ */
+/* --- 19. Impressão ------------------------------------------ */
 @media print {
   .header, .hero__acoes, .skip-link, .etapa__toggle { display: none; }
   body { background: #fff; color: #000; }
