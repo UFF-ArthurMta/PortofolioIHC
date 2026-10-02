@@ -508,6 +508,9 @@ svg {
   color: var(--texto-suave);
 }
 
+/* Texto que vem logo depois de um link de arquivo */
+.etapa__texto--depois { margin-top: 22px; }
+
 /* Texto de apoio dentro de uma etapa */
 .etapa__texto {
   color: var(--texto-suave);
@@ -662,6 +665,13 @@ svg {
   margin-top: 32px;
   padding-top: 20px;
   border-top: 1px solid var(--borda);
+}
+
+/* Quando o subtítulo é a primeira coisa da etapa, dispensa a linha de cima */
+.etapa__conteudo > .analise__grupo:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }
 
 .analise__descricao {
