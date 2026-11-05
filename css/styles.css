@@ -1217,7 +1217,308 @@ svg {
 .tabela--rnf td:first-of-type { color: var(--texto); font-weight: 600; white-space: nowrap; }
 .tabela--prio td:first-of-type { color: var(--texto); font-weight: 600; }
 
-/* --- 18. Animações ------------------------------------------
+/* --- 18. Documentos e vídeos no site ----------------------
+   PDFs abrem no modo de leitura (janela por cima da página) e
+   os vídeos tocam numa tela 16:9 dentro da própria página.
+   ----------------------------------------------------------- */
+
+/* Cartão de um PDF: capa inclinada + título + "Ler aqui" */
+.documento {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 22px;
+  padding: 16px 22px 16px 18px;
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  background: var(--superficie);
+  color: var(--texto);
+  text-decoration: none;
+}
+.documento:hover { border-color: var(--acento); box-shadow: var(--sombra-alta); }
+.lista-docs .documento { margin-top: 0; }
+
+.documento__capa {
+  flex-shrink: 0;
+  width: 74px;
+  aspect-ratio: 595 / 842;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .08), 0 6px 16px rgba(23, 64, 110, .18);
+  transform: rotate(-3deg);
+  transition: transform .25s ease;
+}
+.documento__capa img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+/* Sem imagem de capa: uma folha com linhas */
+.documento__capa:empty {
+  background:
+    repeating-linear-gradient(180deg, transparent 0 9px, #dde5ee 9px 10px) 10px 14px / calc(100% - 20px) calc(100% - 28px) no-repeat,
+    #ffffff;
+}
+.documento:hover .documento__capa { transform: rotate(0) translateY(-2px) scale(1.05); }
+
+.documento__texto { display: grid; gap: 3px; min-width: 0; }
+.documento__titulo { font-size: 1.02rem; font-weight: 600; line-height: 1.35; color: var(--acento-forte); }
+.documento__meta { font-size: .85rem; color: var(--texto-suave); }
+.documento__acao {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--acento);
+}
+.documento__acao svg { width: 16px; height: 16px; transition: transform .2s ease; }
+.documento:hover .documento__acao svg { transform: translateX(3px); }
+
+/* Modo de leitura */
+html.lendo { overflow: hidden; }
+
+.leitura {
+  width: min(980px, calc(100vw - 32px));
+  height: calc(100vh - 32px);
+  height: calc(100dvh - 32px);
+  max-width: none;
+  max-height: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--fundo-alt);
+  color: var(--texto);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, .35);
+}
+.leitura[open] { display: flex; flex-direction: column; }
+.leitura::backdrop { background: rgba(10, 18, 28, .6); backdrop-filter: blur(4px); }
+
+.leitura__barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  padding: 12px 16px 12px 24px;
+  background: var(--superficie);
+  border-bottom: 1px solid var(--borda);
+}
+.leitura__info { min-width: 0; flex: 1 1 220px; }
+.leitura__rotulo {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--verde);
+}
+.leitura__titulo {
+  overflow: hidden;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--acento-forte);
+}
+
+.leitura__controles { display: flex; align-items: center; gap: 10px; }
+.leitura__pagina {
+  margin-right: 4px;
+  font-size: .88rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--texto-suave);
+  white-space: nowrap;
+}
+.leitura__zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+}
+.leitura__escala {
+  min-width: 48px;
+  font-size: .85rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  color: var(--texto-suave);
+}
+.leitura__botao {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--texto);
+  cursor: pointer;
+}
+.leitura__botao:hover { background: var(--acento-suave); color: var(--acento-forte); }
+.leitura__botao:disabled { opacity: .35; cursor: default; background: transparent; }
+.leitura__botao svg { width: 18px; height: 18px; }
+.leitura__fechar { width: 40px; height: 40px; border: 1px solid var(--borda); }
+
+/* As páginas ficam em coluna, como folhas sobre a mesa */
+.leitura__folhas {
+  flex: 1;
+  overflow: auto;
+  padding: 28px 24px 56px;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;  /* a barra de rolagem não empurra as folhas */
+}
+.leitura__folhas:focus-visible { outline-offset: -3px; }
+
+.folha {
+  position: relative;
+  margin: 0 auto 22px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 10px 28px rgba(23, 64, 110, .14);
+}
+.folha canvas { display: block; width: 100%; height: 100%; }
+
+/* Brilho passando enquanto a página é desenhada */
+.folha:not(.folha--pronta)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(23, 64, 110, .06) 50%, transparent 70%);
+  background-size: 200% 100%;
+}
+@keyframes brilho {
+  from { background-position: 120% 0; }
+  to   { background-position: -80% 0; }
+}
+
+.leitura__aviso { padding: 48px 24px; text-align: center; color: var(--texto-suave); }
+
+/* Camada de texto do PDF.js: invisível, mas deixa selecionar o texto */
+.textLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: clip;
+  line-height: 1;
+  text-align: initial;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  forced-color-adjust: none;
+  transform-origin: 0 0;
+  caret-color: CanvasText;
+}
+.textLayer :is(span, br) {
+  position: absolute;
+  color: transparent;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0 0;
+}
+.textLayer ::selection { background: rgba(37, 99, 168, .3); }
+
+/* Vídeos: a tela no topo e a lista embaixo */
+.videoteca { display: grid; gap: 14px; margin-top: 18px; }
+
+.video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--raio);
+  background: #0b1520;
+  box-shadow: 0 0 0 1px var(--borda), var(--sombra-alta);
+}
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+.video__capa {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(82, 184, 160, .5), transparent 45%),
+    radial-gradient(circle at 12% 95%, rgba(74, 144, 217, .55), transparent 50%),
+    linear-gradient(135deg, #1b4a7d, #0d2338);
+}
+/* Moldura fina por dentro da tela */
+.video__capa::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 12px;
+  pointer-events: none;
+}
+.video__capa:focus-visible { outline-offset: -6px; outline-color: #ffffff; }
+
+.video__codigo {
+  position: absolute;
+  top: 28px;
+  left: 30px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .15);
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+.video__play {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .96);
+  color: #17406e;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .35);
+  transition: transform .2s ease;
+}
+.video__play svg { width: 42px; height: 42px; margin-left: 5px; fill: currentColor; stroke: none; }
+.video__capa:hover .video__play { transform: scale(1.08); }
+.video__titulo { position: absolute; left: 30px; bottom: 26px; font-size: 1.15rem; font-weight: 600; }
+.video__meta { position: absolute; right: 30px; bottom: 28px; font-size: .9rem; opacity: .8; }
+
+.videoteca__lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+  gap: 10px;
+}
+.videoteca__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  background: var(--superficie);
+  color: var(--texto);
+  text-decoration: none;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.videoteca__item:hover { border-color: var(--acento); }
+.videoteca__item[aria-current="true"] { border-color: var(--acento); background: var(--acento-suave); }
+.videoteca__nome { margin-right: auto; font-weight: 600; }
+.videoteca__duracao { font-size: .85rem; color: var(--texto-suave); white-space: nowrap; }
+
+/* --- 19. Animações ------------------------------------------
    Tudo aqui respeita quem pediu menos movimento no sistema.
    ----------------------------------------------------------- */
 @keyframes subir {
@@ -1263,10 +1564,11 @@ svg {
   .js .revelar.visivel { opacity: 1; translate: 0 0; }
 
   /* Cartões sobem um pouco com o mouse em cima */
-  .card, .pessoa, .roteiro__item, .arquivo, .doc, .paginacao__link {
+  .card, .pessoa, .roteiro__item, .arquivo, .doc, .documento, .paginacao__link {
     transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
-  .card:hover, .pessoa:hover, .roteiro__item:hover, .arquivo:hover, .doc:hover, .paginacao__link:hover {
+  .card:hover, .pessoa:hover, .roteiro__item:hover, .arquivo:hover, .doc:hover, .documento:hover,
+  .paginacao__link:hover {
     transform: translateY(-3px);
   }
   .paginacao__link--anterior:hover svg { transform: translateX(-3px); }
@@ -1280,9 +1582,18 @@ svg {
   .trilha__link[aria-current="page"] .trilha__no { animation: pulso 2.4s ease-out infinite; }
 
   .menu-toggle span { transition: transform .2s ease, opacity .2s ease; }
+
+  /* Modo de leitura abre crescendo e as folhas brilham enquanto carregam */
+  .leitura[open] { animation: abrir-leitura .25s ease; }
+  .folha:not(.folha--pronta)::after { animation: brilho 1.4s linear infinite; }
 }
 
-/* --- 19. Responsivo ----------------------------------------- */
+@keyframes abrir-leitura {
+  from { opacity: 0; transform: translateY(12px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* --- 20. Responsivo ----------------------------------------- */
 @media (max-width: 1100px) {
   .layout { grid-template-columns: 230px minmax(0, 1fr); gap: 40px; }
 }
@@ -1345,11 +1656,26 @@ svg {
 
   .paginacao { grid-template-columns: minmax(0, 1fr); }
   .paginacao__link--proxima { grid-column: auto; }
+
+  .documento { gap: 16px; padding: 14px 16px; }
+  .documento__capa { width: 58px; }
+
+  .leitura { width: 100vw; height: 100vh; height: 100dvh; border: 0; border-radius: 0; }
+  .leitura__barra { padding: 10px 12px 10px 16px; }
+  .leitura__rotulo { display: none; }
+  .leitura__folhas { padding: 14px 10px 40px; }
+
+  .video__capa::before { inset: 8px; }
+  .video__codigo { top: 16px; left: 18px; }
+  .video__play { width: 62px; height: 62px; }
+  .video__play svg { width: 32px; height: 32px; }
+  .video__titulo { left: 18px; bottom: 14px; font-size: 1rem; }
+  .video__meta { right: 18px; bottom: 16px; font-size: .82rem; }
 }
 
-/* --- 20. Impressão ------------------------------------------ */
+/* --- 21. Impressão ------------------------------------------ */
 @media print {
-  .header, .trilha, .paginacao, .nesta-pagina, .skip-link, .hero__acoes, .progresso { display: none; }
+  .header, .trilha, .paginacao, .nesta-pagina, .skip-link, .hero__acoes, .progresso, .leitura { display: none; }
   .layout { display: block; padding: 0; }
   body { background: #fff; color: #000; }
   .revelar { opacity: 1 !important; translate: none !important; }

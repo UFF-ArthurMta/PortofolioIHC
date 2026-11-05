@@ -21,9 +21,9 @@ respostas.html           → tabela com as respostas do questionário (dentro da
 equipe.html              → integrantes do grupo
 uso-de-ia.html           → relatório de uso de IA
 css/styles.css           → estilos, organizado em blocos numerados
-js/main.js               → tema, menu lateral, barra de leitura e animações
-img/                     → imagens (fotos dos quadros, protótipos, gráficos)
-docs/                    → arquivos para download (planejamentos, roteiros, relatórios)
+js/main.js               → tema, menu lateral, animações, leitor de PDF e vídeos
+img/                     → imagens (fotos, gráficos e capas dos PDFs em img/capas/)
+docs/                    → PDFs lidos no site (planejamentos, relatórios) e a planilha
 ```
 
 ## Modo claro e escuro
@@ -89,24 +89,38 @@ Coloque o arquivo em `img/` e use a classe `foto`:
 </figure>
 ```
 
-### Adicionar um arquivo para download
+### Adicionar um PDF para ler no site
 
-Coloque o PDF em `docs/` e use a classe `arquivo`:
+Os PDFs não são baixados: abrem no modo de leitura do próprio site (uma janela
+por cima da página, com zoom e contador de páginas). Coloque o PDF em `docs/`,
+salve a primeira página como imagem em `img/capas/` e use o cartão `documento`:
 
 ```html
-<a class="arquivo" href="docs/nome-do-arquivo.pdf" download="Nome_Do_Arquivo.pdf">
-  <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">…</svg>
-  <span class="arquivo__texto">
-    <strong>Título do arquivo</strong>
-    <small>PDF &middot; 5 páginas &middot; 74 KB</small>
+<a class="documento" href="docs/nome-do-arquivo.pdf" data-leitor>
+  <span class="documento__capa"><img src="img/capas/nome-do-arquivo.jpg" alt="" width="360" height="510" loading="lazy"></span>
+  <span class="documento__texto">
+    <strong class="documento__titulo">Título do documento</strong>
+    <small class="documento__meta">PDF &middot; 5 páginas</small>
+    <span class="documento__acao">Ler aqui</span>
   </span>
 </a>
 ```
 
-### Adicionar um material das entrevistas
+Sem a imagem de capa (apague o `<img>`), o cartão mostra uma folha em branco.
+O leitor usa o PDF.js, carregado do cdnjs só quando alguém abre um documento.
 
-Em `entrevistas.html` há três listas (Vídeos, Entrevistas em documento e TCLE).
-Para cada item, acrescente dentro do `<ul class="lista-docs">` da seção:
+### Adicionar um vídeo das entrevistas
+
+Os vídeos tocam numa tela dentro de `entrevistas.html`. Para cada vídeo,
+acrescente um item na lista `videoteca__lista` (o modelo está num comentário
+no começo da página). Se o vídeo não deixa ser exibido fora do YouTube, use
+`data-incorporar="nao"`: a tela passa a abrir o YouTube. Para liberar, ligue
+"Permitir incorporação" no YouTube Studio (Conteúdo, vídeo, Mostrar mais) e
+tire o atributo.
+
+### Adicionar um link simples a uma lista
+
+Para um item que não é PDF nem vídeo, use o `doc` dentro de `<ul class="lista-docs">`:
 
 ```html
 <li>
