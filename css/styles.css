@@ -1202,6 +1202,21 @@ svg {
 .doc__nome { font-weight: 600; margin-right: auto; }
 .doc__meta { font-size: .85rem; color: var(--texto-suave); }
 
+/* Análise de requisitos (página do mapa de empatia) */
+.requisitos__subtitulo {
+  margin: 28px 0 10px;
+  font-size: 1rem;
+  color: var(--texto);
+}
+.tabela-wrap--requisitos { max-height: none; margin-bottom: 8px; }
+.tabela--requisitos { width: 100%; }
+.tabela--requisitos th,
+.tabela--requisitos td { min-width: 0; }
+.tabela--requisitos tbody th { min-width: 64px; white-space: nowrap; }
+.tabela--rf td:nth-child(2) { color: var(--texto); font-weight: 500; }
+.tabela--rnf td:first-of-type { color: var(--texto); font-weight: 600; white-space: nowrap; }
+.tabela--prio td:first-of-type { color: var(--texto); font-weight: 600; }
+
 /* --- 18. Animações ------------------------------------------
    Tudo aqui respeita quem pediu menos movimento no sistema.
    ----------------------------------------------------------- */

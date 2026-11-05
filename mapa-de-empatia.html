@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=19">
+  <link rel="stylesheet" href="css/styles.css?v=20">
 
   <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
   <script>
@@ -210,6 +210,7 @@
           <a href="#faz">Faz</a>
           <a href="#sente">Sente</a>
           <a href="#foto">Foto do mapa</a>
+          <a href="#requisitos">Requisitos de UX</a>
         </nav>
       </header>
 
@@ -335,6 +336,172 @@
                width="804" height="636" loading="lazy">
           <figcaption>O mapa de empatia montado pelo grupo em sala.</figcaption>
         </figure>
+
+        <!-- ANÁLISE DE REQUISITOS DE UX -->
+        <h2 class="analise__grupo" id="requisitos">Análise de requisitos de UX</h2>
+        <p class="analise__descricao">
+          Os requisitos saem do mapa de empatia e são confirmados pelos dados do
+          questionário (27 respostas), pela Matriz CSD e pela análise competitiva.
+        </p>
+
+        <h3 class="requisitos__subtitulo" id="ponto-de-partida">Ponto de partida</h3>
+        <p class="etapa__texto">
+          O mapa de empatia mostra um usuário que quer fazer o PIX sozinho, mas sente
+          medo de golpe e de errar o destinatário, fala de botões pequenos e confusão
+          e, por isso, faz o que é mais seguro para ele: chama um familiar ou desiste.
+          Os requisitos a seguir partem dessas tensões.
+        </p>
+
+        <h3 class="requisitos__subtitulo" id="funcionais">Requisitos funcionais</h3>
+        <div class="tabela-wrap tabela-wrap--requisitos" tabindex="0" role="region" aria-label="Requisitos funcionais">
+          <table class="tabela tabela--requisitos tabela--rf">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Requisito</th>
+                <th scope="col">Origem no mapa de empatia</th>
+                <th scope="col">Evidência na pesquisa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">RF01</th>
+                <td>Tela de revisão obrigatória com nome, banco e valor antes de confirmar</td>
+                <td>Sente: medo de enviar para a pessoa errada<br>Faz: paga errado</td>
+                <td>Confirmação mais clara foi o recurso mais pedido (14)</td>
+              </tr>
+              <tr>
+                <th scope="row">RF02</th>
+                <td>Permitir voltar e corrigir em qualquer etapa sem perder os dados</td>
+                <td>Sente: medo de abandonar o processo no meio<br>Fala: medo de errar</td>
+                <td>Medo de errar é o 2º motivo para evitar o app (6)</td>
+              </tr>
+              <tr>
+                <th scope="row">RF03</th>
+                <td>Ajuda contextual em cada tela, em linguagem simples</td>
+                <td>Pensa: tutorial no primeiro uso, assistente<br>Faz: pede ajuda a alguém</td>
+                <td>Explicação no próprio app é a ajuda preferida (10)</td>
+              </tr>
+              <tr>
+                <th scope="row">RF04</th>
+                <td>Tela inicial com poucas funções: PIX, saldo, pagar conta e ajuda</td>
+                <td>Pensa: layout mais simples, modo idoso</td>
+                <td>Saldo (26) e PIX (18) são as operações mais usadas; modo simplificado (10)</td>
+              </tr>
+              <tr>
+                <th scope="row">RF05</th>
+                <td>Mensagens de erro que explicam o problema e como corrigi-lo</td>
+                <td>Fala: confusão, desconhecimento</td>
+                <td>Ideia extraída da análise competitiva</td>
+              </tr>
+              <tr>
+                <th scope="row">RF06</th>
+                <td>Sinais de segurança visíveis e alerta em situações de risco</td>
+                <td>Sente: medo de ser hackeado e de vazamento<br>Fala: &ldquo;não é seguro&rdquo;</td>
+                <td>Golpe é o principal motivo para evitar o app (7); alertas contra golpes (11)</td>
+              </tr>
+              <tr>
+                <th scope="row">RF07</th>
+                <td>Autorização por biometria, sem senha difícil de lembrar</td>
+                <td>Pensa: verificação em dois fatores</td>
+                <td>Digital (9) e biometria facial (5) preferidas à senha (4)</td>
+              </tr>
+              <tr>
+                <th scope="row">RF08</th>
+                <td>Comprovante claro ao final, com opção de voltar ao início</td>
+                <td>Sente: insegurança sobre o resultado</td>
+                <td>Feedback reduz a necessidade de conferir com terceiros</td>
+              </tr>
+              <tr>
+                <th scope="row">RF09</th>
+                <td>(Desejável) Instruções por voz com leitura dos dados antes do envio</td>
+                <td>Pensa: assistente</td>
+                <td>33,3% sim e 48,1% talvez: validar antes de priorizar</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="requisitos__subtitulo" id="nao-funcionais">Requisitos não funcionais</h3>
+        <div class="tabela-wrap tabela-wrap--requisitos" tabindex="0" role="region" aria-label="Requisitos não funcionais">
+          <table class="tabela tabela--requisitos tabela--rnf">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Descrição e justificativa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">RNF01</th>
+                <td>Acessibilidade motora</td>
+                <td>Botões de no mínimo 48×48 dp e bem espaçados. Responde a &ldquo;botões pequenos&rdquo; (Fala) e ao pedido por textos e botões maiores (12).</td>
+              </tr>
+              <tr>
+                <th scope="row">RNF02</th>
+                <td>Acessibilidade visual</td>
+                <td>Fonte grande sem serifa, alto contraste e cor sempre acompanhada de texto ou ícone.</td>
+              </tr>
+              <tr>
+                <th scope="row">RNF03</th>
+                <td>Linguagem</td>
+                <td>Português simples, sem termos em inglês nem jargão bancário. Responde a &ldquo;confusão&rdquo; e &ldquo;desconhecimento&rdquo; (Fala).</td>
+              </tr>
+              <tr>
+                <th scope="row">RNF04</th>
+                <td>Carga cognitiva</td>
+                <td>Uma decisão por tela e fluxo em etapas curtas, considerando a memória de curto prazo mais frágil (Matriz CSD).</td>
+              </tr>
+              <tr>
+                <th scope="row">RNF05</th>
+                <td>Confiança</td>
+                <td>Visual sóbrio e consistente, sem animações ou carrosséis que causem desorientação.</td>
+              </tr>
+              <tr>
+                <th scope="row">RNF06</th>
+                <td>Autonomia</td>
+                <td>O fluxo deve ser concluído sem ajuda de terceiros. Meta baseada nos 51,9% que fariam sozinhos com um app mais simples.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="requisitos__subtitulo" id="restricoes">Restrições do projeto</h3>
+        <p class="etapa__texto">
+          Protótipo acadêmico, sem integração bancária real, sem coleta de dados
+          pessoais e sem uso de marcas de bancos existentes.
+        </p>
+
+        <h3 class="requisitos__subtitulo" id="priorizacao">Priorização</h3>
+        <div class="tabela-wrap tabela-wrap--requisitos" tabindex="0" role="region" aria-label="Priorização dos requisitos">
+          <table class="tabela tabela--requisitos tabela--prio">
+            <thead>
+              <tr>
+                <th scope="col">Prioridade</th>
+                <th scope="col">Requisitos</th>
+                <th scope="col">Motivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Essencial</th>
+                <td>RF01, RF02, RF04, RF06 e todos os RNFs</td>
+                <td>Atacam diretamente o medo de errar, o medo de golpe e a dependência de familiares.</td>
+              </tr>
+              <tr>
+                <th scope="row">Importante</th>
+                <td>RF03, RF05, RF07, RF08</td>
+                <td>Reforçam a autonomia e a confiança durante e após a tarefa.</td>
+              </tr>
+              <tr>
+                <th scope="row">Desejável</th>
+                <td>RF09</td>
+                <td>Interesse moderado na pesquisa; depende de validação com usuários.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <nav class="paginacao" aria-label="Página anterior e próxima">
