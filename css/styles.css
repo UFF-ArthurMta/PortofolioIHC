@@ -2057,6 +2057,9 @@ html.lendo { overflow: hidden; }
 .prompt__num { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--acento-suave); color: var(--acento-forte); font-weight: 700; }
 .prompt__titulo { margin-bottom: 8px; font-size: 1.05rem; line-height: 1.35; }
 .prompt__texto { margin: 0; padding-left: 14px; border-left: 3px solid var(--borda); font-size: .96rem; line-height: 1.65; color: var(--texto-suave); }
+.prompt__texto p + p, .prompt__texto p + ul, .prompt__texto p + ol, .prompt__texto ul + p, .prompt__texto ol + p { margin-top: 10px; }
+.prompt__texto ul, .prompt__texto ol { padding-left: 22px; }
+.prompt__texto li { margin-top: 3px; }
 .prompt__nota { margin-bottom: 12px; font-size: .96rem; line-height: 1.6; }
 .prompt__acoes { margin-bottom: 14px; }
 .prompt__acoes .botao { padding: 12px 24px; font-size: 1rem; }

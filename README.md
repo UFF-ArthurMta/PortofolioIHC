@@ -141,7 +141,7 @@ Para trocar o link, edite o `href` dos dois.
 
 Em `uso-de-ia.html`, cada prompt é um `<li class="prompt">` dentro de uma
 `<section class="prompt-etapa">`. O PDF do relatório continua com os 19
-primeiros prompts; o 20º (Figma Make) está só na página. Se o PDF for refeito,
+primeiros prompts; do 20º ao 27º (Figma Make, personas, cenários e tarefas) estão só na página. Se o PDF for refeito,
 atualize o texto do card.
 
 ### Cenários
