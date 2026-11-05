@@ -291,6 +291,91 @@ Todas as telas navegáveis, com estados e retornos coerentes.</div></section>
               <section class="pfig__sec"><h5>Exemplos</h5><div class="pfig__texto">Nubank (Modo Rua, reconhecimento facial), Itaú (Modo Protegido, alerta de risco), Banco do Brasil (assistente por voz), Bradesco (assistente BIA), CAIXA (biometria), Apple Acesso Assistivo (botões grandes e poucas funções) e Be My Eyes (pedido de ajuda direto).</div></section>
                 </div>
               </details>
+              <p class="prompt__nota" style="margin-top:16px">O texto abaixo é o prompt final, o que colamos no Figma Make para gerar o protótipo.</p>
+              <details class="pfig">
+                <summary>Ler o prompt colado no Figma Make</summary>
+                <div class="pfig__corpo">
+                  <div class="pfig__texto">Crie um protótipo mobile de alta fidelidade, interativo e navegável, para o aplicativo "PIX para Todos". O app permite que pessoas idosas, com diferentes níveis de familiaridade tecnológica, façam transferências via PIX de forma autônoma, intuitiva e emocionalmente segura. O público tem medo de golpes e de enviar dinheiro para a pessoa errada, dificuldade com termos técnicos e em inglês, limitações visuais e motoras, memória de curto prazo mais frágil e costuma depender de familiares. O design deve transmitir calma, clareza e confiança, inspirando-se na simplicidade do Acesso Assistivo da Apple, na confirmação de segurança do Modo Protegido do Itaú e no pedido de ajuda direto do Be My Eyes, sem copiar telas ou marcas de bancos reais.
+
+IDENTIDADE VISUAL E ACESSIBILIDADE
+- Interface limpa, com muito espaço em branco e pouco ruído visual.
+- Paleta sóbria com alto contraste: fundo claro, textos em cinza-escuro quase preto e uma única cor de destaque (azul-petróleo) para todas as ações primárias.
+- Cores semânticas sempre com ícone e texto: vermelho para erro, amarelo-escuro para alerta, verde para sucesso.
+- Tipografia sem serifa, grande e legível: títulos a partir de 24 pt e textos a partir de 18 pt.
+- Botões e alvos de toque com no mínimo 48x48 dp, largura total da tela nas ações principais e bom espaçamento entre eles.
+- Todos os ícones acompanhados de rótulo em texto.
+- Agrupe informações relacionadas por proximidade, use o mesmo estilo para elementos de mesma função e crie hierarquia clara com uma ação principal por tela.
+- Linguagem simples, em português, sem termos em inglês nem jargão bancário.
+- Não use menus densos, carrosséis automáticos, animações desnecessárias ou campos pequenos.
+
+ELEMENTOS FIXOS NO FLUXO DE PIX
+- No topo de todas as telas do fluxo, inclua um indicador "Etapa X de 4" com uma barra de progresso simples.
+- No topo de todas as telas do fluxo, inclua o botão "Preciso de ajuda", com ícone. Ele abre um painel inferior com uma explicação curta da etapa atual e os botões "Ligar para alguém de confiança" (simulado) e "Fechar ajuda".
+- Inclua o botão "Voltar" em todas as telas, preservando os dados já preenchidos.
+
+TELAS E FLUXO
+
+0. Tour de primeiro acesso
+Três telas curtas com ilustração simples e uma frase cada:
+- "Aqui você faz PIX com calma, passo a passo."
+- "Antes de enviar, você sempre confere os dados."
+- "Se tiver dúvida, toque em Preciso de ajuda."
+Botões "Próximo" e "Pular tour". Na última tela, o botão é "Começar a usar".
+
+1. Início
+Saudação "Olá, Ana" e saldo fictício oculto, com o botão "Mostrar saldo". Abaixo, apenas 4 cartões grandes em lista vertical, cada um com ícone e texto:
+- "Fazer PIX", em destaque com a cor primária
+- "Consultar saldo"
+- "Pagar conta"
+- "Ajuda"
+No topo, o botão "Modo Idoso", com ícone.
+
+2. Destinatário (Etapa 1 de 4)
+Título "Para quem você quer enviar?". Campo grande com o rótulo "Nome, telefone ou CPF" e o exemplo "Ex.: (21) 99999-0000". Abaixo, a lista "Pessoas para quem você já enviou", com 2 contatos fictícios. Botão primário "Continuar para o valor".
+
+3. Valor (Etapa 2 de 4)
+Título "Quanto você quer enviar?". Valor exibido em fonte muito grande, como R$ 50,00, e teclado numérico grande. Mostre o saldo disponível em texto. Botão "Ouvir", que exibe um balão com a frase "Você vai enviar 50 reais", marcado como recurso simulado.
+Estado de erro: se o campo ficar vazio ou o valor for maior que o saldo, mostre abaixo do campo, em vermelho com ícone, a mensagem "O valor é maior que seu saldo de R$ 320,00. Digite um valor menor." ou "Digite quanto você quer enviar para continuar."
+Botão primário "Continuar para a revisão".
+
+4. Revisão (Etapa 3 de 4)
+Título "Confira antes de enviar". Cartão destacado com:
+- Nome: Maria Silva
+- Banco: Banco Exemplo
+- Valor: R$ 50,00
+- Selo "Destinatário verificado", com ícone de escudo e texto.
+Botão "Ouvir", que exibe o balão "Você vai enviar 50 reais para Maria Silva, Banco Exemplo".
+Abaixo, a pergunta "Você quer enviar este valor para esta pessoa?" e duas ações bem separadas:
+- "Voltar e corrigir", botão secundário com contorno
+- "Confirmar envio", botão primário preenchido, posicionado embaixo e afastado do outro para evitar toque acidental
+
+5. Alerta de segurança
+Variação exibida quando o destinatário é novo ou o valor está acima do habitual. Mostre um cartão amarelo-escuro com ícone de alerta e a mensagem "Atenção: você nunca enviou para esta pessoa. Confira os dados antes de continuar." Botões "Conferir de novo" (primário) e "Continuar mesmo assim" (secundário).
+
+6. Autorização (Etapa 4 de 4)
+Título "Confirme que é você". Ícone grande de digital com o texto "Toque no sensor para confirmar" e a alternativa "Confirmar com seu rosto". Inclua o link "Usar outra forma" e o aviso fixo "Isto é uma simulação. Nenhum dinheiro será enviado."
+
+7. Resultado
+Ícone verde de check e o título "Simulação concluída". Comprovante fictício com: quem recebeu, valor, data e hora, banco e um código fictício. Botões "Compartilhar comprovante" (simulado) e "Voltar ao início". Não diga que uma transferência real foi feita.
+
+8. Ajuda
+Tela com perguntas frequentes em linguagem simples, como "O que é PIX?", "Como sei que é seguro?" e "Errei o valor, e agora?". Inclua os botões "Rever o tour", "Ligar para alguém de confiança" e "Modo Idoso".
+
+MODO IDOSO
+O botão "Modo Idoso" fica no topo da Início e também na Ajuda. Ao ativá-lo, aumente o tamanho de TODOS os textos de todas as telas, sem exceção: títulos, textos, rótulos, campos, placeholders, valores, erros, alertas, selos, balões, indicador de etapas, tour, ajuda e comprovante.
+Botões, campos e cartões crescem junto, sem cortar ou sobrepor texto. Use rolagem vertical se necessário e nunca reduza a fonte para caber.
+O modo permanece ativo ao navegar. O botão muda para "Modo Idoso ativado", com ícone de check e cor de destaque, e pode ser desativado com um toque.
+
+INTERAÇÕES
+Todas as telas devem ser navegáveis e conectadas, com estados de toque visíveis e feedback imediato. O fluxo completo precisa permitir iniciar o PIX, escolher o destinatário, digitar o valor, ver o erro, corrigir, revisar, passar pelo alerta, autorizar, ver o comprovante e voltar ao início, além de abrir a ajuda e ativar e desativar o Modo Idoso em qualquer ponto.
+
+UX WRITING
+Use frases curtas, na voz ativa e em tom acolhedor. Faça perguntas diretas e use termos do dia a dia. Os CTAs devem ter verbo de ação e dizer o que acontece depois do toque, como "Continuar para o valor", "Confirmar envio" e "Voltar ao início". Nunca use textos genéricos como "OK" ou "Avançar".
+
+RESTRIÇÕES
+Use apenas dados fictícios. Não crie integração bancária, PIX real, campos de senha real nem coleta de dados pessoais. Não use marcas, logos ou telas de bancos reais. Não adicione funcionalidades além das descritas.</div>
+                </div>
+              </details>
             </div>
           </li>
           </ol>
