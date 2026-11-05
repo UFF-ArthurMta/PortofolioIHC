@@ -396,9 +396,11 @@ svg {
   max-height: calc(100vh - 73px);
   overflow-y: auto;
   padding: 28px 4px 28px 0;
-  scrollbar-width: thin;
+  scrollbar-width: none;  /* a barra de rolagem só aparece quando se usa o menu */
   view-transition-name: trilha;
 }
+.trilha:hover,
+.trilha:focus-within { scrollbar-width: thin; }
 
 .trilha__grupo {
   margin: 14px 0 2px 40px;
