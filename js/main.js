@@ -181,6 +181,25 @@
     }
   }
 
+  /* --- 3b. Menu lateral na posição certa --------------------
+     O menu pode ser mais alto que a tela. Ao abrir uma página,
+     rola o menu para mostrar o item atual no meio, então o menu
+     fica na mesma posição em todas as páginas.
+     -------------------------------------------------------- */
+  if (trilha) {
+    var centralizarAtual = function () {
+      var atual = trilha.querySelector('[aria-current="page"]');
+      if (!atual || trilha.scrollHeight <= trilha.clientHeight + 2) return;
+      var caixa = trilha.getBoundingClientRect();
+      var item = atual.getBoundingClientRect();
+      var alvo = trilha.scrollTop + (item.top - caixa.top) - (trilha.clientHeight - item.height) / 2;
+      trilha.scrollTop = Math.max(0, alvo);
+    };
+    centralizarAtual();
+    window.addEventListener('load', centralizarAtual);
+    window.addEventListener('resize', centralizarAtual);
+  }
+
   /* --- 4. Barra de leitura ---------------------------------
      A barrinha embaixo do cabeçalho mostra quanto da página
      já foi lido.
