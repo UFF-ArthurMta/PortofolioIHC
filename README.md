@@ -18,11 +18,12 @@ projeto.html             → O Projeto: contexto, problema, público-alvo e obje
 problema.html … conclusoes.html → uma página por etapa (tabela abaixo)
 entrevistas.html         → entrevistas em documento e TCLE (dentro da etapa 05)
 respostas.html           → tabela com as respostas do questionário (dentro da etapa 06)
+personas.html            → as quatro personas (dentro da etapa 07)
 equipe.html              → integrantes do grupo
 uso-de-ia.html           → relatório de uso de IA
 css/styles.css           → estilos, organizado em blocos numerados
 js/main.js               → tema, menu lateral, animações e leitor de PDF
-img/                     → imagens (fotos, gráficos e capas dos PDFs em img/capas/)
+img/                     → imagens (fotos, gráficos, capas dos PDFs em img/capas/ e personas em img/personas/)
 docs/                    → PDFs lidos no site (planejamentos, relatórios) e a planilha
 ```
 
@@ -119,6 +120,16 @@ O leitor usa o PDF.js, carregado do cdnjs só quando alguém abre um documento.
 Os vídeos foram tirados do site. O código que toca um vídeo numa tela da página
 (`data-videoteca` no `main.js` e os estilos `.video` e `.videoteca` no CSS)
 continua no projeto, caso queiram voltar com eles.
+
+### Personas
+
+`personas.html` tem os cartões das quatro personas, a ligação entre elas e as
+fichas completas em abas (uma ficha por vez; sem JavaScript aparecem todas em
+sequência). Cada ficha é um `<article class="ficha-persona persona--primaria">`
+com `id="ficha-nome"`, `data-aba` (nome na aba) e `data-papel` (rótulo da aba).
+A cor vem da classe `persona--primaria`, `--secundaria`, `--stakeholder` ou
+`--antiusuario`. As ilustrações ficam em `img/personas/`. O texto é o mesmo dos
+PDFs de persona; para mudar, edite a ficha e o cartão correspondente.
 
 ### Adicionar um link simples a uma lista
 

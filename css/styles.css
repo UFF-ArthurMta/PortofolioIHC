@@ -1531,6 +1531,203 @@ html.lendo { overflow: hidden; }
 .videoteca__nome { margin-right: auto; font-weight: 600; }
 .videoteca__duracao { font-size: .85rem; color: var(--texto-suave); white-space: nowrap; }
 
+/* --- 18b. Personas ----------------------------------------
+   Cada persona tem uma cor (verde-água, verde, laranja, cinza)
+   guardada em --p-cor, --p-fundo e --p-texto.
+   ----------------------------------------------------------- */
+.persona--primaria    { --p-cor: #0b7285; --p-fundo: #e6f3f5; --p-texto: #ffffff; }
+.persona--secundaria  { --p-cor: #2f7d32; --p-fundo: #e8f3e8; --p-texto: #ffffff; }
+.persona--stakeholder { --p-cor: #b5530a; --p-fundo: #fbeee3; --p-texto: #ffffff; }
+.persona--antiusuario { --p-cor: #4c5564; --p-fundo: #eceff3; --p-texto: #ffffff; }
+
+:root[data-tema="escuro"] .persona--primaria    { --p-cor: #55c3d8; --p-fundo: #12292e; --p-texto: #0f1720; }
+:root[data-tema="escuro"] .persona--secundaria  { --p-cor: #84d189; --p-fundo: #162a17; --p-texto: #0f1720; }
+:root[data-tema="escuro"] .persona--stakeholder { --p-cor: #f2a76d; --p-fundo: #2e1f13; --p-texto: #0f1720; }
+:root[data-tema="escuro"] .persona--antiusuario { --p-cor: #b3bdca; --p-fundo: #1f252d; --p-texto: #0f1720; }
+
+.pagina__secao { margin-top: 52px; }
+.pagina__secao:first-child { margin-top: 0; }
+.pagina__secao > .analise__grupo {
+  margin: 0 0 14px;
+  padding: 0;
+  border: 0;
+  font-size: 1.5rem;
+  letter-spacing: -.01em;
+}
+.pagina__secao > .analise__grupo + .analise__descricao { margin-top: -8px; }
+
+/* Cartões das quatro personas */
+.persona-cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.persona-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--borda);
+  border-top: 4px solid var(--p-cor);
+  border-radius: var(--raio);
+  background: var(--superficie);
+  color: var(--texto);
+  text-decoration: none;
+}
+.persona-card:hover { box-shadow: var(--sombra-alta); border-color: var(--p-cor); }
+.persona-card__foto {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1000 / 545;
+  object-fit: cover;
+  background: var(--p-fundo);
+}
+.persona-card__corpo { display: grid; gap: 6px; padding: 18px 22px 22px; flex: 1; align-content: start; }
+.persona-card__tag {
+  width: fit-content;
+  padding: 3px 12px;
+  border: 1px solid var(--p-cor);
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--p-cor);
+}
+.persona-card__nome { font-size: 1.3rem; line-height: 1.25; color: var(--acento-forte); }
+.persona-card__meta { font-size: .9rem; color: var(--texto-suave); }
+.persona-card__papel { margin-top: 4px; font-size: .97rem; line-height: 1.55; }
+.persona-card__acao {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--p-cor);
+}
+.persona-card__acao svg { width: 16px; height: 16px; transition: transform .2s ease; }
+.persona-card:hover .persona-card__acao svg { transform: translateX(3px); }
+
+/* Como elas se ligam */
+.ligacoes {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.ligacao {
+  padding: 20px;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  background: var(--superficie);
+}
+.ligacao__titulo { margin-bottom: 8px; font-size: 1rem; color: var(--acento-forte); }
+.ligacao p { font-size: .95rem; line-height: 1.6; color: var(--texto-suave); }
+
+/* Abas das fichas (criadas pelo main.js; sem JavaScript as quatro fichas aparecem em sequência) */
+.fichas__abas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.fichas__aba {
+  display: grid;
+  gap: 1px;
+  padding: 12px 16px;
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--p-cor);
+  border-radius: 12px;
+  background: var(--superficie);
+  font: inherit;
+  text-align: left;
+  color: var(--texto);
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.fichas__aba:hover { border-color: var(--p-cor); }
+.fichas__nome { font-weight: 700; line-height: 1.3; }
+.fichas__papel { font-size: .8rem; color: var(--texto-suave); }
+.fichas__aba[aria-selected="true"] { background: var(--p-cor); border-color: var(--p-cor); color: var(--p-texto); }
+.fichas__aba[aria-selected="true"] .fichas__papel { color: var(--p-texto); opacity: .85; }
+
+/* Ficha */
+.ficha-persona {
+  overflow: hidden;
+  border: 1px solid var(--borda);
+  border-top: 4px solid var(--p-cor);
+  border-radius: var(--raio);
+  background: var(--superficie);
+  box-shadow: var(--sombra);
+}
+.ficha-persona + .ficha-persona { margin-top: 28px; }
+.ficha-persona[hidden] { display: none; }
+.js .ficha-persona + .ficha-persona { margin-top: 0; }
+
+.fp__topo { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+.fp__foto { margin: 0; display: grid; align-items: center; background: var(--p-fundo); }
+.fp__foto img { display: block; width: 100%; height: auto; }
+.fp__id { padding: 26px 28px; display: grid; gap: 12px; align-content: center; }
+.fp__tag { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--p-cor); }
+.fp__nome { font-size: clamp(1.7rem, 3.4vw, 2.2rem); line-height: 1.15; letter-spacing: -.01em; color: var(--p-cor); }
+.fp__frase {
+  margin: 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--p-cor);
+  font-size: 1.02rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--texto);
+}
+.fp__dados { display: grid; gap: 2px; font-size: .92rem; }
+.fp__dados > div { display: grid; grid-template-columns: 105px minmax(0, 1fr); gap: 10px; padding: 4px 0; border-top: 1px solid var(--borda); }
+.fp__dados dt { color: var(--texto-suave); }
+.fp__dados dd { font-weight: 600; }
+
+.fp__porque, .fp__implicacoes {
+  margin: 24px 28px 0;
+  padding: 18px 22px;
+  border-left: 4px solid var(--p-cor);
+  border-radius: 0 12px 12px 0;
+  background: var(--p-fundo);
+}
+.fp__porque h4, .fp__implicacoes h4, .fp__colunas h4 { margin-bottom: 8px; font-size: 1rem; color: var(--p-cor); }
+.fp__porque p { font-size: .98rem; line-height: 1.65; }
+
+.fp__texto { margin: 22px 28px 0; display: grid; gap: 14px; max-width: 74ch; }
+.fp__texto p { font-size: 1rem; line-height: 1.7; }
+
+.fp__colunas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 32px;
+  margin: 28px 28px 0;
+}
+.fp__colunas p { font-size: .96rem; line-height: 1.6; }
+.fp__colunas ul, .fp__implicacoes ol { padding-left: 20px; display: grid; gap: 7px; font-size: .96rem; line-height: 1.55; }
+.fp__colunas li::marker, .fp__implicacoes li::marker { color: var(--p-cor); }
+.fp__implicacoes { margin-top: 30px; }
+.fp__implicacoes li::marker { font-weight: 700; }
+.fp__base { margin: 22px 28px 26px; font-size: .85rem; line-height: 1.5; color: var(--texto-suave); }
+
+@media (max-width: 760px) {
+  .persona-cards, .ligacoes { grid-template-columns: minmax(0, 1fr); }
+  .fichas__abas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fp__topo { grid-template-columns: minmax(0, 1fr); }
+  .fp__id { padding: 20px; }
+  .fp__porque, .fp__implicacoes { margin-left: 16px; margin-right: 16px; padding: 16px; }
+  .fp__texto, .fp__colunas { margin-left: 20px; margin-right: 20px; }
+  .fp__colunas { grid-template-columns: minmax(0, 1fr); }
+  .fp__base { margin-left: 20px; margin-right: 20px; }
+  .fp__dados > div { grid-template-columns: 95px minmax(0, 1fr); }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .fp__colunas { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* --- 19. Animações ------------------------------------------
    Tudo aqui respeita quem pediu menos movimento no sistema.
    ----------------------------------------------------------- */
@@ -1577,11 +1774,11 @@ html.lendo { overflow: hidden; }
   .js .revelar.visivel { opacity: 1; translate: 0 0; }
 
   /* Cartões sobem um pouco com o mouse em cima */
-  .card, .pessoa, .roteiro__item, .arquivo, .doc, .documento, .paginacao__link {
+  .card, .pessoa, .roteiro__item, .arquivo, .doc, .documento, .paginacao__link, .persona-card {
     transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
   .card:hover, .pessoa:hover, .roteiro__item:hover, .arquivo:hover, .doc:hover, .documento:hover,
-  .paginacao__link:hover {
+  .paginacao__link:hover, .persona-card:hover {
     transform: translateY(-3px);
   }
   .paginacao__link--anterior:hover svg { transform: translateX(-3px); }
@@ -1786,7 +1983,8 @@ html.lendo { overflow: hidden; }
 
 /* --- 21. Impressão ------------------------------------------ */
 @media print {
-  .header, .trilha, .paginacao, .nesta-pagina, .skip-link, .hero__acoes, .progresso, .leitura { display: none; }
+  .header, .trilha, .paginacao, .nesta-pagina, .skip-link, .hero__acoes, .progresso, .leitura, .fichas__abas { display: none; }
+  .ficha-persona[hidden] { display: block !important; }
   .layout { display: block; padding: 0; }
   body { background: #fff; color: #000; }
   .revelar { opacity: 1 !important; translate: none !important; }

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personas — PIX para todos</title>
+  <meta name="description" content="As quatro personas do projeto PIX para todos: primária, secundária, stakeholder e antiusuário.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=23">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+        // menu lateral fixo (escolha salva pelo botão da borda esquerda)
+        if (localStorage.getItem('menu') === 'fixo') document.documentElement.setAttribute('data-menu', 'fixo');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO
+       ============================================================ -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+
+        <!-- Botão de modo claro / escuro -->
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+
+        <!-- Abre o fio condutor no celular -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="trilha" aria-label="Abrir o menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="progresso" aria-hidden="true"><span class="progresso__barra"></span></div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ==========================================================
+         2. FIO CONDUTOR
+         O mesmo menu em todas as páginas. Ao mudar um item aqui,
+         mude também nas outras páginas.
+         ========================================================== -->
+    <nav class="trilha" id="trilha" aria-label="Menu lateral" data-etapa="7">
+      <ul class="trilha__lista">
+        <li>
+          <a class="trilha__link" href="index.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5"></path><path d="M6.5 10v8.5h11V10"></path></svg></span>
+            <span class="trilha__nome">Início</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="projeto.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.5"></circle></svg></span>
+            <span class="trilha__nome">O Projeto</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="trilha__grupo" id="trilha-imersao">Imersão</p>
+      <div class="trilha__processo">
+        <span class="trilha__fio" aria-hidden="true"></span>
+        <ol class="trilha__lista" aria-labelledby="trilha-imersao">
+          <li>
+            <a class="trilha__link trilha__link--feito" href="problema.html">
+              <span class="trilha__no" aria-hidden="true">01</span>
+              <span class="trilha__nome">Definição do problema</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="matriz-csd.html">
+              <span class="trilha__no" aria-hidden="true">02</span>
+              <span class="trilha__nome">Matriz CSD</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="mapa-de-empatia.html">
+              <span class="trilha__no" aria-hidden="true">03</span>
+              <span class="trilha__nome">Mapa de Empatia</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="analise-competitiva.html">
+              <span class="trilha__no" aria-hidden="true">04</span>
+              <span class="trilha__nome">Análise Competitiva</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="pesquisa.html">
+              <span class="trilha__no" aria-hidden="true">05</span>
+              <span class="trilha__nome">Pesquisa com usuários</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="entrevistas.html">Materiais das entrevistas</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="resultados.html">
+              <span class="trilha__no" aria-hidden="true">06</span>
+              <span class="trilha__nome">Análise dos resultados</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="respostas.html">Respostas do questionário</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-ideacao">Ideação e prototipação</p>
+        <ol class="trilha__lista" start="7" aria-labelledby="trilha-ideacao">
+          <li>
+            <a class="trilha__link trilha__link--pai" href="ideacao.html">
+              <span class="trilha__no" aria-hidden="true">07</span>
+              <span class="trilha__nome">Ideação</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="personas.html" aria-current="page">Personas</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link" href="prototipo.html">
+              <span class="trilha__no" aria-hidden="true">08</span>
+              <span class="trilha__nome">Solução / Protótipo</span>
+            </a>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-avaliacao">Avaliação</p>
+        <ol class="trilha__lista" start="9" aria-labelledby="trilha-avaliacao">
+          <li>
+            <a class="trilha__link" href="avaliacao.html">
+              <span class="trilha__no" aria-hidden="true">09</span>
+              <span class="trilha__nome">Avaliação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="conclusoes.html">
+              <span class="trilha__no" aria-hidden="true">10</span>
+              <span class="trilha__nome">Conclusões</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <p class="trilha__grupo" id="trilha-sobre">Sobre o trabalho</p>
+      <ul class="trilha__lista" aria-labelledby="trilha-sobre">
+        <li>
+          <a class="trilha__link" href="equipe.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path><path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path></svg></span>
+            <span class="trilha__nome">Equipe</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="uso-de-ia.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"></rect><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"></path></svg></span>
+            <span class="trilha__nome">Uso de IA</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Linha na borda esquerda: com o mouse em cima o menu aparece;
+         com um clique ele fica fixo na tela (e recolhe com outro) -->
+    <button class="puxador" id="puxador" type="button" aria-controls="trilha" aria-expanded="false" aria-label="Fixar o menu lateral">
+      <span class="puxador__linha" aria-hidden="true"></span>
+      <span class="puxador__icone" aria-hidden="true">
+        <svg class="puxador__fixar" viewBox="0 0 24 24"><path d="M9 3.5h6l-1 5.5 3 3v2H7v-2l3-3z"></path><path d="M12 14v6.5"></path></svg>
+        <svg class="puxador__recolher" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"></path></svg>
+      </span>
+    </button>
+
+    <!-- ==========================================================
+         3. CONTEÚDO DA PÁGINA
+         ========================================================== -->
+    <main class="pagina" id="conteudo">
+
+      <header class="pagina__cabecalho">
+        <nav class="migalhas" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li>Ideação e prototipação</li>
+            <li><a href="ideacao.html">Ideação</a></li>
+            <li aria-current="page">Personas</li>
+          </ol>
+        </nav>
+        <p class="pagina__rotulo">Etapa 07 de 10</p>
+        <h1 class="pagina__titulo">Personas</h1>
+        <p class="pagina__intro">
+          Quatro personas montadas a partir do questionário, das entrevistas, da Matriz
+          CSD e do Mapa de Empatia.
+        </p>
+        <nav class="nesta-pagina" aria-label="Nesta página">
+          <span class="nesta-pagina__rotulo" aria-hidden="true">Nesta página:</span>
+          <a href="#metodo">O método</a>
+          <a href="#personas">As personas</a>
+          <a href="#ligacoes">Como se ligam</a>
+          <a href="#fichas">As fichas</a>
+        </nav>
+      </header>
+
+      <div class="pagina__corpo">
+
+        <section class="pagina__secao" id="metodo">
+          <h2 class="analise__grupo">O método</h2>
+          <p class="etapa__texto">
+            Uma persona é um personagem inventado, montado com o que a pesquisa mostrou.
+            Ela não é uma pessoa entrevistada: reúne o que se repetiu entre vários
+            participantes, para o grupo projetar pensando no mesmo usuário.
+          </p>
+          <p class="etapa__texto">
+            Nome e ocupação são ilustrativos. O resto vem do questionário (27 respostas),
+            das entrevistas, citadas só pelo código, como P05, da Matriz CSD e do Mapa de
+            Empatia. Nenhum familiar foi entrevistado, então o que dizemos sobre Camila
+            marca o que ainda é hipótese.
+          </p>
+          <p class="etapa__texto">
+            São quatro porque cada uma tem um papel diferente no projeto: a primária é
+            quem o sistema precisa atender, a secundária complementa essa necessidade, a
+            stakeholder ajuda e influencia, e o antiusuário mostra até onde o modo simples
+            deve ir.
+          </p>
+        </section>
+
+        <section class="pagina__secao" id="personas">
+          <h2 class="analise__grupo">As quatro personas</h2>
+          <ul class="persona-cards">
+          <li>
+            <a class="persona-card persona--primaria" href="#ficha-marlene" data-ficha="ficha-marlene">
+              <img class="persona-card__foto" src="img/personas/marlene.webp" alt="" width="1000" height="545" loading="lazy">
+              <span class="persona-card__corpo">
+                <span class="persona-card__tag">Persona primária</span>
+                <strong class="persona-card__nome">Marlene Souza</strong>
+                <span class="persona-card__meta">77 anos · Aposentada</span>
+                <span class="persona-card__papel">Quem está mais longe do objetivo do HMW: transações autônomas, intuitivas e emocionalmente seguras.</span>
+                <span class="persona-card__acao">Ver a ficha<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg></span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="persona-card persona--secundaria" href="#ficha-sergio" data-ficha="ficha-sergio">
+              <img class="persona-card__foto" src="img/personas/sergio.webp" alt="" width="1000" height="545" loading="lazy">
+              <span class="persona-card__corpo">
+                <span class="persona-card__tag">Persona secundária</span>
+                <strong class="persona-card__nome">Sérgio Almeida</strong>
+                <span class="persona-card__meta">66 anos · Profissional em atividade</span>
+                <span class="persona-card__papel">Já usa o aplicativo e precisa que o caminho completo continue disponível e seguro.</span>
+                <span class="persona-card__acao">Ver a ficha<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg></span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="persona-card persona--stakeholder" href="#ficha-camila" data-ficha="ficha-camila">
+              <img class="persona-card__foto" src="img/personas/camila.webp" alt="" width="1000" height="545" loading="lazy">
+              <span class="persona-card__corpo">
+                <span class="persona-card__tag">Stakeholder</span>
+                <strong class="persona-card__nome">Camila Ribeiro</strong>
+                <span class="persona-card__meta">42 anos · Analista administrativa</span>
+                <span class="persona-card__papel">Quase não usa o sistema como destinatária, mas é afetada por ele e influencia como o idoso o usa.</span>
+                <span class="persona-card__acao">Ver a ficha<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg></span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="persona-card persona--antiusuario" href="#ficha-rogerio" data-ficha="ficha-rogerio">
+              <img class="persona-card__foto" src="img/personas/rogerio.webp" alt="" width="1000" height="545" loading="lazy">
+              <span class="persona-card__corpo">
+                <span class="persona-card__tag">Antiusuário</span>
+                <strong class="persona-card__nome">Rogério Tavares</strong>
+                <span class="persona-card__meta">61 anos · Vários bancos pelo celular</span>
+                <span class="persona-card__papel">O sistema não é projetado para ele. Serve para delimitar o escopo do modo simples.</span>
+                <span class="persona-card__acao">Ver a ficha<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg></span>
+              </span>
+            </a>
+          </li>
+          </ul>
+        </section>
+
+        <section class="pagina__secao" id="ligacoes">
+          <h2 class="analise__grupo">Como elas se ligam</h2>
+          <ul class="ligacoes">
+            <li class="ligacao"><h3 class="ligacao__titulo">Camila e Marlene</h3><p>Camila é a primeira ajuda de Marlene. Sem ela por perto, Marlene vai à agência ou desiste. A autonomia de Marlene reduz a carga de Camila.</p></li>
+            <li class="ligacao"><h3 class="ligacao__titulo">Sérgio e Marlene</h3><p>Sérgio mostra o que Marlene poderia ser com treino: ele aprende uma vez e repete sozinho, enquanto Marlene esquece e precisa de treino repetível.</p></li>
+            <li class="ligacao"><h3 class="ligacao__titulo">Rogério e os outros</h3><p>As necessidades de Rogério e de Marlene entram em conflito: telas densas e atalhos servem a ele e a confundem. Sérgio aceita uma tela de confirmação a mais, e Rogério a acharia lenta.</p></li>
+          </ul>
+        </section>
+
+        <section class="pagina__secao" id="fichas">
+          <h2 class="analise__grupo">As fichas</h2>
+          <p class="analise__descricao">Escolha uma persona para ler a ficha completa.</p>
+          <div class="fichas" data-abas>
+        <article class="ficha-persona persona--primaria" id="ficha-marlene" data-aba="Marlene" data-papel="Primária">
+          <header class="fp__topo">
+            <figure class="fp__foto"><img src="img/personas/marlene.webp" alt="Ilustração de uma mulher idosa de óculos e casaco de lã, sentada à mesa, mexendo no celular, com um caderno aberto ao lado." width="1000" height="545" loading="lazy"></figure>
+            <div class="fp__id">
+              <p class="fp__tag">Persona primária</p>
+              <h3 class="fp__nome">Marlene Souza</h3>
+              <blockquote class="fp__frase">“Aparecem muitas coisas na tela e eu não sei qual escolher. Então fecho tudo e vou ao banco.”</blockquote>
+              <dl class="fp__dados">
+                <div><dt>Idade</dt><dd>77 anos</dd></div>
+                <div><dt>Ocupação</dt><dd>Aposentada</dd></div>
+                <div><dt>Escolaridade</dt><dd>Não coletada na pesquisa</dd></div>
+                <div><dt>Apoio</dt><dd>Neto e filha</dd></div>
+                <div><dt>Status</dt><dd>Primária</dd></div>
+              </dl>
+            </div>
+          </header>
+
+          <div class="fp__porque">
+            <h4>Por que é a persona primária</h4>
+            <p>Está mais longe do objetivo do HMW (transações autônomas, intuitivas e emocionalmente seguras). 9 dos 27 respondentes avaliam a própria familiaridade em 1 ou 2, numa escala de 5, e 7 não fazem Pix. P05 e P06 só conseguem consultar o saldo sozinhas.</p>
+          </div>
+
+          <div class="fp__texto">
+            <p>Marlene usa o celular pouco, para ligações e para o WhatsApp, onde manda e ouve áudios e vê fotos da família. Há dias em que quase não mexe no aparelho, e as letras pequenas cansam sua vista. O aplicativo do banco está instalado, mas ela só o abre para ver o saldo, sempre com ajuda de um familiar.</p>
+            <p>Já fez um Pix uma vez, mas quem operou foi o neto, enquanto ela olhava. Saques, contas, extrato e cartão ficam com a agência e o caixa eletrônico, onde recebe o comprovante em papel. Para ela, é o papel que deixa a operação “de verdade” concluída. Ela quer independência, mas só se sente segura com alguém de confiança conferindo junto.</p>
+          </div>
+
+          <div class="fp__colunas">
+          <section>
+            <h4>Habilidades</h4>
+            <ul>
+              <li>Fluência tecnológica baixa: domina ligações e áudios de WhatsApp.</li>
+              <li>Conhece bem o fluxo do caixa eletrônico e da agência, que usa no lugar do aplicativo.</li>
+              <li>O neto mostrou os passos e ela os anotou num caderno, mas esquece e se perde quando a tela é diferente da explicação.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Objetivos</h4>
+            <ul>
+              <li>Resolver a vida financeira sem perder dinheiro nem cair em golpes.</li>
+              <li>Ver o saldo sem medo de apertar algo errado.</li>
+              <li>Fazer um Pix para alguém conhecido sem ninguém ao lado.</li>
+              <li>Não ser deixada de lado pela digitalização e manter o atendimento humano.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Tarefas</h4>
+            <ul>
+              <li>Abrir o aplicativo com a senha e olhar o saldo.</li>
+              <li>Pedir ao neto ou à filha que faça o Pix ou pague a conta.</li>
+              <li>Ir à agência para pagar contas, sacar e tirar extrato, com comprovante em papel.</li>
+              <li>Conferir valor e nome do destinatário, lendo devagar, de preferência com alguém.</li>
+              <li>Cancelar caso erre.</li>
+              <li>Reconhecer contato falso: não atende desconhecidos, não clica em links e confere na agência ou com a família.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Frustrações</h4>
+            <ul>
+              <li>Letras e botões pequenos; digitar a chave Pix em caracteres miúdos.</li>
+              <li>Muitas opções na mesma tela a confundem e assustam.</li>
+              <li>Não entende “chave”, “agendar”, “token” nem termos em inglês. Ícones sem texto também a deixam em dúvida.</li>
+              <li>Medo de enviar para a pessoa errada, de golpes, de esquecer a senha e de perder o celular com o aplicativo.</li>
+              <li>Diante de uma mensagem que não entende, fecha o aplicativo e não tenta de novo.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Expectativas</h4>
+            <p>Espera que o aplicativo funcione como o caixa da agência: alguém pergunta, ela responde, recebe um comprovante e só então a operação está concluída. Acredita que um toque errado pode enviar o dinheiro sem querer, por isso trata cada tela como irreversível.</p>
+          </section>
+          <section>
+            <h4>Relacionamentos</h4>
+            <ul>
+              <li><strong>Camila (stakeholder):</strong> é a primeira ajuda. Sem ela por perto, Marlene vai à agência ou desiste.</li>
+              <li><strong>Sérgio (secundária):</strong> aprende uma vez e repete sozinho. Marlene esquece e precisa de treino repetível.</li>
+              <li><strong>Rogério (antiusuário):</strong> telas densas e atalhos servem a ele e a confundem.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Requisitos</h4>
+            <ul>
+              <li>Letras e botões grandes, com poucas opções bem separadas.</li>
+              <li>Uma pergunta por tela, sem pressa.</li>
+              <li>Confirmação com nome e valor grandes e botões Sim e Não.</li>
+              <li>Comprovante ao final e possibilidade de cancelar.</li>
+              <li>Ajuda falada ou por telefone e botão para chamar alguém de confiança.</li>
+              <li>Modo de treino sem dinheiro real.</li>
+            </ul>
+          </section>
+          </div>
+
+          <div class="fp__implicacoes">
+            <h4>Implicações no design</h4>
+            <ol>
+              <li>Fluxo de uma pergunta por tela, com texto e botões grandes e bem espaçados.</li>
+              <li>Tela final em Sim/Não, com nome e valor em números e por extenso e cancelar sempre visível.</li>
+              <li>Linguagem funcional no lugar de “chave”, “token” e “agendar”, e nenhum ícone sem rótulo.</li>
+              <li>Modo de treino sem dinheiro real, ajuda em áudio e botão “chamar alguém de confiança”.</li>
+            </ol>
+          </div>
+
+          <p class="fp__base">Base: questionário (27 respostas), entrevistas P05 e P06, Matriz CSD e Mapa de Empatia. Nome e ocupação são ilustrativos.</p>
+        </article>
+
+        <article class="ficha-persona persona--secundaria" id="ficha-sergio" data-aba="Sérgio" data-papel="Secundária">
+          <header class="fp__topo">
+            <figure class="fp__foto"><img src="img/personas/sergio.webp" alt="Ilustração de um homem idoso de barba grisalha e paletó, sentado à mesa, apontando para a tela de um de três celulares com aplicativos de banco diferentes." width="1000" height="545" loading="lazy"></figure>
+            <div class="fp__id">
+              <p class="fp__tag">Persona secundária</p>
+              <h3 class="fp__nome">Sérgio Almeida</h3>
+              <blockquote class="fp__frase">“O Pix do dia a dia eu faço sem pensar. É quando aparece uma coisa nova que eu travo.”</blockquote>
+              <dl class="fp__dados">
+                <div><dt>Idade</dt><dd>66 anos</dd></div>
+                <div><dt>Ocupação</dt><dd>Profissional em atividade</dd></div>
+                <div><dt>Escolaridade</dt><dd>Não coletada na pesquisa</dd></div>
+                <div><dt>Apoio</dt><dd>Filhas e gerente do banco</dd></div>
+                <div><dt>Status</dt><dd>Secundária</dd></div>
+              </dl>
+            </div>
+          </header>
+
+          <div class="fp__porque">
+            <h4>Por que é a persona secundária</h4>
+            <p>Já usa o aplicativo e tem necessidades que complementam as de Marlene: precisa que o caminho completo continue disponível e seguro. 20 dos 27 respondentes usam o aplicativo do banco com frequência ou às vezes, e 14 pedem uma confirmação mais clara antes de enviar dinheiro.</p>
+          </div>
+
+          <div class="fp__texto">
+            <p>Sérgio usa o banco digital há sete ou oito anos. Faz Pix e transferências, consulta saldo, extrato e cartão e paga por aproximação. Muitas contas da casa estão em débito automático. No celular, usa e-mail, WhatsApp e tarefas de trabalho, e evita redes sociais.</p>
+            <p>Em rotinas conhecidas, resolve tudo sozinho. Trava diante de uma operação nova, quando boleto, QR Code e código de barras parecem a mesma coisa. Uma vez, o aplicativo não leu o código de barras. Ele tentou de novo, pediu ajuda à filha, teve medo de o dinheiro sair sem o pagamento ser concluído, desistiu e pagou na lotérica. Depois que a gerente explica uma operação, ele a repete sozinho.</p>
+          </div>
+
+          <div class="fp__colunas">
+          <section>
+            <h4>Habilidades</h4>
+            <ul>
+              <li>Fluência média a alta em operações de rotina; fora delas, perde a confiança.</li>
+              <li>Aprende uma vez com ajuda e depois repete sozinho.</li>
+              <li>Confia na biometria, embora o sensor de digital às vezes falhe com ele.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Objetivos</h4>
+            <ul>
+              <li>Manter o controle do próprio dinheiro sem depender das filhas nem ligar para a gerente.</li>
+              <li>Não pagar errado e não ser enganado por ligação ou mensagem falsa.</li>
+              <li>Fazer sozinho operações novas, como boleto, QR Code e código de barras, depois de uma única orientação.</li>
+              <li>Ter certeza de que a operação foi concluída.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Tarefas</h4>
+            <ul>
+              <li>Abrir o aplicativo com biometria e consultar saldo e extrato.</li>
+              <li>Fazer Pix pelo contato e transferir entre contas.</li>
+              <li>Consultar o cartão e pagar por aproximação.</li>
+              <li>Conferir valor, data e destinatário antes de confirmar.</li>
+              <li>Pagar uma conta fora da rotina, escolhendo entre boleto, QR Code e código de barras.</li>
+              <li>Decidir se um contato é do banco: se pedem senha ou transferência, encerra e liga direto para a gerente.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Frustrações</h4>
+            <ul>
+              <li>Várias formas de pagamento parecidas o deixam em dúvida sobre estar no caminho certo.</li>
+              <li>Falha de leitura sem explicação: ele não sabe se o dinheiro saiu.</li>
+              <li>A digital às vezes falha com ele (P01), e o reconhecimento facial por foto falha às vezes com P02.</li>
+              <li>Golpes por telefone e links falsos; chave Pix recusada por dado incorreto.</li>
+              <li>Receio de digitar o valor errado ou esquecer a senha (P03).</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Expectativas</h4>
+            <p>Espera que o aplicativo funcione como a conversa com a gerente: aprende uma vez e depois repete. Espera encontrar o Pix sempre no mesmo lugar, na primeira tela, e que a mensagem de sucesso signifique operação concluída.</p>
+          </section>
+          <section>
+            <h4>Relacionamentos</h4>
+            <ul>
+              <li><strong>Marlene (primária):</strong> mostra o que ela poderia ser com treino. O modo simples não pode esconder boleto e QR Code sem caminho de volta.</li>
+              <li><strong>Camila (stakeholder):</strong> as filhas e a gerente cumprem esse papel. Ele só recorre a elas em operação nova.</li>
+              <li><strong>Rogério (antiusuário):</strong> Sérgio aceita uma tela de confirmação a mais, e Rogério a acharia lenta.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Requisitos</h4>
+            <ul>
+              <li>Uma única tela de confirmação com destinatário, valor e data.</li>
+              <li>Mensagem clara de sucesso e comprovante.</li>
+              <li>Alternativa quando a biometria falha, como senha numérica curta.</li>
+              <li>Orientação na primeira vez que faz uma operação nova.</li>
+              <li>Alertas contra golpes e acesso a um atendente humano.</li>
+            </ul>
+          </section>
+          </div>
+
+          <div class="fp__implicacoes">
+            <h4>Implicações no design</h4>
+            <ol>
+              <li>Uma tela única de confirmação, com destinatário em destaque, valor e data.</li>
+              <li>Feedback final claro: mensagem de sucesso e comprovante.</li>
+              <li>Alternativa à biometria e aviso do que fazer quando a leitura da digital ou do rosto falha.</li>
+              <li>Ajuda contextual em operações novas: tour curto no primeiro uso e erro de leitura que diz o que aconteceu e se o dinheiro saiu.</li>
+            </ol>
+          </div>
+
+          <p class="fp__base">Base: questionário (27 respostas), entrevistas P01, P02 e P03 e Matriz CSD. Nome e ocupação são ilustrativos.</p>
+        </article>
+
+        <article class="ficha-persona persona--stakeholder" id="ficha-camila" data-aba="Camila" data-papel="Stakeholder">
+          <header class="fp__topo">
+            <figure class="fp__foto"><img src="img/personas/camila.webp" alt="Ilustração de uma mulher de blazer, sentada à mesa, segurando um celular em cada mão, com cadernos, moedas e óculos sobre a mesa." width="1000" height="545" loading="lazy"></figure>
+            <div class="fp__id">
+              <p class="fp__tag">Stakeholder</p>
+              <h3 class="fp__nome">Camila Ribeiro</h3>
+              <blockquote class="fp__frase">“Eu faço o Pix por ela, mas queria que ela conseguisse sozinha, sem eu ficar com medo de ela errar.”</blockquote>
+              <dl class="fp__dados">
+                <div><dt>Idade</dt><dd>42 anos</dd></div>
+                <div><dt>Ocupação</dt><dd>Analista administrativa</dd></div>
+                <div><dt>Escolaridade</dt><dd>Não coletada na pesquisa</dd></div>
+                <div><dt>Papel</dt><dd>Filha e primeira ajuda de Marlene</dd></div>
+                <div><dt>Status</dt><dd>Stakeholder</dd></div>
+              </dl>
+            </div>
+          </header>
+
+          <div class="fp__porque">
+            <h4>Por que é stakeholder</h4>
+            <p>Quase não usa o sistema como destinatária da solução, mas é afetada por ele e influencia como o idoso o usa. A Matriz CSD aponta o apoio de filhos e netos como fator principal para começar a usar aplicativos de banco. No questionário, 8 dos 27 pedem ajuda a um familiar para aprender uma função nova e 10 preferem um familiar numa dúvida.</p>
+          </div>
+
+          <div class="fp__texto">
+            <p>Camila é a pessoa para quem Marlene liga quando trava. Instalou o aplicativo, mostrou os passos e, quando há um Pix ou uma conta a pagar, opera o celular da mãe enquanto a mãe informa os dados e observa. Ajuda em visitas ou por telefone, quando o idoso liga com uma dúvida.</p>
+            <p>Quer proteger a mãe de golpes e de erros que custem dinheiro, e deixar de ser a única saída para toda operação, sem tirar dela o contato humano que ela valoriza. Quanto mais opera pela mãe, mais a mãe depende dela.</p>
+          </div>
+
+          <div class="fp__colunas">
+          <section>
+            <h4>Habilidades</h4>
+            <ul>
+              <li>Fluência tecnológica maior que a do idoso a quem ajuda. O nível exato não foi medido.</li>
+              <li>Sabe instalar e configurar o aplicativo e explicar os passos, mas o ensino nem sempre fixa.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Objetivos</h4>
+            <ul>
+              <li>Manter a mãe protegida de golpes e de erros que custem dinheiro.</li>
+              <li>Deixar de ser a única saída em toda operação, sem tirar o contato humano que a mãe valoriza.</li>
+              <li>Configurar o aplicativo para o idoso sem operar as transações por ele.</li>
+              <li>Ensinar uma vez e saber que o idoso consegue rever o passo a passo sozinho.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Tarefas</h4>
+            <ul>
+              <li>Instalar e configurar o aplicativo do idoso.</li>
+              <li>Mostrar os passos e atender ligações quando aparece um erro.</li>
+              <li>Fazer o Pix ou pagar a conta pelo idoso, conferindo valor e destinatário junto com ele.</li>
+              <li>Orientar sem assumir a operação, para não aumentar a dependência.</li>
+              <li>Ajudar a decidir se uma ligação ou mensagem é golpe.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Frustrações</h4>
+            <ul>
+              <li>Ensino que não fixa: Marlene anotou os passos num caderno, esquece e se perde quando a tela muda.</li>
+              <li>Dependência: quanto mais opera pelo idoso, mais ele precisa dela.</li>
+              <li>Quando não está por perto, o idoso vai à agência ou desiste. (Hipótese a validar: não há dados sobre o tempo livre dos familiares.)</li>
+              <li>Vira o último filtro contra golpe antes de o dinheiro sair.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Expectativas</h4>
+            <p>Espera que um aplicativo mais simples permita ensinar uma vez e que o idoso repita sozinho. Também espera que o próprio aplicativo previna o erro, já que ela não estará ao lado.</p>
+          </section>
+          <section>
+            <h4>Relacionamentos</h4>
+            <ul>
+              <li><strong>Marlene (primária):</strong> é a pessoa que Camila ajuda. A autonomia de Marlene reduz a carga de Camila.</li>
+              <li><strong>Sérgio (secundária):</strong> as filhas dele fazem o papel de Camila. Ele só recorre a elas em operação nova.</li>
+              <li><strong>Rogério (antiusuário):</strong> tem fluência parecida, mas usa o sistema para si. O que Camila configura para Marlene não deve aparecer na tela dele.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Requisitos</h4>
+            <ul>
+              <li>Configurar o aplicativo para o idoso (tamanho de letra, funções visíveis) sem poder confirmar transações no lugar dele.</li>
+              <li>Material de ensino que o idoso possa rever, como o tutorial em vídeo no primeiro uso.</li>
+              <li>Um botão no aplicativo que chame o contato de confiança no momento da dúvida.</li>
+            </ul>
+          </section>
+          </div>
+
+          <div class="fp__implicacoes">
+            <h4>Implicações no design</h4>
+            <ol>
+              <li>Separar configuração de transação: o familiar ajusta fonte, funções visíveis e contato de confiança, e a confirmação de cada operação fica com o idoso.</li>
+              <li>Botão “chamar alguém de confiança” em todas as telas, que liga para o contato cadastrado.</li>
+              <li>Tutorial curto em vídeo no primeiro uso, que o familiar mostra e o idoso pode rever.</li>
+              <li>Aviso ao contato de confiança em transação atípica, como hipótese a testar (dúvida em aberto na Matriz CSD).</li>
+            </ol>
+          </div>
+
+          <p class="fp__base">Base: questionário (27 respostas), entrevistas P01, P05 e P06, Matriz CSD e Análise Competitiva. Nenhum familiar foi entrevistado; as hipóteses estão marcadas. Nome e ocupação são ilustrativos.</p>
+        </article>
+
+        <article class="ficha-persona persona--antiusuario" id="ficha-rogerio" data-aba="Rogério" data-papel="Antiusuário">
+          <header class="fp__topo">
+            <figure class="fp__foto"><img src="img/personas/rogerio.webp" alt="Ilustração de um homem idoso de barba, sentado à mesa, apontando para um de três celulares com aplicativos de banco diferentes." width="1000" height="545" loading="lazy"></figure>
+            <div class="fp__id">
+              <p class="fp__tag">Antiusuário</p>
+              <h3 class="fp__nome">Rogério Tavares</h3>
+              <blockquote class="fp__frase">“Não preciso de modo fácil. Preciso que os bancos parem de mudar as coisas de lugar.”</blockquote>
+              <dl class="fp__dados">
+                <div><dt>Idade</dt><dd>61 anos</dd></div>
+                <div><dt>Ocupação</dt><dd>Não coletada. Gerencia as próprias finanças em vários bancos</dd></div>
+                <div><dt>Escolaridade</dt><dd>Não coletada na pesquisa</dd></div>
+                <div><dt>Apoio</dt><dd>Gerente de conta por chat ou WhatsApp oficial</dd></div>
+                <div><dt>Status</dt><dd>Antiusuário</dd></div>
+              </dl>
+            </div>
+          </header>
+
+          <div class="fp__porque">
+            <h4>Por que é antiusuário</h4>
+            <p>O sistema não está sendo projetado para Rogério. Ele serve para delimitar o escopo: o modo simples feito para Marlene não pode ser medido pela impressão dele. P04 tem autonomia muito alta, 6 dos 27 respondentes avaliam a própria familiaridade em 4 ou 5 e 5 dizem que não costumam evitar nenhuma transação. As barreiras que ele cita, falta de padronização entre bancos e busca interna rígida, não são o problema do HMW.</p>
+          </div>
+
+          <div class="fp__texto">
+            <p>Rogério gerencia contas em mais de um banco pelo celular. Usa senhas diferentes para acesso e para validação, confere os dados do destinatário e aceita bem os alertas do banco contra transações suspeitas. Quando precisa de ajuda, fala com o gerente de conta por chat ou WhatsApp oficial.</p>
+            <p>Conhece vários aplicativos e por isso percebe quando os bancos fogem do padrão. Não é público do modo simples, mas sugeriu assistente de voz e vídeos educativos de passo a passo, recursos que ajudariam Marlene mais do que ele.</p>
+          </div>
+
+          <div class="fp__colunas">
+          <section>
+            <h4>Habilidades</h4>
+            <ul>
+              <li>Fluência tecnológica muito alta.</li>
+              <li>Conhece vários aplicativos similares e opera sem ajuda.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Objetivos</h4>
+            <ul>
+              <li>Ter visão e controle do conjunto das finanças em vários bancos.</li>
+              <li>Achar qualquer função rápido, com uma tela inicial que ele possa personalizar.</li>
+              <li>Ter uma busca interna que aceite o termo que ele conhece, como DDA, sem exigir a palavra exata do banco.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Tarefas</h4>
+            <ul>
+              <li>Alternar entre aplicativos de bancos diferentes para pagar, transferir e conferir.</li>
+              <li>Procurar funções pela busca interna e tirar dúvidas com o gerente por chat.</li>
+              <li>Validar a operação com uma segunda senha.</li>
+              <li>Conferir os dados do destinatário antes de enviar.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Frustrações</h4>
+            <ul>
+              <li>Cada banco organiza as coisas de um jeito.</li>
+              <li>A busca interna exige termos muito específicos.</li>
+              <li>Hipótese a validar: um fluxo de uma pergunta por tela o deixaria mais lento. Isso não foi testado.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Expectativas</h4>
+            <p>Espera padrões comuns entre aplicativos: o mesmo lugar para as mesmas coisas, em qualquer banco.</p>
+          </section>
+          <section>
+            <h4>Relacionamentos</h4>
+            <ul>
+              <li><strong>Marlene (primária):</strong> as necessidades dos dois entram em conflito. Telas densas e atalhos servem a ele e a confundem.</li>
+              <li><strong>Sérgio (secundária):</strong> fica no meio do caminho. Aceita uma tela de confirmação a mais, e Rogério a acharia lenta.</li>
+              <li><strong>Camila (stakeholder):</strong> tem fluência parecida, mas usa o sistema para ajudar outra pessoa.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>Requisitos</h4>
+            <ul>
+              <li>Acesso às funções completas, sem esconder nada.</li>
+              <li>Tela inicial personalizável e busca interna tolerante.</li>
+            </ul>
+          </section>
+          </div>
+
+          <div class="fp__implicacoes">
+            <h4>Implicações no design</h4>
+            <ol>
+              <li>Modo simples opcional e reversível. O aplicativo padrão não muda para ele, e quem quiser pode voltar à versão completa a qualquer momento.</li>
+              <li>Fora do escopo desta entrega: atalhos avançados, telas densas e personalização da tela inicial. Ficam como evolução futura e não decidem requisitos agora.</li>
+              <li>Termômetro contra simplificação demais: se um recurso novo atrapalha a rotina dele sem ajudar Marlene ou Sérgio, precisa poder ser desativado.</li>
+            </ol>
+          </div>
+
+          <p class="fp__base">Base: questionário (27 respostas) e entrevista P04. Nome ilustrativo.</p>
+        </article>
+          </div>
+        </section>
+      </div>
+
+      <nav class="paginacao" aria-label="Página anterior e próxima">
+        <a class="paginacao__link paginacao__link--anterior" href="ideacao.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"></path><path d="M10 5.5L3.5 12l6.5 6.5"></path></svg>
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Anterior</span>
+            <span class="paginacao__nome">07 &middot; Ideação</span>
+          </span>
+        </a>
+        <a class="paginacao__link paginacao__link--proxima" href="prototipo.html">
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Próxima</span>
+            <span class="paginacao__nome">08 &middot; Solução / Protótipo</span>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg>
+        </a>
+      </nav>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       4. RODAPÉ
+       ============================================================ -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense · Sistemas de Informação · 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=23"></script>
+</body>
+</html>

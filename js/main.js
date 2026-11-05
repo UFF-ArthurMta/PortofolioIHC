@@ -213,7 +213,7 @@
   var ANIMADOS = [
     '.pagina__corpo .card', '.pessoa', '.roteiro__item', '.csd__lista li', '.postit',
     '.concorrente', '.grafico', '.mapa__quadrante', '.hmw', '.foto', '.doc',
-    '.pagina__corpo .arquivo', '.referencias', '.documento', '.videoteca'
+    '.pagina__corpo .arquivo', '.referencias', '.documento', '.videoteca', '.persona-card', '.ligacao', '.ficha-persona'
   ].join(', ');
 
   if (!poucoMovimento && 'IntersectionObserver' in window) {
@@ -562,6 +562,100 @@
       return i.getAttribute('data-incorporar') !== 'nao';
     })[0] || itens[0];
     mostrar(primeiro, false);
+  });
+
+  /* --- 8. Fichas das personas ------------------------------
+     As quatro fichas ficam em abas: uma por vez, escolhida
+     pelas abas ou pelos cartões. Sem JavaScript, as fichas
+     aparecem uma embaixo da outra.
+     -------------------------------------------------------- */
+  document.querySelectorAll('[data-abas]').forEach(function (grupo) {
+    var paineis = Array.prototype.slice.call(grupo.querySelectorAll('[data-aba]'));
+    if (paineis.length < 2) return;
+
+    var lista = document.createElement('div');
+    lista.className = 'fichas__abas';
+    lista.setAttribute('role', 'tablist');
+    lista.setAttribute('aria-label', 'Fichas das personas');
+
+    var abas = paineis.map(function (painel, i) {
+      var aba = document.createElement('button');
+      var cor = (painel.className.match(/persona--\S+/) || [''])[0];
+      aba.type = 'button';
+      aba.className = 'fichas__aba ' + cor;
+      aba.id = 'aba-' + painel.id;
+      aba.setAttribute('role', 'tab');
+      aba.setAttribute('aria-controls', painel.id);
+      aba.innerHTML = '<span class="fichas__nome"></span><span class="fichas__papel"></span>';
+      aba.firstChild.textContent = painel.getAttribute('data-aba');
+      aba.lastChild.textContent = painel.getAttribute('data-papel');
+      painel.setAttribute('role', 'tabpanel');
+      painel.setAttribute('aria-labelledby', aba.id);
+      aba.addEventListener('click', function () { mostrar(i, false); });
+      lista.appendChild(aba);
+      return aba;
+    });
+
+    function mostrar(i, foco) {
+      paineis.forEach(function (painel, j) {
+        painel.hidden = j !== i;
+        abas[j].setAttribute('aria-selected', String(j === i));
+        abas[j].tabIndex = j === i ? 0 : -1;
+      });
+      if (foco) abas[i].focus();
+    }
+
+    lista.addEventListener('keydown', function (e) {
+      var atual = abas.indexOf(document.activeElement);
+      if (atual < 0) return;
+      var destino = {
+        ArrowRight: (atual + 1) % abas.length,
+        ArrowLeft: (atual + abas.length - 1) % abas.length,
+        Home: 0,
+        End: abas.length - 1
+      }[e.key];
+      if (destino === undefined) return;
+      e.preventDefault();
+      mostrar(destino, true);
+    });
+
+    grupo.insertBefore(lista, grupo.firstChild);
+
+    var indiceDe = function (id) {
+      for (var k = 0; k < paineis.length; k++) if (paineis[k].id === id) return k;
+      return -1;
+    };
+    var irPara = function (id, rolar) {
+      var i = indiceDe(id);
+      if (i < 0) return false;
+      mostrar(i, false);
+      if (rolar) rolarAteAbas(rolar === 'suave');
+      return true;
+    };
+    // Leva as abas para logo abaixo do cabeçalho fixo
+    var rolarAteAbas = function (suave) {
+      var topo = lista.getBoundingClientRect().top + window.pageYOffset - 96;
+      window.scrollTo({ top: Math.max(0, topo), behavior: suave && !poucoMovimento ? 'smooth' : 'instant' });
+    };
+
+    // Cartões das personas abrem a ficha certa
+    document.querySelectorAll('a[data-ficha]').forEach(function (cartao) {
+      cartao.addEventListener('click', function (e) {
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button) return;
+        if (irPara(cartao.getAttribute('data-ficha'), 'suave')) {
+          e.preventDefault();
+          try { history.replaceState(null, '', '#' + cartao.getAttribute('data-ficha')); } catch (err) {}
+        }
+      });
+    });
+
+    window.addEventListener('hashchange', function () { irPara(location.hash.slice(1), 'suave'); });
+
+    mostrar(0, false);
+    // Abrindo a página já com #ficha-...: depois que as imagens assentam, confere a posição
+    if (location.hash && irPara(location.hash.slice(1), true)) {
+      window.addEventListener('load', function () { setTimeout(function () { rolarAteAbas(false); }, 150); });
+    }
   });
 
 })();
