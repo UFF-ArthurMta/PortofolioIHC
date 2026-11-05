@@ -2073,8 +2073,9 @@ html.lendo { overflow: hidden; }
 @media (max-width: 640px) {
   .prompt { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 16px; }
   .prompt__num { width: 34px; height: 34px; }
+}
 
-/* --- 18d. Crazy 4 ------------------------------------------
+/* --- 18e. Crazy 4 ------------------------------------------
    Folha dobrada em quatro, ideias por regra e filtro pelo
    comentário do colega.
    ------------------------------------------------------- */
