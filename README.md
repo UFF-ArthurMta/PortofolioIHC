@@ -20,6 +20,7 @@ entrevistas.html         → entrevistas em documento e TCLE (dentro da etapa 05
 respostas.html           → tabela com as respostas do questionário (dentro da etapa 06)
 personas.html            → as quatro personas (dentro da etapa 07)
 cenarios.html            → os três cenários-problema, ligados às personas (dentro da etapa 07)
+modelo-de-tarefas.html   → árvore de tarefas (HTA) e tempos pelo KLM (dentro da etapa 07)
 equipe.html              → integrantes do grupo
 uso-de-ia.html           → relatório de uso de IA e os prompts na página (inclui o do Figma Make)
 css/styles.css           → estilos, organizado em blocos numerados
@@ -165,6 +166,16 @@ O quadro "O que se repete" (`.padroes`) cruza os cenários. Os rostos pequenos
 (`.avatar--marlene`, `--sergio`, `--camila`) são recortes das fotos em `img/personas/`.
 Nas fichas de `personas.html`, o bloco `.fp__cenarios` leva de volta ao cenário.
 O conteúdo vem do arquivo de cenários do grupo (não publicado no site).
+
+### Modelo de tarefas
+
+`modelo-de-tarefas.html` tem a árvore de tarefas (`.hta`) com quatro tarefas, cada
+uma com subtarefas (`.hta__no--2`) e ações (`.hta__no--3`). Os planos ficam em
+`<details class="hta__planos">`, o Plano 0 junto da raiz e os demais dentro de cada
+tarefa. As barras de tempo (`.tempo`) usam `--w` (porcentagem do maior tempo, 61,2 s)
+e as tabelas do KLM são `.klm`; as linhas fora da tela levam a classe `klm__fora`.
+Os números (23,30 s e 61,20 s) são somas das linhas das tabelas; se mudar uma linha,
+refaça o total, a barra e a síntese comparativa.
 
 ### Adicionar um link simples a uma lista
 

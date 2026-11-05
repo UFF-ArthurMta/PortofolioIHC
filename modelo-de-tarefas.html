@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelo de Tarefas — PIX para todos</title>
+  <meta name="description" content="Modelo de tarefas do projeto PIX para todos: árvore hierárquica de tarefas com planos e comparação de tempo entre usuário experiente e inexperiente.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=29">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+        // menu lateral fixo (escolha salva pelo botão da borda esquerda)
+        if (localStorage.getItem('menu') === 'fixo') document.documentElement.setAttribute('data-menu', 'fixo');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO
+       ============================================================ -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+
+        <!-- Botão de modo claro / escuro -->
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+
+        <!-- Abre o fio condutor no celular -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="trilha" aria-label="Abrir o menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="progresso" aria-hidden="true"><span class="progresso__barra"></span></div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ==========================================================
+         2. FIO CONDUTOR
+         O mesmo menu em todas as páginas. Ao mudar um item aqui,
+         mude também nas outras páginas.
+         ========================================================== -->
+    <nav class="trilha" id="trilha" aria-label="Menu lateral" data-etapa="7">
+      <ul class="trilha__lista">
+        <li>
+          <a class="trilha__link" href="index.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5"></path><path d="M6.5 10v8.5h11V10"></path></svg></span>
+            <span class="trilha__nome">Início</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="projeto.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.5"></circle></svg></span>
+            <span class="trilha__nome">O Projeto</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="trilha__grupo" id="trilha-imersao">Imersão</p>
+      <div class="trilha__processo">
+        <span class="trilha__fio" aria-hidden="true"></span>
+        <ol class="trilha__lista" aria-labelledby="trilha-imersao">
+          <li>
+            <a class="trilha__link trilha__link--feito" href="problema.html">
+              <span class="trilha__no" aria-hidden="true">01</span>
+              <span class="trilha__nome">Definição do problema</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="matriz-csd.html">
+              <span class="trilha__no" aria-hidden="true">02</span>
+              <span class="trilha__nome">Matriz CSD</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="mapa-de-empatia.html">
+              <span class="trilha__no" aria-hidden="true">03</span>
+              <span class="trilha__nome">Mapa de Empatia</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="analise-competitiva.html">
+              <span class="trilha__no" aria-hidden="true">04</span>
+              <span class="trilha__nome">Análise Competitiva</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="pesquisa.html">
+              <span class="trilha__no" aria-hidden="true">05</span>
+              <span class="trilha__nome">Pesquisa com usuários</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="entrevistas.html">Materiais das entrevistas</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="resultados.html">
+              <span class="trilha__no" aria-hidden="true">06</span>
+              <span class="trilha__nome">Análise dos resultados</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="respostas.html">Respostas do questionário</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-ideacao">Ideação e prototipação</p>
+        <ol class="trilha__lista" start="7" aria-labelledby="trilha-ideacao">
+          <li>
+            <a class="trilha__link trilha__link--pai" href="ideacao.html">
+              <span class="trilha__no" aria-hidden="true">07</span>
+              <span class="trilha__nome">Ideação</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="personas.html">Personas</a></li>
+              <li><a class="trilha__sublink" href="cenarios.html">Cenários</a></li>
+              <li><a class="trilha__sublink" href="modelo-de-tarefas.html" aria-current="page">Modelo de Tarefas</a></li>
+              <li><a class="trilha__sublink" href="crazy4.html">Crazy 4</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link" href="prototipo.html">
+              <span class="trilha__no" aria-hidden="true">08</span>
+              <span class="trilha__nome">Solução / Protótipo</span>
+            </a>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-avaliacao">Avaliação</p>
+        <ol class="trilha__lista" start="9" aria-labelledby="trilha-avaliacao">
+          <li>
+            <a class="trilha__link" href="avaliacao.html">
+              <span class="trilha__no" aria-hidden="true">09</span>
+              <span class="trilha__nome">Avaliação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="conclusoes.html">
+              <span class="trilha__no" aria-hidden="true">10</span>
+              <span class="trilha__nome">Conclusões</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <p class="trilha__grupo" id="trilha-sobre">Sobre o trabalho</p>
+      <ul class="trilha__lista" aria-labelledby="trilha-sobre">
+        <li>
+          <a class="trilha__link" href="equipe.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path><path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path></svg></span>
+            <span class="trilha__nome">Equipe</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="uso-de-ia.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"></rect><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"></path></svg></span>
+            <span class="trilha__nome">Uso de IA</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Linha na borda esquerda: com o mouse em cima o menu aparece;
+         com um clique ele fica fixo na tela (e recolhe com outro) -->
+    <button class="puxador" id="puxador" type="button" aria-controls="trilha" aria-expanded="false" aria-label="Fixar o menu lateral">
+      <span class="puxador__linha" aria-hidden="true"></span>
+      <span class="puxador__icone" aria-hidden="true">
+        <svg class="puxador__fixar" viewBox="0 0 24 24"><path d="M9 3.5h6l-1 5.5 3 3v2H7v-2l3-3z"></path><path d="M12 14v6.5"></path></svg>
+        <svg class="puxador__recolher" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"></path></svg>
+      </span>
+    </button>
+
+    <!-- ==========================================================
+         3. CONTEÚDO DA PÁGINA
+         ========================================================== -->
+    <main class="pagina" id="conteudo">
+
+      <header class="pagina__cabecalho">
+        <nav class="migalhas" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li>Ideação e prototipação</li>
+            <li><a href="ideacao.html">Ideação</a></li>
+            <li aria-current="page">Modelo de Tarefas</li>
+          </ol>
+        </nav>
+        <p class="pagina__rotulo">Etapa 07 de 10</p>
+        <h1 class="pagina__titulo">Modelo de Tarefas</h1>
+        <p class="pagina__intro">
+          Uma árvore de tarefas que descreve o que Marlene, Sérgio e Camila precisam fazer no
+          PIX para Todos para movimentar o próprio dinheiro com autonomia e segurança.
+        </p>
+        <nav class="nesta-pagina" aria-label="Nesta página">
+          <span class="nesta-pagina__rotulo" aria-hidden="true">Nesta página:</span>
+          <a href="#metodo">O método</a>
+          <a href="#arvore">A árvore</a>
+          <a href="#tempo">Experiente e inexperiente</a>
+          <a href="#recomendacoes">Recomendações</a>
+        </nav>
+      </header>
+
+      <div class="pagina__corpo">
+
+        <section class="pagina__secao" id="metodo">
+          <h2 class="analise__grupo">O método</h2>
+          <div class="texto-corrido">
+            <p>A Análise Hierárquica de Tarefas, ou HTA, decompõe um objetivo em tarefas, cada tarefa em subtarefas e cada subtarefa em ações. Os planos dizem em que ordem os passos acontecem e em que condição um passo é feito, repetido ou pulado.</p>
+            <p>A árvore tem quatro tarefas de primeiro nível, e todas descem até o terceiro nível, que é a ação que a pessoa faz na tela do celular. Depois dela, comparamos a mesma tarefa feita por um usuário experiente e por uma inexperiente.</p>
+            <p>A árvore responde ao desafio do projeto: <strong>como podemos ajudar pessoas com pouca familiaridade tecnológica a realizar transações financeiras de maneira autônoma, intuitiva e emocionalmente segura?</strong></p>
+          </div>
+        </section>
+
+        <section class="pagina__secao" id="arvore">
+          <h2 class="analise__grupo">A árvore de tarefas</h2>
+          <div class="hta">
+            <div class="hta__topo">
+              <p class="hta__responde">
+                <span class="hta__rostos"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span><span class="avatar avatar--camila persona--stakeholder" aria-hidden="true"></span></span>
+                <span>Marlene, Sérgio e Camila. Responde aos cenários <a href="cenarios.html#cenario-1">Tentativa de pagamento via PIX com auxílio presencial</a>, <a href="cenarios.html#cenario-2">Pagamento de conta fora da rotina com falha de leitura</a> e <a href="cenarios.html#cenario-3">Consulta de saldo interrompida por pop-up promocional</a>.</span>
+              </p>
+            </div>
+
+            <div class="hta__raiz">
+              <div class="hta__no hta__no--0"><span class="hta__n">0</span><span class="hta__txt">Realizar transações financeiras essenciais no aplicativo bancário com autonomia e segurança</span></div>
+              <details class="hta__planos hta__planos--raiz" open>
+                <summary>Plano 0</summary>
+                <p>faça 1. Se o objetivo for só consultar o saldo, encerre após 1. Para transferir, faça 1, 2 e 3, nessa ordem. Se houver dúvida, erro ou suspeita de golpe em qualquer ponto, faça 4. Se a leitura biométrica falhar em 1.1, use a senha numérica.</p>
+              </details>
+            </div>
+
+            <ol class="hta__cols" aria-label="Quatro tarefas de primeiro nível">
+            <li class="hta__tarefa">
+              <div class="hta__no hta__no--1"><span class="hta__n">1</span><span class="hta__txt">Acessar a conta e consultar o saldo com segurança</span></div>
+              <ol class="hta__subs">
+                <li class="hta__sub">
+                  <div class="hta__no hta__no--2"><span class="hta__n">1.1</span><span class="hta__txt">Autenticar-se no aplicativo</span></div>
+                  <ol class="hta__acoes">
+                    <li class="hta__no hta__no--3"><span class="hta__n">1.1.1</span><span class="hta__txt">Tocar no ícone do aplicativo do banco</span></li>
+                    <li class="hta__no hta__no--3"><span class="hta__n">1.1.2</span><span class="hta__txt">Encostar o dedo no sensor de digital</span></li>
+                  </ol>
+                </li>
+                <li class="hta__sub">
+                  <div class="hta__no hta__no--2"><span class="hta__n">1.2</span><span class="hta__txt">Consultar o saldo e o extrato</span></div>
+                  <ol class="hta__acoes">
+                    <li class="hta__no hta__no--3"><span class="hta__n">1.2.1</span><span class="hta__txt">Tocar em “Ver saldo” na tela inicial</span></li>
+                    <li class="hta__no hta__no--3"><span class="hta__n">1.2.2</span><span class="hta__txt">Tocar em “Ver extrato” e deslizar a lista até o depósito</span></li>
+                  </ol>
+                </li>
+              </ol>
+              <details class="hta__planos">
+                <summary>Planos da tarefa 1</summary>
+                <p><b>Plano 1:</b> faça 1.1 e 1.2. Se o objetivo for só transferir, pule 1.2 e siga para 2.</p>
+                <p><b>Plano 1.1:</b> faça 1.1.1 e 1.1.2. Se a digital falhar, o sistema explica a falha e mostra o teclado da senha numérica curta; digite a senha no lugar de 1.1.2.</p>
+                <p><b>Plano 1.2:</b> faça 1.2.1. Faça 1.2.2 se for preciso conferir um depósito.</p>
+              </details>
+            </li>
+
+            <li class="hta__tarefa">
+              <div class="hta__no hta__no--1"><span class="hta__n">2</span><span class="hta__txt">Identificar e inserir os dados do destinatário do Pix</span></div>
+              <ol class="hta__subs">
+                <li class="hta__sub">
+                  <div class="hta__no hta__no--2"><span class="hta__n">2.1</span><span class="hta__txt">Iniciar o envio e escolher um destinatário conhecido</span></div>
+                  <ol class="hta__acoes">
+                    <li class="hta__no hta__no--3"><span class="hta__n">2.1.1</span><span class="hta__txt">Tocar em “Enviar dinheiro (Pix)” na tela inicial</span></li>
+                    <li class="hta__no hta__no--3"><span class="hta__n">2.1.2</span><span class="hta__txt">Tocar no nome do destinatário na lista de quem já recebeu</span></li>
+                  </ol>
+                </li>
+                <li class="hta__sub">
+                  <div class="hta__no hta__no--2"><span class="hta__n">2.2</span><span class="hta__txt">Informar um destinatário novo</span></div>
+                  <ol class="hta__acoes">
+                    <li class="hta__no hta__no--3"><span class="hta__n">2.2.1</span><span class="hta__txt">Tocar em “Outra pessoa” e digitar o celular ou CPF no teclado grande</span></li>
+                    <li class="hta__no hta__no--3"><span class="hta__n">2.2.2</span><span class="hta__txt">Tocar em “Sim, é esta pessoa” ou “Não” após ler o nome exibido</span></li>
+                  </ol>
+                </li>
+              </ol>
+              <details class="hta__planos">
+                <summary>Planos da tarefa 2</summary>
+                <p><b>Plano 2:</b> faça 2.1.1. Se o destinatário já recebeu Pix antes, faça 2.1.2 e siga para 3; senão, faça 2.2.</p>
+                <p><b>Plano 2.1:</b> faça 2.1.1 e 2.1.2. Se o nome não estiver na lista, interrompa 2.1 e faça 2.2.</p>
+                <p><b>Plano 2.2:</b> faça 2.2.1 e 2.2.2. O sistema busca o titular assim que o número fica completo. Se a resposta em 2.2.2 for “Não”, refaça 2.2.1.</p>
+              </details>
+            </li>
+
+            <li class="hta__tarefa">
+              <div class="hta__no hta__no--1"><span class="hta__n">3</span><span class="hta__txt">Conferir dados e valor e autorizar a transferência</span></div>
+              <ol class="hta__subs">
+                <li class="hta__sub">
+                  <div class="hta__no hta__no--2"><span class="hta__n">3.1</span><span class="hta__txt">Informar e conferir o valor</span></div>
+                  <ol class="hta__acoes">
+                    <li class="hta__no hta__no--3"><span class="hta__n">3.1.1</span><span class="hta__txt">Digitar o valor no teclado numérico grande</span></li>
+                    <li class="hta__no hta__no--3"><span class="hta__n">3.1.2</span><span class="hta__txt">Tocar em “Continuar” após conferir o valor por extenso</span></li>
+                  </ol>
+                </li>
+                <li class="hta__sub">
+                  <div class="hta__no hta__no--2"><span class="hta__n">3.2</span><span class="hta__txt">Confirmar e autorizar o envio</span></div>
+                  <ol class="hta__acoes">
+                    <li class="hta__no hta__no--3"><span class="hta__n">3.2.1</span><span class="hta__txt">Tocar em “Sim, enviar” na tela com nome, valor em números e por extenso e data</span></li>
+                    <li class="hta__no hta__no--3"><span class="hta__n">3.2.2</span><span class="hta__txt">Digitar a senha numérica de transação</span></li>
+                  </ol>
+                </li>
+              </ol>
+              <details class="hta__planos">
+                <summary>Planos da tarefa 3</summary>
+                <p><b>Plano 3:</b> faça 3.1 e 3.2. Após 3.2.2, o sistema exibe o comprovante e o guarda automaticamente. Se algum dado estiver errado, toque em “Não, corrigir” e volte a 2 ou a 3.1.</p>
+                <p><b>Plano 3.1:</b> faça 3.1.1 e 3.1.2. Se o valor escrito por extenso não for o desejado, refaça 3.1.1.</p>
+                <p><b>Plano 3.2:</b> faça 3.2.1 e 3.2.2. Se a resposta em 3.2.1 for “Não, cancelar”, encerre sem enviar; nada é debitado.</p>
+              </details>
+            </li>
+
+            <li class="hta__tarefa">
+              <div class="hta__no hta__no--1"><span class="hta__n">4</span><span class="hta__txt">Solicitar ajuda ou cancelar com segurança<span class="hta__opt">feita só quando necessário</span></span></div>
+              <ol class="hta__subs">
+                <li class="hta__sub">
+                  <div class="hta__no hta__no--2"><span class="hta__n">4.1</span><span class="hta__txt">Pedir ajuda a alguém de confiança</span></div>
+                  <ol class="hta__acoes">
+                    <li class="hta__no hta__no--3"><span class="hta__n">4.1.1</span><span class="hta__txt">Tocar em “Chamar alguém de confiança”, visível em todas as telas</span></li>
+                    <li class="hta__no hta__no--3"><span class="hta__n">4.1.2</span><span class="hta__txt">Tocar em “Voltar para onde parei” ao encerrar a ligação</span></li>
+                  </ol>
+                </li>
+                <li class="hta__sub">
+                  <div class="hta__no hta__no--2"><span class="hta__n">4.2</span><span class="hta__txt">Cancelar a operação ou relatar suspeita de golpe</span></div>
+                  <ol class="hta__acoes">
+                    <li class="hta__no hta__no--3"><span class="hta__n">4.2.1</span><span class="hta__txt">Tocar em “Cancelar”, sempre visível, e ler o aviso de que nada foi enviado</span></li>
+                    <li class="hta__no hta__no--3"><span class="hta__n">4.2.2</span><span class="hta__txt">Tocar em “Falar com o banco” para atendimento humano</span></li>
+                  </ol>
+                </li>
+              </ol>
+              <details class="hta__planos">
+                <summary>Planos da tarefa 4</summary>
+                <p><b>Plano 4:</b> pode interromper 1, 2 ou 3 a qualquer momento. Se houver dúvida, faça 4.1. Se houver desistência ou suspeita de golpe, faça 4.2.</p>
+                <p><b>Plano 4.1:</b> faça 4.1.1; após a conversa, fora do sistema, faça 4.1.2 e retome a tarefa do ponto em que parou.</p>
+                <p><b>Plano 4.2:</b> faça 4.2.1. Se houver suspeita de golpe, faça também 4.2.2.</p>
+              </details>
+            </li>
+            </ol>
+
+            <p class="hta__legenda" aria-hidden="true">
+              <span><i class="hta__chave hta__chave--1"></i>tarefa de 1º nível</span>
+              <span><i class="hta__chave hta__chave--2"></i>subtarefa de 2º nível</span>
+              <span><i class="hta__chave hta__chave--3"></i>ação na tela, 3º nível</span>
+            </p>
+          </div>
+
+          <div class="origens">
+            <h3 class="origens__titulo">De onde vem cada decisão</h3>
+            <ul class="origens__lista">
+              <li><span class="origens__cod">1.1</span><p>Senha numérica como alternativa à digital: <a href="personas.html#ficha-sergio">ficha de Sérgio</a> e cenário <a href="cenarios.html#cenario-2">Pagamento de conta fora da rotina com falha de leitura</a>.</p></li>
+              <li><span class="origens__cod">2.2.2, 3.1 e 3.2</span><p>Confirmação com Sim e Não, valor por extenso e comprovante: <a href="personas.html#ficha-marlene">ficha de Marlene</a> e cenário <a href="cenarios.html#cenario-1">Tentativa de pagamento via PIX com auxílio presencial</a>.</p></li>
+              <li><span class="origens__cod">4.1</span><p>Botão “Chamar alguém de confiança” com retomada: <a href="personas.html#ficha-camila">ficha de Camila</a> e <a href="personas.html#ficha-marlene">ficha de Marlene</a>.</p></li>
+              <li><span class="origens__cod">4.2.1</span><p>Cancelamento sempre visível: cenário <a href="cenarios.html#cenario-3">Consulta de saldo interrompida por pop-up promocional</a>, em que cada toque parecia irreversível.</p></li>
+              <li><span class="origens__cod">4.2.2</span><p>Acesso a atendente humano: <a href="personas.html#ficha-sergio">ficha de Sérgio</a>.</p></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="pagina__secao" id="tempo">
+          <h2 class="analise__grupo">Experiente e inexperiente</h2>
+          <p class="analise__descricao">
+            A tarefa é transferir via Pix para uma pessoa nova, o caminho 1, 2 e 3 do Plano 0.
+            É o caso do cenário com Marlene: pagar o jardineiro pelo número de celular. O experiente,
+            como o Sérgio, faz o Pix do dia a dia sem pensar. A inexperiente, como a Marlene, lê
+            devagar, consulta o caderno e confere com a filha antes de confirmar. O tempo de cada
+            caminho foi estimado pelo KLM, a técnica mais simples do GOMS.
+          </p>
+
+          <div class="tempo">
+            <h3 class="tempo__titulo">Tempo estimado na tela</h3>
+            <ul class="tempo__lista">
+              <li class="tempo__linha tempo__linha--sergio">
+                <span class="tempo__nome"><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span>Sérgio, caminho atual</span>
+                <span class="tempo__trilho" aria-hidden="true"><span class="tempo__barra" style="--w: 38.1%"></span></span>
+                <span class="tempo__valor">23,3 s</span>
+              </li>
+              <li class="tempo__linha tempo__linha--sergio tempo__linha--previsto">
+                <span class="tempo__nome"><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span>Sérgio, com a lista de quem já recebeu</span>
+                <span class="tempo__trilho" aria-hidden="true"><span class="tempo__barra" style="--w: 30.1%"></span></span>
+                <span class="tempo__valor">18,4 s</span>
+              </li>
+              <li class="tempo__linha tempo__linha--marlene">
+                <span class="tempo__nome"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span>Marlene, caminho atual</span>
+                <span class="tempo__trilho" aria-hidden="true"><span class="tempo__barra" style="--w: 100.0%"></span></span>
+                <span class="tempo__valor">61,2 s</span>
+              </li>
+              <li class="tempo__linha tempo__linha--marlene tempo__linha--previsto">
+                <span class="tempo__nome"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span>Marlene, com a lista de quem já recebeu</span>
+                <span class="tempo__trilho" aria-hidden="true"><span class="tempo__barra" style="--w: 70.1%"></span></span>
+                <span class="tempo__valor">42,9 s</span>
+              </li>
+            </ul>
+            <p class="tempo__nota">As barras “previstas” vêm da recomendação de usar a lista de quem já recebeu Pix como caminho principal (veja abaixo).</p>
+          </div>
+
+          <div class="klm-par">
+            <article class="klm-card klm-card--sergio persona--secundaria">
+              <header class="klm-card__topo"><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span><div><h3>Experiente: Sérgio, com biometria</h3><p>9 ações na tela · ansiedade baixa</p></div></header>
+              <div class="klm-scroll">
+              <table class="klm">
+                <thead><tr><th scope="col">Operador</th><th scope="col">Ação</th><th scope="col">Tempo (s)</th></tr></thead>
+                <tbody>
+                  <tr><td class="klm__op">M P B B</td><td>Abrir o aplicativo pelo ícone do banco <span class="klm__ref">1.1.1</span></td><td class="klm__t">2,70</td></tr>
+                  <tr><td class="klm__op">P</td><td>Encostar o dedo no sensor; a digital aceita na primeira tentativa <span class="klm__ref">1.1.2</span></td><td class="klm__t">1,10</td></tr>
+                  <tr><td class="klm__op">M P B B</td><td>Tocar em “Enviar dinheiro (Pix)”, no mesmo lugar da primeira tela <span class="klm__ref">2.1.1</span></td><td class="klm__t">2,70</td></tr>
+                  <tr><td class="klm__op">M P B B T(11)</td><td>Tocar em “Outra pessoa” e digitar o celular de uma vez <span class="klm__ref">2.2.1</span></td><td class="klm__t">4,90</td></tr>
+                  <tr><td class="klm__op">M P B B</td><td>Conferir o nome com uma olhada e tocar em “Sim, é esta pessoa” <span class="klm__ref">2.2.2</span></td><td class="klm__t">2,70</td></tr>
+                  <tr><td class="klm__op">M T(3)</td><td>Digitar o valor, 150 <span class="klm__ref">3.1.1</span></td><td class="klm__t">1,80</td></tr>
+                  <tr><td class="klm__op">P B B</td><td>Tocar em “Continuar” sem reler <span class="klm__ref">3.1.2</span></td><td class="klm__t">1,50</td></tr>
+                  <tr><td class="klm__op">M P B B</td><td>Conferir destinatário, valor e data numa tela e tocar em “Sim, enviar” <span class="klm__ref">3.2.1</span></td><td class="klm__t">2,70</td></tr>
+                  <tr><td class="klm__op">M T(4)</td><td>Digitar a senha de memória <span class="klm__ref">3.2.2</span></td><td class="klm__t">2,00</td></tr>
+                  <tr><td class="klm__op">M</td><td>Ler a mensagem de sucesso como operação concluída</td><td class="klm__t">1,20</td></tr>
+                  <tr class="klm__total"><th scope="row" colspan="2">Total</th><td class="klm__t">23,30</td></tr>
+                </tbody>
+              </table>
+              </div>
+            </article>
+
+            <article class="klm-card klm-card--marlene persona--primaria">
+              <header class="klm-card__topo"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><div><h3>Inexperiente: Marlene, com senha</h3><p>11 ações na tela e 2 fora dela · ansiedade alta</p></div></header>
+              <div class="klm-scroll">
+              <table class="klm">
+                <thead><tr><th scope="col">Operador</th><th scope="col">Ação</th><th scope="col">Tempo (s)</th></tr></thead>
+                <tbody>
+                  <tr class="klm__fora"><td class="klm__op">—</td><td>Abrir o caderno de anotações ao lado do celular, fora da tela</td><td class="klm__t">—</td></tr>
+                  <tr><td class="klm__op">M M P B B</td><td>Procurar o ícone, conferir o caderno e tocar no ícone do banco <span class="klm__ref">1.1.1</span></td><td class="klm__t">3,90</td></tr>
+                  <tr><td class="klm__op">M T(4)</td><td>Lembrar a senha e digitar devagar, olhando cada número <span class="klm__ref">Plano 1.1</span></td><td class="klm__t">6,00</td></tr>
+                  <tr><td class="klm__op">M M P B B</td><td>Ler os botões um a um e tocar em “Enviar dinheiro (Pix)” <span class="klm__ref">2.1.1</span></td><td class="klm__t">3,90</td></tr>
+                  <tr><td class="klm__op">M M P B B M T(11)</td><td>Hesitar entre a lista e “Outra pessoa” e digitar os 11 números com pausas <span class="klm__ref">2.2.1</span> <span class="klm__ans">ansiedade alta</span></td><td class="klm__t">18,30</td></tr>
+                  <tr><td class="klm__op">M M P B B</td><td>Reler o nome, por medo de errar a pessoa, e tocar em “Sim, é esta pessoa” <span class="klm__ref">2.2.2</span> <span class="klm__ans">ansiedade alta</span></td><td class="klm__t">3,90</td></tr>
+                  <tr><td class="klm__op">M T(3)</td><td>Digitar 1, 5 e 0 devagar <span class="klm__ref">3.1.1</span></td><td class="klm__t">4,80</td></tr>
+                  <tr><td class="klm__op">M P B B</td><td>Reler o valor por extenso e tocar em “Continuar” <span class="klm__ref">3.1.2</span></td><td class="klm__t">2,70</td></tr>
+                  <tr><td class="klm__op">M P B B</td><td>Parar na confirmação e tocar em “Chamar alguém de confiança” <span class="klm__ref">4.1.1</span> <span class="klm__ans">ansiedade alta</span></td><td class="klm__t">2,70</td></tr>
+                  <tr class="klm__fora"><td class="klm__op">—</td><td>Ler nome e valor para Camila ao telefone e esperar a aprovação, fora da tela</td><td class="klm__t">—</td></tr>
+                  <tr><td class="klm__op">M P B B</td><td>Tocar em “Voltar para onde parei”, com os dados já preenchidos <span class="klm__ref">4.1.2</span></td><td class="klm__t">2,70</td></tr>
+                  <tr><td class="klm__op">M M P B B</td><td>Reler nome e valor e tocar em “Sim, enviar”, tratando o toque como irreversível <span class="klm__ref">3.2.1</span> <span class="klm__ans">ansiedade alta</span></td><td class="klm__t">3,90</td></tr>
+                  <tr><td class="klm__op">M T(4)</td><td>Lembrar a senha, com medo de esquecê-la, e digitar devagar <span class="klm__ref">3.2.2</span> <span class="klm__ans">ansiedade alta</span></td><td class="klm__t">6,00</td></tr>
+                  <tr><td class="klm__op">M M</td><td>Ler o comprovante e confirmar que a operação foi concluída “de verdade”</td><td class="klm__t">2,40</td></tr>
+                  <tr class="klm__total"><th scope="row" colspan="2">Total na tela</th><td class="klm__t">61,20</td></tr>
+                </tbody>
+              </table>
+              </div>
+            </article>
+          </div>
+
+          <p class="nota-calculo">
+            Tempos dos operadores conforme a aula 10: M = 1,20 s, P = 1,10 s e cada toque conta como
+            apertar e soltar (B B = 0,40 s). Cada tecla custa 0,20 s para o experiente e 1,20 s para a
+            inexperiente, que também recebe um M a mais a cada hesitação, releitura ou escolha. Essa
+            regra é da equipe e se apoia na ficha de Marlene. A senha de 4 dígitos e o valor de R$ 150
+            são hipóteses do cálculo. As ações fora da tela e a espera pelo sistema (W) não entram na soma.
+          </p>
+
+          <h3 class="subtitulo">Síntese comparativa</h3>
+          <div class="comp-wrap">
+            <table class="comp">
+              <thead><tr><th scope="col">Critério</th><th scope="col">Marlene, inexperiente</th><th scope="col">Sérgio, experiente</th><th scope="col">Diferença</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Tempo estimado na tela</th><td>61,20 s, mais o caderno e a ligação</td><td>23,30 s</td><td>2,6×</td></tr>
+                <tr><th scope="row">Ações de 3º nível na tela</th><td>11</td><td>9</td><td>+2 (4.1.1 e 4.1.2)</td></tr>
+                <tr><th scope="row">Ações fora da tela</th><td>2, o caderno e a ligação</td><td>0</td><td>+2</td></tr>
+                <tr><th scope="row">Hesitação: operadores M</th><td>19 (22,80 s)</td><td>8 (9,60 s)</td><td>+11</td></tr>
+                <tr><th scope="row">Digitação: teclas</th><td>22 (26,40 s)</td><td>18 (3,60 s)</td><td>7,3× o tempo</td></tr>
+                <tr><th scope="row">Autenticação</th><td>Senha numérica</td><td>Biometria</td><td>—</td></tr>
+                <tr><th scope="row">Apoio externo</th><td>Caderno do neto e filha</td><td>Nenhum nesta tarefa</td><td>—</td></tr>
+                <tr><th scope="row">Ansiedade e estresse</th><td>Alta, com picos em 2.2.1, 2.2.2, 3.2.1 e 3.2.2</td><td>Baixa</td><td>—</td></tr>
+                <tr><th scope="row">Maior risco de abandono</th><td>Confirmação final e qualquer tela que não está no caderno</td><td>Falha de leitura sem explicação em operação nova</td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="nota-calculo">A ansiedade é uma escala qualitativa inferida das fichas e dos cenários; não foi medida.</p>
+        </section>
+
+        <section class="pagina__secao" id="recomendacoes">
+          <h2 class="analise__grupo">Recomendações de interface</h2>
+          <ol class="recs">
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">1</span>
+              <div class="rec__corpo">
+                <h3 class="rec__titulo">Lista de quem já recebeu Pix (2.1.2) como caminho principal</h3>
+                <dl class="rec__dados">
+                  <div><dt>Lacuna que reduz</dt><dd>Digitação do celular: 11 teclas, 13,20 s de Marlene</dd></div>
+                  <div><dt>Efeito previsto</dt><dd>Marlene cai de 61,2 s para 42,9 s; Sérgio, de 23,3 s para 18,4 s</dd></div>
+                  <div><dt>Origem</dt><dd>Fichas de <a href="personas.html#ficha-marlene">Marlene</a> e de <a href="personas.html#ficha-sergio">Sérgio</a></dd></div>
+                </dl>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">2</span>
+              <div class="rec__corpo">
+                <h3 class="rec__titulo">Uma pergunta por tela, botões grandes e linguagem funcional, sem “chave”, “token” e “agendar” e sem ícone sem rótulo</h3>
+                <dl class="rec__dados">
+                  <div><dt>Lacuna que reduz</dt><dd>Hesitação de escolha e releitura</dd></div>
+                  <div><dt>Efeito previsto</dt><dd>Menos operadores M por tela</dd></div>
+                  <div><dt>Origem</dt><dd>Ficha de <a href="personas.html#ficha-marlene">Marlene</a>; <a href="cenarios.html">cenários com Marlene</a></dd></div>
+                </dl>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">3</span>
+              <div class="rec__corpo">
+                <h3 class="rec__titulo">Modo de treino sem dinheiro real e tutorial curto em vídeo que pode ser revisto</h3>
+                <dl class="rec__dados">
+                  <div><dt>Lacuna que reduz</dt><dd>Consulta ao caderno</dd></div>
+                  <div><dt>Efeito previsto</dt><dd>O ensaio substitui o caderno, que falha quando a tela muda</dd></div>
+                  <div><dt>Origem</dt><dd>Fichas de <a href="personas.html#ficha-marlene">Marlene</a> e de <a href="personas.html#ficha-camila">Camila</a></dd></div>
+                </dl>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">4</span>
+              <div class="rec__corpo">
+                <h3 class="rec__titulo">Botão “Chamar alguém de confiança” com retomada do ponto em que parou</h3>
+                <dl class="rec__dados">
+                  <div><dt>Lacuna que reduz</dt><dd>Checagem com a filha antes de confirmar</dd></div>
+                  <div><dt>Efeito previsto</dt><dd>A checagem deixa de causar abandono; Camila orienta sem operar</dd></div>
+                  <div><dt>Origem</dt><dd>Fichas de <a href="personas.html#ficha-camila">Camila</a> e de <a href="personas.html#ficha-marlene">Marlene</a></dd></div>
+                </dl>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">5</span>
+              <div class="rec__corpo">
+                <h3 class="rec__titulo">Confirmação com Sim e Não, nome e valor em números e por extenso, e aviso de que nada foi enviado ainda</h3>
+                <dl class="rec__dados">
+                  <div><dt>Lacuna que reduz</dt><dd>Ansiedade em 3.2.1</dd></div>
+                  <div><dt>Efeito previsto</dt><dd>Menos releituras no ponto de maior tensão</dd></div>
+                  <div><dt>Origem</dt><dd>Ficha de <a href="personas.html#ficha-marlene">Marlene</a></dd></div>
+                </dl>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">6</span>
+              <div class="rec__corpo">
+                <h3 class="rec__titulo">Comprovante exibido e guardado automaticamente</h3>
+                <dl class="rec__dados">
+                  <div><dt>Lacuna que reduz</dt><dd>Dúvida se a operação foi concluída</dd></div>
+                  <div><dt>Efeito previsto</dt><dd>Fecha o modelo mental de operação concluída</dd></div>
+                  <div><dt>Origem</dt><dd>Ficha de <a href="personas.html#ficha-marlene">Marlene</a></dd></div>
+                </dl>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">7</span>
+              <div class="rec__corpo">
+                <h3 class="rec__titulo">Ajuda falada em cada tela</h3>
+                <dl class="rec__dados">
+                  <div><dt>Lacuna que reduz</dt><dd>Leitura lenta de rótulos</dd></div>
+                  <div><dt>Efeito previsto</dt><dd>Apoio sem depender de outra pessoa</dd></div>
+                  <div><dt>Origem</dt><dd>Ficha de <a href="personas.html#ficha-marlene">Marlene</a>; sugestão na ficha de <a href="personas.html#ficha-rogerio">Rogério</a></dd></div>
+                </dl>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">8</span>
+              <div class="rec__corpo">
+                <h3 class="rec__titulo">Aviso ao contato de confiança em transação atípica</h3>
+                <dl class="rec__dados">
+                  <div><dt>Lacuna que reduz</dt><dd>Checagem com a filha em toda operação</dd></div>
+                  <div><dt>Efeito previsto</dt><dd>Hipótese a testar</dd></div>
+                  <div><dt>Origem</dt><dd>Ficha de <a href="personas.html#ficha-camila">Camila</a></dd></div>
+                </dl>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">9</span>
+              <div class="rec__corpo">
+                <h3 class="rec__titulo">Modo simples opcional e reversível</h3>
+                <dl class="rec__dados">
+                  <div><dt>Lacuna que reduz</dt><dd>Tela de confirmação a mais para quem já é experiente</dd></div>
+                  <div><dt>Efeito previsto</dt><dd>Sérgio e Rogério mantêm o caminho rápido</dd></div>
+                  <div><dt>Origem</dt><dd>Ficha de <a href="personas.html#ficha-rogerio">Rogério</a></dd></div>
+                </dl>
+              </div>
+            </li>
+          </ol>
+
+          <div class="fecho">
+            <p>Pela biometria e sem hesitar, o Sérgio leva cerca de 23 segundos. A Marlene leva cerca de 61, mais de duas vezes e meia, sem contar o caderno e a ligação para a Camila. A diferença vem de duas fontes: digitação lenta, 22,8 segundos a mais, e hesitação, 13,2 segundos a mais.</p>
+            <p>Por isso o PIX para Todos precisa da lista de quem já recebeu como caminho principal: ela elimina a digitação do celular e leva a Marlene a cerca de 43 segundos. O botão de ajuda com retomada transforma a ligação para a filha numa pausa, e não num abandono. O Rogério, antiusuário, fica como referência: ele usa o aplicativo completo e não teve o tempo calculado, porque o modo simples é opcional e reversível. Os tempos são previsões para quem conclui sem errar e devem ser medidos no teste com o protótipo.</p>
+          </div>
+        </section>
+
+      </div>
+
+      <nav class="paginacao" aria-label="Página anterior e próxima">
+        <a class="paginacao__link paginacao__link--anterior" href="cenarios.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"></path><path d="M10 5.5L3.5 12l6.5 6.5"></path></svg>
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Anterior</span>
+            <span class="paginacao__nome">Cenários</span>
+          </span>
+        </a>
+        <a class="paginacao__link paginacao__link--proxima" href="crazy4.html">
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Próxima</span>
+            <span class="paginacao__nome">Crazy 4</span>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg>
+        </a>
+      </nav>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       4. RODAPÉ
+       ============================================================ -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense · Sistemas de Informação · 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=28"></script>
+</body>
+</html>

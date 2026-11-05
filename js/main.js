@@ -213,7 +213,7 @@
   var ANIMADOS = [
     '.pagina__corpo .card', '.pessoa', '.roteiro__item', '.csd__lista li', '.postit',
     '.concorrente', '.grafico', '.mapa__quadrante', '.hmw', '.foto', '.doc',
-    '.pagina__corpo .arquivo', '.referencias', '.documento', '.videoteca', '.persona-card', '.ligacao', '.ideia', '.dobra', '.fica__bloco', '.regras__texto', '.ficha-persona', '.aviso', '.cenario', '.problema', '.momento', '.padroes-wrap'
+    '.pagina__corpo .arquivo', '.referencias', '.documento', '.videoteca', '.persona-card', '.ligacao', '.ideia', '.dobra', '.fica__bloco', '.regras__texto', '.ficha-persona', '.aviso', '.cenario', '.problema', '.momento', '.padroes-wrap', '.hta', '.tempo', '.klm-card', '.comp-wrap', '.rec', '.origens', '.fecho'
   ].join(', ');
 
   if (!poucoMovimento && 'IntersectionObserver' in window) {
