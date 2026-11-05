@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cenários — PIX para todos</title>
+  <meta name="description" content="Três cenários-problema do projeto PIX para todos, ligados às personas Marlene, Sérgio e Camila.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=24">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+        // menu lateral fixo (escolha salva pelo botão da borda esquerda)
+        if (localStorage.getItem('menu') === 'fixo') document.documentElement.setAttribute('data-menu', 'fixo');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO
+       ============================================================ -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+
+        <!-- Botão de modo claro / escuro -->
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+
+        <!-- Abre o fio condutor no celular -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="trilha" aria-label="Abrir o menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="progresso" aria-hidden="true"><span class="progresso__barra"></span></div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ==========================================================
+         2. FIO CONDUTOR
+         O mesmo menu em todas as páginas. Ao mudar um item aqui,
+         mude também nas outras páginas.
+         ========================================================== -->
+    <nav class="trilha" id="trilha" aria-label="Menu lateral" data-etapa="7">
+      <ul class="trilha__lista">
+        <li>
+          <a class="trilha__link" href="index.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5"></path><path d="M6.5 10v8.5h11V10"></path></svg></span>
+            <span class="trilha__nome">Início</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="projeto.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.5"></circle></svg></span>
+            <span class="trilha__nome">O Projeto</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="trilha__grupo" id="trilha-imersao">Imersão</p>
+      <div class="trilha__processo">
+        <span class="trilha__fio" aria-hidden="true"></span>
+        <ol class="trilha__lista" aria-labelledby="trilha-imersao">
+          <li>
+            <a class="trilha__link trilha__link--feito" href="problema.html">
+              <span class="trilha__no" aria-hidden="true">01</span>
+              <span class="trilha__nome">Definição do problema</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="matriz-csd.html">
+              <span class="trilha__no" aria-hidden="true">02</span>
+              <span class="trilha__nome">Matriz CSD</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="mapa-de-empatia.html">
+              <span class="trilha__no" aria-hidden="true">03</span>
+              <span class="trilha__nome">Mapa de Empatia</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="analise-competitiva.html">
+              <span class="trilha__no" aria-hidden="true">04</span>
+              <span class="trilha__nome">Análise Competitiva</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="pesquisa.html">
+              <span class="trilha__no" aria-hidden="true">05</span>
+              <span class="trilha__nome">Pesquisa com usuários</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="entrevistas.html">Materiais das entrevistas</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="resultados.html">
+              <span class="trilha__no" aria-hidden="true">06</span>
+              <span class="trilha__nome">Análise dos resultados</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="respostas.html">Respostas do questionário</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-ideacao">Ideação e prototipação</p>
+        <ol class="trilha__lista" start="7" aria-labelledby="trilha-ideacao">
+          <li>
+            <a class="trilha__link trilha__link--pai" href="ideacao.html">
+              <span class="trilha__no" aria-hidden="true">07</span>
+              <span class="trilha__nome">Ideação</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="personas.html">Personas</a></li>
+              <li><a class="trilha__sublink" href="cenarios.html" aria-current="page">Cenários</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link" href="prototipo.html">
+              <span class="trilha__no" aria-hidden="true">08</span>
+              <span class="trilha__nome">Solução / Protótipo</span>
+            </a>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-avaliacao">Avaliação</p>
+        <ol class="trilha__lista" start="9" aria-labelledby="trilha-avaliacao">
+          <li>
+            <a class="trilha__link" href="avaliacao.html">
+              <span class="trilha__no" aria-hidden="true">09</span>
+              <span class="trilha__nome">Avaliação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="conclusoes.html">
+              <span class="trilha__no" aria-hidden="true">10</span>
+              <span class="trilha__nome">Conclusões</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <p class="trilha__grupo" id="trilha-sobre">Sobre o trabalho</p>
+      <ul class="trilha__lista" aria-labelledby="trilha-sobre">
+        <li>
+          <a class="trilha__link" href="equipe.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path><path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path></svg></span>
+            <span class="trilha__nome">Equipe</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="uso-de-ia.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"></rect><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"></path></svg></span>
+            <span class="trilha__nome">Uso de IA</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Linha na borda esquerda: com o mouse em cima o menu aparece;
+         com um clique ele fica fixo na tela (e recolhe com outro) -->
+    <button class="puxador" id="puxador" type="button" aria-controls="trilha" aria-expanded="false" aria-label="Fixar o menu lateral">
+      <span class="puxador__linha" aria-hidden="true"></span>
+      <span class="puxador__icone" aria-hidden="true">
+        <svg class="puxador__fixar" viewBox="0 0 24 24"><path d="M9 3.5h6l-1 5.5 3 3v2H7v-2l3-3z"></path><path d="M12 14v6.5"></path></svg>
+        <svg class="puxador__recolher" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"></path></svg>
+      </span>
+    </button>
+
+    <!-- ==========================================================
+         3. CONTEÚDO DA PÁGINA
+         ========================================================== -->
+    <main class="pagina" id="conteudo">
+
+      <header class="pagina__cabecalho">
+        <nav class="migalhas" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li>Ideação e prototipação</li>
+            <li><a href="ideacao.html">Ideação</a></li>
+            <li aria-current="page">Cenários</li>
+          </ol>
+        </nav>
+        <p class="pagina__rotulo">Etapa 07 de 10</p>
+        <h1 class="pagina__titulo">Cenários-problema</h1>
+        <p class="pagina__intro">
+          Três histórias do dia a dia em que o aplicativo de hoje falha com as nossas
+          personas. Cada uma mostra o momento em que a confiança se perde e para onde a
+          pessoa vai depois.
+        </p>
+        <nav class="nesta-pagina" aria-label="Nesta página">
+          <span class="nesta-pagina__rotulo" aria-hidden="true">Nesta página:</span>
+          <a href="#cenarios">Os cenários</a>
+          <a href="#padroes">O que se repete</a>
+        </nav>
+      </header>
+
+      <div class="pagina__corpo">
+
+        <section class="pagina__secao" id="cenarios">
+          <h2 class="analise__grupo">Os três cenários</h2>
+          <p class="analise__descricao">Escolha um cenário. Rogério (antiusuário) não tem cenário, porque o modo simples não é feito para ele.</p>
+          <div class="fichas" data-abas="cenarios">
+        <article class="cenario" id="cenario-1" data-aba="Cenário 1" data-papel="Termina: com a Camila, sem certeza">
+          <div class="aba-modelo" hidden>
+            <span class="cenario-aba__topo"><span class="cenario-aba__num">Cenário 1</span><span class="cenario-aba__atores"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span class="avatar avatar--camila persona--stakeholder" aria-hidden="true"></span></span></span>
+            <span class="cenario-aba__titulo">Tentativa de pagamento via PIX com auxílio presencial</span>
+            <span class="cenario-aba__fim">Termina: com a Camila, sem certeza</span>
+          </div>
+
+          <header class="cenario__topo">
+            <p class="cenario__num">Cenário 1</p>
+            <h3 class="cenario__titulo">Tentativa de pagamento via PIX com auxílio presencial</h3>
+            <ul class="cenario__atores">
+              <li><a class="ator persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span class="ator__texto"><strong>Marlene Souza</strong><small>persona primária</small></span></a></li>
+              <li><a class="ator persona--stakeholder" href="personas.html#ficha-camila"><span class="avatar avatar--camila persona--stakeholder" aria-hidden="true"></span><span class="ator__texto"><strong>Camila Ribeiro</strong><small>stakeholder</small></span></a></li>
+            </ul>
+            <dl class="cenario__quando">
+              <div><dt>Quando</dt><dd>Quarta-feira, à tarde</dd></div>
+              <div><dt>Onde</dt><dd>Sala de estar da casa de Marlene, com luz natural</dd></div>
+              <div><dt>Objetivo</dt><dd>Pagar o jardineiro, que fez um serviço mais cedo, usando o PIX.</dd></div>
+            </dl>
+          </header>
+
+          <div class="faixa" role="img" aria-label="6 momentos: 4 no plano, 1 em dúvida, 1 com quebra">
+            <div class="faixa__barra"><span class="faixa__seg faixa__seg--plano"></span><span class="faixa__seg faixa__seg--plano"></span><span class="faixa__seg faixa__seg--plano"></span><span class="faixa__seg faixa__seg--duvida"></span><span class="faixa__seg faixa__seg--plano"></span><span class="faixa__seg faixa__seg--quebra"></span><span class="faixa__seg faixa__seg--fim"></span></div>
+            <p class="faixa__leg" aria-hidden="true"><span class="faixa__chave faixa__chave--plano">No plano</span><span class="faixa__chave faixa__chave--duvida">Em dúvida</span><span class="faixa__chave faixa__chave--quebra">Quebra</span></p>
+          </div>
+
+          <section class="cenario__bloco" aria-labelledby="cenario-1-hist">
+            <h4 id="cenario-1-hist">A história, momento a momento</h4>
+            <ol class="momentos">
+              <li class="momento momento--plano"><span class="momento__no" aria-hidden="true">1</span><div class="momento__corpo"><p class="momento__estado">No plano</p><p>Marlene segura o celular bem perto do rosto, por causa das letras pequenas. Ela e a filha Camila estão juntas para resolver uma pendência financeira.</p></div></li>
+              <li class="momento momento--plano"><span class="momento__no" aria-hidden="true">2</span><div class="momento__corpo"><p class="momento__estado">No plano</p><p>Com medo de enviar o dinheiro para a pessoa errada ou cair em golpe, Marlene planejou esperar a visita da Camila e se recusa a tentar sozinha.</p></div></li>
+              <li class="momento momento--plano"><span class="momento__no" aria-hidden="true">3</span><div class="momento__corpo"><p class="momento__estado">No plano</p><p>Camila chega, pega o celular da mãe, abre o aplicativo do banco e pergunta os dados do jardineiro. Marlene observa a tela de longe.</p></div></li>
+              <li class="momento momento--duvida"><span class="momento__no" aria-hidden="true">4</span><div class="momento__corpo"><p class="momento__estado">Em dúvida</p><p>A tela é densa, com opções como “Chave”, “Agendar” e “Token”, termos que Marlene não compreende.</p></div></li>
+              <li class="momento momento--plano"><span class="momento__no" aria-hidden="true">5</span><div class="momento__corpo"><p class="momento__estado">No plano</p><p>Camila preenche o valor, lê o nome do destinatário em voz alta para Marlene confirmar e faz o pagamento.</p></div></li>
+              <li class="momento momento--quebra"><span class="momento__no" aria-hidden="true">6</span><div class="momento__corpo"><p class="momento__estado">Quebra</p><p>O sistema mostra só uma mensagem rápida de sucesso. Sem um comprovante em papel, Marlene fica insegura sobre a operação ter sido concluída.</p></div></li>
+              <li class="momento momento--fim"><span class="momento__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 20.5V4"></path><path d="M6 5h11l-2.2 3.5L17 12H6"></path></svg></span><div class="momento__corpo"><p class="momento__estado">Onde termina: com a Camila, sem certeza</p><p>Marlene aceita que o pagamento foi feito porque confia na filha. Sente que jamais conseguiria fazer aquilo sozinha e continua em dúvida se a transação foi “de verdade” concluída.</p></div></li>
+            </ol>
+          </section>
+
+          <section class="cenario__bloco" aria-labelledby="cenario-1-prob">
+            <h4 id="cenario-1-prob">Pontos problemáticos e o que a ficha já pedia</h4>
+            <ul class="problemas">
+              <li class="problema"><p class="problema__texto">Dependência total de um terceiro (Camila) para fazer uma transação básica.</p><a class="problema__ficha persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span><small>Objetivo na ficha de Marlene</small>“Fazer um Pix para alguém conhecido sem ninguém ao lado.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Interface incompatível com a restrição física da usuária: letras pequenas.</p><a class="problema__ficha persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span><small>Requisito na ficha de Marlene</small>“Letras e botões grandes, com poucas opções bem separadas.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Carga cognitiva alta e jargões (“Chave”, “Agendar”, “Token”) que assustam a persona primária.</p><a class="problema__ficha persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span><small>Implicação no design na ficha de Marlene</small>“Linguagem funcional no lugar de “chave”, “token” e “agendar”, e nenhum ícone sem rótulo.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Falta de um retorno mais tangível (comprovante) que traduza a sensação de tarefa concluída para o modelo mental de Marlene.</p><a class="problema__ficha persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span><small>Requisito na ficha de Marlene</small>“Comprovante ao final e possibilidade de cancelar.”</span></a></li>
+            </ul>
+          </section>
+
+          <details class="cenario__questoes">
+            <summary>Questões para refinar o cenário (8)</summary>
+            <div class="questoes">
+              <div><h5>Exploratórias</h5>
+                <ol start="1">
+                  <li>O que é o ambiente físico e quais são as restrições do dispositivo utilizado por Marlene?</li>
+                  <li>Por que Marlene precisa realizar a transação financeira neste momento?</li>
+                  <li>Por que Marlene decide não realizar a tarefa imediatamente e aguarda a chegada da filha?</li>
+                  <li>O que são as informações e jargões apresentados na tela de transferência do aplicativo?</li>
+                  <li>Como Marlene interpreta a mensagem de sucesso exibida pelo sistema atual?</li>
+                </ol>
+              </div>
+              <div><h5>De verificação</h5>
+                <ol start="6">
+                  <li>A presença de Camila faz parte estrita da capacidade de Marlene concluir a transação?</li>
+                  <li>A confirmação visual dos dados pode ser feita de maneira autônoma por Marlene sem que Camila opere o aparelho?</li>
+                  <li>A emissão do comprovante digital faz parte do modelo mental de “operação concluída” de Marlene?</li>
+                </ol>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <article class="cenario" id="cenario-2" data-aba="Cenário 2" data-papel="Termina: na lotérica">
+          <div class="aba-modelo" hidden>
+            <span class="cenario-aba__topo"><span class="cenario-aba__num">Cenário 2</span><span class="cenario-aba__atores"><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span></span></span>
+            <span class="cenario-aba__titulo">Pagamento de conta fora da rotina com falha de leitura</span>
+            <span class="cenario-aba__fim">Termina: na lotérica</span>
+          </div>
+
+          <header class="cenario__topo">
+            <p class="cenario__num">Cenário 2</p>
+            <h3 class="cenario__titulo">Pagamento de conta fora da rotina com falha de leitura</h3>
+            <ul class="cenario__atores">
+              <li><a class="ator persona--secundaria" href="personas.html#ficha-sergio"><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span><span class="ator__texto"><strong>Sérgio Almeida</strong><small>persona secundária</small></span></a></li>
+            </ul>
+            <dl class="cenario__quando">
+              <div><dt>Quando</dt><dd>Terça-feira, de manhã</dd></div>
+              <div><dt>Onde</dt><dd>Escritório da casa de Sérgio, no wi-fi</dd></div>
+              <div><dt>Objetivo</dt><dd>Pagar o boleto do condomínio, que veio com cobrança extra e ficou fora dos débitos automáticos, rápido e sem pedir ajuda.</dd></div>
+            </dl>
+          </header>
+
+          <div class="faixa" role="img" aria-label="5 momentos: 1 no plano, 2 em dúvida, 2 com quebra">
+            <div class="faixa__barra"><span class="faixa__seg faixa__seg--plano"></span><span class="faixa__seg faixa__seg--duvida"></span><span class="faixa__seg faixa__seg--duvida"></span><span class="faixa__seg faixa__seg--quebra"></span><span class="faixa__seg faixa__seg--quebra"></span><span class="faixa__seg faixa__seg--fim"></span></div>
+            <p class="faixa__leg" aria-hidden="true"><span class="faixa__chave faixa__chave--plano">No plano</span><span class="faixa__chave faixa__chave--duvida">Em dúvida</span><span class="faixa__chave faixa__chave--quebra">Quebra</span></p>
+          </div>
+
+          <section class="cenario__bloco" aria-labelledby="cenario-2-hist">
+            <h4 id="cenario-2-hist">A história, momento a momento</h4>
+            <ol class="momentos">
+              <li class="momento momento--plano"><span class="momento__no" aria-hidden="true">1</span><div class="momento__corpo"><p class="momento__estado">No plano</p><p>Sérgio planeja abrir o aplicativo com a digital, escolher o pagamento e ler o código de barras com a câmera, esperando resolver tudo em poucos minutos.</p></div></li>
+              <li class="momento momento--duvida"><span class="momento__no" aria-hidden="true">2</span><div class="momento__corpo"><p class="momento__estado">Em dúvida</p><p>A biometria falha na primeira tentativa. Ele limpa o dedo, tenta de novo e consegue entrar.</p></div></li>
+              <li class="momento momento--duvida"><span class="momento__no" aria-hidden="true">3</span><div class="momento__corpo"><p class="momento__estado">Em dúvida</p><p>Na área de pagamentos, as opções “Pagar boleto”, “Ler QR Code” e “Código de barras” parecem muito iguais. Ele escolhe uma e aponta a câmera.</p></div></li>
+              <li class="momento momento--quebra"><span class="momento__no" aria-hidden="true">4</span><div class="momento__corpo"><p class="momento__estado">Quebra</p><p>O sistema não consegue ler o código e, depois de alguns segundos, mostra um erro genérico, sem explicar o motivo. Sérgio trava e afasta o celular para entender o que houve.</p></div></li>
+              <li class="momento momento--quebra"><span class="momento__no" aria-hidden="true">5</span><div class="momento__corpo"><p class="momento__estado">Quebra</p><p>Ele perde a confiança. Teme que o dinheiro tenha saído da conta sem o pagamento ser concluído.</p></div></li>
+              <li class="momento momento--fim"><span class="momento__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 20.5V4"></path><path d="M6 5h11l-2.2 3.5L17 12H6"></path></svg></span><div class="momento__corpo"><p class="momento__estado">Onde termina: na lotérica</p><p>Frustrado e com receio de tentar de novo e pagar em duplicidade, Sérgio desiste da operação digital e decide ir à lotérica.</p></div></li>
+            </ol>
+          </section>
+
+          <section class="cenario__bloco" aria-labelledby="cenario-2-prob">
+            <h4 id="cenario-2-prob">Pontos problemáticos e o que a ficha já pedia</h4>
+            <ul class="problemas">
+              <li class="problema"><p class="problema__texto">Falha intermitente da biometria, que cria atrito logo no começo.</p><a class="problema__ficha persona--secundaria" href="personas.html#ficha-sergio"><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span><span><small>Requisito na ficha de Sérgio</small>“Alternativa quando a biometria falha, como senha numérica curta.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Muitas opções parecidas na escolha do método de pagamento (boleto, QR Code e código de barras).</p><a class="problema__ficha persona--secundaria" href="personas.html#ficha-sergio"><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span><span><small>Requisito na ficha de Sérgio</small>“Orientação na primeira vez que faz uma operação nova.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Falta de retorno claro diante do erro de leitura: a mensagem é genérica.</p><a class="problema__ficha persona--secundaria" href="personas.html#ficha-sergio"><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span><span><small>Implicação no design na ficha de Sérgio</small>“Ajuda contextual em operações novas: tour curto no primeiro uso e erro de leitura que diz o que aconteceu e se o dinheiro saiu.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Sem visibilidade do estado do sistema: o usuário não sabe se o dinheiro foi debitado.</p><a class="problema__ficha persona--secundaria" href="personas.html#ficha-sergio"><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span><span><small>Requisito na ficha de Sérgio</small>“Mensagem clara de sucesso e comprovante.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Abandono da tarefa digital e volta ao meio físico (lotérica) por quebra de confiança.</p><a class="problema__ficha persona--secundaria" href="personas.html#ficha-sergio"><span class="avatar avatar--sergio persona--secundaria" aria-hidden="true"></span><span><small>Objetivo na ficha de Sérgio</small>“Fazer sozinho operações novas, como boleto, QR Code e código de barras, depois de uma única orientação.”</span></a></li>
+            </ul>
+          </section>
+
+          <details class="cenario__questoes">
+            <summary>Questões para refinar o cenário (7)</summary>
+            <div class="questoes">
+              <div><h5>Exploratórias</h5>
+                <ol start="1">
+                  <li>O que é o contexto de uso e quais ferramentas Sérgio tem à disposição?</li>
+                  <li>Por que Sérgio decide pagar a conta pelo aplicativo em vez de ir diretamente à lotérica?</li>
+                  <li>Como Sérgio estrutura o passo a passo mental para atingir seu objetivo?</li>
+                  <li>O que é a reação do sistema depois da tentativa frustrada de leitura da câmera?</li>
+                  <li>Por que Sérgio decide abandonar o aplicativo depois da falha?</li>
+                </ol>
+              </div>
+              <div><h5>De verificação</h5>
+                <ol start="6">
+                  <li>A operação fora da rotina pode ser feita de maneira autônoma por Sérgio sem orientações adicionais?</li>
+                  <li>A biometria faz parte do único método de entrada disponível para Sérgio no momento do erro?</li>
+                </ol>
+              </div>
+            </div>
+          </details>
+        </article>
+
+        <article class="cenario" id="cenario-3" data-aba="Cenário 3" data-papel="Termina: na agência">
+          <div class="aba-modelo" hidden>
+            <span class="cenario-aba__topo"><span class="cenario-aba__num">Cenário 3</span><span class="cenario-aba__atores"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span></span></span>
+            <span class="cenario-aba__titulo">Consulta de saldo interrompida por pop-up promocional</span>
+            <span class="cenario-aba__fim">Termina: na agência</span>
+          </div>
+
+          <header class="cenario__topo">
+            <p class="cenario__num">Cenário 3</p>
+            <h3 class="cenario__titulo">Consulta de saldo interrompida por pop-up promocional</h3>
+            <ul class="cenario__atores">
+              <li><a class="ator persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span class="ator__texto"><strong>Marlene Souza</strong><small>persona primária</small></span></a></li>
+            </ul>
+            <dl class="cenario__quando">
+              <div><dt>Quando</dt><dd>Sexta-feira, de manhã</dd></div>
+              <div><dt>Onde</dt><dd>Mesa da cozinha de Marlene, sozinha, com o caderno do neto aberto ao lado</dd></div>
+              <div><dt>Objetivo</dt><dd>Ver se a aposentadoria já foi depositada. É o único objetivo dela no momento.</dd></div>
+            </dl>
+          </header>
+
+          <div class="faixa" role="img" aria-label="4 momentos: 2 no plano, 0 em dúvida, 2 com quebra">
+            <div class="faixa__barra"><span class="faixa__seg faixa__seg--plano"></span><span class="faixa__seg faixa__seg--plano"></span><span class="faixa__seg faixa__seg--quebra"></span><span class="faixa__seg faixa__seg--quebra"></span><span class="faixa__seg faixa__seg--fim"></span></div>
+            <p class="faixa__leg" aria-hidden="true"><span class="faixa__chave faixa__chave--plano">No plano</span><span class="faixa__chave faixa__chave--duvida">Em dúvida</span><span class="faixa__chave faixa__chave--quebra">Quebra</span></p>
+          </div>
+
+          <section class="cenario__bloco" aria-labelledby="cenario-3-hist">
+            <h4 id="cenario-3-hist">A história, momento a momento</h4>
+            <ol class="momentos">
+              <li class="momento momento--plano"><span class="momento__no" aria-hidden="true">1</span><div class="momento__corpo"><p class="momento__estado">No plano</p><p>O neto escreveu no caderno os passos do aplicativo. Marlene vai segui-los à risca: abrir, digitar a senha numérica, olhar o número grande na tela e fechar.</p></div></li>
+              <li class="momento momento--plano"><span class="momento__no" aria-hidden="true">2</span><div class="momento__corpo"><p class="momento__estado">No plano</p><p>Para ela, cada toque na tela é irreversível e perigoso. Marlene toca no ícone do banco e digita a senha devagar.</p></div></li>
+              <li class="momento momento--quebra"><span class="momento__no" aria-hidden="true">3</span><div class="momento__corpo"><p class="momento__estado">Quebra</p><p>O sistema mostra um pop-up de tela inteira oferecendo ativar o “Open Finance” e gerar um “Token de Segurança”, com um botão “X” muito pequeno no canto. Essa tela não está no caderno e Marlene paralisa.</p></div></li>
+              <li class="momento momento--quebra"><span class="momento__no" aria-hidden="true">4</span><div class="momento__corpo"><p class="momento__estado">Quebra</p><p>Ela entra em pânico: entende as palavras desconhecidas como risco de golpe ou de transferência acidental do dinheiro.</p></div></li>
+              <li class="momento momento--fim"><span class="momento__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 20.5V4"></path><path d="M6 5h11l-2.2 3.5L17 12H6"></path></svg></span><div class="momento__corpo"><p class="momento__estado">Onde termina: na agência</p><p>Acreditando que apertar qualquer botão pode causar um desastre financeiro, Marlene desiste, força o desligamento da tela e decide ir à agência tirar um extrato no caixa.</p></div></li>
+            </ol>
+          </section>
+
+          <section class="cenario__bloco" aria-labelledby="cenario-3-prob">
+            <h4 id="cenario-3-prob">Pontos problemáticos e o que a ficha já pedia</h4>
+            <ul class="problemas">
+              <li class="problema"><p class="problema__texto">Interrupção do fluxo principal por pop-ups promocionais ou informativos.</p><a class="problema__ficha persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span><small>Requisito na ficha de Marlene</small>“Uma pergunta por tela, sem pressa.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Jargões abstratos (“Open Finance”, “Token de Segurança”) fora do vocabulário da persona.</p><a class="problema__ficha persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span><small>Implicação no design na ficha de Marlene</small>“Linguagem funcional no lugar de “chave”, “token” e “agendar”, e nenhum ícone sem rótulo.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Falta de saída clara e acessível: o botão “X” é pequeno e quase imperceptível.</p><a class="problema__ficha persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span><small>Requisito na ficha de Marlene</small>“Letras e botões grandes, com poucas opções bem separadas.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Quebra total do modelo mental montado nas anotações do caderno.</p><a class="problema__ficha persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span><small>Requisito na ficha de Marlene</small>“Modo de treino sem dinheiro real.”</span></a></li>
+              <li class="problema"><p class="problema__texto">Abandono do aplicativo por medo de cometer erros irreversíveis.</p><a class="problema__ficha persona--primaria" href="personas.html#ficha-marlene"><span class="avatar avatar--marlene persona--primaria" aria-hidden="true"></span><span><small>Requisito na ficha de Marlene</small>“Ajuda falada ou por telefone e botão para chamar alguém de confiança.”</span></a></li>
+            </ul>
+          </section>
+
+          <details class="cenario__questoes">
+            <summary>Questões para refinar o cenário (7)</summary>
+            <div class="questoes">
+              <div><h5>Exploratórias</h5>
+                <ol start="1">
+                  <li>O que é o suporte físico que Marlene utiliza para guiar sua interação?</li>
+                  <li>Por que Marlene acessa o aplicativo neste dia e horário específicos?</li>
+                  <li>Como Marlene converte sua intenção em um planejamento de ações no aplicativo?</li>
+                  <li>O que é o evento disparado pelo sistema logo depois da autenticação da senha?</li>
+                  <li>Como Marlene interpreta a situação atípica apresentada pelo aplicativo?</li>
+                </ol>
+              </div>
+              <div><h5>De verificação</h5>
+                <ol start="6">
+                  <li>A consulta de saldo pode ser feita da maneira planejada caso a tela promocional não apareça?</li>
+                  <li>O fechamento de pop-ups informativos faz parte do conjunto de habilidades treinadas e anotadas por Marlene?</li>
+                </ol>
+              </div>
+            </div>
+          </details>
+        </article>
+          </div>
+        </section>
+
+        <section class="pagina__secao" id="padroes">
+          <h2 class="analise__grupo">O que se repete nos três cenários</h2>
+          <p class="analise__descricao">Cruzando os pontos problemáticos, estes cinco padrões aparecem mais de uma vez.</p>
+          <div class="padroes-wrap">
+            <table class="padroes">
+              <thead><tr><th scope="col">Padrão</th><th scope="col">Cenário 1</th><th scope="col">Cenário 2</th><th scope="col">Cenário 3</th></tr></thead>
+              <tbody>
+              <tr><th scope="row">Termos ou opções que a pessoa não reconhece<small>“Chave”, “Agendar”, “Token”; boleto, QR Code e código de barras parecidos; “Open Finance”</small></th><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td></tr>
+              <tr><th scope="row">Letras e botões pequenos demais<small>Letras pequenas; botão “X” quase invisível</small></th><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td><td class="padrao__nao"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Não aparece</span></td><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td></tr>
+              <tr><th scope="row">Sem retorno claro do que aconteceu<small>Sem comprovante; erro genérico, sem saber se o dinheiro saiu</small></th><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td><td class="padrao__nao"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Não aparece</span></td></tr>
+              <tr><th scope="row">Algo foge do roteiro esperado<small>Biometria falha e a câmera não lê; pop-up inesperado</small></th><td class="padrao__nao"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Não aparece</span></td><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td></tr>
+              <tr><th scope="row">A pessoa volta ao papel ou a outra pessoa<small>Depende da filha; lotérica; agência</small></th><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td><td class="padrao__sim"><span class="padrao__marca" aria-hidden="true"></span><span class="sr-only">Aparece</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="padroes__nota">Em dois cenários a pessoa abandona o aplicativo e vai a um lugar físico (lotérica e agência). No outro, o pagamento só acontece porque a filha opera o celular.</p>
+        </section>
+      </div>
+
+      <nav class="paginacao" aria-label="Página anterior e próxima">
+        <a class="paginacao__link paginacao__link--anterior" href="personas.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"></path><path d="M10 5.5L3.5 12l6.5 6.5"></path></svg>
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Anterior</span>
+            <span class="paginacao__nome">Personas</span>
+          </span>
+        </a>
+        <a class="paginacao__link paginacao__link--proxima" href="prototipo.html">
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Próxima</span>
+            <span class="paginacao__nome">08 &middot; Solução / Protótipo</span>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg>
+        </a>
+      </nav>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       4. RODAPÉ
+       ============================================================ -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense · Sistemas de Informação · 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=24"></script>
+</body>
+</html>

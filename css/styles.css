@@ -1728,6 +1728,287 @@ html.lendo { overflow: hidden; }
   .fp__colunas { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* --- 18c. Cenários ----------------------------------------
+   Cada cenário é uma linha do tempo: cada momento tem um estado
+   (no plano, em dúvida, quebra). Ligado às fichas das personas.
+   ----------------------------------------------------------- */
+:root {
+  --st-plano: #2f7d32;   --st-plano-fundo: #e8f3e8;
+  --st-duvida: #a16207;  --st-duvida-fundo: #fbf1da;
+  --st-quebra: #b42318;  --st-quebra-fundo: #fdebe8;
+}
+:root[data-tema="escuro"] {
+  --st-plano: #84d189;   --st-plano-fundo: #162a17;
+  --st-duvida: #f0c25b;  --st-duvida-fundo: #2d2410;
+  --st-quebra: #f28b82;  --st-quebra-fundo: #321614;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Rosto da persona num círculo, tirado da própria foto */
+.avatar {
+  display: inline-block;
+  flex: none;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--p-cor, var(--borda));
+  background-color: var(--p-fundo, var(--fundo-alt));
+  background-repeat: no-repeat;
+  background-size: auto 230%;
+}
+.avatar--marlene { background-image: url("../img/personas/marlene.webp"); background-position: 43% 9%; }
+.avatar--sergio  { background-image: url("../img/personas/sergio.webp");  background-position: 50% 11%; }
+.avatar--camila  { background-image: url("../img/personas/camila.webp");  background-position: 54% 6%; }
+
+/* "Aparece em" na ficha da persona */
+.fp__cenarios {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 0;
+  font-size: .9rem;
+}
+.fp__cenarios > span { color: var(--texto-suave); margin-right: 2px; }
+.fp__cenarios a {
+  padding: 4px 12px;
+  border: 1px solid var(--p-cor);
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--p-cor);
+  transition: background-color .2s ease, color .2s ease;
+}
+.fp__cenarios a:hover { background: var(--p-cor); color: var(--p-texto); }
+.fp__cenarios--fora { color: var(--texto-suave); }
+.fp__cenarios--fora > span { font-weight: 600; margin-right: 6px; }
+
+/* Antes de ler (personas): três avisos em linha, sem caixas */
+.avisos {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  counter-reset: aviso;
+  border-top: 2px solid var(--acento-forte);
+}
+.aviso {
+  counter-increment: aviso;
+  padding: 18px 22px 6px 0;
+}
+.aviso + .aviso { padding-left: 22px; border-left: 1px solid var(--borda); }
+.aviso__titulo { margin-bottom: 6px; font-size: 1rem; color: var(--acento-forte); }
+.aviso__titulo::before {
+  content: counter(aviso, decimal-leading-zero);
+  display: block;
+  margin-bottom: 2px;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  color: var(--texto-suave);
+}
+.aviso p { font-size: .95rem; line-height: 1.6; color: var(--texto-suave); }
+
+/* Abas dos cenários (reaproveitam as abas das fichas) */
+.fichas__abas--cenarios { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.fichas__aba--cenario { --p-cor: var(--acento-forte); --p-texto: var(--superficie); gap: 6px; }
+.cenario-aba__topo { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.cenario-aba__num { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.cenario-aba__atores { display: inline-flex; }
+.cenario-aba__atores .avatar { width: 28px; height: 28px; border-width: 2px; border-color: var(--superficie); }
+.cenario-aba__atores .avatar + .avatar { margin-left: -9px; }
+.cenario-aba__titulo { font-weight: 700; line-height: 1.3; font-size: .95rem; }
+.cenario-aba__fim { font-size: .8rem; opacity: .8; }
+.fichas__aba--cenario[aria-selected="true"] .cenario-aba__atores .avatar { border-color: var(--p-texto); }
+.aba-modelo[hidden] { display: none; }
+
+/* O cenário */
+.cenario {
+  overflow: hidden;
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background: var(--superficie);
+  box-shadow: var(--sombra);
+}
+.cenario + .cenario { margin-top: 28px; }
+.cenario[hidden] { display: none; }
+.js .cenario + .cenario { margin-top: 0; }
+
+.cenario__topo { padding: 28px 30px 8px; display: grid; gap: 14px; }
+.cenario__num { font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--texto-suave); }
+.cenario__titulo { font-size: clamp(1.4rem, 2.8vw, 1.85rem); line-height: 1.2; letter-spacing: -.01em; color: var(--acento-forte); }
+
+.cenario__atores { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.ator {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 16px 5px 5px;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  background: var(--p-fundo);
+  color: var(--texto);
+  text-decoration: none;
+  transition: border-color .2s ease, transform .2s ease;
+}
+.ator:hover { border-color: var(--p-cor); transform: translateY(-1px); }
+.ator__texto { display: grid; line-height: 1.25; }
+.ator__texto small { font-size: .78rem; color: var(--texto-suave); }
+
+.cenario__quando { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 4px; border-top: 1px solid var(--borda); }
+.cenario__quando > div { padding: 12px 18px 12px 0; }
+.cenario__quando > div + div { padding-left: 18px; border-left: 1px solid var(--borda); }
+.cenario__quando dt { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--texto-suave); }
+.cenario__quando dd { margin: 2px 0 0; font-size: .95rem; line-height: 1.5; }
+
+/* Faixa de estados: o formato da história de relance */
+.faixa { margin: 14px 30px 0; }
+.faixa__barra { display: flex; gap: 4px; height: 12px; }
+.faixa__seg { flex: 1; border-radius: 3px; background: var(--borda); transform-origin: left center; }
+.faixa__seg--plano  { background: var(--st-plano); }
+.faixa__seg--duvida { background: var(--st-duvida); }
+.faixa__seg--quebra { background: var(--st-quebra); }
+.faixa__seg--fim { flex: 0 0 18px; background: repeating-linear-gradient(135deg, var(--texto-suave) 0 3px, transparent 3px 6px); }
+.faixa__leg { display: flex; flex-wrap: wrap; gap: 4px 16px; margin-top: 8px; font-size: .8rem; color: var(--texto-suave); }
+.faixa__chave::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 3px; vertical-align: -1px; }
+.faixa__chave--plano::before  { background: var(--st-plano); }
+.faixa__chave--duvida::before { background: var(--st-duvida); }
+.faixa__chave--quebra::before { background: var(--st-quebra); }
+
+.cenario__bloco { margin: 30px 30px 0; }
+.cenario__bloco > h4 { margin-bottom: 14px; font-size: 1.1rem; color: var(--acento-forte); }
+
+/* Linha do tempo */
+.momentos { list-style: none; position: relative; display: grid; gap: 0; }
+.momento { position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 16px; padding-bottom: 20px; }
+.momento::before {
+  content: "";
+  position: absolute;
+  left: 19px; top: 40px; bottom: 0;
+  width: 2px;
+  background: var(--borda);
+}
+.momento:last-child { padding-bottom: 0; }
+.momento:last-child::before { display: none; }
+.momento__no {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--st-cor);
+  background: var(--st-fundo);
+  color: var(--st-cor);
+  font-weight: 700;
+}
+.momento__no svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.momento__corpo { padding-top: 6px; }
+.momento__corpo p:last-child { font-size: 1rem; line-height: 1.65; }
+.momento__estado { margin-bottom: 2px; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--st-cor); }
+.momento--plano  { --st-cor: var(--st-plano);  --st-fundo: var(--st-plano-fundo); }
+.momento--duvida { --st-cor: var(--st-duvida); --st-fundo: var(--st-duvida-fundo); }
+.momento--quebra { --st-cor: var(--st-quebra); --st-fundo: var(--st-quebra-fundo); }
+.momento--fim    { --st-cor: var(--acento-forte); --st-fundo: var(--acento-suave); }
+.momento--fim .momento__corpo {
+  margin-top: 2px;
+  padding: 12px 16px;
+  border-left: 4px solid var(--acento-forte);
+  border-radius: 0 12px 12px 0;
+  background: var(--acento-suave);
+}
+
+/* Problema ao lado do que a ficha já pedia */
+.problemas { list-style: none; display: grid; gap: 10px; }
+.problema {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.problema__texto { padding: 14px 18px; font-size: .97rem; line-height: 1.55; border-left: 4px solid var(--st-quebra); }
+.problema__ficha {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: var(--p-fundo);
+  color: var(--texto);
+  text-decoration: none;
+  font-size: .93rem;
+  line-height: 1.45;
+  transition: background-color .2s ease;
+}
+.problema__ficha span { display: grid; gap: 2px; }
+.problema__ficha small { font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--p-cor); }
+.problema__ficha:hover { background: color-mix(in srgb, var(--p-cor) 14%, var(--p-fundo)); }
+
+/* Perguntas do cenário */
+.cenario__questoes { margin: 26px 30px 30px; border: 1px solid var(--borda); border-radius: 14px; background: var(--fundo-alt); }
+.cenario__questoes summary { padding: 14px 18px; font-weight: 600; cursor: pointer; color: var(--acento-forte); }
+.cenario__questoes[open] summary { border-bottom: 1px solid var(--borda); }
+.questoes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding: 18px; }
+.questoes h5 { margin-bottom: 8px; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--texto-suave); }
+.questoes ol { padding-left: 22px; display: grid; gap: 8px; font-size: .94rem; line-height: 1.55; }
+
+/* Quadro dos padrões */
+.padroes-wrap { overflow-x: auto; border: 1px solid var(--borda); border-radius: 14px; background: var(--superficie); }
+.padroes { width: 100%; border-collapse: collapse; min-width: 560px; }
+.padroes th, .padroes td { padding: 14px 16px; text-align: center; border-bottom: 1px solid var(--borda); }
+.padroes thead th { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-suave); background: var(--fundo-alt); }
+.padroes tbody th { text-align: left; font-weight: 600; line-height: 1.4; }
+.padroes tbody th small { display: block; margin-top: 2px; font-weight: 400; font-size: .83rem; color: var(--texto-suave); }
+.padroes tbody tr:last-child > * { border-bottom: 0; }
+.padroes td { width: 110px; }
+.padrao__marca { display: inline-block; width: 18px; height: 18px; border-radius: 50%; }
+.padrao__sim .padrao__marca { background: var(--st-quebra); box-shadow: 0 0 0 4px var(--st-quebra-fundo); }
+.padrao__nao .padrao__marca { border: 2px solid var(--borda); }
+.padroes__nota {
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-left: 4px solid var(--acento-forte);
+  border-radius: 0 12px 12px 0;
+  background: var(--acento-suave);
+  font-size: .97rem;
+  line-height: 1.6;
+}
+
+@keyframes crescer { from { transform: scaleX(0); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .cenario:not([hidden]) .faixa__seg { animation: crescer .5s cubic-bezier(.2, .7, .2, 1) both; }
+  .cenario:not([hidden]) .faixa__seg:nth-child(2) { animation-delay: .07s; }
+  .cenario:not([hidden]) .faixa__seg:nth-child(3) { animation-delay: .14s; }
+  .cenario:not([hidden]) .faixa__seg:nth-child(4) { animation-delay: .21s; }
+  .cenario:not([hidden]) .faixa__seg:nth-child(5) { animation-delay: .28s; }
+  .cenario:not([hidden]) .faixa__seg:nth-child(6) { animation-delay: .35s; }
+  .cenario:not([hidden]) .faixa__seg:nth-child(7) { animation-delay: .42s; }
+}
+
+@media (max-width: 760px) {
+  .avisos { grid-template-columns: minmax(0, 1fr); }
+  .aviso, .aviso + .aviso { padding: 14px 0 6px; border-left: 0; }
+  .aviso + .aviso { border-top: 1px solid var(--borda); }
+  .fichas__abas--cenarios { grid-template-columns: minmax(0, 1fr); }
+  .cenario__topo { padding: 22px 20px 6px; }
+  .cenario__quando { grid-template-columns: minmax(0, 1fr); }
+  .cenario__quando > div, .cenario__quando > div + div { padding: 10px 0; border-left: 0; border-top: 1px solid var(--borda); }
+  .cenario__quando { border-top: 0; }
+  .faixa { margin-left: 20px; margin-right: 20px; }
+  .cenario__bloco { margin-left: 20px; margin-right: 20px; }
+  .problema { grid-template-columns: minmax(0, 1fr); }
+  .cenario__questoes { margin-left: 20px; margin-right: 20px; }
+  .questoes { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* --- 19. Animações ------------------------------------------
    Tudo aqui respeita quem pediu menos movimento no sistema.
    ----------------------------------------------------------- */

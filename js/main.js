@@ -213,7 +213,7 @@
   var ANIMADOS = [
     '.pagina__corpo .card', '.pessoa', '.roteiro__item', '.csd__lista li', '.postit',
     '.concorrente', '.grafico', '.mapa__quadrante', '.hmw', '.foto', '.doc',
-    '.pagina__corpo .arquivo', '.referencias', '.documento', '.videoteca', '.persona-card', '.ligacao', '.ficha-persona'
+    '.pagina__corpo .arquivo', '.referencias', '.documento', '.videoteca', '.persona-card', '.ligacao', '.ficha-persona', '.aviso', '.cenario', '.problema', '.momento', '.padroes-wrap'
   ].join(', ');
 
   if (!poucoMovimento && 'IntersectionObserver' in window) {
@@ -576,7 +576,9 @@
     var lista = document.createElement('div');
     lista.className = 'fichas__abas';
     lista.setAttribute('role', 'tablist');
-    lista.setAttribute('aria-label', 'Fichas das personas');
+    var cenarios = grupo.getAttribute('data-abas') === 'cenarios';
+    lista.setAttribute('aria-label', cenarios ? 'Cenários' : 'Fichas das personas');
+    if (cenarios) lista.className += ' fichas__abas--cenarios';
 
     var abas = paineis.map(function (painel, i) {
       var aba = document.createElement('button');
@@ -586,9 +588,16 @@
       aba.id = 'aba-' + painel.id;
       aba.setAttribute('role', 'tab');
       aba.setAttribute('aria-controls', painel.id);
-      aba.innerHTML = '<span class="fichas__nome"></span><span class="fichas__papel"></span>';
-      aba.firstChild.textContent = painel.getAttribute('data-aba');
-      aba.lastChild.textContent = painel.getAttribute('data-papel');
+      var modelo = painel.querySelector('.aba-modelo');
+      if (modelo) {
+        // Cenários: a aba é montada a partir do modelo escondido dentro do painel
+        aba.className += ' fichas__aba--cenario';
+        aba.innerHTML = modelo.innerHTML;
+      } else {
+        aba.innerHTML = '<span class="fichas__nome"></span><span class="fichas__papel"></span>';
+        aba.firstChild.textContent = painel.getAttribute('data-aba');
+        aba.lastChild.textContent = painel.getAttribute('data-papel');
+      }
       painel.setAttribute('role', 'tabpanel');
       painel.setAttribute('aria-labelledby', aba.id);
       aba.addEventListener('click', function () { mostrar(i, false); });

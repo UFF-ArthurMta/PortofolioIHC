@@ -19,6 +19,7 @@ problema.html … conclusoes.html → uma página por etapa (tabela abaixo)
 entrevistas.html         → entrevistas em documento e TCLE (dentro da etapa 05)
 respostas.html           → tabela com as respostas do questionário (dentro da etapa 06)
 personas.html            → as quatro personas (dentro da etapa 07)
+cenarios.html            → os três cenários-problema, ligados às personas (dentro da etapa 07)
 equipe.html              → integrantes do grupo
 uso-de-ia.html           → relatório de uso de IA
 css/styles.css           → estilos, organizado em blocos numerados
@@ -130,6 +131,29 @@ com `id="ficha-nome"`, `data-aba` (nome na aba) e `data-papel` (rótulo da aba).
 A cor vem da classe `persona--primaria`, `--secundaria`, `--stakeholder` ou
 `--antiusuario`. As ilustrações ficam em `img/personas/`. O texto é o mesmo dos
 PDFs de persona; para mudar, edite a ficha e o cartão correspondente.
+
+### Cenários
+
+`cenarios.html` mostra os três cenários-problema. Cada cenário é um
+`<article class="cenario" id="cenario-1" data-aba="Cenário 1">` dentro de
+`<div class="fichas" data-abas="cenarios">`; o `main.js` monta as abas a partir
+do `<div class="aba-modelo" hidden>` que fica no começo de cada cenário (sem
+JavaScript os três aparecem em sequência).
+
+Dentro de cada cenário:
+
+- `.faixa`: uma barra com um traço por momento, colorida pelo estado;
+- `.momentos`: a história em linha do tempo. Cada `<li class="momento momento--plano">`
+  (ou `--duvida`, `--quebra`) é um momento; o último, `momento--fim`, diz onde a
+  pessoa termina;
+- `.problemas`: cada ponto problemático ao lado do que a ficha da persona já
+  pedia, com link para a ficha (o texto entre aspas tem que existir em `personas.html`);
+- `<details class="cenario__questoes">`: as questões exploratórias e de verificação.
+
+O quadro "O que se repete" (`.padroes`) cruza os cenários. Os rostos pequenos
+(`.avatar--marlene`, `--sergio`, `--camila`) são recortes das fotos em `img/personas/`.
+Nas fichas de `personas.html`, o bloco `.fp__cenarios` leva de volta ao cenário.
+O conteúdo vem do arquivo de cenários do grupo (não publicado no site).
 
 ### Adicionar um link simples a uma lista
 

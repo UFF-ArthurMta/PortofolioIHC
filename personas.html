@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=23">
+  <link rel="stylesheet" href="css/styles.css?v=24">
 
   <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
   <script>
@@ -142,6 +142,7 @@
             </a>
             <ul class="trilha__sub">
               <li><a class="trilha__sublink" href="personas.html" aria-current="page">Personas</a></li>
+              <li><a class="trilha__sublink" href="cenarios.html">Cenários</a></li>
             </ul>
           </li>
           <li>
@@ -218,7 +219,7 @@
         </p>
         <nav class="nesta-pagina" aria-label="Nesta página">
           <span class="nesta-pagina__rotulo" aria-hidden="true">Nesta página:</span>
-          <a href="#metodo">O método</a>
+          <a href="#como-ler">Antes de ler</a>
           <a href="#personas">As personas</a>
           <a href="#ligacoes">Como se ligam</a>
           <a href="#fichas">As fichas</a>
@@ -227,29 +228,27 @@
 
       <div class="pagina__corpo">
 
-        <section class="pagina__secao" id="metodo">
-          <h2 class="analise__grupo">O método</h2>
-          <p class="etapa__texto">
-            Uma persona é um personagem inventado, montado com o que a pesquisa mostrou.
-            Ela não é uma pessoa entrevistada: reúne o que se repetiu entre vários
-            participantes, para o grupo projetar pensando no mesmo usuário.
-          </p>
-          <p class="etapa__texto">
-            Nome e ocupação são ilustrativos. O resto vem do questionário (27 respostas),
-            das entrevistas, citadas só pelo código, como P05, da Matriz CSD e do Mapa de
-            Empatia. Nenhum familiar foi entrevistado, então o que dizemos sobre Camila
-            marca o que ainda é hipótese.
-          </p>
-          <p class="etapa__texto">
-            São quatro porque cada uma tem um papel diferente no projeto: a primária é
-            quem o sistema precisa atender, a secundária complementa essa necessidade, a
-            stakeholder ajuda e influencia, e o antiusuário mostra até onde o modo simples
-            deve ir.
-          </p>
+        <section class="pagina__secao" id="como-ler">
+          <h2 class="analise__grupo">Antes de ler</h2>
+          <ul class="avisos">
+            <li class="aviso">
+              <h3 class="aviso__titulo">É inventada</h3>
+              <p>Uma persona é um personagem montado com o que a pesquisa mostrou, não uma pessoa entrevistada. Nome e ocupação são ilustrativos.</p>
+            </li>
+            <li class="aviso">
+              <h3 class="aviso__titulo">Vem da pesquisa</h3>
+              <p>Questionário (27 respostas), entrevistas citadas só pelo código, como P05, Matriz CSD e Mapa de Empatia.</p>
+            </li>
+            <li class="aviso">
+              <h3 class="aviso__titulo">Hipótese vem marcada</h3>
+              <p>Nenhum familiar foi entrevistado. O que dizemos sobre Camila marca o que ainda é hipótese.</p>
+            </li>
+          </ul>
         </section>
 
         <section class="pagina__secao" id="personas">
           <h2 class="analise__grupo">As quatro personas</h2>
+          <p class="analise__descricao">Cada uma tem um papel: a primária é quem o sistema precisa atender, a secundária complementa essa necessidade, a stakeholder ajuda e influencia, e o antiusuário mostra até onde o modo simples deve ir.</p>
           <ul class="persona-cards">
           <li>
             <a class="persona-card persona--primaria" href="#ficha-marlene" data-ficha="ficha-marlene">
@@ -329,6 +328,7 @@
                 <div><dt>Apoio</dt><dd>Neto e filha</dd></div>
                 <div><dt>Status</dt><dd>Primária</dd></div>
               </dl>
+              <p class="fp__cenarios"><span>Aparece em</span><a href="cenarios.html#cenario-1">Cenário 1</a><a href="cenarios.html#cenario-3">Cenário 3</a></p>
             </div>
           </header>
 
@@ -433,6 +433,7 @@
                 <div><dt>Apoio</dt><dd>Filhas e gerente do banco</dd></div>
                 <div><dt>Status</dt><dd>Secundária</dd></div>
               </dl>
+              <p class="fp__cenarios"><span>Aparece em</span><a href="cenarios.html#cenario-2">Cenário 2</a></p>
             </div>
           </header>
 
@@ -536,6 +537,7 @@
                 <div><dt>Papel</dt><dd>Filha e primeira ajuda de Marlene</dd></div>
                 <div><dt>Status</dt><dd>Stakeholder</dd></div>
               </dl>
+              <p class="fp__cenarios"><span>Aparece em</span><a href="cenarios.html#cenario-1">Cenário 1</a></p>
             </div>
           </header>
 
@@ -634,6 +636,7 @@
                 <div><dt>Apoio</dt><dd>Gerente de conta por chat ou WhatsApp oficial</dd></div>
                 <div><dt>Status</dt><dd>Antiusuário</dd></div>
               </dl>
+              <p class="fp__cenarios fp__cenarios--fora"><span>Fora dos cenários</span>Não é público do modo simples.</p>
             </div>
           </header>
 
@@ -724,10 +727,10 @@
             <span class="paginacao__nome">07 &middot; Ideação</span>
           </span>
         </a>
-        <a class="paginacao__link paginacao__link--proxima" href="prototipo.html">
+        <a class="paginacao__link paginacao__link--proxima" href="cenarios.html">
           <span class="paginacao__texto">
             <span class="paginacao__dir">Próxima</span>
-            <span class="paginacao__nome">08 &middot; Solução / Protótipo</span>
+            <span class="paginacao__nome">Cenários</span>
           </span>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg>
         </a>
@@ -751,6 +754,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=23"></script>
+  <script src="js/main.js?v=24"></script>
 </body>
 </html>
