@@ -218,7 +218,85 @@
 
       <div class="pagina__corpo">
 
-        <p class="placeholder">[A PREENCHER] Proposta desenvolvida pelo grupo.</p>
+        <section class="prompt-etapa" aria-labelledby="pe-figma">
+          <h3 class="prompt-etapa__titulo" id="pe-figma"><span>Figma</span>Protótipo e prompt</h3>
+          <ol class="prompts">
+          <li class="prompt prompt--figma">
+            <span class="prompt__num" aria-hidden="true">F</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Protótipo mobile de alta fidelidade no Figma Make</h4>
+              <p class="prompt__nota">Este é o pedido que fizemos à IA para montar o texto de entrada do Figma Make. Ele reúne os achados do questionário, das entrevistas, do mapa de empatia e da análise competitiva, mais os requisitos e o fluxo das telas.</p>
+              <p class="prompt__acoes">
+                <a class="botao botao--secundario botao--externo" href="https://www.figma.com/make/4KOowQfuoNYmVH9jsAbPj1/PIX-Acess%C3%ADvel-para-Idosos?code-node-id=0-6&amp;p=f&amp;t=Z146C8UZ8RZloe0s-0&amp;fullscreen=1" target="_blank" rel="noopener">Abrir o protótipo no Figma<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4.5h5.5V10"></path><path d="M19.5 4.5L11 13"></path><path d="M18 14.5v4a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6h4"></path></svg><span class="sr-only"> (abre em outra aba)</span></a>
+              </p>
+              <details class="pfig">
+                <summary>Ler o prompt completo</summary>
+                <div class="pfig__corpo">
+              <section class="pfig__sec"><h5>Papel</h5><div class="pfig__texto">Assuma a posição de um especialista em UI/UX com experiência em prototipação de alta fidelidade.
+Tenha experiência em design acessível para pessoas idosas.
+Domine engenharia de prompts para ferramentas de prototipação com IA, como o Figma Make.</div></section>
+              <section class="pfig__sec"><h5>Considerações</h5><div class="pfig__texto">Problema: idosos com pouca familiaridade tecnológica têm dificuldade para fazer PIX no app do banco por causa de fluxos com muitos passos, termos em inglês, senhas difíceis de lembrar, botões pequenos e medo de golpes. Isso gera dependência de familiares ou desistência da tarefa.
+
+Solução: aplicativo mobile "PIX para Todos", que permite fazer PIX de forma autônoma, intuitiva e emocionalmente segura, com conferência clara dos dados antes do envio.
+
+Insights do questionário (27 respostas): medo de golpes (7) e de errar (6) são os principais motivos para evitar o app; recursos mais pedidos: confirmação mais clara antes do envio (14), textos e botões maiores (12), alertas contra golpes (11), modo simplificado (10) e botão de ajuda visível (9); ajuda preferida: explicação no próprio app (10) e familiar (10); 51,9% fariam transações sozinhos com um app mais simples; operações mais usadas: saldo (26) e PIX (18); preferência por digital (9) e biometria facial (5) em vez de senha (4); voz com conferência: 33,3% sim e 48,1% talvez.
+
+Insights das entrevistas e da Matriz CSD: dificuldades visuais e motoras, memória de curto prazo mais frágil, desconfiança após experiências ruins, confusão com termos em inglês, importância do apoio de filhos e netos e valorização de atendimento humano.
+
+Mapa de empatia:
+- Fala: botões pequenos, confusão, medo de errar, "não é seguro".
+- Pensa: assistente humano, tutorial no primeiro uso, layout mais simples, modo idoso, verificação em dois fatores.
+- Faz: pede ajuda a familiares, paga errado, chama alguém para fazer por ela.
+- Sente: medo de ser hackeado, de vazamento de dados, de enviar para a pessoa errada e de abandonar o processo no meio.
+
+Ideias do Crazy 4: considere as soluções escolhidas no arquivo crazy4.pdf.
+
+Ideias da análise competitiva: Modo Simplificado, tela de confirmação com nome, valor e banco, botão de voz com leitura dos dados, ajuda contextual na tela e mensagens de erro explicativas (inspirados em Nubank, Itaú, Banco do Brasil, Bradesco, CAIXA, Apple Acesso Assistivo e Be My Eyes).
+
+Requisitos funcionais: RF01 revisão obrigatória; RF02 voltar e corrigir sem perder dados; RF03 ajuda contextual em cada tela; RF04 início com poucas funções; RF05 erros explicativos; RF06 sinais de segurança e alertas de risco; RF07 biometria em vez de senha; RF08 comprovante claro; RF09 voz com conferência (desejável).
+
+Considere prototipar solução para as personas.pdf
+Considere prototipar solução para os cenarios.pdf
+Considere as tarefas.pdf</div></section>
+              <section class="pfig__sec"><h5>Tarefa</h5><div class="pfig__texto">Crie para mim o prompt que eu vou utilizar para dar entrada no Figma Make para criar o protótipo mobile de alta fidelidade, interativo e navegável, contendo:
+1. Tour de primeiro acesso: 3 telas, com "Próximo" e "Pular", e opção de rever na Ajuda.
+2. Início: só 4 opções grandes: Fazer PIX (destaque), Consultar saldo, Pagar conta e Ajuda, além do botão "Modo Idoso".
+3. Destinatário: "Para quem você quer enviar?", com exemplo de preenchimento.
+4. Valor: "Quanto você quer enviar?", valor em destaque, botão "Ouvir" e erro explicativo para campo vazio ou valor maior que o saldo.
+5. Revisão: nome, banco e valor em destaque, selo "Destinatário verificado", botão "Ouvir", pergunta "Você quer enviar este valor para esta pessoa?" e botões "Voltar e corrigir" e "Confirmar envio".
+6. Alerta de risco para destinatário novo ou valor acima do habitual, com "Conferir de novo" e "Continuar mesmo assim".
+7. Autorização simulada por digital ou rosto, com opção "Usar outra forma".
+8. Resultado: "Simulação concluída", comprovante com quem recebeu, quanto e quando, "Compartilhar comprovante" e "Voltar ao início".
+9. Em todas as telas do fluxo: indicador "Etapa X de 4" e botão fixo "Preciso de ajuda", que abre explicação da etapa e opção "Ligar para alguém de confiança".
+10. Modo Idoso: ao ativar, aumenta TODOS os textos de todas as telas, sem exceção, e os componentes crescem junto, sem cortar texto. O modo fica ativo na navegação, o botão muda para "Modo Idoso ativado" e pode ser desativado com um toque.</div></section>
+              <section class="pfig__sec"><h5>Restrições</h5><div class="pfig__texto">Interface limpa, organizada e com pouco ruído visual.
+Paleta sóbria, com alto contraste e uma única cor de destaque para ações primárias.
+Cores semânticas (erro, alerta, sucesso) sempre acompanhadas de texto ou ícone.
+Tipografia sem serifa, grande e legível.
+Alvos de toque de no mínimo 48x48 dp, bem espaçados.
+Ícones sempre com rótulo em texto.
+Gestalt: proximidade, similaridade e hierarquia visual.
+Uma decisão principal por tela.
+Linguagem simples, em português, sem termos em inglês nem jargão bancário.
+Não usar menus densos, carrosséis automáticos, animações desnecessárias ou campos pequenos.
+Não copiar telas, marcas ou identidades de bancos reais.
+Não criar integração bancária, PIX real, senhas reais ou coleta de dados pessoais. Usar apenas dados fictícios e deixar claro que tudo é simulação.
+Não criar funcionalidades que não estejam nas considerações.</div></section>
+              <section class="pfig__sec"><h5>Formato</h5><div class="pfig__texto">Um único texto corrido, em português, pronto para colar no Figma Make, organizado por identidade visual, telas e fluxo, interações e restrições.</div></section>
+              <section class="pfig__sec"><h5>Critérios de qualidade</h5><div class="pfig__texto">Detalhado o suficiente para não precisar de complementos.
+Baseado em todo o material fornecido.
+Aplica Lei de Fitts, Lei de Hick-Hyman, princípios de Norman (visibilidade, feedback, restrições, mapeamento, consistência e affordance) e heurísticas de Nielsen (visibilidade do estado, mundo real, controle do usuário, reconhecimento e prevenção de erros).
+UX writing claro, conciso, consistente e útil; CTAs com verbo de ação que dizem o que acontece após o toque.
+Todas as telas navegáveis, com estados e retornos coerentes.</div></section>
+              <section class="pfig__sec"><h5>Exemplos</h5><div class="pfig__texto">Nubank (Modo Rua, reconhecimento facial), Itaú (Modo Protegido, alerta de risco), Banco do Brasil (assistente por voz), Bradesco (assistente BIA), CAIXA (biometria), Apple Acesso Assistivo (botões grandes e poucas funções) e Be My Eyes (pedido de ajuda direto).</div></section>
+                </div>
+              </details>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <p class="placeholder" style="margin-top:32px">[A PREENCHER] Proposta desenvolvida pelo grupo.</p>
       </div>
 
       <nav class="paginacao" aria-label="Página anterior e próxima">
