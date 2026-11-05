@@ -200,6 +200,13 @@ Copie uma página parecida (por exemplo `ideacao.html`), troque o título, o
 cabeçalho e o conteúdo, e acrescente o link dela no fio condutor de todas as
 páginas. Ajuste também os links de Anterior / Próxima das páginas vizinhas.
 
+### Crazy 4
+
+`crazy4.html` mostra as ideias de duas folhas do Crazy 4, agrupadas pela regra (cara, barata e rápida,
+jogos, robôs). Cada ideia é um `<li class="ideia ideia--segue|ressalva|custo|nao" data-veredito="...">` com o
+comentário de um colega; os botões `.filtro__botao` (main.js, bloco 9) destacam as ideias de mesmo resultado.
+As fotos das folhas não estão no site, porque têm nomes escritos; só o texto foi transcrito.
+
 ## Etapas do processo
 
 | # | Fase | Etapa | Página |

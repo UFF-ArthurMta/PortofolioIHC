@@ -213,7 +213,7 @@
   var ANIMADOS = [
     '.pagina__corpo .card', '.pessoa', '.roteiro__item', '.csd__lista li', '.postit',
     '.concorrente', '.grafico', '.mapa__quadrante', '.hmw', '.foto', '.doc',
-    '.pagina__corpo .arquivo', '.referencias', '.documento', '.videoteca', '.persona-card', '.ligacao', '.ficha-persona', '.aviso', '.cenario', '.problema', '.momento', '.padroes-wrap'
+    '.pagina__corpo .arquivo', '.referencias', '.documento', '.videoteca', '.persona-card', '.ligacao', '.ideia', '.dobra', '.fica__bloco', '.regras__texto', '.ficha-persona', '.aviso', '.cenario', '.problema', '.momento', '.padroes-wrap'
   ].join(', ');
 
   if (!poucoMovimento && 'IntersectionObserver' in window) {
@@ -665,6 +665,24 @@
     if (location.hash && irPara(location.hash.slice(1), true)) {
       window.addEventListener('load', function () { setTimeout(function () { rolarAteAbas(false); }, 150); });
     }
+  });
+
+  /* --------------------------------------------------------
+     9. Crazy 4: botões que destacam as ideias pelo resultado
+     -------------------------------------------------------- */
+  document.querySelectorAll('.filtro').forEach(function (grupo) {
+    var botoes = grupo.querySelectorAll('.filtro__botao');
+    var ideias = document.querySelectorAll('.ideia[data-veredito]');
+    botoes.forEach(function (botao) {
+      botao.addEventListener('click', function () {
+        var alvo = botao.getAttribute('data-filtro');
+        botoes.forEach(function (b) { b.setAttribute('aria-pressed', b === botao ? 'true' : 'false'); });
+        ideias.forEach(function (ideia) {
+          var fora = alvo !== 'todas' && ideia.getAttribute('data-veredito') !== alvo;
+          ideia.classList.toggle('ideia--apagada', fora);
+        });
+      });
+    });
   });
 
 })();

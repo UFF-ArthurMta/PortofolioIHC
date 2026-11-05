@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crazy 4 — PIX para todos</title>
+  <meta name="description" content="Crazy 4 do projeto PIX para todos: duas folhas de ideias feitas em sala e o comentário de um colega sobre cada ideia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=26">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+        // menu lateral fixo (escolha salva pelo botão da borda esquerda)
+        if (localStorage.getItem('menu') === 'fixo') document.documentElement.setAttribute('data-menu', 'fixo');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO
+       ============================================================ -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+
+        <!-- Botão de modo claro / escuro -->
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+
+        <!-- Abre o fio condutor no celular -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="trilha" aria-label="Abrir o menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="progresso" aria-hidden="true"><span class="progresso__barra"></span></div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ==========================================================
+         2. FIO CONDUTOR
+         O mesmo menu em todas as páginas. Ao mudar um item aqui,
+         mude também nas outras páginas.
+         ========================================================== -->
+    <nav class="trilha" id="trilha" aria-label="Menu lateral" data-etapa="7">
+      <ul class="trilha__lista">
+        <li>
+          <a class="trilha__link" href="index.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5"></path><path d="M6.5 10v8.5h11V10"></path></svg></span>
+            <span class="trilha__nome">Início</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="projeto.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.5"></circle></svg></span>
+            <span class="trilha__nome">O Projeto</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="trilha__grupo" id="trilha-imersao">Imersão</p>
+      <div class="trilha__processo">
+        <span class="trilha__fio" aria-hidden="true"></span>
+        <ol class="trilha__lista" aria-labelledby="trilha-imersao">
+          <li>
+            <a class="trilha__link trilha__link--feito" href="problema.html">
+              <span class="trilha__no" aria-hidden="true">01</span>
+              <span class="trilha__nome">Definição do problema</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="matriz-csd.html">
+              <span class="trilha__no" aria-hidden="true">02</span>
+              <span class="trilha__nome">Matriz CSD</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="mapa-de-empatia.html">
+              <span class="trilha__no" aria-hidden="true">03</span>
+              <span class="trilha__nome">Mapa de Empatia</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="analise-competitiva.html">
+              <span class="trilha__no" aria-hidden="true">04</span>
+              <span class="trilha__nome">Análise Competitiva</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="pesquisa.html">
+              <span class="trilha__no" aria-hidden="true">05</span>
+              <span class="trilha__nome">Pesquisa com usuários</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="entrevistas.html">Materiais das entrevistas</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="resultados.html">
+              <span class="trilha__no" aria-hidden="true">06</span>
+              <span class="trilha__nome">Análise dos resultados</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="respostas.html">Respostas do questionário</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-ideacao">Ideação e prototipação</p>
+        <ol class="trilha__lista" start="7" aria-labelledby="trilha-ideacao">
+          <li>
+            <a class="trilha__link trilha__link--pai" href="ideacao.html">
+              <span class="trilha__no" aria-hidden="true">07</span>
+              <span class="trilha__nome">Ideação</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="personas.html">Personas</a></li>
+              <li><a class="trilha__sublink" href="cenarios.html">Cenários</a></li>
+              <li><a class="trilha__sublink" href="crazy4.html" aria-current="page">Crazy 4</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link" href="prototipo.html">
+              <span class="trilha__no" aria-hidden="true">08</span>
+              <span class="trilha__nome">Solução / Protótipo</span>
+            </a>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-avaliacao">Avaliação</p>
+        <ol class="trilha__lista" start="9" aria-labelledby="trilha-avaliacao">
+          <li>
+            <a class="trilha__link" href="avaliacao.html">
+              <span class="trilha__no" aria-hidden="true">09</span>
+              <span class="trilha__nome">Avaliação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="conclusoes.html">
+              <span class="trilha__no" aria-hidden="true">10</span>
+              <span class="trilha__nome">Conclusões</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <p class="trilha__grupo" id="trilha-sobre">Sobre o trabalho</p>
+      <ul class="trilha__lista" aria-labelledby="trilha-sobre">
+        <li>
+          <a class="trilha__link" href="equipe.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path><path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path></svg></span>
+            <span class="trilha__nome">Equipe</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="uso-de-ia.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"></rect><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"></path></svg></span>
+            <span class="trilha__nome">Uso de IA</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Linha na borda esquerda: com o mouse em cima o menu aparece;
+         com um clique ele fica fixo na tela (e recolhe com outro) -->
+    <button class="puxador" id="puxador" type="button" aria-controls="trilha" aria-expanded="false" aria-label="Fixar o menu lateral">
+      <span class="puxador__linha" aria-hidden="true"></span>
+      <span class="puxador__icone" aria-hidden="true">
+        <svg class="puxador__fixar" viewBox="0 0 24 24"><path d="M9 3.5h6l-1 5.5 3 3v2H7v-2l3-3z"></path><path d="M12 14v6.5"></path></svg>
+        <svg class="puxador__recolher" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"></path></svg>
+      </span>
+    </button>
+
+    <!-- ==========================================================
+         3. CONTEÚDO DA PÁGINA
+         ========================================================== -->
+    <main class="pagina" id="conteudo">
+
+      <header class="pagina__cabecalho">
+        <nav class="migalhas" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li>Ideação e prototipação</li>
+            <li><a href="ideacao.html">Ideação</a></li>
+            <li aria-current="page">Crazy 4</li>
+          </ol>
+        </nav>
+        <p class="pagina__rotulo">Etapa 07 de 10</p>
+        <h1 class="pagina__titulo">Crazy 4</h1>
+        <p class="pagina__intro">
+          Duas folhas de ideias feitas em sala, cada uma com quatro soluções para o
+          problema do Pix, e o que um colega achou de cada ideia.
+        </p>
+        <nav class="nesta-pagina" aria-label="Nesta página">
+          <span class="nesta-pagina__rotulo" aria-hidden="true">Nesta página:</span>
+          <a href="#regras">As quatro regras</a>
+          <a href="#ideias">Ideia por ideia</a>
+          <a href="#fica">O que fica</a>
+        </nav>
+      </header>
+
+      <div class="pagina__corpo">
+
+        <section class="pagina__secao" id="regras">
+          <h2 class="analise__grupo">Uma folha, quatro regras</h2>
+          <div class="regras">
+            <ol class="dobra" aria-label="Folha dividida em quatro partes">
+            <li class="dobra__parte"><span class="dobra__num" aria-hidden="true">1</span><strong>Solução cara</strong><span>Sem se preocupar com dinheiro: o que seria o ideal?</span></li>
+            <li class="dobra__parte"><span class="dobra__num" aria-hidden="true">2</span><strong>Barata e rápida</strong><span>O que se faz com pouco e em pouco tempo?</span></li>
+            <li class="dobra__parte"><span class="dobra__num" aria-hidden="true">3</span><strong>Inspirada em jogos</strong><span>Pontos, fases e prêmios ajudam a pessoa a aprender?</span></li>
+            <li class="dobra__parte"><span class="dobra__num" aria-hidden="true">4</span><strong>Robôs e IoT</strong><span>E se um robô ou um aparelho conectado ajudasse?</span></li>
+            </ol>
+            <div class="regras__texto">
+              <p>O Crazy 4 é uma versão menor do Crazy 8. A folha é dobrada em quatro partes e cada parte pede uma solução com uma regra diferente.</p>
+              <p>As regras forçam a sair da ideia óbvia: primeiro vem a ideia sem limite de custo, depois a mais simples, e só então as que fogem do comum.</p>
+              <p class="regras__nota">Aqui estão duas folhas. Cada uma foi lida por um colega, que comentou as quatro ideias.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="pagina__secao" id="ideias">
+          <h2 class="analise__grupo">Ideia por ideia</h2>
+          <p class="analise__descricao">As oito ideias estão agrupadas pela regra. Use os botões para destacar só as que tiveram o mesmo resultado.</p>
+          <div class="filtro" role="group" aria-label="Destacar ideias pelo comentário do colega">
+            <button type="button" class="filtro__botao" data-filtro="todas" aria-pressed="true">Todas <span>8</span></button>
+            <button type="button" class="filtro__botao filtro__botao--segue" data-filtro="segue" aria-pressed="false">Pode seguir <span>2</span></button>
+            <button type="button" class="filtro__botao filtro__botao--ressalva" data-filtro="ressalva" aria-pressed="false">Com ressalva <span>2</span></button>
+            <button type="button" class="filtro__botao filtro__botao--custo" data-filtro="custo" aria-pressed="false">Custo alto <span>2</span></button>
+            <button type="button" class="filtro__botao filtro__botao--nao" data-filtro="nao" aria-pressed="false">Não dá <span>2</span></button>
+          </div>
+          <div class="regras-lista">
+          <section class="regra" aria-labelledby="regra-1">
+            <h3 class="regra__titulo" id="regra-1"><span class="regra__num" aria-hidden="true">1</span>Solução cara</h3>
+            <ul class="ideias">
+              <li class="ideia ideia--ressalva" data-veredito="ressalva">
+                <p class="ideia__folha">Folha 1</p>
+                <p class="ideia__texto">Fazer uma interface exclusiva para cada cliente idoso, do jeito que ele quiser e achar mais fácil e intuitivo.</p>
+                <p class="ideia__veredito"><span class="selo selo--ressalva">Com ressalva</span></p>
+                <blockquote class="ideia__comentario"><span class="ideia__rotulo">Comentário de um colega</span>Boa, porém muito trabalhosa. O idoso vai ter dificuldade em criar a própria interface, com o que quer, para facilitar o processo.</blockquote>
+              </li>
+              <li class="ideia ideia--nao" data-veredito="nao">
+                <p class="ideia__folha">Folha 2</p>
+                <p class="ideia__texto">Contratar uma pessoa para auxiliar o idoso a usar o banco digital. A pessoa ficaria à disposição o dia todo.</p>
+                <p class="ideia__veredito"><span class="selo selo--nao">Não dá</span></p>
+                <blockquote class="ideia__comentario"><span class="ideia__rotulo">Comentário de um colega</span>Difícil de implementar, porque o contratado teria que ficar 24h à disposição do cliente.</blockquote>
+              </li>
+            </ul>
+          </section>
+
+          <section class="regra" aria-labelledby="regra-2">
+            <h3 class="regra__titulo" id="regra-2"><span class="regra__num" aria-hidden="true">2</span>Barata e rápida</h3>
+            <ul class="ideias">
+              <li class="ideia ideia--segue" data-veredito="segue">
+                <p class="ideia__folha">Folha 1</p>
+                <p class="ideia__texto">Vídeo feito por IA para explicar o passo a passo das ferramentas de transação financeira (Pix e transferência). A própria folha anota: é possível implementar no projeto.</p>
+                <p class="ideia__veredito"><span class="selo selo--segue">Pode seguir</span></p>
+                <blockquote class="ideia__comentario"><span class="ideia__rotulo">Comentário de um colega</span>Fácil de implementar e útil. Pode seguir para o projeto.</blockquote>
+              </li>
+              <li class="ideia ideia--segue" data-veredito="segue">
+                <p class="ideia__folha">Folha 2</p>
+                <p class="ideia__texto">Assistente de IA por voz, em tempo real, no lugar de uma pessoa.</p>
+                <p class="ideia__veredito"><span class="selo selo--segue">Pode seguir</span></p>
+                <blockquote class="ideia__comentario"><span class="ideia__rotulo">Comentário de um colega</span>Boa ideia, fácil de implementar e de custo acessível. Seria uma ajuda de fácil acesso que poderia prevenir diversos erros.</blockquote>
+              </li>
+            </ul>
+          </section>
+
+          <section class="regra" aria-labelledby="regra-3">
+            <h3 class="regra__titulo" id="regra-3"><span class="regra__num" aria-hidden="true">3</span>Inspirada em jogos</h3>
+            <ul class="ideias">
+              <li class="ideia ideia--ressalva" data-veredito="ressalva">
+                <p class="ideia__folha">Folha 1</p>
+                <p class="ideia__texto">Competição de pontos: quem fizer mais transações financeiras de maneira correta ganha. Cada transação correta dá ponto, o processo errado tira pontos. No final, o ganhador leva uma viagem.</p>
+                <p class="ideia__veredito"><span class="selo selo--ressalva">Com ressalva</span></p>
+                <blockquote class="ideia__comentario"><span class="ideia__rotulo">Comentário de um colega</span>Rigoroso: durante o processo o idoso pode cometer erros cruciais e se frustrar. Mas a ideia de bonificação é boa.</blockquote>
+              </li>
+              <li class="ideia ideia--nao" data-veredito="nao">
+                <p class="ideia__folha">Folha 2</p>
+                <p class="ideia__texto">Quem fizer mais ações no banco sem precisar de ajuda ganha prêmio em dinheiro, com pódio de 1º, 2º e 3º lugar.</p>
+                <p class="ideia__veredito"><span class="selo selo--nao">Não dá</span></p>
+                <blockquote class="ideia__comentario"><span class="ideia__rotulo">Comentário de um colega</span>Não é implementável: a verificação das atividades seria difícil e financeiramente inviável para a instituição.</blockquote>
+              </li>
+            </ul>
+          </section>
+
+          <section class="regra" aria-labelledby="regra-4">
+            <h3 class="regra__titulo" id="regra-4"><span class="regra__num" aria-hidden="true">4</span>Robôs e IoT</h3>
+            <ul class="ideias">
+              <li class="ideia ideia--custo" data-veredito="custo">
+                <p class="ideia__folha">Folha 1</p>
+                <p class="ideia__texto">Robôs pessoais configurados para realizar as transações financeiras do cliente. Têm acesso à própria tela e respondem por comando de voz do cliente titular.</p>
+                <p class="ideia__veredito"><span class="selo selo--custo">Custo alto</span></p>
+                <blockquote class="ideia__comentario"><span class="ideia__rotulo">Comentário de um colega</span>Custo de implementação muito alto, porém útil.</blockquote>
+              </li>
+              <li class="ideia ideia--custo" data-veredito="custo">
+                <p class="ideia__folha">Folha 2</p>
+                <p class="ideia__texto">Plano para ter um robô para auxílio presencial.</p>
+                <p class="ideia__veredito"><span class="selo selo--custo">Custo alto</span></p>
+                <blockquote class="ideia__comentario"><span class="ideia__rotulo">Comentário de um colega</span>Ideia boa, porém futurista. Seria uma ajuda muito grande, mas o custo para implementar é alto.</blockquote>
+              </li>
+            </ul>
+          </section>
+          </div>
+        </section>
+
+        <section class="pagina__secao" id="fica">
+          <h2 class="analise__grupo">O que fica</h2>
+          <div class="fica">
+            <div class="fica__bloco fica__bloco--sim">
+              <h3>O que seguiu bem nos comentários</h3>
+              <p>As duas ideias baratas, o vídeo feito por IA e o assistente de IA por voz, foram as únicas que o colega chamou de fáceis de implementar. As duas tentam o mesmo: guiar a pessoa passo a passo, sem depender de alguém ao lado.</p>
+            </div>
+            <div class="fica__bloco">
+              <h3>O que ficou de aprendizado</h3>
+              <p>Nas ideias de jogo, a bonificação foi bem vista, mas o risco de frustrar o idoso por um erro pesou. Robô e interface exclusiva foram vistos como úteis, só que caros ou trabalhosos.</p>
+            </div>
+          </div>
+          <p class="fica__ligacao">
+            Guiar com a voz e mostrar o passo a passo combina com o que a ficha de
+            <a class="persona--primaria" href="personas.html#ficha-marlene">Marlene</a>
+            já pedia: ajuda falada e um jeito de treinar sem dinheiro real. O que vai para
+            o protótipo ainda será decidido na etapa 08.
+          </p>
+        </section>
+
+      </div>
+
+      <nav class="paginacao" aria-label="Página anterior e próxima">
+        <a class="paginacao__link paginacao__link--anterior" href="cenarios.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"></path><path d="M10 5.5L3.5 12l6.5 6.5"></path></svg>
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Anterior</span>
+            <span class="paginacao__nome">Cenários</span>
+          </span>
+        </a>
+        <a class="paginacao__link paginacao__link--proxima" href="prototipo.html">
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Próxima</span>
+            <span class="paginacao__nome">08 &middot; Solução / Protótipo</span>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg>
+        </a>
+      </nav>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       4. RODAPÉ
+       ============================================================ -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense · Sistemas de Informação · 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=26"></script>
+</body>
+</html>
