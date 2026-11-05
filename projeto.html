@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Projeto — PIX para todos</title>
+  <meta name="description" content="Contexto, problema, público-alvo e objetivo do projeto PIX para todos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=19">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO
+       ============================================================ -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+
+        <!-- Botão de modo claro / escuro -->
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+
+        <!-- Abre o fio condutor no celular -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="trilha" aria-label="Abrir o menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="progresso" aria-hidden="true"><span class="progresso__barra"></span></div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ==========================================================
+         2. FIO CONDUTOR
+         O mesmo menu em todas as páginas. Ao mudar um item aqui,
+         mude também nas outras páginas.
+         ========================================================== -->
+    <nav class="trilha" id="trilha" aria-label="Fio condutor do projeto" data-etapa="0">
+      <p class="trilha__titulo">Fio condutor</p>
+
+      <ul class="trilha__lista">
+        <li>
+          <a class="trilha__link" href="index.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5"></path><path d="M6.5 10v8.5h11V10"></path></svg></span>
+            <span class="trilha__nome">Início</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="projeto.html" aria-current="page">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.5"></circle></svg></span>
+            <span class="trilha__nome">O Projeto</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="trilha__grupo" id="trilha-imersao">Imersão</p>
+      <div class="trilha__processo">
+        <span class="trilha__fio" aria-hidden="true"></span>
+        <ol class="trilha__lista" aria-labelledby="trilha-imersao">
+          <li>
+            <a class="trilha__link" href="problema.html">
+              <span class="trilha__no" aria-hidden="true">01</span>
+              <span class="trilha__nome">Definição do problema</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="matriz-csd.html">
+              <span class="trilha__no" aria-hidden="true">02</span>
+              <span class="trilha__nome">Matriz CSD</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="mapa-de-empatia.html">
+              <span class="trilha__no" aria-hidden="true">03</span>
+              <span class="trilha__nome">Mapa de Empatia</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="analise-competitiva.html">
+              <span class="trilha__no" aria-hidden="true">04</span>
+              <span class="trilha__nome">Análise Competitiva</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="pesquisa.html">
+              <span class="trilha__no" aria-hidden="true">05</span>
+              <span class="trilha__nome">Pesquisa com usuários</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="entrevistas.html">Materiais das entrevistas</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link" href="resultados.html">
+              <span class="trilha__no" aria-hidden="true">06</span>
+              <span class="trilha__nome">Análise dos resultados</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="respostas.html">Respostas do questionário</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-ideacao">Ideação e prototipação</p>
+        <ol class="trilha__lista" start="7" aria-labelledby="trilha-ideacao">
+          <li>
+            <a class="trilha__link" href="ideacao.html">
+              <span class="trilha__no" aria-hidden="true">07</span>
+              <span class="trilha__nome">Ideação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="prototipo.html">
+              <span class="trilha__no" aria-hidden="true">08</span>
+              <span class="trilha__nome">Solução / Protótipo</span>
+            </a>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-avaliacao">Avaliação</p>
+        <ol class="trilha__lista" start="9" aria-labelledby="trilha-avaliacao">
+          <li>
+            <a class="trilha__link" href="avaliacao.html">
+              <span class="trilha__no" aria-hidden="true">09</span>
+              <span class="trilha__nome">Avaliação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="conclusoes.html">
+              <span class="trilha__no" aria-hidden="true">10</span>
+              <span class="trilha__nome">Conclusões</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <p class="trilha__grupo" id="trilha-sobre">Sobre o trabalho</p>
+      <ul class="trilha__lista" aria-labelledby="trilha-sobre">
+        <li>
+          <a class="trilha__link" href="equipe.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path><path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path></svg></span>
+            <span class="trilha__nome">Equipe</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="uso-de-ia.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"></rect><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"></path></svg></span>
+            <span class="trilha__nome">Uso de IA</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ==========================================================
+         3. CONTEÚDO DA PÁGINA
+         ========================================================== -->
+    <main class="pagina" id="conteudo">
+
+      <header class="pagina__cabecalho">
+        <nav class="migalhas" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li aria-current="page">O Projeto</li>
+          </ol>
+        </nav>
+        <p class="pagina__rotulo">O ponto de partida</p>
+        <h1 class="pagina__titulo">O Projeto</h1>
+        <p class="pagina__intro">
+          Este projeto busca compreender as dificuldades enfrentadas por
+          pessoas idosas que possuem pouca familiaridade com tecnologias
+          digitais ao realizar transferências bancárias utilizando o PIX.
+        </p>
+      </header>
+
+      <div class="pagina__corpo">
+
+        <div class="grade grade--2">
+
+          <!-- CONTEXTUALIZAÇÃO -->
+          <article class="card">
+            <svg class="card__icone" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M3 12h18"></path>
+              <path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"></path>
+            </svg>
+            <h3 class="card__titulo">Contextualização</h3>
+            <p>
+              O PIX foi adotado em massa no Brasil e hoje faz parte do dia a dia:
+              pagar contas, dividir despesas, transferir dinheiro para a família.
+              Ao mesmo tempo, os bancos migraram a maior parte das operações para o
+              aplicativo — e a população idosa acompanhou esse movimento sem
+              necessariamente ter sido preparada para ele.
+            </p>
+          </article>
+
+          <!-- PROBLEMA -->
+          <article class="card">
+            <svg class="card__icone" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M9.3 9.2a2.8 2.8 0 0 1 5.4 1c0 1.9-2.7 2.4-2.7 4"></path>
+              <path d="M12 17.2h.01"></path>
+            </svg>
+            <h3 class="card__titulo">Problema</h3>
+            <p>
+              Pessoas idosas com pouca familiaridade digital encontram barreiras ao
+              transferir dinheiro pelo PIX: fluxos com muitos passos, vocabulário em
+              inglês, senhas difíceis de lembrar e o medo constante de cair em golpes.
+              O resultado é a dependência de filhos e netos — ou a desistência da tarefa.
+            </p>
+          </article>
+
+          <!-- PÚBLICO-ALVO -->
+          <article class="card">
+            <svg class="card__icone" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="9" cy="8" r="3.2"></circle>
+              <path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path>
+              <path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path>
+              <path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path>
+            </svg>
+            <h3 class="card__titulo">Público-alvo</h3>
+            <p>
+              Pessoas idosas com pouca ou nenhuma familiaridade com tecnologia, que já
+              possuem conta em banco e usam o aplicativo para poucas funções — em geral
+              checar o saldo e fazer um PIX —, muitas vezes com o apoio de familiares.
+            </p>
+          </article>
+
+          <!-- OBJETIVO -->
+          <article class="card">
+            <svg class="card__icone" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5"></circle>
+              <circle cx="12" cy="12" r="4.5"></circle>
+              <circle cx="12" cy="12" r="1"></circle>
+            </svg>
+            <h3 class="card__titulo">Objetivo</h3>
+            <p>
+              Compreender as dificuldades reais desse público ao realizar transferências
+              via PIX e propor melhorias de interface que tornem a tarefa autônoma,
+              intuitiva e emocionalmente segura.
+            </p>
+          </article>
+
+        </div>
+      </div>
+
+      <nav class="paginacao" aria-label="Página anterior e próxima">
+        <a class="paginacao__link paginacao__link--anterior" href="index.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"></path><path d="M10 5.5L3.5 12l6.5 6.5"></path></svg>
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Anterior</span>
+            <span class="paginacao__nome">Início</span>
+          </span>
+        </a>
+        <a class="paginacao__link paginacao__link--proxima" href="problema.html">
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Próxima</span>
+            <span class="paginacao__nome">01 &middot; Definição do problema</span>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg>
+        </a>
+      </nav>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       4. RODAPÉ
+       ============================================================ -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense · Sistemas de Informação · 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=19"></script>
+</body>
+</html>

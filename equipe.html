@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipe — PIX para todos</title>
+  <meta name="description" content="Estudantes responsáveis pelo portfólio PIX para todos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=19">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO
+       ============================================================ -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+
+        <!-- Botão de modo claro / escuro -->
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+
+        <!-- Abre o fio condutor no celular -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="trilha" aria-label="Abrir o menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="progresso" aria-hidden="true"><span class="progresso__barra"></span></div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ==========================================================
+         2. FIO CONDUTOR
+         O mesmo menu em todas as páginas. Ao mudar um item aqui,
+         mude também nas outras páginas.
+         ========================================================== -->
+    <nav class="trilha" id="trilha" aria-label="Fio condutor do projeto" data-etapa="11">
+      <p class="trilha__titulo">Fio condutor</p>
+
+      <ul class="trilha__lista">
+        <li>
+          <a class="trilha__link" href="index.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5"></path><path d="M6.5 10v8.5h11V10"></path></svg></span>
+            <span class="trilha__nome">Início</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="projeto.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.5"></circle></svg></span>
+            <span class="trilha__nome">O Projeto</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="trilha__grupo" id="trilha-imersao">Imersão</p>
+      <div class="trilha__processo">
+        <span class="trilha__fio" aria-hidden="true"></span>
+        <ol class="trilha__lista" aria-labelledby="trilha-imersao">
+          <li>
+            <a class="trilha__link trilha__link--feito" href="problema.html">
+              <span class="trilha__no" aria-hidden="true">01</span>
+              <span class="trilha__nome">Definição do problema</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="matriz-csd.html">
+              <span class="trilha__no" aria-hidden="true">02</span>
+              <span class="trilha__nome">Matriz CSD</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="mapa-de-empatia.html">
+              <span class="trilha__no" aria-hidden="true">03</span>
+              <span class="trilha__nome">Mapa de Empatia</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="analise-competitiva.html">
+              <span class="trilha__no" aria-hidden="true">04</span>
+              <span class="trilha__nome">Análise Competitiva</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="pesquisa.html">
+              <span class="trilha__no" aria-hidden="true">05</span>
+              <span class="trilha__nome">Pesquisa com usuários</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="entrevistas.html">Materiais das entrevistas</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="resultados.html">
+              <span class="trilha__no" aria-hidden="true">06</span>
+              <span class="trilha__nome">Análise dos resultados</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="respostas.html">Respostas do questionário</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-ideacao">Ideação e prototipação</p>
+        <ol class="trilha__lista" start="7" aria-labelledby="trilha-ideacao">
+          <li>
+            <a class="trilha__link trilha__link--feito" href="ideacao.html">
+              <span class="trilha__no" aria-hidden="true">07</span>
+              <span class="trilha__nome">Ideação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="prototipo.html">
+              <span class="trilha__no" aria-hidden="true">08</span>
+              <span class="trilha__nome">Solução / Protótipo</span>
+            </a>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-avaliacao">Avaliação</p>
+        <ol class="trilha__lista" start="9" aria-labelledby="trilha-avaliacao">
+          <li>
+            <a class="trilha__link trilha__link--feito" href="avaliacao.html">
+              <span class="trilha__no" aria-hidden="true">09</span>
+              <span class="trilha__nome">Avaliação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="conclusoes.html">
+              <span class="trilha__no" aria-hidden="true">10</span>
+              <span class="trilha__nome">Conclusões</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <p class="trilha__grupo" id="trilha-sobre">Sobre o trabalho</p>
+      <ul class="trilha__lista" aria-labelledby="trilha-sobre">
+        <li>
+          <a class="trilha__link" href="equipe.html" aria-current="page">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path><path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path></svg></span>
+            <span class="trilha__nome">Equipe</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="uso-de-ia.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"></rect><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"></path></svg></span>
+            <span class="trilha__nome">Uso de IA</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ==========================================================
+         3. CONTEÚDO DA PÁGINA
+         ========================================================== -->
+    <main class="pagina" id="conteudo">
+
+      <header class="pagina__cabecalho">
+        <nav class="migalhas" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li aria-current="page">Equipe</li>
+          </ol>
+        </nav>
+        <p class="pagina__rotulo">Sobre o trabalho</p>
+        <h1 class="pagina__titulo">Equipe</h1>
+        <p class="pagina__intro">
+          Estudantes responsáveis pelo desenvolvimento deste portfólio.
+        </p>
+      </header>
+
+      <div class="pagina__corpo">
+
+        <div class="grade grade--equipe">
+
+          <article class="pessoa">
+            <div class="pessoa__avatar" aria-hidden="true">MB</div>
+            <h3 class="pessoa__nome">Mateus Floria Baumgaertner</h3>
+          </article>
+
+          <article class="pessoa">
+            <div class="pessoa__avatar" aria-hidden="true">MA</div>
+            <h3 class="pessoa__nome">Matheus Ricotta Pereira Amorim</h3>
+          </article>
+
+          <article class="pessoa">
+            <div class="pessoa__avatar" aria-hidden="true">LN</div>
+            <h3 class="pessoa__nome">Lucas Caseli R Neca</h3>
+          </article>
+
+          <article class="pessoa">
+            <div class="pessoa__avatar" aria-hidden="true">AF</div>
+            <h3 class="pessoa__nome">Arthur Mota Fernandes</h3>
+          </article>
+
+        </div>
+      </div>
+
+      <nav class="paginacao" aria-label="Página anterior e próxima">
+        <a class="paginacao__link paginacao__link--anterior" href="conclusoes.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"></path><path d="M10 5.5L3.5 12l6.5 6.5"></path></svg>
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Anterior</span>
+            <span class="paginacao__nome">10 &middot; Conclusões</span>
+          </span>
+        </a>
+        <a class="paginacao__link paginacao__link--proxima" href="uso-de-ia.html">
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Próxima</span>
+            <span class="paginacao__nome">Uso de IA</span>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg>
+        </a>
+      </nav>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       4. RODAPÉ
+       ============================================================ -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense · Sistemas de Informação · 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=19"></script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análise dos resultados — PIX para todos</title>
+  <meta name="description" content="Etapa 06 do portfólio PIX para todos: O que aprendemos com as 27 respostas do questionário.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=19">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO
+       ============================================================ -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+
+        <!-- Botão de modo claro / escuro -->
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+
+        <!-- Abre o fio condutor no celular -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="trilha" aria-label="Abrir o menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="progresso" aria-hidden="true"><span class="progresso__barra"></span></div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ==========================================================
+         2. FIO CONDUTOR
+         O mesmo menu em todas as páginas. Ao mudar um item aqui,
+         mude também nas outras páginas.
+         ========================================================== -->
+    <nav class="trilha" id="trilha" aria-label="Fio condutor do projeto" data-etapa="6">
+      <p class="trilha__titulo">Fio condutor</p>
+
+      <ul class="trilha__lista">
+        <li>
+          <a class="trilha__link" href="index.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5"></path><path d="M6.5 10v8.5h11V10"></path></svg></span>
+            <span class="trilha__nome">Início</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="projeto.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.5"></circle></svg></span>
+            <span class="trilha__nome">O Projeto</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="trilha__grupo" id="trilha-imersao">Imersão</p>
+      <div class="trilha__processo">
+        <span class="trilha__fio" aria-hidden="true"></span>
+        <ol class="trilha__lista" aria-labelledby="trilha-imersao">
+          <li>
+            <a class="trilha__link trilha__link--feito" href="problema.html">
+              <span class="trilha__no" aria-hidden="true">01</span>
+              <span class="trilha__nome">Definição do problema</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="matriz-csd.html">
+              <span class="trilha__no" aria-hidden="true">02</span>
+              <span class="trilha__nome">Matriz CSD</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="mapa-de-empatia.html">
+              <span class="trilha__no" aria-hidden="true">03</span>
+              <span class="trilha__nome">Mapa de Empatia</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="analise-competitiva.html">
+              <span class="trilha__no" aria-hidden="true">04</span>
+              <span class="trilha__nome">Análise Competitiva</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="pesquisa.html">
+              <span class="trilha__no" aria-hidden="true">05</span>
+              <span class="trilha__nome">Pesquisa com usuários</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="entrevistas.html">Materiais das entrevistas</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link" href="resultados.html" aria-current="page">
+              <span class="trilha__no" aria-hidden="true">06</span>
+              <span class="trilha__nome">Análise dos resultados</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="respostas.html">Respostas do questionário</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-ideacao">Ideação e prototipação</p>
+        <ol class="trilha__lista" start="7" aria-labelledby="trilha-ideacao">
+          <li>
+            <a class="trilha__link" href="ideacao.html">
+              <span class="trilha__no" aria-hidden="true">07</span>
+              <span class="trilha__nome">Ideação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="prototipo.html">
+              <span class="trilha__no" aria-hidden="true">08</span>
+              <span class="trilha__nome">Solução / Protótipo</span>
+            </a>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-avaliacao">Avaliação</p>
+        <ol class="trilha__lista" start="9" aria-labelledby="trilha-avaliacao">
+          <li>
+            <a class="trilha__link" href="avaliacao.html">
+              <span class="trilha__no" aria-hidden="true">09</span>
+              <span class="trilha__nome">Avaliação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="conclusoes.html">
+              <span class="trilha__no" aria-hidden="true">10</span>
+              <span class="trilha__nome">Conclusões</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <p class="trilha__grupo" id="trilha-sobre">Sobre o trabalho</p>
+      <ul class="trilha__lista" aria-labelledby="trilha-sobre">
+        <li>
+          <a class="trilha__link" href="equipe.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path><path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path></svg></span>
+            <span class="trilha__nome">Equipe</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="uso-de-ia.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"></rect><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"></path></svg></span>
+            <span class="trilha__nome">Uso de IA</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ==========================================================
+         3. CONTEÚDO DA PÁGINA
+         ========================================================== -->
+    <main class="pagina" id="conteudo">
+
+      <header class="pagina__cabecalho">
+        <nav class="migalhas" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li>Imersão</li>
+            <li aria-current="page">Análise dos resultados</li>
+          </ol>
+        </nav>
+        <p class="pagina__rotulo">Etapa 06 de 10</p>
+        <h1 class="pagina__titulo">Análise dos resultados</h1>
+        <p class="pagina__intro">
+          Lemos as 27 respostas do questionário e juntamos o que mais chamou
+          a nossa atenção.
+        </p>
+        <nav class="nesta-pagina" aria-label="Nesta página">
+          <span class="nesta-pagina__rotulo" aria-hidden="true">Nesta página:</span>
+          <a href="#analise">Análise</a>
+          <a href="#graficos">Gráficos do questionário</a>
+        </nav>
+      </header>
+
+      <div class="pagina__corpo">
+
+        <a class="arquivo" href="respostas.html">
+          <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3.5" y="4.5" width="17" height="15" rx="2"></rect>
+            <path d="M3.5 9.5h17M9 9.5V19.5"></path>
+          </svg>
+          <span class="arquivo__texto">
+            <strong>Respostas do questionário</strong>
+            <small>27 respostas &middot; ver a tabela completa</small>
+          </span>
+        </a>
+
+        <p class="etapa__texto" id="analise">
+          Ao analisar os resultados do questionário, percebemos que o uso do celular
+          já faz parte da rotina da maioria dos participantes, mas isso não significa
+          necessariamente que eles tenham facilidade ou segurança para utilizar
+          aplicativos bancários. Mesmo entre pessoas que usam o celular todos os dias,
+          ainda aparecem dificuldades para encontrar funções, entender algumas
+          informações e, principalmente, ter confiança no momento de confirmar uma
+          transação.
+        </p>
+
+        <p class="etapa__texto">
+          Um ponto que chamou bastante a nossa atenção foi a questão da segurança. O
+          medo de golpes e o medo de cometer algum erro apareceram como alguns dos
+          principais motivos para evitar transações pelo aplicativo. Além disso, a
+          grande maioria considerou que alertas de segurança ajudam durante o uso e que
+          uma tela final mostrando claramente o nome do destinatário, o banco e o valor
+          antes da confirmação deixaria a transação mais segura. Isso fez com que
+          percebêssemos que o problema não está somente no tamanho das letras ou na
+          quantidade de botões, mas também na insegurança de não saber se a operação
+          está sendo feita corretamente.
+        </p>
+
+        <p class="etapa__texto">
+          Também observamos que existe uma diferença entre usar o aplicativo bancário e
+          realmente preferir utilizá-lo. Uma parte significativa dos participantes
+          utiliza aplicativos bancários com alguma frequência, porém muitos ainda
+          preferem caixa eletrônico, agência bancária ou até mesmo pedir ajuda para
+          outra pessoa. Isso mostra que o fato de uma pessoa conseguir utilizar
+          determinada tecnologia não significa necessariamente que ela se sinta
+          confortável ou independente ao utilizá-la.
+        </p>
+
+        <p class="etapa__texto">
+          Em relação às funcionalidades, percebemos que algumas operações são muito
+          mais utilizadas do que outras. Consultar saldo e extrato e realizar PIX
+          aparecem com mais frequência, enquanto outras funções são menos utilizadas.
+          Esse resultado reforça a ideia de que um modo mais simples, mostrando
+          primeiro as funcionalidades mais importantes, pode facilitar bastante a
+          experiência. Textos e botões maiores também foram considerados úteis, mas
+          recursos ligados à segurança, como uma confirmação mais clara antes de enviar
+          dinheiro e alertas contra golpes, tiveram bastante destaque.
+        </p>
+
+        <p class="etapa__texto">
+          Outro resultado interessante foi a forma como os participantes procuram
+          ajuda. A família continua tendo um papel importante, principalmente entre quem
+          possui menor familiaridade com tecnologia. Porém, as explicações fornecidas
+          pelo próprio aplicativo também apareceram como uma forma de ajuda bastante
+          desejada. Para o nosso grupo, isso mostra uma oportunidade importante: se o
+          aplicativo explicar melhor cada etapa e oferecer ajuda no momento da dúvida,
+          ele pode diminuir a necessidade de o usuário depender constantemente de
+          familiares ou conhecidos.
+        </p>
+
+        <h2 class="analise__grupo" id="graficos">Gráficos do questionário</h2>
+        <p class="analise__descricao">Resultado de cada pergunta, direto do formulário (27 respostas).</p>
+        <div class="graficos">
+          <figure class="grafico">
+            <img src="img/grafico-01.png" alt="Gráfico de pizza da pergunta 1, faixa etária: 33,3% de 70 a 74 anos, 29,6% de 75 a 79, 14,8% de 60 a 64, 14,8% de 65 a 69 e 7,4% com 80 ou mais." width="840" height="342" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-02.png" alt="Gráfico de pizza da pergunta 2, frequência de uso do celular: 59,3% todos os dias, 33,3% algumas vezes por semana e 7,4% raramente." width="845" height="350" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-03.png" alt="Gráfico de barras da pergunta 3, familiaridade com o celular de 1 a 5: 5 respostas na nota 1, 4 na 2, 12 na 3, 4 na 4 e 2 na 5." width="846" height="393" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-04.png" alt="Gráfico de barras da pergunta 4, o que fazer ao aprender uma função nova: 9 procuram tutorial ou vídeo, 8 pedem ajuda a um familiar, 6 tentam sozinhos, 3 procuram atendimento, 2 pedem ajuda a um amigo e 1 evita usar." width="848" height="416" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-05.png" alt="Gráfico de pizza da pergunta 5, uso de aplicativo bancário: 37% sim frequentemente, 37% sim às vezes, 14,8% raramente e 11,1% já utilizou mas não utiliza mais." width="846" height="348" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-06.png" alt="Gráfico de barras da pergunta 6, operações já feitas pelo celular: 26 consultar saldo ou extrato, 18 fazer Pix, 12 pagar boleto ou conta, 11 fazer transferência, 10 acessar comprovantes e 7 consultar ou pagar cartão." width="845" height="418" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-07.png" alt="Gráfico de pizza da pergunta 7, frequência de Pix, com 25 respostas: 32% algumas vezes por mês, 28% não fazem Pix, 20% raramente, 12% várias vezes por semana e 8% cerca de uma vez por semana." width="847" height="347" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-08.png" alt="Gráfico de pizza da pergunta 8, frequência de pagamento de contas pelo celular: 51,9% nunca pagam pelo celular, 18,5% várias vezes por mês, 18,5% cerca de uma vez por mês e 11,1% raramente." width="845" height="347" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-09.png" alt="Gráfico de barras da pergunta 9, opção preferida para uma transação financeira: 9 aplicativo do banco, 6 agência bancária, 6 pedem ajuda a um familiar ou conhecido, 5 caixa eletrônico e 3 atendimento pelo WhatsApp do banco." width="840" height="414" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-10.png" alt="Gráfico de barras da pergunta 10, principal motivo para evitar uma transação pelo aplicativo: 7 medo de golpe ou fraude, 6 medo de errar, 5 não costumam evitar, 4 letras ou botões difíceis de ver, 3 não sabem onde encontrar a função, 2 muitos passos ou telas, 1 termos difíceis e 1 prefere atendimento presencial." width="846" height="416" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-11.png" alt="Gráfico de barras da pergunta 21, de quem prefere receber ajuda: 10 do próprio aplicativo com explicações na tela, 10 de familiar ou pessoa de confiança, 4 assistente por voz, 4 atendente do banco e 1 prefere cancelar e tentar depois." width="692" height="383" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-12.png" alt="Gráfico de pizza da pergunta 22, uso de recurso de voz com conferência dos dados: 48,1% talvez, 33,3% sim, 11,1% não e 7,4% não sabem responder." width="694" height="330" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-13.png" alt="Gráfico de barras da pergunta 23, forma de confirmação de identidade que dá mais segurança: 9 impressão digital, 5 biometria facial, 5 combinação de mais de uma forma, 4 senha numérica, 4 código enviado ao celular e 2 sem preferência." width="690" height="338" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-14.png" alt="Gráfico de pizza da pergunta 24, frequência com que pedem ajuda para Pix, pagamentos ou transferências: 29,6% às vezes, 25,9% raramente, 22,2% nunca, 14,8% na maioria das vezes e 7,4% sempre." width="692" height="306" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-15.png" alt="Gráfico de pizza da pergunta 25, conforto para fazer transações sem ajuda se o aplicativo fosse mais simples: 51,9% com certeza sim, 22,2% provavelmente sim, 18,5% talvez e o restante entre provavelmente não e não sei responder." width="694" height="306" loading="lazy">
+          </figure>
+          <figure class="grafico">
+            <img src="img/grafico-16.png" alt="Gráfico de barras da pergunta 26, recursos que mais ajudariam: 14 confirmação mais clara antes de enviar, 12 textos e botões maiores, 11 alertas contra golpes, 10 modo simplificado, 9 botão de ajuda visível, 8 explicações em linguagem simples e 6 ajuda por voz." width="692" height="341" loading="lazy">
+          </figure>
+        </div>
+      </div>
+
+      <nav class="paginacao" aria-label="Página anterior e próxima">
+        <a class="paginacao__link paginacao__link--anterior" href="pesquisa.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"></path><path d="M10 5.5L3.5 12l6.5 6.5"></path></svg>
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Anterior</span>
+            <span class="paginacao__nome">05 &middot; Pesquisa com usuários</span>
+          </span>
+        </a>
+        <a class="paginacao__link paginacao__link--proxima" href="ideacao.html">
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Próxima</span>
+            <span class="paginacao__nome">07 &middot; Ideação</span>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg>
+        </a>
+      </nav>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       4. RODAPÉ
+       ============================================================ -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense · Sistemas de Informação · 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=19"></script>
+</body>
+</html>

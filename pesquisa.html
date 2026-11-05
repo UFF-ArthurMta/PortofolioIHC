@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesquisa com usuários — PIX para todos</title>
+  <meta name="description" content="Etapa 05 do portfólio PIX para todos: Formulário online e entrevistas com o público.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=19">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO
+       ============================================================ -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+
+        <!-- Botão de modo claro / escuro -->
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+
+        <!-- Abre o fio condutor no celular -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="trilha" aria-label="Abrir o menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="progresso" aria-hidden="true"><span class="progresso__barra"></span></div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ==========================================================
+         2. FIO CONDUTOR
+         O mesmo menu em todas as páginas. Ao mudar um item aqui,
+         mude também nas outras páginas.
+         ========================================================== -->
+    <nav class="trilha" id="trilha" aria-label="Fio condutor do projeto" data-etapa="5">
+      <p class="trilha__titulo">Fio condutor</p>
+
+      <ul class="trilha__lista">
+        <li>
+          <a class="trilha__link" href="index.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5"></path><path d="M6.5 10v8.5h11V10"></path></svg></span>
+            <span class="trilha__nome">Início</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="projeto.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.5"></circle></svg></span>
+            <span class="trilha__nome">O Projeto</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="trilha__grupo" id="trilha-imersao">Imersão</p>
+      <div class="trilha__processo">
+        <span class="trilha__fio" aria-hidden="true"></span>
+        <ol class="trilha__lista" aria-labelledby="trilha-imersao">
+          <li>
+            <a class="trilha__link trilha__link--feito" href="problema.html">
+              <span class="trilha__no" aria-hidden="true">01</span>
+              <span class="trilha__nome">Definição do problema</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="matriz-csd.html">
+              <span class="trilha__no" aria-hidden="true">02</span>
+              <span class="trilha__nome">Matriz CSD</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="mapa-de-empatia.html">
+              <span class="trilha__no" aria-hidden="true">03</span>
+              <span class="trilha__nome">Mapa de Empatia</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link trilha__link--feito" href="analise-competitiva.html">
+              <span class="trilha__no" aria-hidden="true">04</span>
+              <span class="trilha__nome">Análise Competitiva</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="pesquisa.html" aria-current="page">
+              <span class="trilha__no" aria-hidden="true">05</span>
+              <span class="trilha__nome">Pesquisa com usuários</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="entrevistas.html">Materiais das entrevistas</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link" href="resultados.html">
+              <span class="trilha__no" aria-hidden="true">06</span>
+              <span class="trilha__nome">Análise dos resultados</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="respostas.html">Respostas do questionário</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-ideacao">Ideação e prototipação</p>
+        <ol class="trilha__lista" start="7" aria-labelledby="trilha-ideacao">
+          <li>
+            <a class="trilha__link" href="ideacao.html">
+              <span class="trilha__no" aria-hidden="true">07</span>
+              <span class="trilha__nome">Ideação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="prototipo.html">
+              <span class="trilha__no" aria-hidden="true">08</span>
+              <span class="trilha__nome">Solução / Protótipo</span>
+            </a>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-avaliacao">Avaliação</p>
+        <ol class="trilha__lista" start="9" aria-labelledby="trilha-avaliacao">
+          <li>
+            <a class="trilha__link" href="avaliacao.html">
+              <span class="trilha__no" aria-hidden="true">09</span>
+              <span class="trilha__nome">Avaliação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="conclusoes.html">
+              <span class="trilha__no" aria-hidden="true">10</span>
+              <span class="trilha__nome">Conclusões</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <p class="trilha__grupo" id="trilha-sobre">Sobre o trabalho</p>
+      <ul class="trilha__lista" aria-labelledby="trilha-sobre">
+        <li>
+          <a class="trilha__link" href="equipe.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path><path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path></svg></span>
+            <span class="trilha__nome">Equipe</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="uso-de-ia.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"></rect><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"></path></svg></span>
+            <span class="trilha__nome">Uso de IA</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ==========================================================
+         3. CONTEÚDO DA PÁGINA
+         ========================================================== -->
+    <main class="pagina" id="conteudo">
+
+      <header class="pagina__cabecalho">
+        <nav class="migalhas" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li>Imersão</li>
+            <li aria-current="page">Pesquisa com usuários</li>
+          </ol>
+        </nav>
+        <p class="pagina__rotulo">Etapa 05 de 10</p>
+        <h1 class="pagina__titulo">Pesquisa com usuários</h1>
+        <p class="pagina__intro">
+          Ouvimos o público de duas formas: um formulário online e seis
+          entrevistas.
+        </p>
+        <nav class="nesta-pagina" aria-label="Nesta página">
+          <span class="nesta-pagina__rotulo" aria-hidden="true">Nesta página:</span>
+          <a href="#formulario">Formulário</a>
+          <a href="#entrevista">Entrevista</a>
+        </nav>
+      </header>
+
+      <div class="pagina__corpo">
+
+        <!-- FORMULÁRIO -->
+        <h2 class="analise__grupo" id="formulario">Formulário</h2>
+
+        <a class="arquivo" href="https://forms.gle/ftm2R8JC3im81t5P9"
+           target="_blank" rel="noopener">
+          <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 4.5h5.5V10"></path>
+            <path d="M19.5 4.5L11 13"></path>
+            <path d="M17 14.5v4a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 4 18.5v-10A1.5 1.5 0 0 1 5.5 7h4"></path>
+          </svg>
+          <span class="arquivo__texto">
+            <strong>Formulário da pesquisa</strong>
+            <small>Google Forms &middot; abre em uma nova aba</small>
+          </span>
+        </a>
+
+        <!-- ENTREVISTA -->
+        <h2 class="analise__grupo" id="entrevista">Entrevista</h2>
+
+        <p class="etapa__texto">
+          Antes de entrevistar, montamos o planejamento da pesquisa: a técnica
+          escolhida, quem vamos ouvir, como a conversa vai acontecer e o roteiro
+          completo de perguntas.
+        </p>
+
+        <a class="arquivo" href="docs/planejamento-pesquisa-qualitativa.pdf?v=2"
+           download="Grupo_G6_Planejamento_Pesquisa_Qualitativa.pdf">
+          <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.5v11"></path>
+            <path d="M7.5 10l4.5 4.5 4.5-4.5"></path>
+            <path d="M4.5 19h15"></path>
+          </svg>
+          <span class="arquivo__texto">
+            <strong>Planejamento da pesquisa qualitativa</strong>
+            <small>PDF &middot; 6 páginas &middot; 14 KB</small>
+          </span>
+        </a>
+
+        <p class="etapa__texto etapa__texto--depois">
+          Depois das seis entrevistas, juntamos o que cada participante contou e
+          os principais insights em um só documento.
+        </p>
+
+        <a class="arquivo" href="docs/sintese-entrevistas.pdf"
+           download="Sintese_e_Insights_Entrevistas_Qualitativas_IHC_G6.pdf">
+          <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.5v11"></path>
+            <path d="M7.5 10l4.5 4.5 4.5-4.5"></path>
+            <path d="M4.5 19h15"></path>
+          </svg>
+          <span class="arquivo__texto">
+            <strong>Síntese e insights das entrevistas</strong>
+            <small>PDF &middot; 5 páginas &middot; 105 KB</small>
+          </span>
+        </a>
+
+        <a class="arquivo" href="entrevistas.html">
+          <svg class="arquivo__icone" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2v7.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"></path>
+          </svg>
+          <span class="arquivo__texto">
+            <strong>Materiais das entrevistas</strong>
+            <small>Vídeos, entrevistas em documento e termos de consentimento</small>
+          </span>
+        </a>
+      </div>
+
+      <nav class="paginacao" aria-label="Página anterior e próxima">
+        <a class="paginacao__link paginacao__link--anterior" href="analise-competitiva.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"></path><path d="M10 5.5L3.5 12l6.5 6.5"></path></svg>
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Anterior</span>
+            <span class="paginacao__nome">04 &middot; Análise Competitiva</span>
+          </span>
+        </a>
+        <a class="paginacao__link paginacao__link--proxima" href="resultados.html">
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Próxima</span>
+            <span class="paginacao__nome">06 &middot; Análise dos resultados</span>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg>
+        </a>
+      </nav>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       4. RODAPÉ
+       ============================================================ -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense · Sistemas de Informação · 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=19"></script>
+</body>
+</html>

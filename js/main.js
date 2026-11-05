@@ -1,10 +1,19 @@
 /* ============================================================
    PIX para todos — scripts do site
-   Três funções: tema claro/escuro, menu mobile e link ativo.
+   Tema claro/escuro, fio condutor (menu lateral), barra de
+   leitura e animação dos blocos ao rolar a página.
    ============================================================ */
 
 (function () {
   'use strict';
+
+  var poucoMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // A troca animada entre páginas é pulada quando a pessoa navega rápido;
+  // isso não é erro, então não precisa aparecer no console.
+  window.addEventListener('pagereveal', function (e) {
+    if (e.viewTransition) e.viewTransition.ready.catch(function () {});
+  });
 
   /* --- 1. Modo claro / escuro ------------------------------
      O tema inicial já é aplicado pelo script no <head>.
@@ -42,90 +51,135 @@
     });
   }
 
-  /* --- 2. Menu no celular ---------------------------------- */
-  var botao = document.getElementById('menu-toggle');
-  var menu = document.getElementById('menu');
+  /* --- 2. Fio condutor no celular --------------------------
+     Em telas estreitas o menu lateral vira uma gaveta que abre
+     pelo botão do cabeçalho. Fecha com Esc, ao clicar fora ou
+     ao escolher uma página.
+     -------------------------------------------------------- */
+  var botaoMenu = document.getElementById('menu-toggle');
+  var trilha = document.getElementById('trilha');
 
-  if (botao && menu) {
-    botao.addEventListener('click', function () {
-      var aberto = menu.classList.toggle('aberto');
-      botao.setAttribute('aria-expanded', String(aberto));
-      botao.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
+  function abrirMenu(aberto) {
+    trilha.classList.toggle('aberta', aberto);
+    document.body.classList.toggle('menu-aberto', aberto);
+    botaoMenu.setAttribute('aria-expanded', String(aberto));
+    botaoMenu.setAttribute('aria-label', aberto ? 'Fechar o menu' : 'Abrir o menu');
+  }
+
+  if (botaoMenu && trilha) {
+    botaoMenu.addEventListener('click', function () {
+      abrirMenu(!trilha.classList.contains('aberta'));
     });
 
-    // Fecha o menu ao clicar em um link
-    menu.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') {
-        menu.classList.remove('aberto');
-        botao.setAttribute('aria-expanded', 'false');
+    document.addEventListener('click', function (e) {
+      if (!trilha.classList.contains('aberta')) return;
+      var dentro = trilha.contains(e.target);
+      if ((dentro && e.target.closest('a')) || (!dentro && !botaoMenu.contains(e.target))) {
+        abrirMenu(false);
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && trilha.classList.contains('aberta')) {
+        abrirMenu(false);
+        botaoMenu.focus();
       }
     });
   }
 
-  /* --- 3. Abrir e fechar as etapas do processo -------------
-     O botão é criado aqui, e não no HTML: assim basta adicionar
-     um novo <li class="etapa"> que ele ja vem com o botao.
-     Etapas com conteudo comecam abertas; as que so tem o texto
-     provisorio (placeholder) comecam fechadas.
+  /* --- 3. Linha do fio condutor ----------------------------
+     A linha entre as etapas fica colorida até a etapa atual
+     (data-etapa no <nav class="trilha">). Ela parte de onde
+     estava na página anterior, então parece avançar.
      -------------------------------------------------------- */
-  var CHEVRON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"></path></svg>';
+  var processo = document.querySelector('.trilha__processo');
+  var fio = processo && processo.querySelector('.trilha__fio');
 
-  document.querySelectorAll('.etapa').forEach(function (etapa, i) {
-    var corpo = etapa.querySelector('.etapa__corpo');
-    var topo = etapa.querySelector('.etapa__topo');
-    if (!corpo || !topo) return;
+  if (trilha && fio) {
+    var nos = processo.querySelectorAll('.trilha__no');
+    var etapa = parseInt(trilha.getAttribute('data-etapa'), 10) || 0;
 
-    // Junta tudo o que vem depois do titulo em um bloco recolhivel
-    var conteudo = document.createElement('div');
-    conteudo.className = 'etapa__conteudo';
-    conteudo.id = 'etapa-conteudo-' + (i + 1);
-    while (topo.nextSibling) conteudo.appendChild(topo.nextSibling);
-    if (!conteudo.children.length) return;
-    corpo.appendChild(conteudo);
+    var medirFio = function (animar) {
+      if (!nos.length) return;
+      var topo = processo.getBoundingClientRect().top;
+      var primeiro = nos[0].getBoundingClientRect();
+      var inicio = primeiro.top + primeiro.height / 2 - topo;
+      var altura = 0;
+      if (etapa > 0) {
+        var alvo = nos[Math.min(etapa, nos.length) - 1].getBoundingClientRect();
+        altura = Math.max(0, alvo.top + alvo.height / 2 - topo - inicio);
+      }
 
-    var titulo = topo.querySelector('.etapa__titulo');
-    var nome = titulo ? titulo.textContent.trim() : 'etapa';
-    var comConteudo = !!conteudo.querySelector(':scope > :not(.placeholder)');
+      fio.style.top = inicio + 'px';
+      if (animar && !poucoMovimento) {
+        var antes = 0;
+        try { antes = parseFloat(sessionStorage.getItem('fio')) || 0; } catch (e) {}
+        fio.style.transition = 'none';
+        fio.style.height = antes + 'px';
+        fio.getBoundingClientRect();  // aplica a altura antiga antes de animar
+        fio.style.transition = '';
+      }
+      fio.style.height = altura + 'px';
+      try { sessionStorage.setItem('fio', String(altura)); } catch (e) {}
+    };
 
-    var botao = document.createElement('button');
-    botao.className = 'etapa__toggle';
-    botao.innerHTML = CHEVRON;
-    botao.setAttribute('aria-controls', conteudo.id);
-    topo.appendChild(botao);
-
-    function aplicar(aberto) {
-      conteudo.hidden = !aberto;
-      etapa.classList.toggle('etapa--aberta', aberto);
-      botao.setAttribute('aria-expanded', String(aberto));
-      botao.setAttribute('aria-label', (aberto ? 'Fechar' : 'Abrir') + ' a etapa ' + nome);
+    medirFio(true);
+    window.addEventListener('resize', function () { medirFio(false); });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { medirFio(false); });
     }
+  }
 
-    aplicar(comConteudo);
-    botao.addEventListener('click', function () {
-      aplicar(conteudo.hidden);
-    });
-  });
+  /* --- 4. Barra de leitura ---------------------------------
+     A barrinha embaixo do cabeçalho mostra quanto da página
+     já foi lido.
+     -------------------------------------------------------- */
+  var barra = document.querySelector('.progresso__barra');
 
-  /* --- 4. Destaque do link da seção visível ---------------- */
-  var links = document.querySelectorAll('.nav__lista a');
-  var secoes = [];
+  if (barra) {
+    var agendado = false;
 
-  links.forEach(function (link) {
-    var alvo = document.querySelector(link.getAttribute('href'));
-    if (alvo) secoes.push({ link: link, alvo: alvo });
-  });
+    var atualizarBarra = function () {
+      agendado = false;
+      var total = document.documentElement.scrollHeight - window.innerHeight;
+      var parte = total > 0 ? Math.min(1, window.scrollY / total) : 0;
+      barra.style.transform = 'scaleX(' + parte + ')';
+    };
 
-  if ('IntersectionObserver' in window && secoes.length) {
+    window.addEventListener('scroll', function () {
+      if (agendado) return;
+      agendado = true;
+      requestAnimationFrame(atualizarBarra);
+    }, { passive: true });
+    window.addEventListener('resize', atualizarBarra);
+    atualizarBarra();
+  }
+
+  /* --- 5. Blocos que aparecem ao rolar ---------------------
+     Cada bloco entra subindo quando chega na tela, um pouco
+     depois do vizinho anterior.
+     -------------------------------------------------------- */
+  var ANIMADOS = [
+    '.pagina__corpo .card', '.pessoa', '.roteiro__item', '.csd__lista li', '.postit',
+    '.concorrente', '.grafico', '.mapa__quadrante', '.hmw', '.foto', '.doc',
+    '.pagina__corpo .arquivo', '.referencias'
+  ].join(', ');
+
+  if (!poucoMovimento && 'IntersectionObserver' in window) {
     var observador = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (entrada) {
         if (!entrada.isIntersecting) return;
-        links.forEach(function (l) { l.classList.remove('ativo'); });
-        var atual = secoes.find(function (s) { return s.alvo === entrada.target; });
-        if (atual) atual.link.classList.add('ativo');
+        entrada.target.classList.add('visivel');
+        observador.unobserve(entrada.target);
       });
-    }, { rootMargin: '-45% 0px -50% 0px' });
+    }, { rootMargin: '0px 0px -6% 0px' });
 
-    secoes.forEach(function (s) { observador.observe(s.alvo); });
+    document.querySelectorAll(ANIMADOS).forEach(function (bloco) {
+      var posicao = Array.prototype.indexOf.call(bloco.parentNode.children, bloco);
+      bloco.style.setProperty('--atraso', Math.min(posicao, 8) * 0.06 + 's');
+      bloco.classList.add('revelar');
+      observador.observe(bloco);
+    });
   }
 
 })();

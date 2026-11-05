@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matriz CSD — PIX para todos</title>
+  <meta name="description" content="Etapa 02 do portfólio PIX para todos: Certezas, suposições e dúvidas, com a fonte de cada certeza.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=19">
+
+  <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var salvo = localStorage.getItem('tema');
+        var escuro = salvo ? salvo === 'escuro'
+                           : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================================================
+       1. CABEÇALHO
+       ============================================================ -->
+  <header class="header">
+    <div class="container header__inner">
+
+      <a class="logo" href="index.html">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="3.5"></circle>
+        </svg>
+        <span class="logo__texto">PIX para todos</span>
+      </a>
+
+      <div class="header__acoes">
+
+        <!-- Botão de modo claro / escuro -->
+        <button class="tema-toggle" id="tema-toggle" aria-label="Ativar modo escuro">
+          <span class="tema-toggle__icone" aria-hidden="true"></span>
+          <span class="tema-toggle__texto"></span>
+        </button>
+
+        <!-- Abre o fio condutor no celular -->
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="trilha" aria-label="Abrir o menu">
+          <span></span><span></span><span></span>
+        </button>
+
+      </div>
+
+    </div>
+    <div class="progresso" aria-hidden="true"><span class="progresso__barra"></span></div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ==========================================================
+         2. FIO CONDUTOR
+         O mesmo menu em todas as páginas. Ao mudar um item aqui,
+         mude também nas outras páginas.
+         ========================================================== -->
+    <nav class="trilha" id="trilha" aria-label="Fio condutor do projeto" data-etapa="2">
+      <p class="trilha__titulo">Fio condutor</p>
+
+      <ul class="trilha__lista">
+        <li>
+          <a class="trilha__link" href="index.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5L12 5l8 6.5"></path><path d="M6.5 10v8.5h11V10"></path></svg></span>
+            <span class="trilha__nome">Início</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="projeto.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3.5"></circle></svg></span>
+            <span class="trilha__nome">O Projeto</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="trilha__grupo" id="trilha-imersao">Imersão</p>
+      <div class="trilha__processo">
+        <span class="trilha__fio" aria-hidden="true"></span>
+        <ol class="trilha__lista" aria-labelledby="trilha-imersao">
+          <li>
+            <a class="trilha__link trilha__link--feito" href="problema.html">
+              <span class="trilha__no" aria-hidden="true">01</span>
+              <span class="trilha__nome">Definição do problema</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="matriz-csd.html" aria-current="page">
+              <span class="trilha__no" aria-hidden="true">02</span>
+              <span class="trilha__nome">Matriz CSD</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="mapa-de-empatia.html">
+              <span class="trilha__no" aria-hidden="true">03</span>
+              <span class="trilha__nome">Mapa de Empatia</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="analise-competitiva.html">
+              <span class="trilha__no" aria-hidden="true">04</span>
+              <span class="trilha__nome">Análise Competitiva</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="pesquisa.html">
+              <span class="trilha__no" aria-hidden="true">05</span>
+              <span class="trilha__nome">Pesquisa com usuários</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="entrevistas.html">Materiais das entrevistas</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="trilha__link" href="resultados.html">
+              <span class="trilha__no" aria-hidden="true">06</span>
+              <span class="trilha__nome">Análise dos resultados</span>
+            </a>
+            <ul class="trilha__sub">
+              <li><a class="trilha__sublink" href="respostas.html">Respostas do questionário</a></li>
+            </ul>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-ideacao">Ideação e prototipação</p>
+        <ol class="trilha__lista" start="7" aria-labelledby="trilha-ideacao">
+          <li>
+            <a class="trilha__link" href="ideacao.html">
+              <span class="trilha__no" aria-hidden="true">07</span>
+              <span class="trilha__nome">Ideação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="prototipo.html">
+              <span class="trilha__no" aria-hidden="true">08</span>
+              <span class="trilha__nome">Solução / Protótipo</span>
+            </a>
+          </li>
+        </ol>
+
+        <p class="trilha__grupo" id="trilha-avaliacao">Avaliação</p>
+        <ol class="trilha__lista" start="9" aria-labelledby="trilha-avaliacao">
+          <li>
+            <a class="trilha__link" href="avaliacao.html">
+              <span class="trilha__no" aria-hidden="true">09</span>
+              <span class="trilha__nome">Avaliação</span>
+            </a>
+          </li>
+          <li>
+            <a class="trilha__link" href="conclusoes.html">
+              <span class="trilha__no" aria-hidden="true">10</span>
+              <span class="trilha__nome">Conclusões</span>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <p class="trilha__grupo" id="trilha-sobre">Sobre o trabalho</p>
+      <ul class="trilha__lista" aria-labelledby="trilha-sobre">
+        <li>
+          <a class="trilha__link" href="equipe.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19c0-3 2.5-4.8 5.5-4.8s5.5 1.8 5.5 4.8"></path><path d="M16.5 5.4a3.2 3.2 0 0 1 0 5.9"></path><path d="M17.5 14.6c2 .6 3.3 2.2 3.3 4.4"></path></svg></span>
+            <span class="trilha__nome">Equipe</span>
+          </a>
+        </li>
+        <li>
+          <a class="trilha__link" href="uso-de-ia.html">
+            <span class="trilha__no" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"></rect><path d="M10 3.5V7M14 3.5V7M10 17v3.5M14 17v3.5M3.5 10H7M3.5 14H7M17 10h3.5M17 14h3.5"></path></svg></span>
+            <span class="trilha__nome">Uso de IA</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ==========================================================
+         3. CONTEÚDO DA PÁGINA
+         ========================================================== -->
+    <main class="pagina" id="conteudo">
+
+      <header class="pagina__cabecalho">
+        <nav class="migalhas" aria-label="Você está em">
+          <ol>
+            <li><a href="index.html">Início</a></li>
+            <li>Imersão</li>
+            <li aria-current="page">Matriz CSD</li>
+          </ol>
+        </nav>
+        <p class="pagina__rotulo">Etapa 02 de 10</p>
+        <h1 class="pagina__titulo">Matriz CSD</h1>
+        <p class="pagina__intro">
+          Separamos o que já sabemos, o que achamos e o que ainda precisamos
+          descobrir. Cada certeza mostra a referência de onde ela saiu.
+        </p>
+        <nav class="nesta-pagina" aria-label="Nesta página">
+          <span class="nesta-pagina__rotulo" aria-hidden="true">Nesta página:</span>
+          <a href="#certezas">Certezas</a>
+          <a href="#suposicoes">Suposições</a>
+          <a href="#duvidas">Dúvidas</a>
+          <a href="#referencias">Referências</a>
+        </nav>
+      </header>
+
+      <div class="pagina__corpo">
+
+        <div class="csd">
+
+          <!-- CERTEZAS -->
+          <div class="csd__coluna csd__coluna--certeza" id="certezas">
+            <h2 class="csd__titulo">Certezas <span class="csd__contagem">8</span></h2>
+            <ul class="csd__lista">
+              <li>
+                Visão e declínio da coordenação motora atrapalham a usar o aplicativo do banco.
+                <a class="csd__fonte" href="#ref-csd-1" aria-label="Ver a referência 1: Portal Unit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>Portal Unit</a>
+              </li>
+              <li>
+                Medo real: golpes e erros humanos.
+                <a class="csd__fonte" href="#ref-csd-5" aria-label="Ver a referência 5: SCBR News"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>SCBR News</a>
+              </li>
+              <li>
+                No primeiro uso do app do banco, um tour explicativo, explicando os principais pontos que o usuário pode ter pouca familiaridade, ajuda nos demais acessos.
+                <a class="csd__fonte" href="#ref-csd-3" aria-label="Ver a referência 3: Tech Vovó"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>Tech Vovó</a>
+              </li>
+              <li>
+                Memória de curto prazo mais frágil dificulta lembrar senhas, PINs e sequências de passos.
+                <a class="csd__fonte" href="#ref-csd-4" aria-label="Ver a referência 4: SciELO"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>SciELO</a>
+              </li>
+              <li>
+                Experiências anteriores ruins (golpe, erro, trava no app e notícias de golpe) geram desconfiança duradoura com o digital.
+                <a class="csd__fonte" href="#ref-csd-5" aria-label="Ver a referência 5: SCBR News"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>SCBR News</a>
+              </li>
+              <li>
+                O uso de termos em inglês (ex.: Pix, Cashback, Feed) confunde quem tem pouca familiaridade com o digital.
+                <a class="csd__fonte" href="#ref-csd-6" aria-label="Ver a referência 6: Correio Braziliense"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>Correio Braziliense</a>
+              </li>
+              <li>
+                O apoio de filhos e netos é apontado como o fator principal para que o público idoso comece a usar apps de banco.
+                <a class="csd__fonte" href="#ref-csd-2" aria-label="Ver a referência 2: Serasa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>Serasa</a>
+              </li>
+              <li>
+                Mesmo dominando os aplicativos, muitos idosos ainda valorizam a relação humana e o atendimento "olho no olho".
+                <a class="csd__fonte" href="#ref-csd-7" aria-label="Ver a referência 7: Gazeta do Povo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.6a3.6 3.6 0 0 0 5.1 0l2.8-2.8a3.6 3.6 0 0 0-5.1-5.1l-.9.9"></path><path d="M14 10.4a3.6 3.6 0 0 0-5.1 0l-2.8 2.8a3.6 3.6 0 0 0 5.1 5.1l.9-.9"></path></svg>Gazeta do Povo</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- SUPOSIÇÕES -->
+          <div class="csd__coluna csd__coluna--suposicao" id="suposicoes">
+            <h2 class="csd__titulo">Suposições <span class="csd__contagem">14</span></h2>
+            <ul class="csd__lista">
+              <li>Botões maiores facilitam a visualização e o uso.</li>
+              <li>Substituir confirmações por senha por confirmações via biometria torna as transações mais rápidas e seguras.</li>
+              <li>Muitas confirmações e etapas do processo causam frustração no decorrer da transação.</li>
+              <li>A dificuldade de aprendizado na utilização da interface faz com que o público mais velho peça ajuda.</li>
+              <li>Testar a solução com idosos reais desde o início evita suposições erradas de design.</li>
+              <li>Adicionar comandos de voz na interface tornará a navegação mais intuitiva para quem tem dificuldades de digitação.</li>
+              <li>Idosos preferem utilizar o aplicativo no tablet ou computador em vez do smartphone devido ao tamanho da tela.</li>
+              <li>O público idoso utiliza apenas de 2 a 3 funcionalidades principais do app (ex.: checar saldo e fazer Pix) e ignora todo o restante da interface.</li>
+              <li>O uso de telas no modo escuro (dark mode) melhora o conforto visual e reduz a fadiga ocular desse público.</li>
+              <li>Idosos sentem mais segurança ao ver a foto do perfil do destinatário do Pix do que apenas o nome completo e a chave.</li>
+              <li>Adicionar um recurso de ajuste rápido de tamanho de fonte dentro do próprio aplicativo é mais eficiente do que depender da configuração global do sistema operacional do celular.</li>
+              <li>O uso de termos em inglês em botões secundários (ex.: Login, Logout, Save) é a principal causa de desistência do uso sem assistência.</li>
+              <li>O usuário idoso prefere esperar horas para ser atendido por um agente humano no chat a interagir com um bot de inteligência artificial, mesmo que o bot consiga resolver o problema instantaneamente.</li>
+              <li>Exibir selos visuais explícitos de segurança (como ícones de cadeado e expressões como "Ambiente Seguro") nas telas de confirmação aumenta a percepção de confiança mais do que a simplicidade do design em si.</li>
+            </ul>
+          </div>
+
+          <!-- DÚVIDAS -->
+          <div class="csd__coluna csd__coluna--duvida" id="duvidas">
+            <h2 class="csd__titulo">Dúvidas <span class="csd__contagem">14</span></h2>
+            <ul class="csd__lista">
+              <li>Quais são os principais bancos que o público idoso procura quando quer criar uma conta? Por que esses bancos?</li>
+              <li>Centralizar as ações mais usadas melhoraria a experiência do usuário?</li>
+              <li>Assistente virtual causa medo ou facilita o uso do banco digital?</li>
+              <li>Qual seria o impacto real de aumentar o layout e torná-lo mais simples?</li>
+              <li>Existe diferença significativa entre "idoso com pouca familiaridade" e "idoso com nenhuma familiaridade"? O que isso muda na solução?</li>
+              <li>Qual vocabulário financeiro digital deve ser usado para alcançar todos os públicos?</li>
+              <li>Qual é o limite entre um fluxo "seguro com muitas etapas" e um fluxo "exaustivo que gera desistência"?</li>
+              <li>Qual é o meio de suporte preferido quando ocorre um erro na transação: WhatsApp, ligação telefônica ou chatbot?</li>
+              <li>Como a família influencia na escolha ou mudança de instituição bancária por parte do usuário idoso?</li>
+              <li>O idoso confia mais em autenticação por biometria facial/digital ou prefere utilizar senhas digitadas tradicionais?</li>
+              <li>Enviar alertas de segurança frequentes gera sensação de proteção ou aumenta a paranoia e o medo de usar o aplicativo?</li>
+              <li>O uso de ícones padronizados (como engrenagem para configurações ou lupa para busca) é reconhecido intuitivamente por essa faixa etária?</li>
+              <li>O idoso prefere ter uma "função de emergência" que notifique um familiar cadastrado em caso de transações atípicas?</li>
+              <li>O quanto a falta de retorno tátil ou sonoro durante o toque na tela influencia na incerteza de que o comando foi executado?</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Fontes que sustentam as certezas -->
+        <div class="referencias" id="referencias">
+          <h2 class="referencias__titulo">Referências das certezas <span class="csd__contagem">7</span></h2>
+          <ol class="referencias__lista">
+            <li id="ref-csd-1">
+              <a href="https://portal.unit.br/blog/noticias/idosos-conectados-uso-de-smartphones-cresce-mas-exige-atencao-a-saude-fisica/" target="_blank" rel="noopener">
+                Idosos conectados: uso de smartphones cresce, mas exige atenção à saúde física</a>
+              <span class="referencias__fonte">Portal Unit</span>
+            </li>
+            <li id="ref-csd-2">
+              <a href="https://www.serasa.com.br/imprensa/idosos-acessam-aplicativos-bancarios/" target="_blank" rel="noopener">
+                8 em cada 10 idosos já acessam aplicativos bancários</a>
+              <span class="referencias__fonte">Serasa</span>
+            </li>
+            <li id="ref-csd-3">
+              <a href="https://techvovo.com.br/como-ensinar-o-idoso-a-mexer-no-celular-manual-com-14-dicas/" target="_blank" rel="noopener">
+                Como ensinar o idoso a mexer no celular: manual com 14 dicas</a>
+              <span class="referencias__fonte">Tech Vovó</span>
+            </li>
+            <li id="ref-csd-4">
+              <a href="https://www.scielo.br/j/ptp/a/6j4h5WYXKPV3SdPNWtwH8nx/?format=html&amp;lang=pt" target="_blank" rel="noopener">
+                Avaliação da Autoeficácia e da Memória em Idosos: Uma Análise Exploratória</a>
+              <span class="referencias__fonte">SciELO — Psicologia: Teoria e Pesquisa</span>
+            </li>
+            <li id="ref-csd-5">
+              <a href="https://scbrnews.com.br/idosos-enfrentam-desafios-com-aplicativos-bancarios-e-golpes-digitais-alarmantes/" target="_blank" rel="noopener">
+                Idosos enfrentam desafios com aplicativos bancários e golpes digitais alarmantes</a>
+              <span class="referencias__fonte">SCBR News</span>
+            </li>
+            <li id="ref-csd-6">
+              <a href="https://www.correiobraziliense.com.br/euestudante/trabalho-e-formacao/2024/01/6787779-anglicismo-por-que-vocabulario-em-ingles-esta-sendo-evitado-por-multinacionais.html" target="_blank" rel="noopener">
+                Anglicismo: por que vocabulário em inglês está sendo evitado por multinacionais</a>
+              <span class="referencias__fonte">Correio Braziliense</span>
+            </li>
+            <li id="ref-csd-7">
+              <a href="https://www.gazetadopovo.com.br/economia/como-os-idosos-brasileiros-estao-se-adaptando-aos-bancos-digitais/" target="_blank" rel="noopener">
+                Como os idosos brasileiros estão se adaptando aos bancos digitais</a>
+              <span class="referencias__fonte">Gazeta do Povo</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <nav class="paginacao" aria-label="Página anterior e próxima">
+        <a class="paginacao__link paginacao__link--anterior" href="problema.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12h-15"></path><path d="M10 5.5L3.5 12l6.5 6.5"></path></svg>
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Anterior</span>
+            <span class="paginacao__nome">01 &middot; Definição do problema</span>
+          </span>
+        </a>
+        <a class="paginacao__link paginacao__link--proxima" href="mapa-de-empatia.html">
+          <span class="paginacao__texto">
+            <span class="paginacao__dir">Próxima</span>
+            <span class="paginacao__nome">03 &middot; Mapa de Empatia</span>
+          </span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h15"></path><path d="M14 5.5l6.5 6.5-6.5 6.5"></path></svg>
+        </a>
+      </nav>
+
+    </main>
+
+  </div>
+
+  <!-- ============================================================
+       4. RODAPÉ
+       ============================================================ -->
+  <footer class="rodape">
+    <div class="container">
+      <p class="rodape__titulo">Projeto acadêmico — Introdução à Interação Humano-Computador</p>
+      <p class="rodape__tema">
+        A dificuldade de idosos não familiarizados com tecnologia em realizar
+        transferências bancárias via PIX.
+      </p>
+      <p class="rodape__creditos">Universidade Federal Fluminense · Sistemas de Informação · 2026.2</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=19"></script>
+</body>
+</html>

@@ -31,13 +31,17 @@
   --rodape-texto:  #dce7f4;
 
   --sombra:  0 2px 10px rgba(23, 64, 110, .06);
+  --sombra-alta: 0 10px 28px rgba(23, 64, 110, .12);
+  --pulso:   rgba(37, 99, 168, .35);
   --raio:    18px;
-  --largura: 1080px;
+  --largura: 1240px;
+  color-scheme: light;
   --fonte:   'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* --- 2. Tema escuro ---------------------------------------- */
 :root[data-tema="escuro"] {
+  color-scheme: dark;
   --acento:        #4a90d9;
   --acento-hover:  #6aa8e8;
   --acento-forte:  #cfe2f8;
@@ -62,6 +66,8 @@
   --rodape-texto:  #b9c8d8;
 
   --sombra:  0 2px 10px rgba(0, 0, 0, .3);
+  --sombra-alta: 0 10px 28px rgba(0, 0, 0, .45);
+  --pulso:   rgba(74, 144, 217, .45);
 }
 
 /* --- 3. Base ----------------------------------------------- */
@@ -120,6 +126,7 @@ svg {
   position: sticky;
   top: 0;
   z-index: 50;
+  view-transition-name: cabecalho;
   background: var(--header-fundo);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--borda);
@@ -150,23 +157,6 @@ svg {
   text-decoration: none;
 }
 .logo__mark { width: 24px; height: 24px; color: var(--verde); }
-
-.nav__lista {
-  display: flex;
-  gap: 8px;
-  list-style: none;
-}
-.nav__lista a {
-  display: block;
-  padding: 10px 14px;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--texto-suave);
-  text-decoration: none;
-}
-.nav__lista a:hover { background: var(--acento-suave); color: var(--acento-forte); }
-.nav__lista a.ativo { background: var(--acento-suave); color: var(--acento-forte); font-weight: 600; }
 
 /* Botão de tema */
 .tema-toggle {
@@ -206,15 +196,61 @@ svg {
   border-radius: 2px;
 }
 
-/* --- 5. Hero / capa ----------------------------------------- */
-.hero {
-  background: linear-gradient(180deg, var(--hero-topo) 0%, var(--fundo) 100%);
-  padding: 88px 0 80px;
-  text-align: center;
-  border-bottom: 1px solid var(--borda);
+/* Com o menu aberto, as três linhas viram um X */
+.menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Barra fina de leitura, embaixo do cabeçalho */
+.progresso {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  pointer-events: none;
+}
+.progresso__barra {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--verde), var(--acento));
+  transform: scaleX(0);
+  transform-origin: left;
 }
 
-.hero__inner { max-width: 780px; margin: 0 auto; }
+/* --- 5. Hero / capa ----------------------------------------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 76px 32px 60px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--hero-topo) 0%, var(--superficie) 100%);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+}
+
+/* Duas manchas de cor que flutuam devagar atrás da capa */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero::before {
+  top: -170px;
+  right: -110px;
+  background: radial-gradient(circle, rgba(46, 139, 122, .16), transparent 70%);
+}
+.hero::after {
+  bottom: -190px;
+  left: -130px;
+  background: radial-gradient(circle, rgba(37, 99, 168, .14), transparent 70%);
+}
+
+.hero__inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
 
 .hero__instituicao {
   font-size: .95rem;
@@ -318,42 +354,302 @@ svg {
   color: var(--texto);
 }
 
-/* --- 6. Seções ---------------------------------------------- */
-.secao { padding: 88px 0; }
-.secao--alt { background: var(--fundo-alt); }
-
-.secao__cabecalho {
-  max-width: 700px;
-  margin: 0 auto 48px;
-  text-align: center;
+/* --- 6. Layout: fio condutor + página ---------------------
+   Menu lateral à esquerda e o conteúdo da página à direita.
+   No celular o menu vira uma gaveta (bloco 19).
+   ----------------------------------------------------------- */
+.layout {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 56px;
+  width: 100%;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-.secao__rotulo {
-  font-size: .9rem;
+/* Fio condutor */
+.trilha {
+  position: sticky;
+  top: 73px;
+  align-self: start;
+  max-height: calc(100vh - 73px);
+  overflow-y: auto;
+  padding: 28px 4px 28px 0;
+  scrollbar-width: thin;
+  view-transition-name: trilha;
+}
+
+.trilha__titulo {
+  margin-bottom: 10px;
+  font-size: .78rem;
   font-weight: 700;
   letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.trilha__grupo {
+  margin: 14px 0 2px 40px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
   color: var(--verde);
-  margin-bottom: 8px;
 }
 
-.secao__titulo {
-  font-size: clamp(1.9rem, 4vw, 2.5rem);
+.trilha__lista { list-style: none; }
+
+.trilha__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0;
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--texto-suave);
+  text-decoration: none;
+}
+.trilha__link:hover { color: var(--acento-forte); }
+
+/* Bolinha de cada item: número nas etapas, ícone nos outros */
+.trilha__no {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--borda);
+  border-radius: 50%;
+  background: var(--trilha-fundo, var(--fundo));
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--texto-suave);
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+.trilha__no svg { width: 15px; height: 15px; }
+.trilha__link:hover .trilha__no { border-color: var(--acento); color: var(--acento); }
+
+/* Etapas que já ficaram para trás */
+.trilha__link--feito .trilha__no { border-color: var(--acento); color: var(--acento); }
+
+/* Página atual (ou a etapa de uma subpágina) */
+.trilha__link[aria-current="page"],
+.trilha__link--pai { color: var(--acento-forte); font-weight: 700; }
+.trilha__link[aria-current="page"] .trilha__no,
+.trilha__link--pai .trilha__no {
+  border-color: var(--acento);
+  background: var(--acento);
+  color: var(--acento-texto);
+}
+
+/* A linha que liga as etapas: cinza inteira, colorida até a etapa atual */
+.trilha__processo { position: relative; }
+.trilha__processo::before,
+.trilha__fio {
+  content: '';
+  position: absolute;
+  left: 13px;
+  width: 2px;
+  border-radius: 2px;
+}
+.trilha__processo::before { top: 18px; bottom: 18px; background: var(--borda); }
+.trilha__fio {
+  top: 18px;
+  height: 0;
+  background: linear-gradient(180deg, var(--verde), var(--acento));
+  transition: height .8s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* Subpágina pendurada em uma etapa */
+.trilha__sub { list-style: none; margin: 0 0 2px 40px; }
+.trilha__sublink {
+  display: block;
+  padding: 3px 0 3px 12px;
+  border-left: 2px solid var(--borda);
+  font-size: .86rem;
+  line-height: 1.4;
+  color: var(--texto-suave);
+  text-decoration: none;
+}
+.trilha__sublink:hover { color: var(--acento-forte); border-left-color: var(--acento); }
+.trilha__sublink[aria-current="page"] {
   color: var(--acento-forte);
-  letter-spacing: -.01em;
-  margin-bottom: 16px;
+  font-weight: 700;
+  border-left-color: var(--acento);
 }
 
-.secao__intro { color: var(--texto-suave); font-size: 1.1rem; }
+/* Página */
+.pagina { min-width: 0; padding: 40px 0 72px; }
+
+.pagina__cabecalho { margin-bottom: 36px; }
+
+.migalhas ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin-bottom: 18px;
+  font-size: .85rem;
+  color: var(--texto-suave);
+}
+.migalhas li + li::before { content: '/'; margin-right: 8px; opacity: .5; }
+.migalhas a { color: var(--texto-suave); text-decoration: none; }
+.migalhas a:hover { color: var(--acento); text-decoration: underline; }
+
+.pagina__rotulo {
+  margin-bottom: 6px;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--verde);
+}
+
+.pagina__titulo {
+  margin-bottom: 14px;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -.015em;
+  color: var(--acento-forte);
+}
+
+.pagina__intro { max-width: 680px; font-size: 1.1rem; color: var(--texto-suave); }
+
+/* Atalhos para as partes de uma página longa */
+.nesta-pagina {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+.nesta-pagina__rotulo { margin-right: 4px; font-size: .82rem; font-weight: 600; color: var(--texto-suave); }
+.nesta-pagina a {
+  padding: 6px 14px;
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  background: var(--superficie);
+  font-size: .88rem;
+  font-weight: 500;
+  color: var(--texto-suave);
+  text-decoration: none;
+  transition: border-color .2s ease, color .2s ease, background-color .2s ease;
+}
+.nesta-pagina a:hover { border-color: var(--acento); color: var(--acento-forte); background: var(--acento-suave); }
+
+/* Texto corrido dentro de uma página */
+.pagina__corpo .etapa__texto { max-width: 72ch; font-size: 1.05rem; color: var(--texto); }
+
+/* Anterior / próxima, no fim de cada página */
+.paginacao {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid var(--borda);
+}
+.paginacao__link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  background: var(--superficie);
+  color: var(--texto);
+  text-decoration: none;
+}
+.paginacao__link:hover { border-color: var(--acento); box-shadow: var(--sombra-alta); }
+.paginacao__link--proxima { grid-column: 2; justify-content: flex-end; text-align: right; }
+.paginacao__link svg {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--acento);
+  transition: transform .2s ease;
+}
+.paginacao__texto { display: grid; gap: 2px; min-width: 0; }
+.paginacao__dir {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+.paginacao__nome { font-size: 1rem; font-weight: 600; line-height: 1.35; color: var(--acento-forte); }
+
+/* Início: o caminho do projeto */
+.roteiro { margin-top: 56px; }
+.roteiro__titulo {
+  margin-bottom: 6px;
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  letter-spacing: -.01em;
+  color: var(--acento-forte);
+}
+.roteiro__intro { color: var(--texto-suave); }
+.roteiro__fase {
+  margin: 30px 0 12px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--verde);
+}
+.roteiro__lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 12px;
+}
+.roteiro__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: 16px 18px;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  background: var(--superficie);
+  color: var(--texto);
+  text-decoration: none;
+}
+.roteiro__item:hover { border-color: var(--acento); box-shadow: var(--sombra-alta); }
+.roteiro__num {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--acento-suave);
+  color: var(--acento);
+  font-size: .95rem;
+  font-weight: 700;
+}
+.roteiro__num svg { width: 20px; height: 20px; }
+.roteiro__texto { display: grid; gap: 2px; margin-right: auto; }
+.roteiro__texto strong { font-size: 1rem; font-weight: 600; line-height: 1.35; color: var(--acento-forte); }
+.roteiro__texto small { font-size: .87rem; line-height: 1.45; color: var(--texto-suave); }
+.roteiro__seta {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--texto-suave);
+  transition: transform .2s ease, color .2s ease;
+}
+.roteiro__item:hover .roteiro__seta { color: var(--acento); transform: translateX(3px); }
 
 /* --- 7. Grades e cards -------------------------------------- */
 .grade { display: grid; gap: 24px; }
 .grade--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 .grade--3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 
-/* Quatro colunas onde couber; cai para 2 e depois 1 nas telas menores */
-.grade--4 { grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); }
-.grade--4 .card { padding: 26px 22px; }
-.grade--4 .card p { font-size: .97rem; }
+.grade--equipe { grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); }
 
 .card {
   background: var(--superficie);
@@ -386,78 +682,7 @@ svg {
 }
 .placeholder--inline { border: 0; padding: 0; font-weight: 500; }
 
-/* --- 8. Linha do tempo (processo) --------------------------- */
-.timeline { list-style: none; display: grid; gap: 20px; }
-
-.etapa {
-  display: flex;
-  gap: 24px;
-  background: var(--superficie);
-  border: 1px solid var(--borda);
-  border-radius: var(--raio);
-  padding: 28px;
-  box-shadow: var(--sombra);
-}
-
-.etapa__numero {
-  flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  display: grid;
-  place-items: center;
-  background: var(--acento-suave);
-  color: var(--acento);
-  border-radius: 14px;
-  font-weight: 700;
-  font-size: 1.15rem;
-}
-
-.etapa__corpo { flex: 1; min-width: 0; }
-
-.etapa__topo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-/* O titulo empurra o status e o botao para a direita */
-.etapa__titulo {
-  font-size: 1.25rem;
-  color: var(--acento-forte);
-  margin-right: auto;
-}
-
-/* Botao de abrir/fechar a etapa */
-.etapa__toggle {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  padding: 0;
-  background: transparent;
-  border: 1px solid var(--borda);
-  border-radius: 50%;
-  color: var(--texto-suave);
-  cursor: pointer;
-}
-.etapa__toggle:hover { background: var(--acento-suave); color: var(--acento-forte); }
-
-.etapa__toggle svg {
-  width: 19px;
-  height: 19px;
-  transition: transform .2s ease;
-}
-.etapa--aberta .etapa__toggle svg { transform: rotate(180deg); }
-
-.etapa__conteudo { margin-top: 14px; }
-
-/* Sem JavaScript o conteudo continua visivel */
-.etapa__conteudo[hidden] { display: none; }
-
+/* --- 8. Blocos das etapas ----------------------------------- */
 /* Link para baixar um arquivo da etapa */
 .arquivo {
   display: flex;
@@ -688,7 +913,7 @@ svg {
 }
 
 /* Quando o subtítulo é a primeira coisa da etapa, dispensa a linha de cima */
-.etapa__conteudo > .analise__grupo:first-child {
+.pagina__corpo > .analise__grupo:first-child {
   margin-top: 0;
   padding-top: 0;
   border-top: 0;
@@ -932,8 +1157,6 @@ svg {
 .tabela__vazio { opacity: .5; }
 
 /* --- 17. Materiais das entrevistas -------------------------- */
-.pagina-estreita { max-width: 820px; margin: 0 auto; }
-
 .materiais:first-of-type .analise__grupo {
   margin-top: 0;
   padding-top: 0;
@@ -979,50 +1202,140 @@ svg {
 .doc__nome { font-weight: 600; margin-right: auto; }
 .doc__meta { font-size: .85rem; color: var(--texto-suave); }
 
-/* --- 18. Responsivo ----------------------------------------- */
-@media (max-width: 860px) {
+/* --- 18. Animações ------------------------------------------
+   Tudo aqui respeita quem pediu menos movimento no sistema.
+   ----------------------------------------------------------- */
+@keyframes subir {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes flutuar {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-36px, 28px) scale(1.08); }
+}
+
+@keyframes pulso {
+  0%   { box-shadow: 0 0 0 0 var(--pulso); }
+  70%  { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Troca suave entre as páginas (nos navegadores que suportam) */
+  @view-transition { navigation: auto; }
+
+  /* Título da página e capa entram subindo */
+  .pagina__cabecalho { animation: subir .5s ease both; }
+  .hero__inner > * { animation: subir .6s ease both; }
+  .hero__inner > :nth-child(2) { animation-delay: .05s; }
+  .hero__inner > :nth-child(3) { animation-delay: .1s; }
+  .hero__inner > :nth-child(4) { animation-delay: .15s; }
+  .hero__inner > :nth-child(5) { animation-delay: .2s; }
+  .hero__inner > :nth-child(6) { animation-delay: .25s; }
+  .hero__inner > :nth-child(7) { animation-delay: .3s; }
+  .hero__inner > :nth-child(8) { animation-delay: .35s; }
+  .hero::before, .hero::after { animation: flutuar 14s ease-in-out infinite alternate; }
+  .hero::after { animation-delay: -7s; }
+
+  /* Blocos que aparecem ao rolar a página (a classe vem do main.js) */
+  .js .revelar {
+    opacity: 0;
+    translate: 0 18px;
+    transition: opacity .55s ease var(--atraso, 0s), translate .55s ease var(--atraso, 0s),
+                transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .js .revelar.visivel { opacity: 1; translate: 0 0; }
+
+  /* Cartões sobem um pouco com o mouse em cima */
+  .card, .pessoa, .roteiro__item, .arquivo, .doc, .paginacao__link {
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card:hover, .pessoa:hover, .roteiro__item:hover, .arquivo:hover, .doc:hover, .paginacao__link:hover {
+    transform: translateY(-3px);
+  }
+  .paginacao__link--anterior:hover svg { transform: translateX(-3px); }
+  .paginacao__link--proxima:hover svg { transform: translateX(3px); }
+
+  /* Post-its se endireitam com o mouse em cima */
+  .postit { transition: transform .2s ease, box-shadow .2s ease; }
+  .postit:hover { transform: rotate(0) scale(1.06); box-shadow: 2px 6px 14px rgba(0, 0, 0, .12); }
+
+  /* Etapa atual pulsa de leve no fio condutor */
+  .trilha__link[aria-current="page"] .trilha__no { animation: pulso 2.4s ease-out infinite; }
+
+  .menu-toggle span { transition: transform .2s ease, opacity .2s ease; }
+}
+
+/* --- 19. Responsivo ----------------------------------------- */
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 230px minmax(0, 1fr); gap: 40px; }
+}
+
+@media (max-width: 900px) {
   .tema-toggle__texto { display: none; }
   .tema-toggle { padding: 11px 13px; }
+  .menu-toggle { display: flex; }
+
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+
+  /* O fio condutor vira uma gaveta que sai da esquerda */
+  .js .trilha {
+    position: fixed;
+    top: 73px;
+    left: 0;
+    bottom: 0;
+    z-index: 45;
+    width: min(320px, 86vw);
+    max-height: none;
+    align-self: stretch;  /* ocupa do cabeçalho até o fim da tela */
+    padding: 18px 20px 32px;
+    background: var(--superficie);
+    border-right: 1px solid var(--borda);
+    box-shadow: 8px 0 24px rgba(0, 0, 0, .14);
+    transform: translateX(-102%);
+    visibility: hidden;
+    transition: transform .28s ease, visibility 0s linear .28s;
+  }
+  .js .trilha.aberta { transform: none; visibility: visible; transition: transform .28s ease; }
+  .js .trilha { --trilha-fundo: var(--superficie); }
+
+  /* Fundo escurecido atrás da gaveta */
+  .menu-aberto { overflow: hidden; }
+  .menu-aberto::after {
+    content: '';
+    position: fixed;
+    inset: 73px 0 0;
+    z-index: 40;
+    background: rgba(10, 20, 30, .45);
+  }
+
+  /* Sem JavaScript o menu aparece no topo da página */
+  html:not(.js) .trilha { position: static; max-height: none; padding: 24px 0 0; }
 }
 
 @media (max-width: 760px) {
   body { font-size: 17px; }
 
-  .menu-toggle { display: flex; }
+  .layout { padding: 0 18px; }
+  .pagina { padding-top: 28px; }
 
-  .nav {
-    display: none;
-    position: absolute;
-    top: 72px;
-    left: 0;
-    right: 0;
-    background: var(--superficie);
-    border-bottom: 1px solid var(--borda);
-    padding: 12px 24px 20px;
-  }
-  .nav.aberto { display: block; }
-  .nav__lista { flex-direction: column; gap: 4px; }
-  .nav__lista a { padding: 14px; font-size: 1.05rem; }
-
-  .hero { padding: 56px 0 52px; }
-  .secao { padding: 64px 0; }
-
+  .hero { margin-top: 0; padding: 48px 20px 40px; }
   .hero__acoes { flex-direction: column; }
   .botao { width: 100%; text-align: center; }
 
   .ficha { margin-top: 40px; grid-template-columns: repeat(2, 1fr); }
 
-  .card, .etapa { padding: 24px; }
+  .card { padding: 24px; }
 
-  .etapa { flex-direction: column; gap: 16px; }
-  .etapa__numero { width: 48px; height: 48px; font-size: 1rem; }
+  .paginacao { grid-template-columns: minmax(0, 1fr); }
+  .paginacao__link--proxima { grid-column: auto; }
 }
 
-/* --- 19. Impressão ------------------------------------------ */
+/* --- 20. Impressão ------------------------------------------ */
 @media print {
-  .header, .hero__acoes, .skip-link, .etapa__toggle { display: none; }
+  .header, .trilha, .paginacao, .nesta-pagina, .skip-link, .hero__acoes, .progresso { display: none; }
+  .layout { display: block; padding: 0; }
   body { background: #fff; color: #000; }
-
-  /* Ao imprimir, todas as etapas saem abertas */
-  .etapa__conteudo[hidden] { display: block !important; }
+  .revelar { opacity: 1 !important; translate: none !important; }
 }
