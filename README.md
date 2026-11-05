@@ -16,12 +16,12 @@ O site tem uma página por etapa, ligadas pelo menu lateral (o fio condutor).
 index.html               → capa e o caminho do projeto (atalho para cada etapa)
 projeto.html             → O Projeto: contexto, problema, público-alvo e objetivo
 problema.html … conclusoes.html → uma página por etapa (tabela abaixo)
-entrevistas.html         → vídeos, entrevistas em documento e TCLE (dentro da etapa 05)
+entrevistas.html         → entrevistas em documento e TCLE (dentro da etapa 05)
 respostas.html           → tabela com as respostas do questionário (dentro da etapa 06)
 equipe.html              → integrantes do grupo
 uso-de-ia.html           → relatório de uso de IA
 css/styles.css           → estilos, organizado em blocos numerados
-js/main.js               → tema, menu lateral, animações, leitor de PDF e vídeos
+js/main.js               → tema, menu lateral, animações e leitor de PDF
 img/                     → imagens (fotos, gráficos e capas dos PDFs em img/capas/)
 docs/                    → PDFs lidos no site (planejamentos, relatórios) e a planilha
 ```
@@ -114,14 +114,11 @@ salve a primeira página como imagem em `img/capas/` e use o cartão `documento`
 Sem a imagem de capa (apague o `<img>`), o cartão mostra uma folha em branco.
 O leitor usa o PDF.js, carregado do cdnjs só quando alguém abre um documento.
 
-### Adicionar um vídeo das entrevistas
+### Vídeos das entrevistas
 
-Os vídeos tocam numa tela dentro de `entrevistas.html`. Para cada vídeo,
-acrescente um item na lista `videoteca__lista` (o modelo está num comentário
-no começo da página). Se o vídeo não deixa ser exibido fora do YouTube, use
-`data-incorporar="nao"`: a tela passa a abrir o YouTube. Para liberar, ligue
-"Permitir incorporação" no YouTube Studio (Conteúdo, vídeo, Mostrar mais) e
-tire o atributo.
+Os vídeos foram tirados do site. O código que toca um vídeo numa tela da página
+(`data-videoteca` no `main.js` e os estilos `.video` e `.videoteca` no CSS)
+continua no projeto, caso queiram voltar com eles.
 
 ### Adicionar um link simples a uma lista
 
