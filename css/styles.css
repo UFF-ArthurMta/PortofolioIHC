@@ -254,8 +254,8 @@ svg {
 
 /* Foto no topo da capa. As pontas da mesa se apagam e um traço fecha o corte. */
 .hero__foto {
-  max-width: 540px;
-  margin: 0 auto 30px;
+  max-width: 280px;
+  margin: 0 auto 22px;
 }
 .hero__foto img {
   display: block;
@@ -398,15 +398,6 @@ svg {
   padding: 28px 4px 28px 0;
   scrollbar-width: thin;
   view-transition-name: trilha;
-}
-
-.trilha__titulo {
-  margin-bottom: 10px;
-  font-size: .78rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--texto-suave);
 }
 
 .trilha__grupo {
@@ -1614,6 +1605,104 @@ html.lendo { overflow: hidden; }
 }
 
 /* --- 20. Responsivo ----------------------------------------- */
+
+/* A linha da borda esquerda só existe no computador (bloco abaixo) */
+.puxador { display: none; }
+
+/* Computador: o menu lateral fica escondido na borda esquerda.
+   Aparece com o mouse na linha da borda (ou navegando pelo
+   teclado) e, com um clique na linha, fica fixo na tela. A
+   escolha vira data-menu="fixo" no <html>. */
+@media (min-width: 901px) {
+  .js .layout { display: block; max-width: 980px; transition: padding .3s ease; }
+
+  .js .trilha {
+    position: fixed;
+    top: 73px;
+    left: 0;
+    bottom: 0;
+    z-index: 45;
+    align-self: stretch;
+    width: 290px;
+    max-height: none;
+    padding: 26px 22px 28px 26px;
+    background: var(--superficie);
+    border-right: 1px solid var(--borda);
+    transform: translateX(-100%);
+    transition: transform .3s cubic-bezier(.4, 0, .2, 1), box-shadow .3s ease;
+    --trilha-fundo: var(--superficie);
+  }
+  .js .trilha.aberta,
+  .js .trilha:focus-within { transform: none; box-shadow: 14px 0 36px rgba(0, 0, 0, .14); }
+
+  /* Menu fixo: sempre à mostra, e o conteúdo abre espaço para ele */
+  .js[data-menu="fixo"] .trilha { transform: none; box-shadow: none; }
+  .js[data-menu="fixo"] .layout { max-width: none; padding-left: 334px; padding-right: 44px; }
+  .js[data-menu="fixo"] .pagina { max-width: 920px; margin: 0 auto; }
+  .js[data-menu="fixo"] .rodape { padding-left: 290px; }
+
+  /* A linha: faixa estreita na borda que reage ao mouse */
+  .js .puxador {
+    display: block;
+    position: fixed;
+    top: 73px;
+    bottom: 0;
+    left: 0;
+    z-index: 46;
+    width: 18px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    transition: left .3s cubic-bezier(.4, 0, .2, 1);
+  }
+  .js .trilha.aberta ~ .puxador,
+  .js .trilha:focus-within ~ .puxador,
+  .js[data-menu="fixo"] .puxador { left: 290px; }
+
+  .puxador__linha {
+    position: absolute;
+    top: 50%;
+    left: 6px;
+    width: 4px;
+    height: 64px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, var(--verde), var(--acento));
+    opacity: .5;
+    transform: translateY(-50%);
+    transition: opacity .2s ease, height .25s ease;
+  }
+  .puxador:hover .puxador__linha,
+  .puxador:focus-visible .puxador__linha { opacity: 1; height: 128px; }
+
+  /* Ícone ao lado da linha: alfinete para fixar, seta para recolher */
+  .puxador__icone {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--borda);
+    border-radius: 50%;
+    background: var(--superficie);
+    color: var(--acento);
+    box-shadow: var(--sombra);
+    opacity: 0;
+    transform: translate(-6px, -50%);
+    transition: opacity .2s ease, transform .2s ease;
+    pointer-events: none;
+  }
+  .puxador__icone svg { width: 15px; height: 15px; }
+  .puxador__recolher { display: none; }
+  .js[data-menu="fixo"] .puxador__fixar { display: none; }
+  .js[data-menu="fixo"] .puxador__recolher { display: block; }
+  .js .trilha.aberta ~ .puxador .puxador__icone,
+  .puxador:hover .puxador__icone,
+  .puxador:focus-visible .puxador__icone { opacity: 1; transform: translate(0, -50%); }
+}
+
 @media (max-width: 1100px) {
   .layout { grid-template-columns: 230px minmax(0, 1fr); gap: 40px; }
 }

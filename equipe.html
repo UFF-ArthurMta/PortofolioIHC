@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20">
+  <link rel="stylesheet" href="css/styles.css?v=21">
 
   <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
   <script>
@@ -19,6 +19,8 @@
         var escuro = salvo ? salvo === 'escuro'
                            : window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.setAttribute('data-tema', escuro ? 'escuro' : 'claro');
+        // menu lateral fixo (escolha salva pelo botão da borda esquerda)
+        if (localStorage.getItem('menu') === 'fixo') document.documentElement.setAttribute('data-menu', 'fixo');
       } catch (e) {}
     })();
   </script>
@@ -67,9 +69,7 @@
          O mesmo menu em todas as páginas. Ao mudar um item aqui,
          mude também nas outras páginas.
          ========================================================== -->
-    <nav class="trilha" id="trilha" aria-label="Fio condutor do projeto" data-etapa="11">
-      <p class="trilha__titulo">Fio condutor</p>
-
+    <nav class="trilha" id="trilha" aria-label="Menu lateral" data-etapa="11">
       <ul class="trilha__lista">
         <li>
           <a class="trilha__link" href="index.html">
@@ -183,6 +183,16 @@
       </ul>
     </nav>
 
+    <!-- Linha na borda esquerda: com o mouse em cima o menu aparece;
+         com um clique ele fica fixo na tela (e recolhe com outro) -->
+    <button class="puxador" id="puxador" type="button" aria-controls="trilha" aria-expanded="false" aria-label="Fixar o menu lateral">
+      <span class="puxador__linha" aria-hidden="true"></span>
+      <span class="puxador__icone" aria-hidden="true">
+        <svg class="puxador__fixar" viewBox="0 0 24 24"><path d="M9 3.5h6l-1 5.5 3 3v2H7v-2l3-3z"></path><path d="M12 14v6.5"></path></svg>
+        <svg class="puxador__recolher" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"></path></svg>
+      </span>
+    </button>
+
     <!-- ==========================================================
          3. CONTEÚDO DA PÁGINA
          ========================================================== -->
@@ -264,6 +274,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20"></script>
+  <script src="js/main.js?v=21"></script>
 </body>
 </html>
