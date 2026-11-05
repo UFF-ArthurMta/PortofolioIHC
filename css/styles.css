@@ -222,7 +222,7 @@ svg {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 76px 32px 60px;
+  padding: 44px 32px 60px;
   text-align: center;
   background: linear-gradient(180deg, var(--hero-topo) 0%, var(--superficie) 100%);
   border: 1px solid var(--borda);
@@ -251,6 +251,26 @@ svg {
 }
 
 .hero__inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
+
+/* Foto no topo da capa. As pontas da mesa se apagam e um traço fecha o corte. */
+.hero__foto {
+  max-width: 540px;
+  margin: 0 auto 30px;
+}
+.hero__foto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.hero__foto::after {
+  content: '';
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--acento) 14%, var(--verde) 86%, transparent);
+}
 
 .hero__instituicao {
   font-size: .95rem;
