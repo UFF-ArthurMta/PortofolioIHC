@@ -21,7 +21,7 @@ respostas.html           → tabela com as respostas do questionário (dentro da
 personas.html            → as quatro personas (dentro da etapa 07)
 cenarios.html            → os três cenários-problema, ligados às personas (dentro da etapa 07)
 equipe.html              → integrantes do grupo
-uso-de-ia.html           → relatório de uso de IA
+uso-de-ia.html           → relatório de uso de IA e os prompts na página (inclui o do Figma Make)
 css/styles.css           → estilos, organizado em blocos numerados
 js/main.js               → tema, menu lateral, animações e leitor de PDF
 img/                     → imagens (fotos, gráficos, capas dos PDFs em img/capas/ e personas em img/personas/)
@@ -131,6 +131,17 @@ com `id="ficha-nome"`, `data-aba` (nome na aba) e `data-papel` (rótulo da aba).
 A cor vem da classe `persona--primaria`, `--secundaria`, `--stakeholder` ou
 `--antiusuario`. As ilustrações ficam em `img/personas/`. O texto é o mesmo dos
 PDFs de persona; para mudar, edite a ficha e o cartão correspondente.
+
+### Figma e prompts de IA
+
+O botão "Acesso ao Figma" da capa (`index.html`, dentro de `.hero__acoes`) e o
+botão da etapa 7 em `uso-de-ia.html` apontam para o protótipo no Figma Make.
+Para trocar o link, edite o `href` dos dois.
+
+Em `uso-de-ia.html`, cada prompt é um `<li class="prompt">` dentro de uma
+`<section class="prompt-etapa">`. O PDF do relatório continua com os 19
+primeiros prompts; o 20º (Figma Make) está só na página. Se o PDF for refeito,
+atualize o texto do card.
 
 ### Cenários
 

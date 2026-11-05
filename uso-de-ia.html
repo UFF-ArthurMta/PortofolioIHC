@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=24">
+  <link rel="stylesheet" href="css/styles.css?v=25">
 
   <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
   <script>
@@ -211,6 +211,7 @@
         </nav>
         <p class="pagina__rotulo">Sobre o trabalho</p>
         <h1 class="pagina__titulo">Uso de IA</h1>
+        <p class="pagina__intro">Os prompts que usamos no trabalho, na ordem das etapas, e o acesso ao protótipo feito no Figma.</p>
       </header>
 
       <div class="pagina__corpo">
@@ -223,7 +224,9 @@
           <h3 class="card__titulo">Como usamos inteligência artificial</h3>
           <p>
             Usamos IA como apoio em várias etapas do projeto. O relatório abaixo
-            reúne os 19 prompts que usamos, organizados nas 6 etapas do trabalho.
+            reúne os prompts que usamos, organizados por etapa do trabalho. O PDF tem
+            os 19 primeiros; logo abaixo, a lista completa na página, já com o 20º, o
+            da prototipação no Figma Make.
           </p>
 
           <a class="documento" href="docs/relatorio-uso-ia.pdf" data-leitor>
@@ -235,6 +238,255 @@
             </span>
           </a>
         </article>
+
+        <section class="prompt-etapa" aria-labelledby="pe-1">
+          <h3 class="prompt-etapa__titulo" id="pe-1"><span>Etapa 1</span>Fundamentação Conceitual &amp; Alinhamento de IHC</h3>
+          <ol class="prompts">
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">1</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Diferenciação Prática entre UI e UX no Contexto Acadêmico</h4>
+              <blockquote class="prompt__texto"><p>Atuo em um projeto universitário de IHC sobre acessibilidade financeira para idosos no PIX. Explique a diferença entre Design de Interface (UI) e Design de Interação/UX aplicada a esse cenário específico, utilizando modelos mentais, o abismo de execução/avaliação de Norman e metáforas visuais.</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">2</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Articulação dos 4 Pilares da Qualidade da Interação</h4>
+              <blockquote class="prompt__texto"><p>Estou mapeando os requisitos de qualidade do nosso aplicativo de banco para idosos. Com base na literatura de IHC, relacione os 4 pilares da Qualidade da Interação (Usabilidade, Experiência do Usuário, Acessibilidade e Comunicabilidade) com as limitações físicas, visuais e cognitivas decorrentes do envelhecimento.</p></blockquote>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="prompt-etapa" aria-labelledby="pe-2">
+          <h3 class="prompt-etapa__titulo" id="pe-2"><span>Etapa 2</span>Imersão, Mapeamento e Diagnóstico (CSD e Empatia)</h3>
+          <ol class="prompts">
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">3</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Construção da Matriz CSD Direcionada</h4>
+              <blockquote class="prompt__texto"><p>Atue como um pesquisador de UX e ajude a estruturar uma Matriz CSD (Certezas, Suposições e Dúvidas) para o projeto ‘PIX para Todos’. Foque nas dimensões de facilidade de aprendizado, medo de golpes, perda de autonomia e dependência de familiares para realizar transferências digitais.</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">4</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Extração de Requisitos de UX a partir do Mapa de Empatia</h4>
+              <blockquote class="prompt__texto"><p>Analise os quadrantes de um Mapa de Empatia para idosos usando bancos digitais (O que dizem, pensam, fazem e sentem) e extraia 5 requisitos essenciais de UX. Cruze esses requisitos com os 7 fatores do Favo de Mel (Honeycomb) de Peter Morville.</p></blockquote>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="prompt-etapa" aria-labelledby="pe-3">
+          <h3 class="prompt-etapa__titulo" id="pe-3"><span>Etapa 3</span>Enquadramento do Problema e Ideação (Método HMW)</h3>
+          <ol class="prompts">
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">5</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Formulação da Pergunta HMW Principal (Regras da NN/G)</h4>
+              <blockquote class="prompt__texto"><p>Com base no artigo ‘Using How Might We Questions’ da NN/G e no problema de idosos sentirem ansiedade ao fazer transferências PIX, formule uma pergunta ‘How Might We’ (HMW) positiva, focada no resultado desejado e agnóstica de solução (que não sugira um app ou botão específico).</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">6</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Desdobramento do HMW em Sub-Desafios por Pilar</h4>
+              <blockquote class="prompt__texto"><p>Pegue nosso desafio HMW principal (‘Como podemos ajudar idosos a realizar transações financeiras com autonomia e segurança emocional?’) e desdobre em 4 Sub-HMWs práticos, cada um cobrindo um pilar: Usabilidade/Prevenção de Erros, Comunicabilidade/Feedback, Acessibilidade Cognitiva/Motora e UX/Confiança.</p></blockquote>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="prompt-etapa" aria-labelledby="pe-4">
+          <h3 class="prompt-etapa__titulo" id="pe-4"><span>Etapa 4</span>Metodologia de Pesquisa, Estudo Piloto e Ética</h3>
+          <ol class="prompts">
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">7</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Triangulação de Dados em Pesquisa Qualitativa</h4>
+              <blockquote class="prompt__texto"><p>Por que é indispensável aplicar mais de uma técnica de coleta de dados (ex: Desk Research, Mapa de Empatia e Análise Competitiva) em um projeto de IHC? Escreva uma justificativa acadêmica demonstrando como a triangulação reduz viéses e revela dores emocionais do usuário.</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">8</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Refinamento de Questionário Pós-Estudo Piloto</h4>
+              <blockquote class="prompt__texto"><p>Temos um questionário de pesquisa de IHC que passou por um Estudo Piloto alternativo com parecer da professora. Ajude-me a reestruturar os itens aplicando estas 5 correções: 1) Retirar a opção ‘raramente’; 2) Retirar ‘não sei responder’; 3) Tornar os campos não-obrigatórios; 4) Detalhar a pergunta sobre dificuldades no Pix; 5) Remover alternativas redundantes.</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">9</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Protocolos Éticos para Público Vulnerável</h4>
+              <blockquote class="prompt__texto"><p>Escreva uma síntese dos procedimentos éticos aplicados na coleta de dados com idosos em um projeto de IHC, abordando consentimento livre e esclarecido, garantia de anonimato de dados sensíveis e proteção contra constrangimento tecnológico.</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">10</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Mapeamento e Classificação de Stakeholders</h4>
+              <blockquote class="prompt__texto"><p>Para o projeto de IHC ‘PIX para Todos’ na UFF, mapeie e classifique todos os stakeholders em 4 categorias: Primários (usuários), Secundários (rede de apoio), Institucionais (bancários/reguladores) e Acadêmicos (equipe e docente), detalhando os interesses de cada um.</p></blockquote>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="prompt-etapa" aria-labelledby="pe-5">
+          <h3 class="prompt-etapa__titulo" id="pe-5"><span>Etapa 5</span>Instrumentação, Transcrição e Síntese de Campo</h3>
+          <ol class="prompts">
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">11</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Consolidação do Protocolo de Pesquisa com o TCLE</h4>
+              <blockquote class="prompt__texto"><p>Gere um documento contendo todas as perguntas presentes no bloco de notas em anexo, assim como o detalhamento de como será feita a pesquisa (incluso no mesmo bloco de notas) e junte com o documento em anexo referente ao Termo de Consentimento Livre e Esclarecido (TCLE).</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">12</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Transcrição Integral e Anonimizada de Entrevista</h4>
+              <blockquote class="prompt__texto"><p>Transcreva integralmente a entrevista em anexo, mantendo o conteúdo fiel ao vídeo e sem resumir as respostas. Não utilize o nome real do participante em nenhum momento. Não corrija, complete ou invente informações que não estejam claramente presentes na gravação.</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">13</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Transcrição Fiel Estruturada em Perguntas e Respostas</h4>
+              <blockquote class="prompt__texto"><p>Transcreva os vídeos das entrevistas, sem resumir, apenas a transcrição direta, separada ordenadamente por blocos de perguntas e respostas.</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">14</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Compilação Restrita dos Insights Documentados</h4>
+              <blockquote class="prompt__texto"><p>Agora gere um documento com as principais sínteses e insights que adicionamos ao bloco de notas, para adicionarmos no projeto final. Não crie nem adicione novos insights, sintetize e organize apenas os que foram expressamente descritos.</p></blockquote>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="prompt-etapa" aria-labelledby="pe-6">
+          <h3 class="prompt-etapa__titulo" id="pe-6"><span>Etapa 6</span>Análise Avançada, Insights Críticos e Entrega</h3>
+          <ol class="prompts">
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">15</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Extração de Insights Não-Óbvios e Comportamentais</h4>
+              <blockquote class="prompt__texto"><p>Analise o comportamento de idosos com tecnologia e gere 5 insights de UX não-óbvios que vão além do clichê de ‘aumentar a fonte do texto’. Explore temas como ansiedade por falta de comprovante impresso, vergonha da infantilização familiar e o paradoxo de alertas de segurança que causam paranoia.</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">16</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Teste de Estresse para Validação de Insights</h4>
+              <blockquote class="prompt__texto"><p>Avalie os 5 insights gerados no nosso projeto de IHC através da pergunta de checagem: ‘Eu poderia ter feito esta afirmação antes de começar o projeto?’. Refine cada insight que parecer óbvio até transformá-lo em uma descoberta profunda sobre o modelo mental do idoso.</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">17</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Definição do Processo de DCU e Alocação de Tempo</h4>
+              <blockquote class="prompt__texto"><p>Descreva como o Design Centrado no Usuário (DCU) guiou nosso projeto nas 3 etapas (Análise da Situação Atual, Síntese/Ideação e Avaliação), e apresente uma estimativa realista de distribuição de semanas para um semestre acadêmico de IHC.</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">18</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Análise Crítica do Estudo Piloto Alternativo</h4>
+              <blockquote class="prompt__texto"><p>Como explicar metodologicamente a realização de um Estudo Piloto em formato alternativo (mentoria com especialista/docente em vez de aplicação direta com usuários) e demonstrar o ganho de validade técnica obtido com as correções recomendadas?</p></blockquote>
+            </div>
+          </li>
+          <li class="prompt">
+            <span class="prompt__num" aria-hidden="true">19</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Diagramação de Relatório Executivo em PDF</h4>
+              <blockquote class="prompt__texto"><p>Atue como um especialista em Design de Documentos e Typesetting. Pegue o questionário respondido com as 10 perguntas do projeto de IHC ‘PIX para Todos’ e crie a estrutura de um documento PDF elegante, em página/fluxo contínuo, utilizando uma paleta de cores institucional (azul bancário e cinza) e hierarquia visual clara.</p></blockquote>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <section class="prompt-etapa" aria-labelledby="pe-7">
+          <h3 class="prompt-etapa__titulo" id="pe-7"><span>Etapa 7</span>Prototipação no Figma Make</h3>
+          <ol class="prompts">
+          <li class="prompt prompt--figma">
+            <span class="prompt__num" aria-hidden="true">20</span>
+            <div class="prompt__corpo">
+              <h4 class="prompt__titulo">Prompt para criar o protótipo mobile de alta fidelidade</h4>
+              <p class="prompt__nota">Este é o pedido que fizemos à IA para montar o texto de entrada do Figma Make. Ele reúne os achados do questionário, das entrevistas, do mapa de empatia e da análise competitiva, mais os requisitos e o fluxo das telas.</p>
+              <p class="prompt__acoes">
+                <a class="botao botao--secundario botao--externo" href="https://www.figma.com/make/4KOowQfuoNYmVH9jsAbPj1/PIX-Acess%C3%ADvel-para-Idosos?t=fY24gMjruMngXedb-1" target="_blank" rel="noopener">Abrir o protótipo no Figma<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4.5h5.5V10"></path><path d="M19.5 4.5L11 13"></path><path d="M18 14.5v4a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6h4"></path></svg><span class="sr-only"> (abre em outra aba)</span></a>
+              </p>
+              <details class="pfig">
+                <summary>Ler o prompt completo</summary>
+                <div class="pfig__corpo">
+              <section class="pfig__sec"><h5>Papel</h5><div class="pfig__texto">Assuma a posição de um especialista em UI/UX com experiência em prototipação de alta fidelidade.
+Tenha experiência em design acessível para pessoas idosas.
+Domine engenharia de prompts para ferramentas de prototipação com IA, como o Figma Make.</div></section>
+              <section class="pfig__sec"><h5>Considerações</h5><div class="pfig__texto">Problema: idosos com pouca familiaridade tecnológica têm dificuldade para fazer PIX no app do banco por causa de fluxos com muitos passos, termos em inglês, senhas difíceis de lembrar, botões pequenos e medo de golpes. Isso gera dependência de familiares ou desistência da tarefa.
+
+Solução: aplicativo mobile "PIX para Todos", que permite fazer PIX de forma autônoma, intuitiva e emocionalmente segura, com conferência clara dos dados antes do envio.
+
+Insights do questionário (27 respostas): medo de golpes (7) e de errar (6) são os principais motivos para evitar o app; recursos mais pedidos: confirmação mais clara antes do envio (14), textos e botões maiores (12), alertas contra golpes (11), modo simplificado (10) e botão de ajuda visível (9); ajuda preferida: explicação no próprio app (10) e familiar (10); 51,9% fariam transações sozinhos com um app mais simples; operações mais usadas: saldo (26) e PIX (18); preferência por digital (9) e biometria facial (5) em vez de senha (4); voz com conferência: 33,3% sim e 48,1% talvez.
+
+Insights das entrevistas e da Matriz CSD: dificuldades visuais e motoras, memória de curto prazo mais frágil, desconfiança após experiências ruins, confusão com termos em inglês, importância do apoio de filhos e netos e valorização de atendimento humano.
+
+Mapa de empatia:
+- Fala: botões pequenos, confusão, medo de errar, "não é seguro".
+- Pensa: assistente humano, tutorial no primeiro uso, layout mais simples, modo idoso, verificação em dois fatores.
+- Faz: pede ajuda a familiares, paga errado, chama alguém para fazer por ela.
+- Sente: medo de ser hackeado, de vazamento de dados, de enviar para a pessoa errada e de abandonar o processo no meio.
+
+Ideias do Crazy 4: considere as soluções escolhidas no arquivo crazy4.pdf.
+
+Ideias da análise competitiva: Modo Simplificado, tela de confirmação com nome, valor e banco, botão de voz com leitura dos dados, ajuda contextual na tela e mensagens de erro explicativas (inspirados em Nubank, Itaú, Banco do Brasil, Bradesco, CAIXA, Apple Acesso Assistivo e Be My Eyes).
+
+Requisitos funcionais: RF01 revisão obrigatória; RF02 voltar e corrigir sem perder dados; RF03 ajuda contextual em cada tela; RF04 início com poucas funções; RF05 erros explicativos; RF06 sinais de segurança e alertas de risco; RF07 biometria em vez de senha; RF08 comprovante claro; RF09 voz com conferência (desejável).
+
+Considere prototipar solução para as personas.pdf
+Considere prototipar solução para os cenarios.pdf
+Considere as tarefas.pdf</div></section>
+              <section class="pfig__sec"><h5>Tarefa</h5><div class="pfig__texto">Crie para mim o prompt que eu vou utilizar para dar entrada no Figma Make para criar o protótipo mobile de alta fidelidade, interativo e navegável, contendo:
+1. Tour de primeiro acesso: 3 telas, com "Próximo" e "Pular", e opção de rever na Ajuda.
+2. Início: só 4 opções grandes: Fazer PIX (destaque), Consultar saldo, Pagar conta e Ajuda, além do botão "Modo Idoso".
+3. Destinatário: "Para quem você quer enviar?", com exemplo de preenchimento.
+4. Valor: "Quanto você quer enviar?", valor em destaque, botão "Ouvir" e erro explicativo para campo vazio ou valor maior que o saldo.
+5. Revisão: nome, banco e valor em destaque, selo "Destinatário verificado", botão "Ouvir", pergunta "Você quer enviar este valor para esta pessoa?" e botões "Voltar e corrigir" e "Confirmar envio".
+6. Alerta de risco para destinatário novo ou valor acima do habitual, com "Conferir de novo" e "Continuar mesmo assim".
+7. Autorização simulada por digital ou rosto, com opção "Usar outra forma".
+8. Resultado: "Simulação concluída", comprovante com quem recebeu, quanto e quando, "Compartilhar comprovante" e "Voltar ao início".
+9. Em todas as telas do fluxo: indicador "Etapa X de 4" e botão fixo "Preciso de ajuda", que abre explicação da etapa e opção "Ligar para alguém de confiança".
+10. Modo Idoso: ao ativar, aumenta TODOS os textos de todas as telas, sem exceção, e os componentes crescem junto, sem cortar texto. O modo fica ativo na navegação, o botão muda para "Modo Idoso ativado" e pode ser desativado com um toque.</div></section>
+              <section class="pfig__sec"><h5>Restrições</h5><div class="pfig__texto">Interface limpa, organizada e com pouco ruído visual.
+Paleta sóbria, com alto contraste e uma única cor de destaque para ações primárias.
+Cores semânticas (erro, alerta, sucesso) sempre acompanhadas de texto ou ícone.
+Tipografia sem serifa, grande e legível.
+Alvos de toque de no mínimo 48x48 dp, bem espaçados.
+Ícones sempre com rótulo em texto.
+Gestalt: proximidade, similaridade e hierarquia visual.
+Uma decisão principal por tela.
+Linguagem simples, em português, sem termos em inglês nem jargão bancário.
+Não usar menus densos, carrosséis automáticos, animações desnecessárias ou campos pequenos.
+Não copiar telas, marcas ou identidades de bancos reais.
+Não criar integração bancária, PIX real, senhas reais ou coleta de dados pessoais. Usar apenas dados fictícios e deixar claro que tudo é simulação.
+Não criar funcionalidades que não estejam nas considerações.</div></section>
+              <section class="pfig__sec"><h5>Formato</h5><div class="pfig__texto">Um único texto corrido, em português, pronto para colar no Figma Make, organizado por identidade visual, telas e fluxo, interações e restrições.</div></section>
+              <section class="pfig__sec"><h5>Critérios de qualidade</h5><div class="pfig__texto">Detalhado o suficiente para não precisar de complementos.
+Baseado em todo o material fornecido.
+Aplica Lei de Fitts, Lei de Hick-Hyman, princípios de Norman (visibilidade, feedback, restrições, mapeamento, consistência e affordance) e heurísticas de Nielsen (visibilidade do estado, mundo real, controle do usuário, reconhecimento e prevenção de erros).
+UX writing claro, conciso, consistente e útil; CTAs com verbo de ação que dizem o que acontece após o toque.
+Todas as telas navegáveis, com estados e retornos coerentes.</div></section>
+              <section class="pfig__sec"><h5>Exemplos</h5><div class="pfig__texto">Nubank (Modo Rua, reconhecimento facial), Itaú (Modo Protegido, alerta de risco), Banco do Brasil (assistente por voz), Bradesco (assistente BIA), CAIXA (biometria), Apple Acesso Assistivo (botões grandes e poucas funções) e Be My Eyes (pedido de ajuda direto).</div></section>
+                </div>
+              </details>
+            </div>
+          </li>
+          </ol>
+        </section>
+
+        <p class="prompts__nota">Nota sobre integridade acadêmica: Todos os dados sensíveis, nomes de participantes e registros originais de áudio/vídeo foram preservados sob estrito sigilo ético, em conformidade com as diretrizes da disciplina de Interação Humano-Computador da UFF.</p>
       </div>
 
       <nav class="paginacao" aria-label="Página anterior e próxima">
