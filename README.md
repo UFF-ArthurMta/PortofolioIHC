@@ -53,7 +53,12 @@ Cada parte do trabalho tem a sua página. Todas seguem o mesmo molde:
 - **Fio condutor** (`<nav class="trilha">`): o menu lateral com todas as páginas.
   As etapas ficam ligadas por uma linha que se preenche até a etapa aberta. O
   número em `data-etapa` diz até onde a linha vai (0 antes da etapa 01, 11
-  depois da etapa 10). No celular o menu abre pelo botão do cabeçalho.
+  depois da etapa 10).
+  - No computador o menu fica escondido. Na borda esquerda fica só uma linha
+    (`<button class="puxador">`): com o mouse em cima o menu aparece, e um
+    clique na linha deixa ele fixo na tela (outro clique recolhe). A escolha
+    fica salva no navegador.
+  - No celular o menu abre pelo botão do cabeçalho.
 - **Cabeçalho da página** (`<header class="pagina__cabecalho">`): caminho
   (Início / fase / etapa), número da etapa, título e texto de abertura. Páginas
   longas têm atalhos ("Nesta página") para as partes da página.

@@ -88,6 +88,56 @@
     });
   }
 
+  /* --- 2b. Menu lateral no computador ----------------------
+     O menu fica escondido na borda esquerda. Com o mouse na
+     linha da borda ele aparece; um clique na linha deixa ele
+     fixo (a escolha fica salva no navegador) e outro recolhe.
+     -------------------------------------------------------- */
+  var puxador = document.getElementById('puxador');
+  var telaGrande = window.matchMedia('(min-width: 901px)');
+
+  if (puxador && trilha) {
+    var raiz = document.documentElement;
+    var esperaFechar = null;
+
+    var menuFixo = function () { return raiz.getAttribute('data-menu') === 'fixo'; };
+
+    var atualizarPuxador = function () {
+      var fixo = menuFixo();
+      puxador.setAttribute('aria-label', fixo ? 'Recolher o menu lateral' : 'Fixar o menu lateral');
+      puxador.title = fixo ? 'Recolher o menu' : 'Fixar o menu';
+      puxador.setAttribute('aria-expanded', String(fixo || trilha.classList.contains('aberta')));
+    };
+
+    var mostrarMenu = function (aberto) {
+      clearTimeout(esperaFechar);
+      if (!telaGrande.matches || menuFixo()) return;
+      trilha.classList.toggle('aberta', aberto);
+      atualizarPuxador();
+    };
+
+    var fecharDepois = function () {
+      clearTimeout(esperaFechar);
+      esperaFechar = setTimeout(function () { mostrarMenu(false); }, 300);
+    };
+
+    puxador.addEventListener('mouseenter', function () { mostrarMenu(true); });
+    puxador.addEventListener('mouseleave', fecharDepois);
+    trilha.addEventListener('mouseenter', function () { clearTimeout(esperaFechar); });
+    trilha.addEventListener('mouseleave', function () { if (telaGrande.matches) fecharDepois(); });
+
+    puxador.addEventListener('click', function () {
+      var fixar = !menuFixo();
+      if (fixar) raiz.setAttribute('data-menu', 'fixo');
+      else raiz.removeAttribute('data-menu');
+      trilha.classList.remove('aberta');
+      try { localStorage.setItem('menu', fixar ? 'fixo' : 'solto'); } catch (e) {}
+      atualizarPuxador();
+    });
+
+    atualizarPuxador();
+  }
+
   /* --- 3. Linha do fio condutor ----------------------------
      A linha entre as etapas fica colorida até a etapa atual
      (data-etapa no <nav class="trilha">). Ela parte de onde
