@@ -232,7 +232,7 @@
   var ANIMADOS = [
     '.pagina__corpo .card', '.pessoa', '.roteiro__item', '.csd__lista li', '.postit',
     '.concorrente', '.grafico', '.mapa__quadrante', '.hmw', '.foto', '.doc',
-    '.pagina__corpo .arquivo', '.referencias', '.documento', '.videoteca', '.persona-card', '.ligacao', '.ideia', '.dobra', '.fica__bloco', '.regras__texto', '.ficha-persona', '.aviso', '.cenario', '.problema', '.momento', '.padroes-wrap', '.hta', '.tempo', '.klm-card', '.comp-wrap', '.rec', '.origens', '.fecho'
+    '.pagina__corpo .arquivo', '.referencias', '.documento', '.videoteca', '.persona-card', '.ligacao', '.ideia', '.dobra', '.fica__bloco', '.regras__texto', '.ficha-persona', '.aviso', '.cenario', '.problema', '.momento', '.padroes-wrap', '.hta', '.tempo', '.klm-card', '.comp-wrap', '.rec', '.origens', '.fecho', '.aval-num', '.escala-grav__item', '.prob', '.barras', '.avaliacoes__item', '.tarefas-av li'
   ].join(', ');
 
   if (!poucoMovimento && 'IntersectionObserver' in window) {
@@ -703,5 +703,42 @@
       });
     });
   });
+
+
+  /* --- 9. Filtro de gravidade (avaliação heurística) --------
+     Mostra só os problemas da gravidade escolhida. Sem JavaScript
+     a barra de filtros fica escondida e todos os problemas aparecem.
+     -------------------------------------------------------- */
+  var filtroGrav = document.getElementById('filtro-grav');
+  if (filtroGrav) {
+    filtroGrav.hidden = false;
+    var botoesGrav = filtroGrav.querySelectorAll('[data-filtro]');
+    var problemas = document.querySelectorAll('#probs .prob');
+    var aplicarFiltro = function (alvo) {
+      botoesGrav.forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-filtro') === alvo ? 'true' : 'false');
+      });
+      problemas.forEach(function (p) {
+        p.hidden = alvo !== 'todos' && p.getAttribute('data-grav') !== alvo;
+      });
+    };
+    botoesGrav.forEach(function (b) {
+      b.addEventListener('click', function () { aplicarFiltro(b.getAttribute('data-filtro')); });
+    });
+    // um link para um problema escondido (ex.: #p10) tira o filtro
+    var abrirDoHash = function () {
+      var id = location.hash.slice(1);
+      var alvo = id && document.getElementById(id);
+      if (alvo && alvo.hidden) aplicarFiltro('todos');
+    };
+    window.addEventListener('hashchange', abrirDoHash);
+    document.addEventListener('click', function (ev) {
+      var a = ev.target.closest && ev.target.closest('a[href^="#p"]');
+      if (!a) return;
+      var alvo = document.getElementById(a.getAttribute('href').slice(1));
+      if (alvo && alvo.hidden) aplicarFiltro('todos');
+    });
+    abrirDoHash();
+  }
 
 })();

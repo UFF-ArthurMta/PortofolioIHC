@@ -177,6 +177,19 @@ e as tabelas do KLM são `.klm`; as linhas fora da tela levam a classe `klm__for
 Os números (23,30 s e 61,20 s) são somas das linhas das tabelas; se mudar uma linha,
 refaça o total, a barra e a síntese comparativa.
 
+### Avaliação heurística
+
+`avaliacao.html` traz o relatório consolidado do Grupo 06 (sem o PDF, só o conteúdo).
+Os nomes dos avaliadores não são publicados: aparecem como "Avaliação A" e "Avaliação B".
+
+- `.aval-numeros` / `.aval-num`: os quatro números do topo.
+- `.escala-grav` / `.escala-grav__item--1..4`: critérios de gravidade.
+- `table.lista-av`: lista consolidada; cada ID aponta para o cartão `#p01` a `#p14`.
+- `article.prob.prob--N` (`data-grav="N"`, N = 1 a 4): um problema. O filtro de gravidade
+  (`#filtro-grav`, bloco 9 do `main.js`) esconde os cartões que não batem; sem JavaScript todos aparecem.
+- `.barras` / `.barras__linha`: gráficos de barras; a largura vem de `style="--w: 75%"`.
+- Cores da gravidade: variáveis `--g1` a `--g4` no bloco 18g do CSS.
+
 ### Adicionar um link simples a uma lista
 
 Para um item que não é PDF nem vídeo, use o `doc` dentro de `<ul class="lista-docs">`:

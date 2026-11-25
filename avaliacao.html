@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Avaliação — PIX para todos</title>
-  <meta name="description" content="Etapa 09 do portfólio PIX para todos: Como a solução foi avaliada com usuários.">
+  <title>Avaliação heurística — PIX para todos</title>
+  <meta name="description" content="Etapa 09 do portfólio PIX para todos: avaliação heurística consolidada do protótipo, com 14 problemas, gravidades, justificativas e sugestões de redesign.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=32">
+  <link rel="stylesheet" href="css/styles.css?v=33">
 
   <!-- Aplica o tema salvo antes da página aparecer (evita "piscada" de cor) -->
   <script>
@@ -209,16 +209,692 @@
           <ol>
             <li><a href="index.html">Início</a></li>
             <li>Avaliação</li>
-            <li aria-current="page">Avaliação</li>
+            <li aria-current="page">Avaliação heurística</li>
           </ol>
         </nav>
         <p class="pagina__rotulo">Etapa 09 de 10</p>
-        <h1 class="pagina__titulo">Avaliação</h1>
+        <h1 class="pagina__titulo">Avaliação heurística consolidada</h1>
+        <p class="pagina__intro">
+          Relatório elaborado a partir das avaliações recebidas pelo grupo. Reunimos os problemas
+          repetidos, revimos as gravidades quando necessário e registramos sugestões de melhoria
+          para o protótipo.
+        </p>
+        <nav class="nesta-pagina" aria-label="Nesta página">
+          <span class="nesta-pagina__rotulo" aria-hidden="true">Nesta página:</span>
+          <a href="#objetivo">Objetivo</a>
+          <a href="#gravidade">Critérios de gravidade</a>
+          <a href="#lista">Lista consolidada</a>
+          <a href="#problemas">Problemas e redesign</a>
+          <a href="#analise">Análise dos resultados</a>
+        </nav>
       </header>
 
       <div class="pagina__corpo">
 
-        <p class="placeholder">[A PREENCHER] Como a solução foi avaliada com usuários.</p>
+        <section class="pagina__secao" id="resumo" aria-label="Resumo em números">
+          <ul class="aval-numeros">
+            <li class="aval-num aval-num--total"><strong>14</strong><span>problemas consolidados</span></li>
+            <li class="aval-num aval-num--g3"><strong>4</strong><span>grandes (3)</span></li>
+            <li class="aval-num aval-num--g2"><strong>6</strong><span>pequenos (2)</span></li>
+            <li class="aval-num aval-num--g1"><strong>4</strong><span>cosméticos (1)</span></li>
+          </ul>
+        </section>
+
+        <section class="pagina__secao" id="objetivo">
+          <h2 class="analise__grupo">01 &middot; Apresentação e objetivo</h2>
+          <div class="texto-corrido">
+            <p>O PIX para Todos é um protótipo acadêmico para ajudar pessoas idosas com pouca familiaridade tecnológica a realizar transferências de forma mais autônoma e segura. A avaliação teve como objetivo identificar dificuldades de uso e pontos que precisam ser ajustados antes de uma próxima versão do protótipo.</p>
+            <p>Utilizamos as 10 heurísticas de Nielsen, apresentadas na disciplina. A inspeção se concentrou no envio de PIX e também trouxe observações sobre consulta de saldo, ajuda, acessibilidade e navegação.</p>
+          </div>
+
+          <h3 class="subtitulo">Tarefas consideradas</h3>
+          <p class="analise__descricao">Os avaliadores registraram estas tarefas de referência.</p>
+          <ol class="tarefas-av">
+            <li><span class="tarefas-av__cod">T1</span><span>Fazer PIX para alguém conhecido e conferir os dados</span></li>
+            <li><span class="tarefas-av__cod">T2</span><span>Consultar o saldo</span></li>
+            <li><span class="tarefas-av__cod">T3</span><span>Pagar conta por boleto, QR Code ou código de barras</span></li>
+            <li><span class="tarefas-av__cod">T4</span><span>Pedir ajuda durante a operação</span></li>
+            <li><span class="tarefas-av__cod">T5</span><span>Ativar o Modo Idoso</span></li>
+          </ol>
+          <p class="nota-calculo">Os problemas anotados se concentram principalmente em PIX, saldo, ajuda e Modo Idoso. Não tratamos a ausência de observações sobre pagamento de contas como prova de que essa função não tenha problemas. As tarefas partem do <a href="modelo-de-tarefas.html">modelo de tarefas</a> do grupo.</p>
+
+          <h3 class="subtitulo">Quem avaliou e como consolidamos</h3>
+          <div class="texto-corrido">
+            <p>Foram recebidos três arquivos PDF, mas dois deles têm o mesmo conteúdo e formam uma avaliação conjunta. O segundo conjunto foi feito por outra dupla. Assim, trabalhamos com <strong>dois conjuntos distintos de avaliação</strong> e <strong>18 apontamentos originais</strong>, que resultaram em <strong>14 problemas consolidados</strong>.</p>
+          </div>
+          <div class="avaliacoes">
+            <div class="avaliacoes__item"><span class="avaliacoes__cod">A</span><div><strong>Avaliação A</strong><p>Dupla de avaliadores; os dois relatórios recebidos têm o mesmo conteúdo e foram tratados como uma avaliação conjunta.</p></div></div>
+            <div class="avaliacoes__item"><span class="avaliacoes__cod">B</span><div><strong>Avaliação B</strong><p>Segunda dupla de avaliadores, com relatório próprio.</p></div></div>
+          </div>
+          <div class="texto-corrido">
+            <p>Para a consolidação, agrupamos apontamentos sobre a mesma dificuldade e mantivemos problemas distintos separados, mesmo quando acontecem na mesma tela. Quando as gravidades originais divergiam, ou quando a classificação não correspondia ao impacto descrito, adotamos a gravidade indicada na lista final e explicamos o motivo. <strong>Nenhuma correção foi considerada implementada nesta etapa.</strong></p>
+          </div>
+        </section>
+
+        <section class="pagina__secao" id="gravidade">
+          <h2 class="analise__grupo">02 &middot; Critérios de gravidade</h2>
+          <ol class="escala-grav">
+            <li class="escala-grav__item escala-grav__item--1"><span class="escala-grav__n">1</span><div><strong>Cosmético</strong><p>Incômodo leve; a tarefa continua possível.</p></div></li>
+            <li class="escala-grav__item escala-grav__item--2"><span class="escala-grav__n">2</span><div><strong>Pequeno</strong><p>Gera dúvida, demora ou esforço extra, mas pode ser superado.</p></div></li>
+            <li class="escala-grav__item escala-grav__item--3"><span class="escala-grav__n">3</span><div><strong>Grande</strong><p>Prejudica uma tarefa importante ou a segurança e merece prioridade.</p></div></li>
+            <li class="escala-grav__item escala-grav__item--4"><span class="escala-grav__n">4</span><div><strong>Catastrófico</strong><p>Impede de forma crítica o uso da funcionalidade avaliada.</p></div></li>
+          </ol>
+          <p class="nota-calculo">A escala de 1 a 4 segue os termos utilizados nos formulários dos avaliadores. Nesta consolidação não houve problema mantido com gravidade 4.</p>
+        </section>
+
+        <section class="pagina__secao" id="lista">
+          <h2 class="analise__grupo">03 &middot; Lista consolidada</h2>
+          <p class="analise__descricao">A tabela apresenta um problema por linha. O mesmo problema pode violar mais de uma heurística, por isso a soma das ocorrências por heurística não é igual à quantidade de problemas. Toque no código para ir à descrição completa.</p>
+          <div class="comp-wrap">
+            <table class="comp lista-av">
+              <caption class="sr-only">Lista consolidada dos 14 problemas de usabilidade</caption>
+              <thead>
+                <tr><th scope="col">ID</th><th scope="col">Local</th><th scope="col">Heurística(s)</th><th scope="col">Gravidade</th><th scope="col">Problema</th></tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <th scope="row"><a href="#p01">P01</a></th>
+                    <td>Consulta de saldo</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Consistência e padronização">H4</abbr></td>
+                    <td><span class="gbadge gbadge--3">3 · Grande</span></td>
+                    <td>Falta o caminho para consultar o extrato</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p02">P02</a></th>
+                    <td>Tela inicial, Modo Idoso e janela de ajuda</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Visibilidade do estado do sistema">H1</abbr><abbr class="heur" title="Controle e liberdade do usuário">H3</abbr><abbr class="heur" title="Consistência e padronização">H4</abbr></td>
+                    <td><span class="gbadge gbadge--3">3 · Grande</span></td>
+                    <td>Modo Idoso não mostra claramente seu estado e seus efeitos</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p03">P03</a></th>
+                    <td>Cabeçalho em diferentes telas</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Visibilidade do estado do sistema">H1</abbr><abbr class="heur" title="Consistência e padronização">H4</abbr><abbr class="heur" title="Reconhecimento em vez de memorização">H5</abbr></td>
+                    <td><span class="gbadge gbadge--2">2 · Pequeno</span></td>
+                    <td>Retorno ao início fica escondido na marca do cabeçalho</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p04">P04</a></th>
+                    <td>Tela inicial, cabeçalho, etapas do PIX e janela de ajuda</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Consistência e padronização">H4</abbr><abbr class="heur" title="Projeto estético e minimalista">H7</abbr><abbr class="heur" title="Ajuda e documentação">H10</abbr></td>
+                    <td><span class="gbadge gbadge--2">2 · Pequeno</span></td>
+                    <td>Existem vários acessos de ajuda para a mesma função</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p05">P05</a></th>
+                    <td>Etapa “Para quem você quer enviar?” e janela de ajuda</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Ajuda e documentação">H10</abbr></td>
+                    <td><span class="gbadge gbadge--2">2 · Pequeno</span></td>
+                    <td>Orientação de ajuda não explica bem a etapa do destinatário</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p06">P06</a></th>
+                    <td>Alerta para destinatário novo, após a revisão</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Correspondência entre sistema e mundo real">H2</abbr><abbr class="heur" title="Controle e liberdade do usuário">H3</abbr><abbr class="heur" title="Prevenção de erros">H8</abbr></td>
+                    <td><span class="gbadge gbadge--3">3 · Grande</span></td>
+                    <td>Alerta de segurança dá mais destaque à ação arriscada</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p07">P07</a></th>
+                    <td>Etapa do destinatário, ao tentar continuar sem preencher</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Visibilidade do estado do sistema">H1</abbr><abbr class="heur" title="Reconhecer, diagnosticar e recuperar de erros">H9</abbr></td>
+                    <td><span class="gbadge gbadge--2">2 · Pequeno</span></td>
+                    <td>Mensagem para campo vazio é contraditória</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p08">P08</a></th>
+                    <td>Etapa do destinatário</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Flexibilidade e eficiência de uso">H6</abbr><abbr class="heur" title="Prevenção de erros">H8</abbr></td>
+                    <td><span class="gbadge gbadge--2">2 · Pequeno</span></td>
+                    <td>Faltam atalhos para destinatários já utilizados</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p09">P09</a></th>
+                    <td>Etapa de autorização com biometria</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Controle e liberdade do usuário">H3</abbr></td>
+                    <td><span class="gbadge gbadge--2">2 · Pequeno</span></td>
+                    <td>“Usar outra forma” não esclarece as alternativas à digital</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p10">P10</a></th>
+                    <td>Etapas de valor e revisão da transferência</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Reconhecer, diagnosticar e recuperar de erros">H9</abbr></td>
+                    <td><span class="gbadge gbadge--1">1 · Cosmético</span></td>
+                    <td>Valor do PIX não aparece escrito por extenso</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p11">P11</a></th>
+                    <td>Tela inicial e opção de ligar para alguém de confiança</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Controle e liberdade do usuário">H3</abbr></td>
+                    <td><span class="gbadge gbadge--3">3 · Grande</span></td>
+                    <td>Não fica claro como cadastrar ou trocar o contato de confiança</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p12">P12</a></th>
+                    <td>Tela inicial e área de ajuda</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Ajuda e documentação">H10</abbr></td>
+                    <td><span class="gbadge gbadge--1">1 · Cosmético</span></td>
+                    <td>Tour inicial poderia ser encontrado com mais facilidade</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p13">P13</a></th>
+                    <td>Tela inicial e painel de ajuda</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Ajuda e documentação">H10</abbr></td>
+                    <td><span class="gbadge gbadge--1">1 · Cosmético</span></td>
+                    <td>Contato de confiança poderia ficar mais acessível</td>
+                  </tr>
+                  <tr>
+                    <th scope="row"><a href="#p14">P14</a></th>
+                    <td>Janela de ajuda, botão “Entendi e continuar”</td>
+                    <td class="lista-av__heur"><abbr class="heur" title="Projeto estético e minimalista">H7</abbr></td>
+                    <td><span class="gbadge gbadge--1">1 · Cosmético</span></td>
+                    <td>Texto do botão de fechar ajuda pode ser mais direto</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="pagina__secao" id="problemas">
+          <h2 class="analise__grupo">04 &middot; Problemas, justificativas e redesign</h2>
+          <p class="analise__descricao">As descrições a seguir reúnem o que foi observado nas avaliações. A solução sugerida é uma proposta de melhoria, não uma alteração já realizada no protótipo.</p>
+
+          <div class="filtro-grav" id="filtro-grav" role="group" aria-label="Filtrar problemas por gravidade" hidden>
+            <button type="button" class="filtro-grav__bt" data-filtro="todos" aria-pressed="true">Todos (14)</button>
+            <button type="button" class="filtro-grav__bt" data-filtro="3" aria-pressed="false">Grandes (4)</button>
+            <button type="button" class="filtro-grav__bt" data-filtro="2" aria-pressed="false">Pequenos (6)</button>
+            <button type="button" class="filtro-grav__bt" data-filtro="1" aria-pressed="false">Cosméticos (4)</button>
+          </div>
+
+          <div class="probs" id="probs">
+            <article class="prob prob--3" id="p01" data-grav="3">
+              <header class="prob__topo">
+                <span class="prob__id">P01</span>
+                <h3 class="prob__titulo">Falta o caminho para consultar o extrato</h3>
+                <span class="gbadge gbadge--3">3 · Grande</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Consulta de saldo</dd></div>
+                <div><dt>Heurística</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Consistência e padronização">H4</abbr> <span>Consistência e padronização</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>Ao consultar o saldo, não aparece a opção “Ver extrato”, prevista no modelo de tarefas do grupo (HTA, tarefa 1.2.2). Isso interrompe o caminho de quem quer conferir um depósito e não deixa claro como continuar.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Grande: impede a conclusão da consulta ao extrato, mas não inviabiliza todas as tarefas do protótipo. Por isso a gravidade foi ajustada de 4 para 3.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Adicionar “Ver extrato” na própria tela de saldo e manter uma forma clara de voltar.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação A &middot; gravidade original: 4 · Catastrófico</p>
+            </article>
+            <article class="prob prob--3" id="p02" data-grav="3">
+              <header class="prob__topo">
+                <span class="prob__id">P02</span>
+                <h3 class="prob__titulo">Modo Idoso não mostra claramente seu estado e seus efeitos</h3>
+                <span class="gbadge gbadge--3">3 · Grande</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Tela inicial, Modo Idoso e janela de ajuda</dd></div>
+                <div><dt>Heurísticas</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Visibilidade do estado do sistema">H1</abbr> <span>Visibilidade do estado do sistema</span></li><li><abbr class="heur" title="Controle e liberdade do usuário">H3</abbr> <span>Controle e liberdade do usuário</span></li><li><abbr class="heur" title="Consistência e padronização">H4</abbr> <span>Consistência e padronização</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>Antes de ativar, o botão não explica o que será alterado. Depois, “Modo Idoso ativado” se parece com um botão de ação, mas é apenas um aviso. A avaliação também aponta pouca mudança perceptível em textos de apoio e dúvida sobre como desligar o recurso.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Grande: o recurso de simplificação é central para Marlene e precisa ser entendido e reversível. A dúvida pode se repetir em cada acesso.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Usar um controle com os estados “Ligado/Desligado”, explicar que ele aumenta letras e botões, aplicar a mudança de modo perceptível e permitir desativá-lo no mesmo local.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação B &middot; gravidade original: 3 · Grande</p>
+            </article>
+            <article class="prob prob--2" id="p03" data-grav="2">
+              <header class="prob__topo">
+                <span class="prob__id">P03</span>
+                <h3 class="prob__titulo">Retorno ao início fica escondido na marca do cabeçalho</h3>
+                <span class="gbadge gbadge--2">2 · Pequeno</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Cabeçalho em diferentes telas</dd></div>
+                <div><dt>Heurísticas</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Visibilidade do estado do sistema">H1</abbr> <span>Visibilidade do estado do sistema</span></li><li><abbr class="heur" title="Consistência e padronização">H4</abbr> <span>Consistência e padronização</span></li><li><abbr class="heur" title="Reconhecimento em vez de memorização">H5</abbr> <span>Reconhecimento em vez de memorização</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>A marca “PIX para Todos” funciona como retorno à tela inicial, mas parece apenas um texto ou logotipo. Uma avaliação também relata que a câmera do celular atrapalha um pouco a leitura desse elemento.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Pequeno: a função existe, porém não é reconhecida de imediato. As duas avaliações deram gravidades diferentes; adotamos 2 por tratar-se principalmente de clareza na navegação.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Exibir o comando “Voltar ao início” com aparência de botão e boa posição na tela, sem depender de o usuário descobrir que a marca é clicável.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação A e Avaliação B &middot; gravidade original: 1 · Cosmético / 3 · Grande</p>
+            </article>
+            <article class="prob prob--2" id="p04" data-grav="2">
+              <header class="prob__topo">
+                <span class="prob__id">P04</span>
+                <h3 class="prob__titulo">Existem vários acessos de ajuda para a mesma função</h3>
+                <span class="gbadge gbadge--2">2 · Pequeno</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Tela inicial, cabeçalho, etapas do PIX e janela de ajuda</dd></div>
+                <div><dt>Heurísticas</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Consistência e padronização">H4</abbr> <span>Consistência e padronização</span></li><li><abbr class="heur" title="Projeto estético e minimalista">H7</abbr> <span>Projeto estético e minimalista</span></li><li><abbr class="heur" title="Ajuda e documentação">H10</abbr> <span>Ajuda e documentação</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>Os avaliadores encontraram “Ajuda”, “Preciso de ajuda”, “Preciso de ajuda nesta etapa” e outros acessos parecidos. A repetição ocupa espaço e pode fazer o usuário pensar que cada opção leva a uma ajuda diferente.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Pequeno: não bloqueia a transferência, mas acrescenta escolhas e confusão em várias telas, justamente para um público que prefere poucas opções.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Manter um único botão de ajuda, sempre com o mesmo nome e aparência. Dentro dele, organizar as opções sem repetir funções ou estados como “Modo Idoso ativado”.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação A e Avaliação B &middot; gravidade original: 1 · Cosmético / 2 · Pequeno / 1 · Cosmético</p>
+            </article>
+            <article class="prob prob--2" id="p05" data-grav="2">
+              <header class="prob__topo">
+                <span class="prob__id">P05</span>
+                <h3 class="prob__titulo">Orientação de ajuda não explica bem a etapa do destinatário</h3>
+                <span class="gbadge gbadge--2">2 · Pequeno</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Etapa “Para quem você quer enviar?” e janela de ajuda</dd></div>
+                <div><dt>Heurística</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Ajuda e documentação">H10</abbr> <span>Ajuda e documentação</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>Uma avaliação pede instruções mais claras para escolher quem receberá o PIX. A outra destaca que a janela de ajuda não explica a etapa nem termos como “chave”. Para uma pessoa pouco familiarizada, isso pode exigir ajuda de familiares.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Pequeno: o fluxo continua disponível, porém a falta de orientação específica prejudica a compreensão de uma etapa importante.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Ao abrir a ajuda nesta etapa, mostrar uma frase curta sobre como identificar a pessoa e explicar os termos exibidos; oferecer o contato de confiança no mesmo painel.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação A e Avaliação B &middot; gravidade original: 1 · Cosmético / 2 · Pequeno (observação relacionada)</p>
+            </article>
+            <article class="prob prob--3" id="p06" data-grav="3">
+              <header class="prob__topo">
+                <span class="prob__id">P06</span>
+                <h3 class="prob__titulo">Alerta de segurança dá mais destaque à ação arriscada</h3>
+                <span class="gbadge gbadge--3">3 · Grande</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Alerta para destinatário novo, após a revisão</dd></div>
+                <div><dt>Heurísticas</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Correspondência entre sistema e mundo real">H2</abbr> <span>Correspondência entre sistema e mundo real</span></li><li><abbr class="heur" title="Controle e liberdade do usuário">H3</abbr> <span>Controle e liberdade do usuário</span></li><li><abbr class="heur" title="Prevenção de erros">H8</abbr> <span>Prevenção de erros</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>No aviso de que o usuário nunca enviou para aquela pessoa, “Continuar mesmo assim” aparece com maior destaque que “Conferir de novo”. A forma de apresentar as ações pode incentivar a seguir sem revisar os dados.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Grande: ocorre em uma situação de risco de enviar dinheiro à pessoa errada, que é uma das principais preocupações do projeto.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Dar destaque a “Voltar e conferir o nome”, deixando “Continuar mesmo assim” como opção secundária. Explicar em linguagem simples por que é importante conferir e oferecer a ajuda de alguém de confiança.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação B &middot; gravidade original: 3 · Grande</p>
+            </article>
+            <article class="prob prob--2" id="p07" data-grav="2">
+              <header class="prob__topo">
+                <span class="prob__id">P07</span>
+                <h3 class="prob__titulo">Mensagem para campo vazio é contraditória</h3>
+                <span class="gbadge gbadge--2">2 · Pequeno</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Etapa do destinatário, ao tentar continuar sem preencher</dd></div>
+                <div><dt>Heurísticas</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Visibilidade do estado do sistema">H1</abbr> <span>Visibilidade do estado do sistema</span></li><li><abbr class="heur" title="Reconhecer, diagnosticar e recuperar de erros">H9</abbr> <span>Reconhecer, diagnosticar e recuperar de erros</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>O erro “Não foi possível continuar” diz que os dados digitados foram mantidos, mesmo quando o campo está vazio. A mensagem parece uma falha geral do sistema e pode deslocar o botão e a ajuda para fora da área visível.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Pequeno: a correção é simples, mas o texto contraditório pode levar Marlene a desistir da operação.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Mostrar a mensagem junto do campo: “Digite o telefone ou CPF de quem vai receber”. Não afirmar que houve preenchimento e manter o botão principal visível.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação B &middot; gravidade original: 2 · Pequeno</p>
+            </article>
+            <article class="prob prob--2" id="p08" data-grav="2">
+              <header class="prob__topo">
+                <span class="prob__id">P08</span>
+                <h3 class="prob__titulo">Faltam atalhos para destinatários já utilizados</h3>
+                <span class="gbadge gbadge--2">2 · Pequeno</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Etapa do destinatário</dd></div>
+                <div><dt>Heurísticas</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Flexibilidade e eficiência de uso">H6</abbr> <span>Flexibilidade e eficiência de uso</span></li><li><abbr class="heur" title="Prevenção de erros">H8</abbr> <span>Prevenção de erros</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>Uma avaliação aponta a falta de uma lista de pessoas que já receberam PIX. A outra sugere aproveitar informações anteriormente utilizadas enquanto a chave é digitada. São apontamentos próximos, sobre facilitar a escolha de destinatários conhecidos.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Pequeno: repetir os dados demanda mais tempo e aumenta a chance de digitação errada, embora ainda seja possível seguir manualmente.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Disponibilizar a lista “Pessoas para quem você já enviou”, prevista no protótipo, e permitir escolher um nome em vez de preencher tudo novamente. Se houver sugestão de preenchimento, ela deve ser legível e claramente identificada.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação A e Avaliação B &middot; gravidade original: 2 · Pequeno / 1 · Cosmético</p>
+            </article>
+            <article class="prob prob--2" id="p09" data-grav="2">
+              <header class="prob__topo">
+                <span class="prob__id">P09</span>
+                <h3 class="prob__titulo">“Usar outra forma” não esclarece as alternativas à digital</h3>
+                <span class="gbadge gbadge--2">2 · Pequeno</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Etapa de autorização com biometria</dd></div>
+                <div><dt>Heurística</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Controle e liberdade do usuário">H3</abbr> <span>Controle e liberdade do usuário</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>A tela apresenta o comando “Usar outra forma”, mas não informa diretamente quais são as opções de autorização disponíveis. Isso pode deixar o usuário em dúvida quando a digital falha.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Pequeno: existe a possibilidade de mudar de método, mas falta clareza sobre o que pode ser escolhido.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Abrir uma lista curta de alternativas com nomes claros, como reconhecimento facial e senha numérica simulada, permitindo que a pessoa escolha conscientemente.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação A &middot; gravidade original: 2 · Pequeno</p>
+            </article>
+            <article class="prob prob--1" id="p10" data-grav="1">
+              <header class="prob__topo">
+                <span class="prob__id">P10</span>
+                <h3 class="prob__titulo">Valor do PIX não aparece escrito por extenso</h3>
+                <span class="gbadge gbadge--1">1 · Cosmético</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Etapas de valor e revisão da transferência</dd></div>
+                <div><dt>Heurística</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Reconhecer, diagnosticar e recuperar de erros">H9</abbr> <span>Reconhecer, diagnosticar e recuperar de erros</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>O valor é apresentado numericamente, sem a escrita por extenso. Essa conferência adicional foi prevista na HTA e é relevante para Marlene, que deseja verificar cuidadosamente o dinheiro a ser enviado.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Cosmético: os números continuam visíveis e a tarefa pode ser concluída, mas falta um reforço simples de conferência.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Exibir uma linha discreta com o valor por extenso abaixo do valor numérico e repeti-la na revisão.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação A &middot; gravidade original: 1 · Cosmético</p>
+            </article>
+            <article class="prob prob--3" id="p11" data-grav="3">
+              <header class="prob__topo">
+                <span class="prob__id">P11</span>
+                <h3 class="prob__titulo">Não fica claro como cadastrar ou trocar o contato de confiança</h3>
+                <span class="gbadge gbadge--3">3 · Grande</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Tela inicial e opção de ligar para alguém de confiança</dd></div>
+                <div><dt>Heurística</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Controle e liberdade do usuário">H3</abbr> <span>Controle e liberdade do usuário</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>Existe um recurso para ligar para alguém de confiança, mas a avaliação não encontrou como escolher, adicionar ou alterar essa pessoa. A falta de configuração limita a utilidade da ajuda.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Grande: pedir apoio a uma pessoa conhecida é uma necessidade central do público e do stakeholder Camila. Não poder corrigir esse contato compromete o controle do usuário.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Criar uma opção simples para escolher, alterar ou retirar o contato de confiança, separada da confirmação do PIX e sem permitir que o familiar autorize a transferência no lugar do idoso.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação A &middot; gravidade original: 3 · Grande</p>
+            </article>
+            <article class="prob prob--1" id="p12" data-grav="1">
+              <header class="prob__topo">
+                <span class="prob__id">P12</span>
+                <h3 class="prob__titulo">Tour inicial poderia ser encontrado com mais facilidade</h3>
+                <span class="gbadge gbadge--1">1 · Cosmético</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Tela inicial e área de ajuda</dd></div>
+                <div><dt>Heurística</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Ajuda e documentação">H10</abbr> <span>Ajuda e documentação</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>A opção de rever o tour já aparece dentro da área de ajuda, mas um avaliador sugeriu facilitar seu acesso a partir da tela inicial.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Cosmético: o recurso existe e pode ser alcançado; trata-se de reduzir passos para reencontrá-lo.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Deixar “Rever o passo a passo” bem identificado no painel de ajuda acessível pela tela inicial, sem acrescentar muitos botões à tela principal.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação B &middot; gravidade original: 1 · Cosmético</p>
+            </article>
+            <article class="prob prob--1" id="p13" data-grav="1">
+              <header class="prob__topo">
+                <span class="prob__id">P13</span>
+                <h3 class="prob__titulo">Contato de confiança poderia ficar mais acessível</h3>
+                <span class="gbadge gbadge--1">1 · Cosmético</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Tela inicial e painel de ajuda</dd></div>
+                <div><dt>Heurística</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Ajuda e documentação">H10</abbr> <span>Ajuda e documentação</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>A ligação para alguém de confiança está dentro da ajuda, e o avaliador sugere reduzir o esforço para encontrá-la, principalmente com o Modo Idoso ativo.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Cosmético: a função está disponível, mas pode exigir mais navegação do que o necessário em momentos de dúvida.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Destacar “Ligar para alguém de confiança” como uma das primeiras ações dentro do único painel de ajuda, evitando criar novos botões repetidos na tela inicial.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação B &middot; gravidade original: 1 · Cosmético</p>
+            </article>
+            <article class="prob prob--1" id="p14" data-grav="1">
+              <header class="prob__topo">
+                <span class="prob__id">P14</span>
+                <h3 class="prob__titulo">Texto do botão de fechar ajuda pode ser mais direto</h3>
+                <span class="gbadge gbadge--1">1 · Cosmético</span>
+              </header>
+              <dl class="prob__meta">
+                <div><dt>Local</dt><dd>Janela de ajuda, botão “Entendi e continuar”</dd></div>
+                <div><dt>Heurística</dt><dd><ul class="prob__heurs"><li><abbr class="heur" title="Projeto estético e minimalista">H7</abbr> <span>Projeto estético e minimalista</span></li></ul></dd></div>
+              </dl>
+              <div class="prob__bloco">
+                <h4>Problema</h4>
+                <p>“Entendi e continuar” junta duas expressões para uma mesma ação de sair da ajuda e retomar o que estava sendo feito.</p>
+              </div>
+              <div class="prob__bloco">
+                <h4>Gravidade e justificativa</h4>
+                <p>Cosmético: a operação é compreensível, mas o texto pode ser mais curto e direto.</p>
+              </div>
+              <div class="prob__bloco prob__bloco--sug">
+                <h4>Sugestão de redesign</h4>
+                <p>Usar “Voltar à tarefa” ou “Fechar ajuda”, conforme a ação realizada.</p>
+              </div>
+              <p class="prob__registro"><strong>Registro dos avaliadores:</strong> Avaliação B &middot; gravidade original: 1 · Cosmético</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="pagina__secao" id="analise">
+          <h2 class="analise__grupo">05 &middot; Análise dos resultados</h2>
+          <div class="texto-corrido">
+            <p>Após retirar os registros repetidos, chegamos a <strong>14 problemas: 4 grandes, 6 pequenos e 4 cosméticos</strong>. Não mantivemos nenhum como catastrófico. A ausência do botão de extrato havia recebido gravidade 4, mas foi ajustada para 3 (<a href="#p01">P01</a>), pois impede a tarefa de consultar o extrato, sem interromper todas as demais operações.</p>
+          </div>
+
+          <div class="graficos-av">
+            <figure class="barras">
+              <figcaption>
+                <strong>Heurísticas relacionadas aos problemas</strong>
+                <span>Contagem de ocorrências por heurística. Um problema pode entrar em mais de uma categoria.</span>
+              </figcaption>
+              <ul class="barras__lista">
+                <li class="barras__linha">
+                  <span class="barras__nome"><abbr class="heur" title="Visibilidade do estado do sistema">H1</abbr> Visibilidade do estado do sistema</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 75%"></span></span>
+                  <span class="barras__valor">3</span>
+                </li>
+                <li class="barras__linha">
+                  <span class="barras__nome"><abbr class="heur" title="Correspondência entre sistema e mundo real">H2</abbr> Correspondência entre sistema e mundo real</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 25%"></span></span>
+                  <span class="barras__valor">1</span>
+                </li>
+                <li class="barras__linha">
+                  <span class="barras__nome"><abbr class="heur" title="Controle e liberdade do usuário">H3</abbr> Controle e liberdade do usuário</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 100%"></span></span>
+                  <span class="barras__valor">4</span>
+                </li>
+                <li class="barras__linha">
+                  <span class="barras__nome"><abbr class="heur" title="Consistência e padronização">H4</abbr> Consistência e padronização</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 100%"></span></span>
+                  <span class="barras__valor">4</span>
+                </li>
+                <li class="barras__linha">
+                  <span class="barras__nome"><abbr class="heur" title="Reconhecimento em vez de memorização">H5</abbr> Reconhecimento em vez de memorização</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 25%"></span></span>
+                  <span class="barras__valor">1</span>
+                </li>
+                <li class="barras__linha">
+                  <span class="barras__nome"><abbr class="heur" title="Flexibilidade e eficiência de uso">H6</abbr> Flexibilidade e eficiência de uso</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 25%"></span></span>
+                  <span class="barras__valor">1</span>
+                </li>
+                <li class="barras__linha">
+                  <span class="barras__nome"><abbr class="heur" title="Projeto estético e minimalista">H7</abbr> Projeto estético e minimalista</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 50%"></span></span>
+                  <span class="barras__valor">2</span>
+                </li>
+                <li class="barras__linha">
+                  <span class="barras__nome"><abbr class="heur" title="Prevenção de erros">H8</abbr> Prevenção de erros</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 50%"></span></span>
+                  <span class="barras__valor">2</span>
+                </li>
+                <li class="barras__linha">
+                  <span class="barras__nome"><abbr class="heur" title="Reconhecer, diagnosticar e recuperar de erros">H9</abbr> Reconhecer, diagnosticar e recuperar de erros</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 50%"></span></span>
+                  <span class="barras__valor">2</span>
+                </li>
+                <li class="barras__linha">
+                  <span class="barras__nome"><abbr class="heur" title="Ajuda e documentação">H10</abbr> Ajuda e documentação</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 100%"></span></span>
+                  <span class="barras__valor">4</span>
+                </li>
+              </ul>
+            </figure>
+            <figure class="barras">
+              <figcaption>
+                <strong>Distribuição por gravidade</strong>
+                <span>Quantidade de problemas, após a consolidação.</span>
+              </figcaption>
+              <ul class="barras__lista">
+                <li class="barras__linha barras__linha--g4">
+                  <span class="barras__nome">4 · Catastrófico</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 0%"></span></span>
+                  <span class="barras__valor">0</span>
+                </li>
+                <li class="barras__linha barras__linha--g3">
+                  <span class="barras__nome">3 · Grande</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 67%"></span></span>
+                  <span class="barras__valor">4</span>
+                </li>
+                <li class="barras__linha barras__linha--g2">
+                  <span class="barras__nome">2 · Pequeno</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 100%"></span></span>
+                  <span class="barras__valor">6</span>
+                </li>
+                <li class="barras__linha barras__linha--g1">
+                  <span class="barras__nome">1 · Cosmético</span>
+                  <span class="barras__trilho"><span class="barras__barra" style="--w: 67%"></span></span>
+                  <span class="barras__valor">4</span>
+                </li>
+              </ul>
+            </figure>
+          </div>
+
+          <h3 class="subtitulo">O que mais chamou nossa atenção</h3>
+          <div class="texto-corrido">
+            <p>A ajuda aparece em vários pontos do protótipo, mas isso não significa necessariamente que seja fácil usá-la: os acessos repetidos, a falta de explicações específicas e o contato de confiança pouco configurável podem atrapalhar exatamente quem mais precisa do recurso (<a href="#p04">P04</a>, <a href="#p05">P05</a>, <a href="#p11">P11</a>).</p>
+            <p>Também identificamos problemas importantes ligados à segurança e ao controle da operação. O alerta para destinatário novo dá mais destaque à ação de continuar, e a alternativa à digital não explica bem as opções disponíveis (<a href="#p06">P06</a>, <a href="#p09">P09</a>). Isso entra em conflito com a preocupação das personas <a href="personas.html#ficha-marlene">Marlene</a> e <a href="personas.html#ficha-sergio">Sérgio</a> em conferir antes de enviar e saber como agir quando algo foge da rotina.</p>
+            <p>Outro ponto é a diferença entre ter uma função e deixar claro como usá-la. O retorno pelo logotipo e a ativação do Modo Idoso existem, mas os avaliadores apontaram que seu funcionamento não está suficientemente evidente (<a href="#p02">P02</a>, <a href="#p03">P03</a>). Para um aplicativo pensado para quem tem pouca experiência tecnológica, não basta a opção estar na tela: o usuário precisa reconhecê-la e entender o que acontecerá ao tocar.</p>
+          </div>
+
+          <h3 class="subtitulo">Prioridades para uma próxima versão</h3>
+          <ol class="recs prioridades">
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">1</span>
+              <div class="rec__corpo">
+                <h4 class="rec__titulo">Segurança</h4>
+                <p>Corrigir o destaque dos botões do alerta para destinatário novo (<a href="#p06">P06</a>).</p>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">2</span>
+              <div class="rec__corpo">
+                <h4 class="rec__titulo">Autonomia e acessibilidade</h4>
+                <p>Tornar o Modo Idoso claro e reversível (<a href="#p02">P02</a>) e permitir configurar o contato de confiança (<a href="#p11">P11</a>).</p>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">3</span>
+              <div class="rec__corpo">
+                <h4 class="rec__titulo">Conclusão das tarefas</h4>
+                <p>Oferecer acesso ao extrato após consultar saldo (<a href="#p01">P01</a>).</p>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">4</span>
+              <div class="rec__corpo">
+                <h4 class="rec__titulo">Clareza do fluxo</h4>
+                <p>Reduzir ajuda repetida, melhorar mensagens e tornar explícitos os caminhos de navegação (<a href="#p03">P03</a>, <a href="#p04">P04</a>, <a href="#p05">P05</a> e <a href="#p07">P07</a>).</p>
+              </div>
+            </li>
+            <li class="rec">
+              <span class="rec__num" aria-hidden="true">5</span>
+              <div class="rec__corpo">
+                <h4 class="rec__titulo">Refinamentos</h4>
+                <p>Facilitar destinatários conhecidos, alternativas à digital, leitura do valor e acesso aos recursos de ajuda (<a href="#p08">P08</a> a <a href="#p10">P10</a> e <a href="#p12">P12</a> a <a href="#p14">P14</a>).</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="fecho">
+            <p>Os achados reforçam a direção adotada pelo grupo desde a pesquisa: telas simples, informações fáceis de conferir, prevenção de erros e possibilidade de pedir ajuda sem perder autonomia.</p>
+            <p>Esta foi uma avaliação por inspeção, e não um teste de uso com pessoas idosas. Portanto, as melhorias propostas ainda precisam ser verificadas em uma próxima avaliação do protótipo.</p>
+          </div>
+
+          <p class="nota-calculo">Relatório consolidado do Grupo 06, em 24/11/2026. O material foi formatado e organizado com o uso de inteligência artificial; veja a página <a href="uso-de-ia.html">Uso de IA</a>.</p>
+        </section>
+
       </div>
 
       <nav class="paginacao" aria-label="Página anterior e próxima">
@@ -256,6 +932,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=32"></script>
+  <script src="js/main.js?v=33"></script>
 </body>
 </html>
